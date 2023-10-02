@@ -1,11 +1,11 @@
 import { Component } from "react";
-import Experience from "../../scene/Experience.js";
+import threeJSEntryPoint from "../../scene/threeJSEntryPoint.js";
 
 class Background extends Component {
 
     componentDidMount() 
     {
-        const experience = new Experience(this.threeRootElement);
+        threeJSEntryPoint(this.threeRootElement);
     }
 
     // componentDidUpdate() 
@@ -16,7 +16,7 @@ class Background extends Component {
     render () {
         return (
             <div>
-                <h1>temp2</h1>
+                <div className="header" style={{height: '75vh' }}></div>
                 <div className="experience" ref={element => this.threeRootElement = element} />
             </div>
         );

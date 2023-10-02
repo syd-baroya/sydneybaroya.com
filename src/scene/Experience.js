@@ -14,15 +14,13 @@ let instance = null;
 
 class Experience {
 
-    constructor(_container) {
+    constructor(canvas) {
         
         if(instance) {
             return instance;
         }
 
         instance = this;
-        // Options
-        this.canvas = this.createCanvas(document, _container);
 
         // Setup
         this.debug = new Debug()
@@ -30,9 +28,11 @@ class Experience {
         this.time = new Time()
         this.scene = new THREE.Scene()
         this.resources = new Resources(sources)
-        this.camera = new Camera()
-        this.renderer = new Renderer()
+        this.camera = new Camera(canvas)
+        this.renderer = new Renderer(canvas)
         this.world = new World()
+
+        // this.camera.disableControls();
 
         // Resize event
         this.sizes.on('resize', () =>
@@ -45,13 +45,6 @@ class Experience {
         {
             this.update()
         })
-    }
-
-    createCanvas(document, container) 
-    {
-        const canvas = document.createElement('canvas');
-        container.appendChild(canvas);
-        return canvas;
     }
 
     resize()

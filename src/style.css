@@ -7,10 +7,10 @@
 html {
     background: #1e1a20;
 }
-/* body
-{
-    overflow: hidden;
-} */
+
+canvas {
+    height: 75vh;
+}
 
 .experience
 {
@@ -24,7 +24,6 @@ html {
 .section
 {
     display: flex;
-    align-items: center;
     height: 100vh;
     position: relative;
     font-family: 'Cabin', sans-serif;

@@ -3,21 +3,20 @@ import Experience from './Experience.js'
 
 class Renderer
 {
-    constructor()
+    constructor(canvas)
     {
         this.experience = new Experience()
-        this.canvas = this.experience.canvas
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.camera = this.experience.camera
 
-        this.setInstance()
+        this.setInstance(canvas)
     }
 
-    setInstance()
+    setInstance(canvas)
     {
         this.instance = new THREE.WebGLRenderer({
-            canvas: this.canvas,
+            canvas: canvas,
             antialias: true
         })
         this.instance.useLegacyLights = false
