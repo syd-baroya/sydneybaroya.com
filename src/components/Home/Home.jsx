@@ -1,12 +1,12 @@
 import '../../style.css';
 import Background from "../Scene/Scene.jsx";
-import Header from '../Header/Header.jsx';
+import NavBar from '../NavBar/NavBar.jsx';
 import homeSections from './sections.jsx';
 
 export default function Home() {
     return ( 
         <div>
-            <Header items={homeSections}></Header>
+            <NavBar items={homeSections}></NavBar>
             <Background></Background>
             {homeSections
                 .filter(section => section.component)
