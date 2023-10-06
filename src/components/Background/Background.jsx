@@ -1,26 +1,11 @@
-import { Component } from "react";
-import threeJSEntryPoint from "../../scene/threeJSEntryPoint.js";
+import { Sheet } from "@mui/joy";
 
-class Background extends Component {
+export default function Background() {
 
-    componentDidMount() 
-    {
-        threeJSEntryPoint(this.threeRootElement);
-    }
-
-    // componentDidUpdate() 
-    // {
-    //     const experience = new Experience(this.threeRootElement);
-    // }
-
-    render () {
-        return (
-            <div>
-                <div className="header" style={{height: '75vh' }}></div>
-                <div className="experience" ref={element => this.threeRootElement = element} />
-            </div>
-        );
-    }
+    return (
+        <section className="section">
+            <h1>Background</h1>
+            <Sheet sx={{ borderRadius: '4px', width: '100%', height: '50vh'}}>Background Sheet</Sheet>
+        </section>
+    );
 }
-
-export default Background;

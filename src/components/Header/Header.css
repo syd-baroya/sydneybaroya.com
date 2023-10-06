@@ -1,0 +1,8 @@
+.header {
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+    position: relative;
+    justify-content: space-between;
+}

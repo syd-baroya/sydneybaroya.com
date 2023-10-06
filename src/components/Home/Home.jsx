@@ -1,19 +1,22 @@
-import { Component } from 'react';
 import '../../style.css';
+import Background from "../Scene/Scene.jsx";
+import Header from '../Header/Header.jsx';
+import homeSections from './sections.jsx';
 
-class Home extends Component {
-    render () {
-        return ( 
-            <div>
-                <section className="section">
-                    <h1>Sydney</h1>
-                </section>
-                <section className="section">
-                    <h2>temp1</h2>
-                </section>
-            </div>
-        );
-    }
+export default function Home() {
+    return ( 
+        <div>
+            <Header items={homeSections}></Header>
+            <Background></Background>
+            {homeSections
+                .filter(section => section.component)
+                .map(section =>
+                    <div key={section.name} >
+                        <section.component />
+                    </div>
+                )
+
+            }
+        </div>
+    );
 }
-
-export default Home;
