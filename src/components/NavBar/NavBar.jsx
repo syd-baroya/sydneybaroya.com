@@ -22,7 +22,7 @@ export default function NavBar({items}) {
 
     return (
         <div className={navbar ? "header scroll" : "header"}>
-            <Link href="#home" sx={{p:1, m:1, height: 1/2, color: "#ffffff"}}>Sydney Baroya</Link>
+            <Link href="#home" sx={{p:1, m:1, height: 1/2, color: "var(--primary-text)"}}>Sydney Baroya</Link>
 
             <div className='navbar'>
                 { items.map( item => {
@@ -34,14 +34,27 @@ export default function NavBar({items}) {
                                 p: 1/2,
                                 height: 1,
                                 borderRadius: 1,
-                                color: "#ffffff"
+                                color: "var(--primary-text)"
                             }}
                         >{ item.name }</Link>
                     }
                 )}
             </div>
 
-            <Button sx={{p:1, m:1, height: 1/2}}>Resume</Button>
+            <Button sx={{
+                p:1, 
+                m:1, 
+                height: 1/2,
+                color: "var(--secondary-text)",
+                backgroundColor: "var(--primary-text)",
+                border: "solid 3px",
+                borderColor: "var(--secondary-text)",
+                borderRadius: "15px",
+                ":hover": {
+                    bgcolor: "var(--secondary-text)",
+                    color: "var(--primary-text)"
+                  }
+            }}>Resume</Button>
 
         </div>
     );
