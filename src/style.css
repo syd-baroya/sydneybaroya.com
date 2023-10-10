@@ -4,20 +4,30 @@
     padding: 0;
 }
 
-html {
-    background: #1e1a20;
+:root {
+    --summer-background: #85CDCB;
+    --fall-background: #E27D60;
+    --winter-background: #C38D9E;
+    --spring-background: #E8A87C;
+    --primary-text: #41B3A3;
 }
 
 canvas {
-    height: 75vh;
+    height: 65vh;
 }
 
 .experience
 {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     outline: none;
+}
+
+.homeSections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -25,18 +35,11 @@ canvas {
 {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     position: relative;
     font-family: 'Cabin', sans-serif;
     color: #ffeded;
     text-transform: uppercase;
     font-size: 7vmin;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding: 5% 10%;
     align-items: flex-end;
 }
-
-/* section:nth-child(odd)
-{
-    justify-content: flex-end;
-} */
