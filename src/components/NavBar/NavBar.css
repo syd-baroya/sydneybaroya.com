@@ -2,7 +2,29 @@
     padding: 1%;
     display: flex;
     flex-direction: row;
-    z-index: 1;
-    position: relative;
+    z-index: 100;
+    top: 0;
+    position: sticky;
     justify-content: space-between;
+    align-items: center;
+    height: 25%;
+
+    -webkit-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+}
+
+.navbar {
+    color: #ffffff;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scroll {
+    background-color: var(--summer-background);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.10);
 }
