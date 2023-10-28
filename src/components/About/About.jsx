@@ -3,6 +3,7 @@ import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
 import { styled } from '@mui/joy/styles';
+import './About.css';
 
 export default function About() {
 
@@ -15,31 +16,31 @@ export default function About() {
 
     return (
         <section className="section" id="about">
-            <Typography fontSize="72px" lineHeight="80px"sx={{color: "#dcdcdc"}}>Hi! I'm Sydney.</Typography>
+            <Typography fontSize="72px" lineHeight="80px"sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
             <Tabs size='lg' aria-label="tabs" defaultValue="i" sx={{borderRadius: 'xl',  width: '65%', height: '400px'}}>
                 <TabList
                     disableUnderline
                     tabFlex="auto"
                     sx={{
-                    gap: 0.5,
-                    borderRadius: '15px 15px 0px 0px',
-                    bgcolor: 'background.level2',
-                    [`& .${tabClasses.root}[aria-selected="true"]`]: {
+                        gap: 0.5,
                         borderRadius: '15px 15px 0px 0px',
-                        bgcolor: 'background.surface',
-                    },
-                    [`& .${tabClasses.root}[aria-selected="false"]`]: {
-                        borderRadius: '15px 15px 0px 0px', 
-                    },
+                        bgcolor: 'background.level2',
+                        [`& .${tabClasses.root}[aria-selected="true"]`]: {
+                            borderRadius: '15px 15px 0px 0px',
+                            bgcolor: 'background.surface',
+                        },
+                        [`& .${tabClasses.root}[aria-selected="false"]`]: {
+                            borderRadius: '15px 15px 0px 0px', 
+                        }
                     }}
                 >
-                    <Tab disableIndicator value="i">Interests</Tab>
-                    <Tab disableIndicator value="s">Skills</Tab>
-                    <Tab disableIndicator value="h">Hobbies</Tab>
+                    <Tab disableIndicator sx={{color: 'var(--fall-background) !important'}} value="i">Interests</Tab>
+                    <Tab disableIndicator sx={{color: 'var(--winter-background) !important'}} value="s">Skills</Tab>
+                    <Tab disableIndicator sx={{color: 'var(--spring-background) !important'}} value="h">Hobbies</Tab>
                 </TabList>
-                <TabPanel value="i">My interests</TabPanel>
-                <TabPanel value="s">My skills</TabPanel>
-                <TabPanel value="h">My hobbies</TabPanel>
+                <TabPanel sx={{color: 'var(--fall-background)'}} value="i">My interests</TabPanel>
+                <TabPanel sx={{color: 'var(--winter-background)'}} value="s">My skills</TabPanel>
+                <TabPanel sx={{color: 'var(--spring-background)'}} value="h">My hobbies</TabPanel>
             </Tabs>
                 {/* <Grid container spacing={2} xs={12}>
                     <Grid item xs={12} sm={6} md={4}>

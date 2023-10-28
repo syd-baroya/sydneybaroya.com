@@ -1,0 +1,7 @@
+.tab {
+    color: var(--secondary-text) !important;
+}
+
+.tab-panel {
+    color: var(--secondary-text) !important;
+}
