@@ -2,7 +2,9 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 // import Floor from './Floor.js'
 // import Fox from './Fox.js'
-import Cube from './Cube.js'
+// import Cube from './Cube.js'
+import Summer from './Summer.js'
+
 
 class World
 {
@@ -20,7 +22,8 @@ class World
             // this.fox = new Fox()
 
             // Setup
-            this.cube = new Cube();
+            // this.cube = new Cube();
+            this.summer = new Summer();
             this.environment = new Environment()
         })
     }
