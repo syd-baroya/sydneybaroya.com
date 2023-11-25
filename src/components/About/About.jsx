@@ -35,11 +35,11 @@ export default function About() {
                     }}
                 >
                     <Tab disableIndicator sx={{color: 'var(--fall-background) !important'}} value="i">Interests</Tab>
-                    <Tab disableIndicator sx={{color: 'var(--winter-background) !important'}} value="s">Skills</Tab>
+                    <Tab disableIndicator sx={{color: 'var(--summer-background) !important'}} value="s">Skills</Tab>
                     <Tab disableIndicator sx={{color: 'var(--spring-background) !important'}} value="h">Hobbies</Tab>
                 </TabList>
                 <TabPanel sx={{color: 'var(--fall-background)'}} value="i">My interests</TabPanel>
-                <TabPanel sx={{color: 'var(--winter-background)'}} value="s">My skills</TabPanel>
+                <TabPanel sx={{color: 'var(--summer-background)'}} value="s">My skills</TabPanel>
                 <TabPanel sx={{color: 'var(--spring-background)'}} value="h">My hobbies</TabPanel>
             </Tabs>
                 {/* <Grid container spacing={2} xs={12}>
