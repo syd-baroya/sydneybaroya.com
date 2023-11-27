@@ -16,7 +16,7 @@
 }
 
 .navbar {
-    color: var(--secondary-text);
+    color: var(--tertiary-text);
     padding: 1%;
     display: flex;
     flex-direction: row;

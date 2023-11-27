@@ -10,7 +10,8 @@
     --winter-background: #a67786;
     --spring-background: #E8A87C;
     --primary-text: #FFFFFF;
-    --secondary-text: #41B3A3;
+    --secondary-text: #a67786;
+    --tertiary-text: #41B3A3;
 }
 
 canvas {

@@ -22,36 +22,47 @@ export default function NavBar({items}) {
 
     return (
         <div className={navbar ? "header scroll" : "header"}>
-            <Link href="#home" sx={{p:1, m:1, height: 1/2, color: "var(--primary-text)"}}>Sydney Baroya</Link>
+            <Link href="#home" underline='none' sx={{
+                p:1, m:1, height: 1/2, 
+                color: "var(--primary-text)"
+            }}>Sydney Baroya</Link>
 
             <div className='navbar'>
                 { items.map( item => {
-                        return <Link 
-                            href={item.link}
-                            key={item.name}
-                            sx={{
-                                m: 1/2,
-                                p: 1/2,
-                                height: 1,
-                                borderRadius: 1,
-                                color: "var(--primary-text)"
-                            }}
-                        >{ item.name }</Link>
-                    }
-                )}
+                    return <Link 
+                        href={item.link}
+                        key={item.name}
+                        underline='none'
+                        sx={{
+                            m: 1/2,
+                            pr: 1,
+                            pl: 1,
+                            pt: 1/2,
+                            pb: 1/2,
+                            height: 1/2,
+                            borderRadius: 1,
+                            color: "var(--primary-text)",
+                            ":hover": {
+                                bgcolor: "var(--primary-text)",
+                                color: "var(--secondary-text)",
+                                borderRadius: "10px",
+                                }
+                        }}
+                    >{ item.name }</Link>
+                })}
             </div>
 
             <Button sx={{
                 p:1, 
                 m:1, 
                 height: 1/2,
-                color: "var(--secondary-text)",
+                color: "var(--tertiary-text)",
                 backgroundColor: "var(--primary-text)",
                 border: "solid 3px",
-                borderColor: "var(--secondary-text)",
+                borderColor: "var(--tertiary-text)",
                 borderRadius: "15px",
                 ":hover": {
-                    bgcolor: "var(--secondary-text)",
+                    bgcolor: "var(--tertiary-text)",
                     color: "var(--primary-text)"
                   }
             }}>Resume</Button>
