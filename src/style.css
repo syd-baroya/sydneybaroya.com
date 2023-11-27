@@ -12,6 +12,7 @@
     --primary-text: #FFFFFF;
     --secondary-text: #a67786;
     --tertiary-text: #41B3A3;
+    --border: 2px;
 }
 
 canvas {

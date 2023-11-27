@@ -35,10 +35,8 @@ export default function NavBar({items}) {
                         underline='none'
                         sx={{
                             m: 1/2,
-                            pr: 1,
-                            pl: 1,
-                            pt: 1/2,
-                            pb: 1/2,
+                            px: 1,
+                            py: 1/2,
                             height: 1/2,
                             borderRadius: 1,
                             color: "var(--primary-text)",
@@ -46,7 +44,7 @@ export default function NavBar({items}) {
                                 bgcolor: "var(--primary-text)",
                                 color: "var(--secondary-text)",
                                 borderRadius: "10px",
-                                }
+                            }
                         }}
                     >{ item.name }</Link>
                 })}
