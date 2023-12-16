@@ -28,8 +28,8 @@ export default function NavBar({items}) {
             }}>Sydney Baroya</Link>
 
             <div className='navbar'>
-                { items.map( item => {
-                    return <Link 
+                { items.map( (item) => 
+                    <Link 
                         href={item.link}
                         key={item.name}
                         underline='none'
@@ -47,7 +47,7 @@ export default function NavBar({items}) {
                             }
                         }}
                     >{ item.name }</Link>
-                })}
+                )}
             </div>
 
             <Button sx={{
