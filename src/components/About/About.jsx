@@ -7,29 +7,12 @@ import './About.css';
 import './GridItem.jsx';
 import GridItem from "./GridItem.jsx";
 import { useEffect, useRef, useState } from "react";
+import ABOUT_SECTIONS from './aboutSections.jsx';
+
+let didInit = false;
 
 export default function About() {
 
-    const ABOUT_SECTIONS = [
-        { title: "Expertise", color: "var(--fall-background)", value: "e" },
-        { title: "Skills", color: "var(--summer-background)", value: "s" },
-        { title: "Hobbies", color: "var(--spring-background)", value: "h" }
-    ];
-
-    const EXPERTISE_AREAS = [
-        {   
-            title: "3D Computer Graphics",
-            content: "Passionate about 3D graphics programing. Experienced in creating immersive 3D environments, high-quality models, and animations for diverse projects, including real-time simulations, visual effects, and game development."
-        },
-        {   
-            title: "Web Development",
-            content: "I like front-end"
-        },
-        {   
-            title: "Software development",
-            content: "I like Java"
-        }
-    ];
 
     const [tabIndex, setTabIndex] = useState(0);
     const [tabsHeight, setTabsHeight] = useState('auto'); // State to store Tabs height
@@ -48,18 +31,21 @@ export default function About() {
     };
   
     useEffect(() => {
-        calculateTabsSize();
-        window.addEventListener('resize', calculateTabsSize); // Update height on window resize
-        return () => window.removeEventListener('resize', calculateTabsSize);
+        if(!didInit) {
+            didInit = true;
+            window.addEventListener('resize', calculateTabsSize); // Update height on window resize
+            return () => { window.removeEventListener('resize', calculateTabsSize); }
+        }
     }, []);
   
 
     return (
         <section className="section" id="about">
-            <Typography fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
+            <Typography fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)', pb:'30px'}}>Hi! I'm Sydney.</Typography>
             <div style={{ width: '75%' }}>
                 <div ref={tabsRef} style={{ width: "100%"}}>
-                    <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm'}} onChange={handleTabChange}>
+                    <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm'}} > 
+                    {/* can add onChange={handleTabChange} to above*/}
                         <TabList
                             disableUnderline
                             tabFlex={1}
@@ -82,17 +68,17 @@ export default function About() {
                             )}
                         </TabList>
                         <div style={{ height: tabsHeight}}>
-                            <TabPanel size='lg' sx={{color: `${ABOUT_SECTIONS[0].color}`}} value={ABOUT_SECTIONS[0].value}>
-                                <Grid container spacing={3}>
-                                    { EXPERTISE_AREAS.map( (area, index) => 
-                                        <Grid key={index} xs={12} sm={12} md={12} lg={4}>
-                                            <GridItem color={ABOUT_SECTIONS[0].color} title={area.title} content={area.content}></GridItem>
+                        { ABOUT_SECTIONS.map( (section, index1) =>  
+                            <TabPanel key={index1} size='lg' sx={{color: `${section.color}`}} value={section.value}>
+                                <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    { section.content.map( (area, index2) => 
+                                        <Grid key={index2} xs={12} sm={12} md={12} lg={12/section.content.length}>
+                                            <GridItem color={section.color} title={area.title} content={area.content} index={index2}></GridItem>
                                         </Grid>
                                     )}
                                 </Grid>
                             </TabPanel>
-                            <TabPanel sx={{color: `${ABOUT_SECTIONS[1].color}`}} value={ABOUT_SECTIONS[1].value}>My skills</TabPanel>
-                            <TabPanel sx={{color: `${ABOUT_SECTIONS[2].color}`}} value={ABOUT_SECTIONS[2].value}>My hobbies</TabPanel>
+                        )}
                         </div>
                     </Tabs>
                 </div>
