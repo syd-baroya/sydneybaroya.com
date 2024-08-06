@@ -3,6 +3,8 @@ import { Link, Button } from '@mui/joy';
 import './NavBar.css';
 import { useEffect, useState } from 'react';
 
+let didInit = false;
+
 export default function NavBar({items}) {
 
     const [navbar, setNavbar] = useState(false);
@@ -16,9 +18,12 @@ export default function NavBar({items}) {
     }
 
     useEffect(() => {
-        changeBackground();
-        window.addEventListener("scroll", changeBackground);
-    })
+        if(!didInit) {
+            didInit = true;
+            window.addEventListener("scroll", changeBackground);
+            return () => { window.removeEventListener('scroll', changeBackground); };
+        }
+    }, [])
 
     return (
         <div className={navbar ? "header scroll" : "header"}>
