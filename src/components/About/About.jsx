@@ -47,131 +47,135 @@ export default function About() {
 
     return (
         <section className="section" id="about">
-            <Typography fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)', pb:'30px'}}>Hi! I'm Sydney.</Typography>
-            <Grid container spacing={3} columns={12} direction="row" justifyContent="center" alignItems="center">
-                <Grid sm={6} md={4} lg={2}>
-                    <img alt="Sydney Baroya" src="/images/headshot.JPG" style={{borderRadius: '50%', width: '100%'}} />
-                </Grid>
-                <Grid sm={6} md={8} lg={10}>
-                    <div ref={tabsRef} style={{ width: "100%"}}>
-                        <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm'}} > 
-                        {/* can add onChange={handleTabChange} to above*/}
-                            <TabList
-                                disableUnderline
-                                tabFlex={1}
-                                sx=
-                                {{
-                                    gap: 0.5,
-                                    borderRadius: '15px 15px 0px 0px',
-                                    bgcolor: 'background.level2',
-                                    [`& .${tabClasses.root}[aria-selected="true"]`]: {
+            <Box sx={{ width: "100%"}}>
+                <Typography textAlign="end" fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
+                <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="flex-start">
+                    <Grid xs={4} lg={3}>
+                        <AspectRatio flex ratio={4/3} maxHeight={300} maxWidth={300} sx={{borderRadius:"50%", aspectRatio: "1"}} >
+                            <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
+                        </AspectRatio>
+                    </Grid>
+                    <Grid xs={8} lg={9}>
+                        <Box ref={tabsRef} margin={2} sx={{ width: "100%"}}>
+                            <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm'}} > 
+                            {/* can add onChange={handleTabChange} to above*/}
+                                <TabList
+                                    disableUnderline
+                                    tabFlex={1}
+                                    sx=
+                                    {{
+                                        gap: 0.5,
                                         borderRadius: '15px 15px 0px 0px',
-                                        bgcolor: 'background.surface',
-                                    },
-                                    [`& .${tabClasses.root}[aria-selected="false"]`]: {
-                                        borderRadius: '15px 15px 0px 0px', 
-                                    }
-                                }}
-                            >
-                                { ABOUT_SECTIONS.map( (section) => 
-                                    <Tab disableIndicator key={section.value} sx={{color: `${section.color} !important`}} value={section.value}>{section.title}</Tab>
-                                )}
-                            </TabList>
-                            <div style={{ height: tabsHeight}}>
-                                <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`}} value={EXPERTISE_SECTION.value}>
-                                    <Grid container spacing={3} columns={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                        { EXPERTISE_SECTION.content.map( (exp, index) => 
-                                            <Grid key={index} xs={12} sm={12} md={12} lg={12/EXPERTISE_SECTION.content.length}>                                    
-                                                <Card sx={{ 
-                                                        border: "solid 2px",
-                                                        borderColor: EXPERTISE_SECTION.color,
-                                                        borderRadius: '15px',
-                                                        textAlign: 'center',
-                                                        color: EXPERTISE_SECTION.color,
-                                                        height: 1,
-                                                        boxSizing: 'border-box', 
-                                                        padding: '30px',
-                                                        width: 1,
-                                                        display: 'flex',
-                                                        justifyContent: 'space-around',
-                                                        flexDirection: 'column'
-                                                    }}
-                                                    elevation={3} 
-                                                >
-                                                    <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px"
-                                                        startDecorator={<FontAwesomeIcon icon={exp.icon} size="2x"  margin="5px"/>} >{exp.title}</Typography>
-                                                    <Typography ml={5} textAlign="start" level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
-                                                </Card>
-                                            </Grid>
-                                        )}
-                                    </Grid>
-                                </TabPanel>                                    
-                                <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
-                                    <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                        { SKILLS_SECTION.content.map( (skill, index) => 
-                                            <Grid key={index} xs={12} sm={12} md={12} lg={12/SKILLS_SECTION.content.length}>                                    
-                                                <Card sx={{ 
-                                                        border: "solid 2px",
-                                                        borderColor: SKILLS_SECTION.color,
-                                                        borderRadius: '15px',
-                                                        textAlign: 'center',
-                                                        color: SKILLS_SECTION.color,
-                                                        height: 1,
-                                                        boxSizing: 'border-box', 
-                                                        padding: '10px',
-                                                        width: 1,
-                                                        display: 'flex',
-                                                        justifyContent: 'space-around',
-                                                        flexDirection: 'column'
-                                                    }}
-                                                    elevation={3} 
-                                                >
-                                                    <Typography level="h3" sx={{ color: SKILLS_SECTION.color }}>{skill.title}</Typography>
-                                                    <Typography level="body-md" sx={{ color: SKILLS_SECTION.color }}>{skill.content}</Typography>
-                                                </Card>
-                                            </Grid>
-                                        )}
-                                    </Grid>
-                                </TabPanel> 
-                                <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`}} value={HOBBIES_SECTION.value}>
-                                    <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                                        { HOBBIES_SECTION.content.map( (hobby, index) =>                    
-                                            <Grid key={index} xs={12} sm={12} md={12} lg={12/HOBBIES_SECTION.content.length}>                                    
-                                                <Box >
-                                                    <Card
-                                                        orientation="horizontal"
-                                                        sx={{
-                                                        flexWrap: 'wrap',
-                                                        [`& > *`]: {
-                                                            '--stack-point': '400px',
-                                                            minWidth:
-                                                            'clamp(0px, (calc(var(--stack-point) - 2 * var(--Card-padding) - 2 * var(--variant-borderWidth, 0px)) + 1px - 100%) * 999, 100%)',
-                                                        },
-                                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                        border: "solid 2px",
-                                                        borderColor: HOBBIES_SECTION.color,
-                                                        borderRadius: '15px',
+                                        bgcolor: 'background.level2',
+                                        [`& .${tabClasses.root}[aria-selected="true"]`]: {
+                                            borderRadius: '15px 15px 0px 0px',
+                                            bgcolor: 'background.surface',
+                                        },
+                                        [`& .${tabClasses.root}[aria-selected="false"]`]: {
+                                            borderRadius: '15px 15px 0px 0px', 
+                                        }
+                                    }}
+                                >
+                                    { ABOUT_SECTIONS.map( (section) => 
+                                        <Tab disableIndicator key={section.value} sx={{color: `${section.color} !important`}} value={section.value}>{section.title}</Tab>
+                                    )}
+                                </TabList>
+                                <div style={{ height: tabsHeight}}>
+                                    <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`}} value={EXPERTISE_SECTION.value}>
+                                        <Grid container spacing={3} columns={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            { EXPERTISE_SECTION.content.map( (exp, index) => 
+                                                <Grid key={index} xs={12} sm={12} md={12} lg={12/EXPERTISE_SECTION.content.length}>                                    
+                                                    <Card sx={{ 
+                                                            border: "solid 2px",
+                                                            borderColor: EXPERTISE_SECTION.color,
+                                                            borderRadius: '15px',
+                                                            textAlign: 'center',
+                                                            color: EXPERTISE_SECTION.color,
+                                                            height: 1,
+                                                            boxSizing: 'border-box', 
+                                                            padding: '30px',
+                                                            width: 1,
+                                                            display: 'flex',
+                                                            justifyContent: 'space-around',
+                                                            flexDirection: 'column'
                                                         }}
+                                                        elevation={3} 
                                                     >
-                                                        <AspectRatio flex ratio={hobby.ratio} maxHeight={400} sx={{ minWidth: 200 }}>
-                                                            <img
-                                                                src={hobby.content} alt=""
-                                                            />
-                                                        </AspectRatio>
-                                                        <CardContent>
-                                                            <Typography level="h3" sx={{ color: HOBBIES_SECTION.color }}>{hobby.title}</Typography>
-                                                        </CardContent>
+                                                        <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px"
+                                                            startDecorator={<FontAwesomeIcon icon={exp.icon} size="2x"  margin="5px"/>} >{exp.title}</Typography>
+                                                        <Typography ml={5} textAlign="start" level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
                                                     </Card>
-                                                </Box>
-                                            </Grid>
-                                        )}
-                                    </Grid>
-                                </TabPanel>
-                            </div>
-                        </Tabs>
-                    </div>
+                                                </Grid>
+                                            )}
+                                        </Grid>
+                                    </TabPanel>                                    
+                                    <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
+                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            { SKILLS_SECTION.content.map( (skill, index) => 
+                                                <Grid key={index} xs={12} sm={12} md={12} lg={12/SKILLS_SECTION.content.length}>                                    
+                                                    <Card sx={{ 
+                                                            border: "solid 2px",
+                                                            borderColor: SKILLS_SECTION.color,
+                                                            borderRadius: '15px',
+                                                            textAlign: 'center',
+                                                            color: SKILLS_SECTION.color,
+                                                            height: 1,
+                                                            boxSizing: 'border-box', 
+                                                            padding: '10px',
+                                                            width: 1,
+                                                            display: 'flex',
+                                                            justifyContent: 'space-around',
+                                                            flexDirection: 'column'
+                                                        }}
+                                                        elevation={3} 
+                                                    >
+                                                        <Typography level="h3" sx={{ color: SKILLS_SECTION.color }}>{skill.title}</Typography>
+                                                        <Typography level="body-md" sx={{ color: SKILLS_SECTION.color }}>{skill.content}</Typography>
+                                                    </Card>
+                                                </Grid>
+                                            )}
+                                        </Grid>
+                                    </TabPanel> 
+                                    <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`}} value={HOBBIES_SECTION.value}>
+                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                            { HOBBIES_SECTION.content.map( (hobby, index) =>                    
+                                                <Grid key={index} xs={12} sm={12} md={12} lg={12/HOBBIES_SECTION.content.length}>                                    
+                                                    <Box >
+                                                        <Card
+                                                            orientation="horizontal"
+                                                            sx={{
+                                                            flexWrap: 'wrap',
+                                                            [`& > *`]: {
+                                                                '--stack-point': '400px',
+                                                                minWidth:
+                                                                'clamp(0px, (calc(var(--stack-point) - 2 * var(--Card-padding) - 2 * var(--variant-borderWidth, 0px)) + 1px - 100%) * 999, 100%)',
+                                                            },
+                                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                            border: "solid 2px",
+                                                            borderColor: HOBBIES_SECTION.color,
+                                                            borderRadius: '15px',
+                                                            }}
+                                                        >
+                                                            <AspectRatio flex ratio={hobby.ratio} maxHeight={400} sx={{ minWidth: 200 }}>
+                                                                <img
+                                                                    src={hobby.content} alt=""
+                                                                />
+                                                            </AspectRatio>
+                                                            <CardContent>
+                                                                <Typography level="h3" sx={{ color: HOBBIES_SECTION.color }}>{hobby.title}</Typography>
+                                                            </CardContent>
+                                                        </Card>
+                                                    </Box>
+                                                </Grid>
+                                            )}
+                                        </Grid>
+                                    </TabPanel>
+                                </div>
+                            </Tabs>
+                        </Box>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Box>
         </section>
     );
 }
