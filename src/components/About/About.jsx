@@ -100,7 +100,7 @@ export default function About() {
                                                 >
                                                     <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px"
                                                         startDecorator={<FontAwesomeIcon icon={exp.icon} size="2x"  margin="5px"/>} >{exp.title}</Typography>
-                                                    <Typography ml={5} textAlign="start" maxWidth={400} level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
+                                                    <Typography ml={5} textAlign="start" level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
                                                 </Card>
                                             </Grid>
                                         )}
