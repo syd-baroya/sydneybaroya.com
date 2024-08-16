@@ -36,10 +36,10 @@ const HOBBIES_SECTION = {
         },
         {
             title: "Surfing", content: '/images/surf.JPG', ratio: '4/3'
-        },
-        {
-            title: "Tinkering with code", content: '/images/code.JPG', ratio: '3/4'
         }
+        // {
+        //     title: "Tinkering with code", content: '/images/code.JPG', ratio: '3/4'
+        // }
     ]
 };
 

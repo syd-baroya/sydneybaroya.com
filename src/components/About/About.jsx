@@ -26,6 +26,7 @@ export default function About() {
 
     const handleTabChange = (event, newValue) => {
       setTabIndex(newValue);
+      calculateTabsSize();
     };
   
     // Function to calculate and set Tabs container height and width
@@ -46,18 +47,27 @@ export default function About() {
   
 
     return (
-        <section className="section" id="about">
-            <Box sx={{ width: "100%"}}>
-                <Typography textAlign="end" fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
-                <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="flex-start">
-                    <Grid xs={4} lg={3}>
-                        <AspectRatio flex ratio={4/3} maxHeight={300} maxWidth={300} sx={{borderRadius:"50%", aspectRatio: "1"}} >
+        <section className="section" id="about" style={{height: '85vh'}}>
+            <Grid container spacing={3} columns={12} direction="row" sx={{ display: 'flex', width: '100%', height: '100%'}}>
+                <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12}>
+                    <Box component={Grid} item xs={4} display={{ lg: "none", xs: "block" }}>
+                        <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
                             <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
                         </AspectRatio>
+                    </Box>
+                    <Grid xs={8} sm={8} md={8} lg={12}>
+                        <Typography textAlign="end" fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
                     </Grid>
-                    <Grid xs={8} lg={9}>
-                        <Box ref={tabsRef} margin={2} sx={{ width: "100%"}}>
-                            <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm'}} > 
+                </Grid>
+                <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12}>
+                    <Box component={Grid} item lg={3} display={{ xs: "none", lg: "block" }}>
+                        <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
+                            <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
+                        </AspectRatio>
+                    </Box>
+                    <Grid xs={12} sm={12} md={12} lg={9} style={{height: '100%'}}>
+                        <Box ref={tabsRef} margin={2} sx={{ width: '100%', height: '100%'}}>
+                            <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm', height: '100%'}} > 
                             {/* can add onChange={handleTabChange} to above*/}
                                 <TabList
                                     disableUnderline
@@ -80,9 +90,9 @@ export default function About() {
                                         <Tab disableIndicator key={section.value} sx={{color: `${section.color} !important`}} value={section.value}>{section.title}</Tab>
                                     )}
                                 </TabList>
-                                <div style={{ height: tabsHeight}}>
-                                    <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`}} value={EXPERTISE_SECTION.value}>
-                                        <Grid container spacing={3} columns={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <div>
+                                    <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`, height: '100%'}} value={EXPERTISE_SECTION.value}>
+                                        <Grid container spacing={3} columns={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
                                             { EXPERTISE_SECTION.content.map( (exp, index) => 
                                                 <Grid key={index} xs={12} sm={12} md={12} lg={12/EXPERTISE_SECTION.content.length}>                                    
                                                     <Card sx={{ 
@@ -109,8 +119,8 @@ export default function About() {
                                             )}
                                         </Grid>
                                     </TabPanel>                                    
-                                    <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
-                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`, height: '100%'}} value={SKILLS_SECTION.value}>
+                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
                                             { SKILLS_SECTION.content.map( (skill, index) => 
                                                 <Grid key={index} xs={12} sm={12} md={12} lg={12/SKILLS_SECTION.content.length}>                                    
                                                     <Card sx={{ 
@@ -136,10 +146,10 @@ export default function About() {
                                             )}
                                         </Grid>
                                     </TabPanel> 
-                                    <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`}} value={HOBBIES_SECTION.value}>
-                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`, height: '100%'}} value={HOBBIES_SECTION.value}>
+                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
                                             { HOBBIES_SECTION.content.map( (hobby, index) =>                    
-                                                <Grid key={index} xs={12} sm={12} md={12} lg={12/HOBBIES_SECTION.content.length}>                                    
+                                                <Grid key={index} xs={12/HOBBIES_SECTION.content.length}>                                    
                                                     <Box >
                                                         <Card
                                                             orientation="horizontal"
@@ -150,20 +160,20 @@ export default function About() {
                                                                 minWidth:
                                                                 'clamp(0px, (calc(var(--stack-point) - 2 * var(--Card-padding) - 2 * var(--variant-borderWidth, 0px)) + 1px - 100%) * 999, 100%)',
                                                             },
-                                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                            display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%',
                                                             border: "solid 2px",
                                                             borderColor: HOBBIES_SECTION.color,
                                                             borderRadius: '15px',
                                                             }}
                                                         >
-                                                            <AspectRatio flex ratio={hobby.ratio} maxHeight={400} sx={{ minWidth: 200 }}>
+                                                            <AspectRatio flex ratio={hobby.ratio}>
                                                                 <img
                                                                     src={hobby.content} alt=""
                                                                 />
                                                             </AspectRatio>
-                                                            <CardContent>
+                                                            {/* <CardContent>
                                                                 <Typography level="h3" sx={{ color: HOBBIES_SECTION.color }}>{hobby.title}</Typography>
-                                                            </CardContent>
+                                                            </CardContent> */}
                                                         </Card>
                                                     </Box>
                                                 </Grid>
@@ -175,7 +185,7 @@ export default function About() {
                         </Box>
                     </Grid>
                 </Grid>
-            </Box>
+            </Grid>
         </section>
     );
 }
