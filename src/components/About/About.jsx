@@ -41,32 +41,32 @@ export default function About() {
         if(!didInit) {
             didInit = true;
             window.addEventListener('resize', calculateTabsSize); // Update height on window resize
-            return () => { window.removeEventListener('resize', calculateTabsSize); }
+            // return () => { window.removeEventListener('resize', calculateTabsSize); }
         }
     }, []);
   
 
     return (
-        <section className="section" id="about" style={{height: '85vh'}}>
-            <Grid container spacing={3} columns={12} direction="row" sx={{ display: 'flex', width: '100%', height: '100%'}}>
-                <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12}>
-                    <Box component={Grid} item xs={4} display={{ lg: "none", xs: "block" }}>
-                        <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
-                            <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
-                        </AspectRatio>
-                    </Box>
-                    <Grid xs={8} sm={8} md={8} lg={12}>
-                        <Typography textAlign="end" fontSize="72px" lineHeight="80px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
+        <section className="section" id="about" style={{height: '75vh'}}>
+            <Grid container spacing={3} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: '100%', height: '100%'}}>
+                <Box component={Grid} lg={3} display={{ xs: "none", lg: "block" }}>
+                    <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
+                        <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
+                    </AspectRatio>
+                </Box>
+                <Grid container columns={12} direction="column" justifyContent="space-between" alignItems="center" xs={12} lg={9}> 
+                    <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12}>
+                        <Box component={Grid} xs={4} display={{ lg: "none", xs: "block" }}>
+                            <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
+                                <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
+                            </AspectRatio>
+                        </Box>
+                        <Grid xs={8} sm={8} md={8} lg={12}>
+                            <Typography textAlign="end" fontSize="72px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12}>
-                    <Box component={Grid} item lg={3} display={{ xs: "none", lg: "block" }}>
-                        <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
-                            <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
-                        </AspectRatio>
-                    </Box>
-                    <Grid xs={12} sm={12} md={12} lg={9} style={{height: '100%'}}>
-                        <Box ref={tabsRef} margin={2} sx={{ width: '100%', height: '100%'}}>
+                    <Grid xs={12} style={{height: '100%'}}>
+                        <Box ref={tabsRef} margin={2} sx={{ width: '100%'}}>
                             <Tabs size='lg' aria-label="About" defaultValue="e" sx={{borderRadius: 'xl', boxShadow: 'sm', height: '100%'}} > 
                             {/* can add onChange={handleTabChange} to above*/}
                                 <TabList
@@ -91,8 +91,8 @@ export default function About() {
                                     )}
                                 </TabList>
                                 <div>
-                                    <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`, height: '100%'}} value={EXPERTISE_SECTION.value}>
-                                        <Grid container spacing={3} columns={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
+                                    <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`}} value={EXPERTISE_SECTION.value}>
+                                        <Grid container spacing={3} columns={12} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                             { EXPERTISE_SECTION.content.map( (exp, index) => 
                                                 <Grid key={index} xs={12} sm={12} md={12} lg={12/EXPERTISE_SECTION.content.length}>                                    
                                                     <Card sx={{ 
@@ -119,8 +119,8 @@ export default function About() {
                                             )}
                                         </Grid>
                                     </TabPanel>                                    
-                                    <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`, height: '100%'}} value={SKILLS_SECTION.value}>
-                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
+                                    <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
+                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                             { SKILLS_SECTION.content.map( (skill, index) => 
                                                 <Grid key={index} xs={12} sm={12} md={12} lg={12/SKILLS_SECTION.content.length}>                                    
                                                     <Card sx={{ 
@@ -146,8 +146,8 @@ export default function About() {
                                             )}
                                         </Grid>
                                     </TabPanel> 
-                                    <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`, height: '100%'}} value={HOBBIES_SECTION.value}>
-                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
+                                    <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`}} value={HOBBIES_SECTION.value}>
+                                        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                                             { HOBBIES_SECTION.content.map( (hobby, index) =>                    
                                                 <Grid key={index} xs={12/HOBBIES_SECTION.content.length}>                                    
                                                     <Box >

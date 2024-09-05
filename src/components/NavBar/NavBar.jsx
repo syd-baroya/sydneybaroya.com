@@ -21,7 +21,7 @@ export default function NavBar({items}) {
         if(!didInit) {
             didInit = true;
             window.addEventListener("scroll", changeBackground);
-            return () => { window.removeEventListener('scroll', changeBackground); };
+            // return () => { window.removeEventListener('scroll', changeBackground); };
         }
     }, [])
 

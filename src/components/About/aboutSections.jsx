@@ -32,7 +32,7 @@ const HOBBIES_SECTION = {
     title: "Hobbies", color: "var(--spring-background)", value: "h",
     content: [ 
         {  
-            title: "Snowboarding", content: '/images/snow.JPG', ratio: '3/4'
+            title: "Snowboarding", content: '/images/snow.JPG', ratio: '4/3'
         },
         {
             title: "Surfing", content: '/images/surf.JPG', ratio: '4/3'
