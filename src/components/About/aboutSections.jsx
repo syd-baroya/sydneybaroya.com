@@ -19,10 +19,12 @@ const SKILLS_SECTION = {
     content: [
         {   
             title: "3D Computer Graphics",
+            icon: "fa-solid fa-cube",
             content: "OpenGL, C++, GLSL, C#, HLSL. Learning Vulcan."
         },
         {   
             title: "Front-end Web Development",
+            icon: "fa-solid fa-desktop",
             content: "Javascript, Java, Vue.js, CSS, HTML. Learning ReactJS with this website."
         }
     ]
