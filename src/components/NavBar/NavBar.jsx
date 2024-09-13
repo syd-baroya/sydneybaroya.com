@@ -7,26 +7,22 @@ let didInit = false;
 
 export default function NavBar({items}) {
 
-    const [navbar, setNavbar] = useState(false);
-
-    const changeBackground = () => {
-        if(window.scrollY  >= 66) {
-            setNavbar(true);
-        } else {
-            setNavbar(false);
-        }
-    }
+    const [hasBackground, setHasBackground] = useState(false);
 
     useEffect(() => {
-        if(!didInit) {
-            didInit = true;
-            window.addEventListener("scroll", changeBackground);
-            // return () => { window.removeEventListener('scroll', changeBackground); };
+        function changeBackground() {
+            if(window.scrollY  >= 66) {
+                setHasBackground(true);
+            } else {
+                setHasBackground(false);
+            }
         }
-    }, [])
+        window.addEventListener("scroll", changeBackground);
+        return () => { window.removeEventListener('scroll', changeBackground); };
+    }, []);
 
     return (
-        <div className={navbar ? "header scroll" : "header"}>
+        <div className={hasBackground ? "header scroll" : "header"}>
             <Link href="#home" underline='none' sx={{
                 p:1, m:1, height: 1/2, 
                 color: "var(--primary-text)"
