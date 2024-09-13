@@ -9,10 +9,10 @@
     align-items: center;
     height: 25%;
 
-    -webkit-transition: all 300ms ease-in-out;
-    -ms-transition: all 300ms ease-in-out;
-    -moz-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
 }
 
 .navbar {

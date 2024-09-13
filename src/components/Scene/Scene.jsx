@@ -11,7 +11,7 @@ export default function Scene() {
 
     return (
         <div>
-            <div style={{height: '65vh' }}></div>
+            <div style={{height: '70vh' }}></div>
             <div className="experience" ref={ threeRootRef } />
         </div>
     );
