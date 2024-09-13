@@ -16,7 +16,7 @@
 }
 
 canvas {
-    height: 65vh;
+    height: 70vh;
 }
 
 .experience
@@ -40,5 +40,5 @@ canvas {
     font-family: 'Cabin', sans-serif;
     color: var(--primary-text);
     font-size: 7vmin;
-    padding: 5%;
+    padding: 1%;
 }

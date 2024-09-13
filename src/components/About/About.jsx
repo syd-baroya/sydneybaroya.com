@@ -88,21 +88,18 @@ export default function About() {
                                     <Tab disableIndicator key={section.value} sx={{color: `${section.color} !important`}} value={section.value}>{section.title}</Tab>
                                 )}
                             </TabList>
-                            <Box sx={{height: "100%", display: 'flex', alignItems: 'center', justifyContent: "space-evenly"}}>
+                            <Box sx={{height: "100%", display: 'flex', alignItems: 'center'}}>
                                 <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`}} value={EXPERTISE_SECTION.value}>
-                                    <Grid container spacing={3} columns={12} >
+                                    <Grid container spacing={3} columns={12} sx={{justifyContent: "center"}}>
                                         { EXPERTISE_SECTION.content.map( (exp, index) => 
-                                            <Grid key={index} xs={12} sm={12} md={12} lg={12/EXPERTISE_SECTION.content.length}>                                    
+                                            <Grid key={index} xs={12} >                                    
                                                 <Card sx={{ 
                                                         border: "solid 2px",
                                                         borderColor: EXPERTISE_SECTION.color,
                                                         borderRadius: '15px',
                                                         color: EXPERTISE_SECTION.color,
-                                                        height: 1,
                                                         boxSizing: 'border-box', 
                                                         padding: '10px',
-                                                        width: 1,
-                                                        flexDirection: 'column'
                                                     }}
                                                     elevation={3} 
                                                 >
@@ -117,9 +114,9 @@ export default function About() {
                                     </Grid>
                                 </TabPanel>                                    
                                 <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
-                                    <Grid container spacing={3} >
+                                    <Grid container spacing={3}  sx={{justifyContent: "center"}}>
                                         { SKILLS_SECTION.content.map( (skill, index) => 
-                                            <Grid key={index} xs={12} sm={12} md={12} lg={12/SKILLS_SECTION.content.length}>                                    
+                                            <Grid key={index} xs={12}>                                    
                                                 <Card sx={{ 
                                                         border: "solid 2px",
                                                         borderColor: SKILLS_SECTION.color,
