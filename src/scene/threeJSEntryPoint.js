@@ -5,9 +5,9 @@ export default container => {
 
     const experience = new Experience(canvas);
 
-    function createCanvas(document, container) 
+    function createCanvas(doc, container) 
     {
-        const canvas = document.createElement('canvas');
+        const canvas = doc.createElement('canvas');
         container.appendChild(canvas);
         return canvas;
     }

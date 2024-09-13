@@ -1,17 +1,22 @@
 import { useEffect, useRef } from "react";
 import threeJSEntryPoint from "../../scene/threeJSEntryPoint.js";
 
+let didInit = false;
+
 export default function Scene() {
 
     const threeRootRef = useRef();
 
     useEffect(() => {
-        threeJSEntryPoint(threeRootRef.current);
+        if(!didInit) {
+            didInit = true;
+            threeJSEntryPoint(threeRootRef.current);
+        }
     }, [])
 
     return (
         <div>
-            <div style={{height: '65vh' }}></div>
+            <div style={{height: '85vh' }}></div>
             <div className="experience" ref={ threeRootRef } />
         </div>
     );

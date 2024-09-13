@@ -3,6 +3,8 @@ import { Link, Button } from '@mui/joy';
 import './NavBar.css';
 import { useEffect, useState } from 'react';
 
+let didInit = false;
+
 export default function NavBar({items}) {
 
     const [navbar, setNavbar] = useState(false);
@@ -16,9 +18,12 @@ export default function NavBar({items}) {
     }
 
     useEffect(() => {
-        changeBackground();
-        window.addEventListener("scroll", changeBackground);
-    })
+        if(!didInit) {
+            didInit = true;
+            window.addEventListener("scroll", changeBackground);
+            // return () => { window.removeEventListener('scroll', changeBackground); };
+        }
+    }, [])
 
     return (
         <div className={navbar ? "header scroll" : "header"}>
@@ -28,17 +33,15 @@ export default function NavBar({items}) {
             }}>Sydney Baroya</Link>
 
             <div className='navbar'>
-                { items.map( item => {
-                    return <Link 
+                { items.map( (item) => 
+                    <Link 
                         href={item.link}
                         key={item.name}
                         underline='none'
                         sx={{
                             m: 1/2,
-                            pr: 1,
-                            pl: 1,
-                            pt: 1/2,
-                            pb: 1/2,
+                            px: 1,
+                            py: 1/2,
                             height: 1/2,
                             borderRadius: 1,
                             color: "var(--primary-text)",
@@ -46,10 +49,10 @@ export default function NavBar({items}) {
                                 bgcolor: "var(--primary-text)",
                                 color: "var(--secondary-text)",
                                 borderRadius: "10px",
-                                }
+                            }
                         }}
                     >{ item.name }</Link>
-                })}
+                )}
             </div>
 
             <Button sx={{
