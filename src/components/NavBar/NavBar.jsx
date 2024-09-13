@@ -8,7 +8,7 @@ export default function NavBar({items}) {
     const [navbar, setNavbar] = useState(false);
 
     const changeBackground = () => {
-        if(window.scrollY  >= 30) {
+        if(window.scrollY  >= 66) {
             setNavbar(true);
         } else {
             setNavbar(false);

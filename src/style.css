@@ -15,7 +15,7 @@
 }
 
 canvas {
-    height: 70vh;
+    height: 65vh;
 }
 
 .experience
@@ -42,5 +42,6 @@ canvas {
     color: var(--primary-text);
     text-transform: uppercase;
     font-size: 7vmin;
-    padding: 1%;
+    padding: 5% 10%;
+    align-items: flex-end;
 }
