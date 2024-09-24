@@ -1,10 +1,8 @@
-import { Sheet, Container, Grid, Box, TabPanel, Typography, AspectRatio, Card, CardContent, Avatar } from "@mui/joy";
+import { Grid, Box, TabPanel, Typography, AspectRatio, Card, CardContent } from "@mui/joy";
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
-import { styled } from '@mui/joy/styles';
 import './About.css';
-import { useEffect, useRef, useState } from "react";
 import { EXPERTISE_SECTION, SKILLS_SECTION, HOBBIES_SECTION } from './aboutSections.jsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -15,36 +13,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fas, far, fab)
 
-let didInit = false;
-
 export default function About() {
     const ABOUT_SECTIONS = [EXPERTISE_SECTION, SKILLS_SECTION, HOBBIES_SECTION];
-
-    const [tabIndex, setTabIndex] = useState(0);
-    const [tabsHeight, setTabsHeight] = useState('auto'); // State to store Tabs height
-    const tabsRef = useRef(null);
-
-    const handleTabChange = (event, newValue) => {
-      setTabIndex(newValue);
-      calculateTabsSize();
-    };
-  
-    // Function to calculate and set Tabs container height and width
-    const calculateTabsSize = () => {
-        if (tabsRef.current) {
-            const height = tabsRef.current.clientHeight;
-            setTabsHeight(height + 'px');
-        }
-    };
-  
-    useEffect(() => {
-        if(!didInit) {
-            didInit = true;
-            window.addEventListener('resize', calculateTabsSize); // Update height on window resize
-            // return () => { window.removeEventListener('resize', calculateTabsSize); }
-        }
-    }, []);
-  
 
     return (
         <Grid className="section" id="about" container spacing={2} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>

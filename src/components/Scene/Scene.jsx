@@ -1,18 +1,24 @@
 import { useEffect, useRef } from "react";
-import threeJSEntryPoint from "../../scene/threeJSEntryPoint.js";
-
-let didInit = false;
+import ThreeJSEntryPoint from "../../scene/threeJSEntryPoint.js";
 
 export default function Scene() {
 
     const threeRootRef = useRef();
+    const threeJSEntryPoint = useRef();
 
     useEffect(() => {
-        if(!didInit) {
-            didInit = true;
-            threeJSEntryPoint(threeRootRef.current);
-        }
+        threeJSEntryPoint.current = new ThreeJSEntryPoint(threeRootRef.current);
+        const handleUnload = () => {
+            console.log('Destroying');
+            // Perform actions before the component unloads
+            threeJSEntryPoint.current.destroy();
+        };
+        window.addEventListener('beforeunload', handleUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleUnload);
+        };
     }, [])
+
 
     return (
         <div>
