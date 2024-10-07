@@ -38,7 +38,7 @@ export default class Summer
             child.material = bakedMaterial
         })
 
-        this.model.position.y -= 0.7;
+        this.model.position.y -= 0.8;
         this.scene.add(this.model)
 
     }

@@ -1,4 +1,4 @@
-import { Grid, Box, TabPanel, Typography, AspectRatio, Card, CardContent } from "@mui/joy";
+import { Grid, Box, TabPanel, Typography, AspectRatio, Card, CardContent, CardCover } from "@mui/joy";
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
@@ -117,6 +117,7 @@ export default function About() {
                                                 <Box >
                                                     <Card
                                                         orientation="vertical"
+                                                        // maxHeight={250}
                                                         sx={{
                                                         // flexWrap: 'wrap',
                                                         [`& > *`]: {
@@ -124,20 +125,18 @@ export default function About() {
                                                             minWidth:
                                                             'clamp(0px, (calc(var(--stack-point) - 2 * var(--Card-padding) - 2 * var(--variant-borderWidth, 0px)) + 1px - 100%) * 999, 100%)',
                                                         },
-                                                        height: '100%',
+                                                        minHeight: 200,
                                                         // maxWidth: 300,
                                                         border: "solid 2px",
                                                         borderColor: HOBBIES_SECTION.color,
                                                         borderRadius: '15px',
                                                         }}
                                                     >
-                                                        <AspectRatio flex ratio={hobby.ratio} maxHeight={250}>
-                                                            <img
-                                                                src={hobby.content} alt=""
-                                                            />
-                                                        </AspectRatio>
+                                                        <CardCover>
+                                                            <img src={hobby.content} alt=""/>
+                                                        </CardCover>
                                                         <CardContent>
-                                                            <Typography level="h3" sx={{ color: HOBBIES_SECTION.color }}>{hobby.title}</Typography>
+                                                            <Typography level="h3" sx={{ color: 'white', fontWeight: 'lg', mt: { xs: 24, sm: 30 } }}>{hobby.title}</Typography>
                                                         </CardContent>
                                                     </Card>
                                                 </Box>
