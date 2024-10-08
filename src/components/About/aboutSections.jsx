@@ -1,37 +1,23 @@
 const EXPERTISE_SECTION = { 
-    title: "Expertise", color: "var(--fall-background)", value: "e", 
+    title: "Expertise", color: "var(--summer-background)", value: "e", 
     content: [
         {   
             title: "3D Computer Graphics",
             icon: "fa-solid fa-cube",
-            content: "Passionate about creating immersive 3D projects including real-time simulations, visual effects, and game development."
+            content: "Passionate about creating immersive 3D projects including real-time simulations, visual effects, and game development.",
+            subContent: "OpenGL, C++, GLSL, C#, HLSL. Learning Vulcan."
         },
         {   
             title: "Front-end Web Development",
             icon: "fa-solid fa-desktop",
-            content: "Over 5 years of experience in building and maintaining a website."
-        }
-    ]
-};
-
-const SKILLS_SECTION = { 
-    title: "Skills", color: "var(--summer-background)", value: "s",
-    content: [
-        {   
-            title: "3D Computer Graphics",
-            icon: "fa-solid fa-cube",
-            content: "OpenGL, C++, GLSL, C#, HLSL. Learning Vulcan."
-        },
-        {   
-            title: "Front-end Web Development",
-            icon: "fa-solid fa-desktop",
-            content: "Javascript, Java, Vue.js, CSS, HTML. Learning ReactJS with this website."
+            content: "Over 5 years of experience in building and maintaining a website.",
+            subContent: "Javascript, Java, Vue.js, CSS, HTML. Learning ReactJS with this website."
         }
     ]
 };
 
 const HOBBIES_SECTION = { 
-    title: "Hobbies", color: "var(--spring-background)", value: "h",
+    title: "Hobbies", color: "var(--summer-background)", value: "h",
     content: [ 
         {  
             title: "Snowboarding", content: '/images/snow.JPG', ratio: '4/3'
@@ -45,4 +31,4 @@ const HOBBIES_SECTION = {
     ]
 };
 
-export { EXPERTISE_SECTION, SKILLS_SECTION, HOBBIES_SECTION };
+export { EXPERTISE_SECTION, HOBBIES_SECTION };

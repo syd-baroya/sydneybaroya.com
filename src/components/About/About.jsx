@@ -1,9 +1,9 @@
-import { Grid, Box, TabPanel, Typography, AspectRatio, Card, CardContent, CardCover } from "@mui/joy";
+import { Grid, Box, TabPanel, Typography, AspectRatio, Card, CardContent, CardCover, Stack } from "@mui/joy";
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab, { tabClasses } from '@mui/joy/Tab';
 import './About.css';
-import { EXPERTISE_SECTION, SKILLS_SECTION, HOBBIES_SECTION } from './aboutSections.jsx';
+import { EXPERTISE_SECTION, HOBBIES_SECTION } from './aboutSections.jsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -14,7 +14,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
 export default function About() {
-    const ABOUT_SECTIONS = [EXPERTISE_SECTION, SKILLS_SECTION, HOBBIES_SECTION];
+    const ABOUT_SECTIONS = [EXPERTISE_SECTION, HOBBIES_SECTION];
 
     return (
         <Grid className="section" id="about" container spacing={2} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
@@ -74,16 +74,31 @@ export default function About() {
                                                     elevation={3} 
                                                 >
                                                     <CardContent>
-                                                        <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px"
-                                                            startDecorator={<FontAwesomeIcon icon={exp.icon} size="2x"/>} >{exp.title}</Typography>
-                                                        <Typography ml={5} textAlign="start" level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
+                                                        <Stack direction="row" spacing={3} sx={{justifyContent: "space-between", alignItems: "center"}}>
+                                                            <FontAwesomeIcon icon={exp.icon} color={EXPERTISE_SECTION.color} size="4x"/>
+                                                            <Stack direction="column" sx={{justifyContent: "space-between", alignItems: "flex-start"}}>
+                                                                <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px" >{exp.title}</Typography>
+                                                                <Typography textAlign="start" level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
+                                                                <Typography textAlign="start" level="body-md" fontWeight="lg" color={EXPERTISE_SECTION.color}
+                                                                startDecorator={
+                                                                    <Typography textColor={EXPERTISE_SECTION.color}  level="h2">
+                                                                    {'{'}
+                                                                    </Typography>
+                                                                }
+                                                                endDecorator={
+                                                                    <Typography textColor={EXPERTISE_SECTION.color} level="h2">
+                                                                    {'}'}
+                                                                    </Typography>
+                                                                }>{exp.subContent}</Typography>
+                                                            </Stack>
+                                                        </Stack>
                                                     </CardContent>
                                                 </Card>
                                             </Grid>
                                         )}
                                     </Grid>
                                 </TabPanel>                                    
-                                <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
+                                {/* <TabPanel key='skills_tab' size='lg' sx={{color: `${SKILLS_SECTION.color}`}} value={SKILLS_SECTION.value}>
                                     <Grid container spacing={3}  sx={{justifyContent: "center"}}>
                                         { SKILLS_SECTION.content.map( (skill, index) => 
                                             <Grid key={index} xs={12}>                                    
@@ -109,7 +124,7 @@ export default function About() {
                                             </Grid>
                                         )}
                                     </Grid>
-                                </TabPanel> 
+                                </TabPanel>  */}
                                 <TabPanel key='hobbies_tab' size='lg' sx={{color: `${HOBBIES_SECTION.color}`}} value={HOBBIES_SECTION.value}>
                                     <Grid container spacing={3} sx={{display: 'flex', alignItems: 'center', justifyContent:'center'}}>
                                         { HOBBIES_SECTION.content.map( (hobby, index) =>                    
