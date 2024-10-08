@@ -11,7 +11,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 export default function Contact() {
 
-    const onButtonClick = (url) => {
+    const onButtonClick = (event, url) => {
+        event.preventDefault();
         window.open(url);
     }
 
@@ -23,13 +24,15 @@ export default function Contact() {
             </Box>
             <Stack direction="row" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
                 { buttonProps.map( (btn) => 
-                    <IconButton key={btn.name} sx={{ 
+                    <IconButton key={btn.name} 
+                    aria-label={btn.name} component="a" href={btn.link}
+                    sx={{ 
                         color: "var(--primary-text)",
                         ":hover": {
                             bgcolor: "var(--primary-text)",
                             color: "var(--tertiary-text)",
                             borderRadius: "10px",
-                        }}} onClick={() => onButtonClick(btn.link)}>
+                        }}} onClick={(event) => onButtonClick(event, btn.link)}>
                         <FontAwesomeIcon icon={btn.icon} size="2x"/>
                     </IconButton>
                 )}
