@@ -19,16 +19,20 @@ export default function About() {
     return (
         <Grid className="section" id="about" container spacing={2} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
             <Box component={Grid} md={3} display={{ xs: "none", md: "block" }}>
-                <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
-                    <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
-                </AspectRatio>
+                <Card orientation="vertical" sx={{ borderRadius:"50%", aspectRatio: "1" }}>
+                    <CardCover>
+                        <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
+                    </CardCover>
+                </Card>
             </Box>
             <Grid container columns={12} direction="column" justifyContent="flex-start" alignItems="center" xs={12} md={9} sx={{height: "100%"}}> 
                 <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12} >
                     <Box component={Grid} xs={4} display={{ md: "none", xs: "block" }}>
-                        <AspectRatio flex ratio={4/3} sx={{borderRadius:"50%", aspectRatio: "1"}} >
-                            <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
-                        </AspectRatio>
+                        <Card orientation="vertical" sx={{ borderRadius:"50%", aspectRatio: "1" }}>
+                            <CardCover>
+                                <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
+                            </CardCover>
+                        </Card>
                     </Box>
                     <Grid xs={8} md={12}>
                         <Typography textAlign="end" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
@@ -58,23 +62,27 @@ export default function About() {
                                     <Tab disableIndicator key={section.value} sx={{color: `${section.color} !important`}} value={section.value}>{section.title}</Tab>
                                 )}
                             </TabList>
-                            <Box sx={{height: "100%", display: 'flex', alignItems: 'center'}}>
+                            <Box sx={{height: "100%", display: 'flex', justifyContent: "center", alignItems: 'center'}}>
                                 <TabPanel key='expertise_tab' size='lg' sx={{color: `${EXPERTISE_SECTION.color}`}} value={EXPERTISE_SECTION.value}>
-                                    <Grid container spacing={3} columns={12} sx={{justifyContent: "center"}}>
+                                    <Grid container spacing={3} columns={12} sx={{justifyContent: "center", alignItems: "center"}}>
                                         { EXPERTISE_SECTION.content.map( (exp, index) => 
-                                            <Grid key={index} xs={12} >                                    
-                                                <Card sx={{ 
+                                            <Grid key={index} xs={12} md={12/EXPERTISE_SECTION.content.length}>                                    
+                                                    <Card sx={{ 
                                                         border: "solid 2px",
                                                         borderColor: EXPERTISE_SECTION.color,
                                                         borderRadius: '15px',
                                                         color: EXPERTISE_SECTION.color,
                                                         boxSizing: 'border-box', 
-                                                        padding: '10px',
-                                                    }}
-                                                    elevation={3} 
-                                                >
-                                                    <CardContent>
-                                                        <Stack direction="row" spacing={3} sx={{justifyContent: "space-between", alignItems: "center"}}>
+                                                        [`& > *`]: {
+                                                            '--stack-point': '500px',
+                                                            minWidth:
+                                                            'clamp(0px, (calc(var(--stack-point) - 2 * var(--Card-padding) - 2 * var(--variant-borderWidth, 0px)) + 1px - 100%) * 999, 100%)',
+                                                        },                                                        
+                                                        minHeight: 200,
+                                                        }}
+                                                        elevation={3} 
+                                                    >
+                                                        <CardContent spacing={3} sx={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
                                                             <FontAwesomeIcon icon={exp.icon} color={EXPERTISE_SECTION.color} size="4x"/>
                                                             <Stack direction="column" sx={{justifyContent: "space-between", alignItems: "flex-start"}}>
                                                                 <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px" >{exp.title}</Typography>
@@ -91,9 +99,8 @@ export default function About() {
                                                                     </Typography>
                                                                 }>{exp.subContent}</Typography>
                                                             </Stack>
-                                                        </Stack>
-                                                    </CardContent>
-                                                </Card>
+                                                        </CardContent>
+                                                    </Card>
                                             </Grid>
                                         )}
                                     </Grid>
@@ -114,7 +121,7 @@ export default function About() {
                                                         minHeight: 200,
                                                         border: "solid 2px",
                                                         borderColor: HOBBIES_SECTION.color,
-                                                        borderRadius: '15px',
+                                                        borderRadius: '15px'
                                                         }}
                                                     >
                                                         <CardCover>
