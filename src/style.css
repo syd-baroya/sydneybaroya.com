@@ -40,5 +40,5 @@ canvas {
     font-family: 'Cabin', sans-serif;
     color: var(--primary-text);
     font-size: 7vmin;
-    padding: 1%;
+    padding: 3% 1%;
 }
