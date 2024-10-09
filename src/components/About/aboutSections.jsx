@@ -8,7 +8,7 @@ const EXPERTISE_SECTION = {
             subContent: "OpenGL, C++, GLSL, C#, HLSL. Learning Vulcan."
         },
         {   
-            title: "Front-end Web Development",
+            title: "Front-end Web Dev",
             icon: "fa-solid fa-desktop",
             content: "Over 5 years of experience in building and maintaining a website.",
             subContent: "Javascript, Java, Vue.js, CSS, HTML. Learning ReactJS with this website."
