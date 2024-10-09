@@ -20,7 +20,7 @@ export default function Contact() {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(myEmail);
-      setCopiedStatus('failure');
+      setCopiedStatus('success');
     } catch (err) {
         setCopiedStatus('failure');
     }
