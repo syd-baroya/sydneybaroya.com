@@ -1,6 +1,6 @@
 import About from '../About/About.jsx';
 import Contact from '../Contact/Contact.jsx';
-// import Background from '../Background/Background.jsx';
+import Experience from '../Experience/Experience.jsx';
 // import Blog from '../Blog/Blog.jsx';
 // import Projects from '../Projects/Projects.jsx';
 
@@ -10,11 +10,11 @@ const SECTIONS = [
         component: About,
         link: "#about"
     },
-    // {
-    //     name: "Background",
-    //     component: Background,
-    //     link: "#background"
-    // },
+    {
+        name: "Experience",
+        component: Experience,
+        link: "#experience"
+    },
     // {
     //     name: "Projects",
     //     component: Projects,
