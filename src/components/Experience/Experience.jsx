@@ -1,6 +1,6 @@
 import EXPERIENCE_AREAS from "./experienceAreas";
 
-import { Divider,Grid, Accordion, Avatar, Typography, AccordionGroup, AccordionDetails, AccordionSummary, accordionDetailsClasses, accordionSummaryClasses, accordionClasses, Stack } from "@mui/joy";
+import { List, ListItem, listClasses, Divider,Grid, Accordion, Avatar, Typography, AccordionGroup, AccordionDetails, AccordionSummary, accordionDetailsClasses, accordionSummaryClasses, accordionClasses, Stack, ListItemContent } from "@mui/joy";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,6 +16,7 @@ export default function Experience() {
     const accordionGroupStyle = (theme) => ({
             width: '100%',
             borderRadius: 'lg',
+            size: 'lg',
             bgcolor: 'background.surface',
             [`& .${accordionSummaryClasses.indicator}`]: {
                 position:'absolute', left: '50%', bottom: '5%',
@@ -24,6 +25,7 @@ export default function Experience() {
                 paddingBlock: '1rem',
             },
             [`& .${accordionSummaryClasses.button}`]: {
+                // padding: '1.5rem 1rem 3rem 1rem',
                 paddingBlock: '1.5rem',
             },
             [`& .${accordionClasses.root}`]: {
@@ -46,6 +48,14 @@ export default function Experience() {
             },
     });
 
+    const hasDetails = (item) => {
+        return item.specialLines.length > 0 || item.content.length > 0;
+    };
+
+    const onLinkClick = (event, link) => {
+        event.preventDefault();
+        window.open(link);
+    };
 
     return (
         <Grid className="section" id="experience" container spacing={2} columns={12} direction="column" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
@@ -53,13 +63,13 @@ export default function Experience() {
                 <Typography textAlign="end" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Experience</Typography>
             </Grid>
             {EXPERIENCE_AREAS.map((area) => ( 
-                <Stack component={Grid} xs={12} lg={9} className="section" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+                <Stack key={area.title} component={Grid} xs={12} lg={9} className="section" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
                     <AccordionGroup  variant="outlined" sx={accordionGroupStyle}>
                         <Typography paddingLeft={2} paddingTop={2} level="h2" sx={{color: "var(--summer-background)"}}>{area.title}</Typography>
                         <Divider />
                         {area.items.map((item) => (
-                            <Accordion>
-                                <AccordionSummary indicator={<Avatar size="sm" variant="plain" sx={{color: "var(--tertiary-text)"}} ><FontAwesomeIcon icon="fa-solid fa-chevron-down"/></Avatar>}>
+                            <Accordion key={item.title} disabled={!hasDetails(item)}>
+                                <AccordionSummary indicator={hasDetails(item) ? <Avatar size="sm" variant="plain" sx={{color: "var(--tertiary-text)"}} ><FontAwesomeIcon icon="fa-solid fa-chevron-down"/></Avatar> : null}>
                                 <Grid container columns={12} direction="row" sx={{ padding: "0rem 2rem", justifyContent: "center", alignItems: "center", width: "100%"}}>
                                         <Stack xs={4} component={Grid} direction="row" spacing={1} sx={{ justifyContent: "start", alignItems: "center"}}>
                                             <Avatar sx={{color: "var(--tertiary-text)"}} >
@@ -68,14 +78,33 @@ export default function Experience() {
                                             <Typography level="title-lg" sx={{color: "var(--summer-background)"}}>{item.org}</Typography>
                                         </Stack>
                                         <Grid xs={4}>
-                                            <Typography textAlign="center" level="body-md" sx={{color: "var(--summer-background)"}}>{item.title}</Typography>
+                                            <Typography textAlign="center" level="title-lg" sx={{color: "var(--summer-background)"}}>{item.title}</Typography>
                                         </Grid>
                                         <Grid xs={4}>
-                                            <Typography  textAlign="end" level="body-md" sx={{color: "var(--summer-background)"}}>{item.date}</Typography>
+                                            <Typography  textAlign="end" level="title-lg" sx={{color: "var(--summer-background)"}}>{item.date}</Typography>
                                         </Grid>
                                     </Grid>
                                 </AccordionSummary>
-                                <AccordionDetails sx={{color: "var(--summer-background)"}}>{item.content}</AccordionDetails>
+                                { hasDetails(item) && 
+                                    <AccordionDetails sx={{color: "var(--summer-background)"}}>
+                                        <List marker="disc" sx={{margin:"1rem 2rem"}}>
+                                            {item.specialLines.map((specialLine, index) => (
+                                                <ListItem key={index} sx={{'::marker': { color: 'var(--tertiary-text)'}}}>
+                                                    <ListItemContent>
+                                                        <Typography level="body-lg" sx={{color: "var(--summer-background)"}}>{specialLine.before}{specialLine.line()}{specialLine.after}</Typography>
+                                                    </ListItemContent>
+                                                </ListItem>
+                                            ))}
+                                            {item.content.map((bulletPoint, index) => (
+                                                <ListItem key={index} sx={{'::marker': { color: 'var(--tertiary-text)'}}}>
+                                                    <ListItemContent>
+                                                        <Typography level="body-lg" sx={{color: "var(--summer-background)"}}>{bulletPoint}</Typography>
+                                                    </ListItemContent>
+                                                </ListItem>
+                                            ))}
+                                        </List>
+                                    </AccordionDetails>
+                                }
                             </Accordion>
                         ))}
                     </AccordionGroup>
