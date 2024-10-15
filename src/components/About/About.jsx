@@ -17,24 +17,24 @@ export default function About() {
     const ABOUT_SECTIONS = [EXPERTISE_SECTION, HOBBIES_SECTION];
 
     return (
-        <Grid className="section" id="about" container spacing={2} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
-            <Box component={Grid} md={3} display={{ xs: "none", md: "block" }}>
+        <Grid className="section" id="about" container spacing={4} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+            <Box component={Grid} lg={2.5} display={{ xs: "none", lg: "block" }}>
                 <Card orientation="vertical" sx={{ borderRadius:"50%", aspectRatio: "1" }}>
                     <CardCover>
                         <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
                     </CardCover>
                 </Card>
             </Box>
-            <Grid container columns={12} direction="column" justifyContent="flex-start" alignItems="center" xs={12} md={9} sx={{height: "100%"}}> 
+            <Grid container columns={12} direction="column" justifyContent="flex-start" alignItems="center" xs={12} lg={7} sx={{height: "100%"}}> 
                 <Grid container columns={12} direction="row" justifyContent="space-between" alignItems="center" xs={12} >
-                    <Box component={Grid} xs={4} display={{ md: "none", xs: "block" }}>
+                    <Box component={Grid} xs={4} display={{ lg: "none", xs: "block" }}>
                         <Card orientation="vertical" sx={{ borderRadius:"50%", aspectRatio: "1" }}>
                             <CardCover>
                                 <img alt="Sydney Baroya" src="/images/headshot.JPG"/>
                             </CardCover>
                         </Card>
                     </Box>
-                    <Grid xs={8} md={12}>
+                    <Grid xs={8} lg={12}>
                         <Typography textAlign="end" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
                     </Grid>
                 </Grid>

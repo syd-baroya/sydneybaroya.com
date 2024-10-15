@@ -27,12 +27,8 @@ export default function Contact() {
   };
     const onButtonClick = (event, btnProps) => {
         event.preventDefault();
-        if(!btnProps.openModal) {
-            window.open(btnProps.link);
-        } else {
-            if(btnProps.name === "Email") {
-                setOpenEmailModal(true);
-            }
+        if(btnProps.name === "Email") {
+            setOpenEmailModal(true);
             setActiveModalProps(btnProps);
         }
     }
@@ -53,7 +49,7 @@ export default function Contact() {
                             bgcolor: "var(--primary-text)",
                             color: "var(--tertiary-text)",
                             borderRadius: "10px",
-                        }}} onClick={(event) => onButtonClick(event, btn)}>
+                        }}} onClick={(event) => onButtonClick(event, btn)} rel="noopener noreferrer" target="_blank" >
                         <FontAwesomeIcon icon={btn.icon} size="2x"/>
                     </IconButton>
                 )}
@@ -84,7 +80,7 @@ export default function Contact() {
                             </FormControl>
                             <Button 
                             sx={{bgcolor: "var(--tertiary-text)", ":hover": { bgcolor: "var(--tertiary-text)"}}} 
-                            onClick={(event)=> { onButtonClick(event, {link: activeModalProps.link, openModal: false});}}>Open in default mail app</Button>
+                            rel="noopener noreferrer" target="_blank"  component="a" href={activeModalProps.link}>Open in default mail app</Button>
                         </Stack>
                     </form>
                 </ModalDialog>
