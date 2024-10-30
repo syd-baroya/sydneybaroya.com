@@ -41,7 +41,7 @@ const EXPERIENCE_AREAS = [
                 specialLines: [
                     {
                         before: "Thesis: ",
-                        line: () => {return(<Link rel="noopener noreferrer" target="_blank" href='https://digitalcommons.calpoly.edu/theses/2250/' level='body-lg' underline='always' variant="plain" sx={{color: "var(--tertiary-text)", textDecorationColor: 'var(--tertiary-text)'}}>Real-Time Body Tracking and Projection Mapping in the Interactive Arts</Link>)},
+                        line: () => {return(<Link rel="noopener noreferrer" target="_blank" href='https://digitalcommons.calpoly.edu/theses/2250/' level='body-lg' underline='always' variant="plain" sx={{color: "var(--tertiary-color)", textDecorationColor: 'var(--tertiary-color)'}}>Real-Time Body Tracking and Projection Mapping in the Interactive Arts</Link>)},
                         after: "",
                     }
                 ],
