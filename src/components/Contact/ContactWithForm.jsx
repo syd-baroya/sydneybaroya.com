@@ -55,7 +55,7 @@ export default function Contact() {
                         color: "var(--primary-text)",
                         ":hover": {
                             bgcolor: "var(--primary-text)",
-                            color: "var(--tertiary-text)",
+                            color: "var(--tertiary-color)",
                             borderRadius: "10px",
                         }}} onClick={() => onButtonClick(btn.link)}>
                         <FontAwesomeIcon icon={btn.icon} size="2x"/>
@@ -117,7 +117,7 @@ export default function Contact() {
                                         </FormHelperText>
                                     )}
                                 </FormControl>
-                                <Button type="submit" sx={{width: '100%',bgcolor: "var(--tertiary-text)" }}>Send</Button>
+                                <Button type="submit" sx={{width: '100%',bgcolor: "var(--tertiary-color)" }}>Send</Button>
                         </Stack>
                     </form>
                 </Sheet>

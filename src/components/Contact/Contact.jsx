@@ -47,7 +47,7 @@ export default function Contact() {
                         color: "var(--primary-text)",
                         ":hover": {
                             bgcolor: "var(--primary-text)",
-                            color: "var(--tertiary-text)",
+                            color: "var(--tertiary-color)",
                             borderRadius: "10px",
                         }}} onClick={(event) => onButtonClick(event, btn)} rel="noopener noreferrer" target="_blank" >
                         <FontAwesomeIcon icon={btn.icon} size="2x"/>
@@ -64,7 +64,7 @@ export default function Contact() {
                                 <Input
                                     value={myEmail}
                                     startDecorator={<FontAwesomeIcon icon="fa-solid fa-envelope" size="2x"/>}
-                                    endDecorator={<Button sx={{bgcolor: "var(--tertiary-text)", ":hover": { bgcolor: "var(--tertiary-text)"}}}
+                                    endDecorator={<Button sx={{bgcolor: "var(--tertiary-color)", ":hover": { bgcolor: "var(--tertiary-color)"}}}
                                     onClick={handleCopy}>Copy</Button>}
                                     />
                                 {copiedStatus==='success' && (
@@ -79,7 +79,7 @@ export default function Contact() {
                                 )}
                             </FormControl>
                             <Button 
-                            sx={{bgcolor: "var(--tertiary-text)", ":hover": { bgcolor: "var(--tertiary-text)"}}} 
+                            sx={{bgcolor: "var(--tertiary-color)", ":hover": { bgcolor: "var(--tertiary-color)"}}} 
                             rel="noopener noreferrer" target="_blank"  component="a" href={activeModalProps.link}>Open in default mail app</Button>
                         </Stack>
                     </form>
