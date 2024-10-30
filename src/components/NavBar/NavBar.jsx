@@ -43,7 +43,7 @@ export default function NavBar({items}) {
                             color: "var(--primary-text)",
                             ":hover": {
                                 bgcolor: "var(--primary-text)",
-                                color: "var(--secondary-text)",
+                                color: "var(--quaternary-color)",
                                 borderRadius: "10px",
                             }
                         }}
@@ -55,13 +55,13 @@ export default function NavBar({items}) {
                 p:1, 
                 m:1, 
                 height: 1/2,
-                color: "var(--tertiary-text)",
+                color: "var(--tertiary-color)",
                 backgroundColor: "var(--primary-text)",
                 border: "solid 3px",
-                borderColor: "var(--tertiary-text)",
+                borderColor: "var(--tertiary-color)",
                 borderRadius: "15px",
                 ":hover": {
-                    bgcolor: "var(--tertiary-text)",
+                    bgcolor: "var(--tertiary-color)",
                     color: "var(--primary-text)"
                   }
             }}>Resume</Button>

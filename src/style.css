@@ -4,14 +4,19 @@
     padding: 0;
 }
 
+body
+{
+    overflow-x: hidden;
+    width: 100vw;
+}
+
 :root {
-    --summer-background: #85CDCB;
-    --fall-background: #E27D60;
-    --winter-background: #a67786;
-    --spring-background: #E8A87C;
-    --primary-text: #FFFFFF;
-    --secondary-text: #a67786;
-    --tertiary-text: #41B3A3;
+    --primary-color: #7F907D;
+    --secondary-color: #9FAF80;
+    --tertiary-color: #E78450;
+    --quaternary-color: #383F51;
+    --quinary-color: #3C4F76;
+    --primary-text: #EEE3D2;
     --border: 2px;
 }
 
