@@ -2,7 +2,7 @@ import About from '../About/About.jsx';
 import Contact from '../Contact/Contact.jsx';
 import Experience from '../Experience/Experience.jsx';
 // import Blog from '../Blog/Blog.jsx';
-// import Projects from '../Projects/Projects.jsx';
+import Projects from '../Projects/Projects.jsx';
 
 const SECTIONS = [
     {
@@ -15,11 +15,11 @@ const SECTIONS = [
         component: Experience,
         link: "#experience"
     },
-    // {
-    //     name: "Projects",
-    //     component: Projects,
-    //     link: "#projects"
-    // },
+    {
+        name: "Projects",
+        component: Projects,
+        link: "#projects"
+    },
     // {
     //     name: "Blog",
     //     component: Blog,
