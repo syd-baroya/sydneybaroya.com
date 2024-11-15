@@ -1,5 +1,5 @@
 const EXPERTISE_SECTION = { 
-    title: "Expertise", color: "var(--summer-background)", value: "e", 
+    title: "Expertise", color: "var(--secondary-color)", value: "e", 
     content: [
         {   
             title: "3D Computer Graphics",
@@ -17,7 +17,7 @@ const EXPERTISE_SECTION = {
 };
 
 const HOBBIES_SECTION = { 
-    title: "Hobbies", color: "var(--summer-background)", value: "h",
+    title: "Hobbies", color: "var(--secondary-color)", value: "h",
     content: [ 
         {  
             title: "Snowboarding", content: '/images/snow.JPG', ratio: '4/3'

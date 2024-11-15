@@ -1,7 +1,7 @@
 .tab {
-    color: var(--tertiary-text) !important;
+    color: var(--tertiary-color) !important;
 }
 
 .tab-panel {
-    color: var(--tertiary-text) !important;
+    color: var(--tertiary-color) !important;
 }

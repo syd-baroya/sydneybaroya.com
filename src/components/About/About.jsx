@@ -83,18 +83,18 @@ export default function About() {
                                                         elevation={3} 
                                                     >
                                                         <CardContent spacing={3} sx={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
-                                                            <FontAwesomeIcon icon={exp.icon} color={EXPERTISE_SECTION.color} size="4x"/>
+                                                            <FontAwesomeIcon icon={exp.icon} color="var(--tertiary-color)" size="4x"/>
                                                             <Stack direction="column" sx={{justifyContent: "space-between", alignItems: "flex-start"}}>
-                                                                <Typography level="h3" textAlign="start" color={EXPERTISE_SECTION.color} margin="1px" >{exp.title}</Typography>
-                                                                <Typography textAlign="start" level="body-md" color={EXPERTISE_SECTION.color}>{exp.content}</Typography>
-                                                                <Typography textAlign="start" level="body-md" fontWeight="lg" color={EXPERTISE_SECTION.color}
+                                                                <Typography level="h3" textAlign="start" textColor={EXPERTISE_SECTION.color} margin="1px" >{exp.title}</Typography>
+                                                                <Typography textAlign="start" level="body-md" textColor={EXPERTISE_SECTION.color}>{exp.content}</Typography>
+                                                                <Typography textAlign="start" level="body-md" fontWeight="lg" textColor="var(--tertiary-color)"
                                                                 startDecorator={
-                                                                    <Typography textColor={EXPERTISE_SECTION.color}  level="h2">
+                                                                    <Typography textColor="var(--tertiary-color)" level="h2">
                                                                     {'{'}
                                                                     </Typography>
                                                                 }
                                                                 endDecorator={
-                                                                    <Typography textColor={EXPERTISE_SECTION.color} level="h2">
+                                                                    <Typography textColor="var(--tertiary-color)" level="h2">
                                                                     {'}'}
                                                                     </Typography>
                                                                 }>{exp.subContent}</Typography>

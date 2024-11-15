@@ -65,40 +65,40 @@ export default function Experience() {
             {EXPERIENCE_AREAS.map((area) => ( 
                 <Stack key={area.title} component={Grid} xs={12} lg={9} className="section" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
                     <AccordionGroup  variant="outlined" sx={accordionGroupStyle}>
-                        <Typography paddingLeft={2} paddingTop={2} level="h2" sx={{color: "var(--summer-background)"}}>{area.title}</Typography>
+                        <Typography paddingLeft={2} paddingTop={2} level="h2" sx={{color: "var(--secondary-color)"}}>{area.title}</Typography>
                         <Divider />
                         {area.items.map((item) => (
                             <Accordion key={item.title} disabled={!hasDetails(item)}>
-                                <AccordionSummary indicator={hasDetails(item) ? <Avatar size="sm" variant="plain" sx={{color: "var(--tertiary-text)"}} ><FontAwesomeIcon icon="fa-solid fa-chevron-down"/></Avatar> : null}>
+                                <AccordionSummary indicator={hasDetails(item) ? <Avatar size="sm" variant="plain" sx={{color: "var(--tertiary-color)"}} ><FontAwesomeIcon icon="fa-solid fa-chevron-down"/></Avatar> : null}>
                                 <Grid container columns={12} direction="row" sx={{ padding: "0rem 2rem", justifyContent: "center", alignItems: "center", width: "100%"}}>
                                         <Stack xs={4} component={Grid} direction="row" spacing={1} sx={{ justifyContent: "start", alignItems: "center"}}>
-                                            <Avatar sx={{color: "var(--tertiary-text)"}} >
+                                            <Avatar sx={{color: "var(--tertiary-color)"}} >
                                                 <FontAwesomeIcon icon={item.icon}/>
                                             </Avatar>
-                                            <Typography level="title-lg" sx={{color: "var(--summer-background)"}}>{item.org}</Typography>
+                                            <Typography level="title-lg" sx={{color: "var(--secondary-color)"}}>{item.org}</Typography>
                                         </Stack>
                                         <Grid xs={4}>
-                                            <Typography textAlign="center" level="title-lg" sx={{color: "var(--summer-background)"}}>{item.title}</Typography>
+                                            <Typography textAlign="center" level="title-lg" sx={{color: "var(--secondary-color)"}}>{item.title}</Typography>
                                         </Grid>
                                         <Grid xs={4}>
-                                            <Typography  textAlign="end" level="title-lg" sx={{color: "var(--summer-background)"}}>{item.date}</Typography>
+                                            <Typography  textAlign="end" level="title-lg" sx={{color: "var(--secondary-color)"}}>{item.date}</Typography>
                                         </Grid>
                                     </Grid>
                                 </AccordionSummary>
                                 { hasDetails(item) && 
-                                    <AccordionDetails sx={{color: "var(--summer-background)"}}>
+                                    <AccordionDetails sx={{color: "var(--secondary-color)"}}>
                                         <List marker="disc" sx={{margin:"1rem 2rem"}}>
                                             {item.specialLines.map((specialLine, index) => (
-                                                <ListItem key={index} sx={{'::marker': { color: 'var(--tertiary-text)'}}}>
+                                                <ListItem key={index} sx={{'::marker': { color: 'var(--tertiary-color)'}}}>
                                                     <ListItemContent>
-                                                        <Typography level="body-lg" sx={{color: "var(--summer-background)"}}>{specialLine.before}{specialLine.line()}{specialLine.after}</Typography>
+                                                        <Typography level="body-lg" sx={{color: "var(--secondary-color)"}}>{specialLine.before}{specialLine.line()}{specialLine.after}</Typography>
                                                     </ListItemContent>
                                                 </ListItem>
                                             ))}
                                             {item.content.map((bulletPoint, index) => (
-                                                <ListItem key={index} sx={{'::marker': { color: 'var(--tertiary-text)'}}}>
+                                                <ListItem key={index} sx={{'::marker': { color: 'var(--tertiary-color)'}}}>
                                                     <ListItemContent>
-                                                        <Typography level="body-lg" sx={{color: "var(--summer-background)"}}>{bulletPoint}</Typography>
+                                                        <Typography level="body-lg" sx={{color: "var(--secondary-color)"}}>{bulletPoint}</Typography>
                                                     </ListItemContent>
                                                 </ListItem>
                                             ))}
