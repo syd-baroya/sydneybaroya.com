@@ -7,7 +7,7 @@
     position: sticky;
     justify-content: space-between;
     align-items: center;
-    height: 25%;
+    height: var(--header-height);
 
     -webkit-transition: all 200ms ease-in-out;
     -ms-transition: all 200ms ease-in-out;

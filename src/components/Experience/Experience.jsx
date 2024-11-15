@@ -63,7 +63,7 @@ export default function Experience() {
                 <Typography textAlign="end" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Experience</Typography>
             </Grid>
             {EXPERIENCE_AREAS.map((area) => ( 
-                <Stack key={area.title} component={Grid} xs={12} lg={9} className="section" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+                <Stack key={area.title} component={Grid} xs={12} lg={9} direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
                     <AccordionGroup  variant="outlined" sx={accordionGroupStyle}>
                         <Typography paddingLeft={2} paddingTop={2} level="h2" sx={{color: "var(--secondary-color)"}}>{area.title}</Typography>
                         <Divider />
