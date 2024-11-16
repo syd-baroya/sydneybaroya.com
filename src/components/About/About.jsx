@@ -13,11 +13,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fas, far, fab)
 
-export default function About() {
+export default function About({id}) {
     const ABOUT_SECTIONS = [EXPERTISE_SECTION, HOBBIES_SECTION];
 
     return (
-        <Grid className="section" id="about" container spacing={4} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+        <Grid className="section" id={id} container spacing={4} columns={12} direction="row" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
             <Box component={Grid} lg={2.5} display={{ xs: "none", lg: "block" }}>
                 <Card orientation="vertical" sx={{ borderRadius:"50%", aspectRatio: "1" }}>
                     <CardCover>

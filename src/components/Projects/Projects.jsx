@@ -3,13 +3,13 @@ import { Grid, Box, Card, CardCover, CardContent, Typography, Link, Modal, Modal
 import PROJECT_CARDS from "./projectCards.jsx";
 import { useState } from 'react';
 
-export default function Project() {
+export default function Project({id}) {
 
     const NUM_PROJECTS = PROJECT_CARDS.length;
     const [openCardIndex, setOpenCardIndex] = useState(null);
 
     return (
-        <Grid container className="section" id="projects" spacing={2} columns={12} direction="column" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+        <Grid container className="section" id={id} spacing={2} columns={12} direction="column" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
             <Grid xs={12} lg={9}>
                 <Typography textAlign="end" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Projects</Typography>
             </Grid>

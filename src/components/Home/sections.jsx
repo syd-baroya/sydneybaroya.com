@@ -7,16 +7,19 @@ import Projects from '../Projects/Projects.jsx';
 const SECTIONS = [
     {
         name: "About",
+        id: "about",
         component: About,
         link: "#about"
     },
     {
         name: "Experience",
+        id: "experience",
         component: Experience,
         link: "#experience"
     },
     {
         name: "Projects",
+        id: "projects",
         component: Projects,
         link: "#projects"
     },
@@ -27,6 +30,7 @@ const SECTIONS = [
     // },
     {
         name: "Contact",
+        id: "contact",
         component: Contact,
         link: "#contact"
     }

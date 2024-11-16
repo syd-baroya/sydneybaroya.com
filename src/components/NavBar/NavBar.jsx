@@ -21,6 +21,22 @@ export default function NavBar({items}) {
         return () => { window.removeEventListener('scroll', changeBackground); };
     }, []);
 
+    
+    const onLinkClick = (event, targetId) => {
+        event.preventDefault();
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const rootStyles = getComputedStyle(document.documentElement);
+            const offset =  document.documentElement.clientHeight * (parseInt(rootStyles.getPropertyValue("--header-height"))/100);
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth' // Add smooth scrolling
+            });
+        }
+    };
+
     return (
         <div className={hasBackground ? "header scroll" : "header"}>
             <Link href="#home" underline='none' sx={{
@@ -32,6 +48,7 @@ export default function NavBar({items}) {
                 { items.map( (item) => 
                     <Link 
                         href={item.link}
+                        onClick={(e) => onLinkClick(e, item.id)}
                         key={item.name}
                         underline='none'
                         sx={{

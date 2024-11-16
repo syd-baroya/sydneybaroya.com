@@ -11,7 +11,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
 
-export default function Experience() {
+export default function Experience({id}) {
 
     const accordionGroupStyle = (theme) => ({
             width: '100%',
@@ -52,13 +52,8 @@ export default function Experience() {
         return item.specialLines.length > 0 || item.content.length > 0;
     };
 
-    const onLinkClick = (event, link) => {
-        event.preventDefault();
-        window.open(link);
-    };
-
     return (
-        <Grid className="section" id="experience" container spacing={2} columns={12} direction="column" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+        <Grid className="section" id={id} container spacing={2} columns={12} direction="column" sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
             <Grid xs={12} lg={9}>
                 <Typography textAlign="end" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Experience</Typography>
             </Grid>

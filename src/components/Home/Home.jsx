@@ -15,7 +15,7 @@ export default function Home() {
                 {homeSections
                     .filter(section => section.component)
                     .map(section =>
-                        <section.component key={section.name} />
+                        <section.component key={section.name} id={section.id}/>
                     )
 
                 }
