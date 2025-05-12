@@ -3,21 +3,20 @@ import Experience from './Experience.js'
 
 class Renderer
 {
-    constructor()
+    constructor(canvas)
     {
         this.experience = new Experience()
-        this.canvas = this.experience.canvas
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.camera = this.experience.camera
 
-        this.setInstance()
+        this.setInstance(canvas)
     }
 
-    setInstance()
+    setInstance(canvas)
     {
         this.instance = new THREE.WebGLRenderer({
-            canvas: this.canvas,
+            canvas: canvas,
             antialias: true
         })
         this.instance.useLegacyLights = false
@@ -25,7 +24,7 @@ class Renderer
         this.instance.toneMappingExposure = 1.75
         this.instance.shadowMap.enabled = true
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap
-        this.instance.setClearColor('#211d20')
+        this.instance.setClearColor(0xffffff, 0);
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }

@@ -1,0 +1,11 @@
+.home {
+    background-color: var(--background-color);
+}
+
+.gradient {
+    position: absolute;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 50%);
+    height: 100%;
+    width: 100%;
+    top: 0;
+}

@@ -1,26 +1,11 @@
-import { Component } from "react";
-import Experience from "../../scene/Experience.js";
+import { Sheet } from "@mui/joy";
 
-class Background extends Component {
+export default function Background() {
 
-    componentDidMount() 
-    {
-        const experience = new Experience(this.threeRootElement);
-    }
-
-    // componentDidUpdate() 
-    // {
-    //     const experience = new Experience(this.threeRootElement);
-    // }
-
-    render () {
-        return (
-            <div>
-                <h1>temp2</h1>
-                <div className="experience" ref={element => this.threeRootElement = element} />
-            </div>
-        );
-    }
+    return (
+        <section className="section" id="background">
+            <h1>Background</h1>
+            <Sheet sx={{ borderRadius: '4px', width: '100%', height: '50vh'}}>Background Sheet</Sheet>
+        </section>
+    );
 }
-
-export default Background;
