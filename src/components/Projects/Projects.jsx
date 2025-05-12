@@ -32,7 +32,7 @@ export default function Project({id}) {
                                 }}
                             >
                                 <CardCover>
-                                    <img src={project.media} alt=""/>
+                                    <img src={project.media[0]} alt=""/>
                                 </CardCover>
                                 <CardContent>
                                     <Link
@@ -42,15 +42,21 @@ export default function Project({id}) {
                                         underline="none"
                                         sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}
                                     >
-                                        <Typography level="h3" sx={{ color: 'white', fontWeight: 'lg', mt: { xs: 24, sm: 30 } }}>{project.title}</Typography>
+                                        <Typography level="h3" sx={{ color: 'white', fontWeight: 'lg', mt: { xs: 24, sm: 30 } }}>{project.cardTitle}</Typography>
                                     </Link>
                                 </CardContent>
                             </Card>
                             <Modal open={openCardIndex===index} onClose={() => setOpenCardIndex(null)}>
-                                <ModalDialog>
-                                    <AspectRatio ratio="4/3">
-                                        <img src={project.media} alt=""/>
-                                    </AspectRatio>
+                                <ModalDialog size="lg">
+                                    <Grid container columns={12} direction="row" sx={{ justifyContent: "space-around", alignItems: "center", width: "80%", height: "40%"}}>
+                                        {project.media.map((media, index) => 
+                                            <Grid key={index} xs={6}>
+                                                <AspectRatio ratio="4/3">
+                                                    <img src={media} alt=""/>
+                                                </AspectRatio>
+                                            </Grid>)
+                                        }
+                                    </Grid>
                                     <DialogTitle>{project.title}</DialogTitle>
                                     <DialogContent>{project.info}</DialogContent>
                                 </ModalDialog>
