@@ -51,7 +51,7 @@ export default function Contact() {
                         color: "var(--primary-text)",
                         ":hover": {
                             bgcolor: "var(--primary-text)",
-                            color: "var(--tertiary-text)",
+                            color: "var(--secondary-text)",
                             borderRadius: "10px",
                         }}} onClick={(event) => onButtonClick(event, btn)}>
                         <FontAwesomeIcon icon={btn.icon} size="2x"/>

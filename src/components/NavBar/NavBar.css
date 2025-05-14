@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     height: 25%;
+    font-family: 'Inter', sans-serif;
 
     -webkit-transition: all 200ms ease-in-out;
     -ms-transition: all 200ms ease-in-out;
