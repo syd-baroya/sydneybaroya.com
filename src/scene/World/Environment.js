@@ -3,10 +3,10 @@ import Experience from '../Experience.js'
 
 class Environment
 {
-    constructor()
+    constructor(scene)
     {
         this.experience = new Experience()
-        this.scene = this.experience.scene
+        this.scene = scene
         this.resources = this.experience.resources
         this.debug = this.experience.debug
         
@@ -16,11 +16,11 @@ class Environment
             this.debugFolder = this.debug.ui.addFolder('environment')
         }
 
-        this.setSunLight()
-        this.setEnvironmentMap()
+        this.initSunLight()
+        this.initEnvironmentMap()
     }
 
-    setSunLight()
+    initSunLight()
     {
         this.sunLight = new THREE.DirectionalLight('#ffffff', 4)
         this.sunLight.castShadow = true
@@ -63,7 +63,7 @@ class Environment
         }
     }
 
-    setEnvironmentMap()
+    initEnvironmentMap()
     {
         this.environmentMap = {}
         this.environmentMap.intensity = 0.4

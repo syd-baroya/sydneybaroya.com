@@ -9,26 +9,25 @@ export default class Cube
         this.scene = this.experience.scene
         this.resources = this.experience.resources
 
-        this.setGeometry()
-        this.setMaterial()
-        this.setMesh()
+        this.initGeometry()
+        this.initMaterial()
+        this.initMesh()
     }
 
-    setGeometry()
+    initGeometry()
     {
         this.geometry = new THREE.BoxGeometry(2, 2, 2);
     }
 
-    setMaterial()
+    initMaterial()
     {
         this.material = new THREE.MeshStandardMaterial({
             color: "#ffeded"
         })
     }
 
-    setMesh()
+    initMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.scene.add(this.mesh)
     }
 }

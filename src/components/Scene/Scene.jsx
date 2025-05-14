@@ -5,9 +5,10 @@ export default function Scene() {
 
     const threeRootRef = useRef();
     const threeJSEntryPoint = useRef();
+    const canvasID = "threeJSCanvas";
 
     useEffect(() => {
-        threeJSEntryPoint.current = new ThreeJSEntryPoint(threeRootRef.current);
+        threeJSEntryPoint.current = new ThreeJSEntryPoint(threeRootRef.current, canvasID);
         const handleUnload = () => {
             console.log('Destroying');
             // Perform actions before the component unloads
@@ -21,9 +22,8 @@ export default function Scene() {
 
 
     return (
-        <div>
-            <div style={{height: '70vh' }}></div>
-            <div className="experience" ref={ threeRootRef } />
+        <div ref={ threeRootRef }>
+            <canvas id={ canvasID } />
         </div>
     );
 }

@@ -6,21 +6,20 @@ export default class Floor
     constructor()
     {
         this.experience = new Experience()
-        this.scene = this.experience.scene
         this.resources = this.experience.resources
 
-        this.setGeometry()
-        this.setTextures()
-        this.setMaterial()
-        this.setMesh()
+        this.initGeometry()
+        this.initTextures()
+        this.initMaterial()
+        this.initMesh()
     }
 
-    setGeometry()
+    initGeometry()
     {
         this.geometry = new THREE.CircleGeometry(5, 64)
     }
 
-    setTextures()
+    initTextures()
     {
         this.textures = {}
 
@@ -36,7 +35,7 @@ export default class Floor
         this.textures.normal.wrapT = THREE.RepeatWrapping
     }
 
-    setMaterial()
+    initMaterial()
     {
         this.material = new THREE.MeshStandardMaterial({
             map: this.textures.color,
@@ -44,11 +43,10 @@ export default class Floor
         })
     }
 
-    setMesh()
+    initMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
         this.mesh.rotation.x = - Math.PI * 0.5
         this.mesh.receiveShadow = true
-        this.scene.add(this.mesh)
     }
 }

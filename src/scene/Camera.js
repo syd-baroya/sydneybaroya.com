@@ -4,26 +4,24 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 class Camera
 {
-    constructor(canvas)
+    constructor(div)
     {
         this.experience = new Experience()
-        this.sizes = this.experience.sizes
-        this.scene = this.experience.scene
-
-        this.setInstance()
-        this.setControls(canvas)
+        this.div = div
+        this.initInstance()
+        this.initControls()
     }
 
-    setInstance()
+    initInstance()
     {
-        this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100)
+        const sizes = this.div.getBoundingClientRect()
+        this.instance = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
         this.instance.position.set(3, 3, 9)
-        this.scene.add(this.instance)
     }
 
-    setControls(canvas)
+    initControls()
     {
-        this.controls = new OrbitControls(this.instance, canvas)
+        this.controls = new OrbitControls(this.instance, this.div)
         this.controls.enableDamping = true
         this.controls.enablePan = false;
         this.controls.enableZoom = false;
@@ -39,7 +37,8 @@ class Camera
 
     resize()
     {
-        this.instance.aspect = this.sizes.width / this.sizes.height
+        const sizes = this.div.getBoundingClientRect()
+        this.instance.aspect = sizes.width / sizes.height
         this.instance.updateProjectionMatrix()
     }
 

@@ -6,7 +6,6 @@ export default class Fox
     constructor()
     {
         this.experience = new Experience()
-        this.scene = this.experience.scene
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
@@ -20,15 +19,14 @@ export default class Fox
         // Resource
         this.resource = this.resources.items.foxModel
 
-        this.setModel()
-        this.setAnimation()
+        this.initModel()
+        this.initAnimation()
     }
 
-    setModel()
+    initModel()
     {
         this.model = this.resource.scene
         this.model.scale.set(0.02, 0.02, 0.02)
-        this.scene.add(this.model)
 
         this.model.traverse((child) =>
         {
@@ -39,7 +37,7 @@ export default class Fox
         })
     }
 
-    setAnimation()
+    initAnimation()
     {
         this.animation = {}
         

@@ -7,8 +7,7 @@ class Renderer
     {
         this.experience = new Experience()
         this.sizes = this.experience.sizes
-        this.scene = this.experience.scene
-        this.camera = this.experience.camera
+        this.scenes = this.experience.scenes
 
         this.setInstance(canvas)
     }
@@ -35,9 +34,33 @@ class Renderer
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }
 
-    update()
+    clearForUpdate() {
+        this.instance.setClearColor( 0xffffff );
+        this.instance.setScissorTest( false );
+        this.instance.clear();
+        this.instance.setClearColor( 0x000000 );
+        this.instance.setScissorTest( true );
+    }
+    update(scene)
     {
-        this.instance.render(this.scene, this.camera.instance)
+        const rect = scene.userData.view.getBoundingClientRect();
+
+        // check if it's offscreen. If so skip it
+
+        if ( rect.bottom < 0 || rect.top > this.instance.domElement.clientHeight ||
+             rect.right < 0 || rect.left > this.instance.domElement.clientWidth ) {
+
+            return; // it's off screen
+
+        }
+
+        // set the viewport
+        const bottom = this.instance.domElement.clientHeight - rect.bottom;
+
+        this.instance.setViewport( rect.left, bottom, rect.width, rect.height );
+        this.instance.setScissor( rect.left, bottom, rect.width, rect.height );
+
+        this.instance.render( scene, scene.userData.camera.instance );    
     }
 }
 

@@ -1,11 +1,10 @@
 import Experience from './Experience.js';
 
-const canvasID = "threeJSCanvas";
 class ThreeJSEntryPoint {
-    constructor(container) {   
+    constructor(container, canvasID) {   
         const canvas = getOrCreateCanvas(document, container);
 
-        this.experience = new Experience(canvas);
+        this.experience = new Experience(canvas, document.querySelectorAll('.view'));
     
         function getOrCreateCanvas(doc, container) 
         {

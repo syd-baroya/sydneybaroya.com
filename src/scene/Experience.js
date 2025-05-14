@@ -14,7 +14,7 @@ let instance = null;
 
 class Experience {
 
-    constructor(canvas) {
+    constructor(canvas, views) {
         
         if(instance) {
             return instance;
@@ -26,11 +26,26 @@ class Experience {
         this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
-        this.scene = new THREE.Scene()
         this.resources = new Resources(sources)
-        this.camera = new Camera(canvas)
+
+        this.scenes = [];
+
+        for (let i = 0; i < views.length; i++) {
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color( 0xffffff );
+            scene.userData.view = views[ i ];
+
+            const camera = new Camera(views[ i ])
+            scene.add(camera.instance)
+            scene.userData.camera = camera;
+
+            const world = new World(scene)
+            scene.userData.world = world;
+
+            this.scenes.push(scene);
+        }
+
         this.renderer = new Renderer(canvas)
-        this.world = new World()
 
         // this.camera.disableControls();
 
@@ -49,15 +64,22 @@ class Experience {
 
     resize()
     {
-        this.camera.resize()
+        for(let i = 0; i < this.scenes.length; i++) {
+            const scene = this.scenes[i];
+            scene.userData.camera.resize();
+        }
         this.renderer.resize()
     }
 
     update()
     {
-        this.camera.update()
-        this.world.update()
-        this.renderer.update()
+        this.renderer.clearForUpdate();
+        for(let i = 0; i < this.scenes.length; i++) {
+            const scene = this.scenes[i];
+            scene.userData.camera.update();
+            scene.userData.world.update();
+            this.renderer.update(scene)
+        }
     }
 
     destroy()
@@ -66,28 +88,30 @@ class Experience {
         this.time.off('tick')
 
         // Traverse the whole scene
-        this.scene.traverse((child) =>
-        {
-            // Test if it's a mesh
-            if(child instanceof THREE.Mesh)
+        for(let i = 0; i < this.scenes.length; i++) {
+            const scene = this.scenes[i];
+            scene.traverse((child) =>
             {
-                child.geometry.dispose()
-
-                // Loop through the material properties
-                for(const key in child.material)
+                // Test if it's a mesh
+                if(child instanceof THREE.Mesh)
                 {
-                    const value = child.material[key]
+                    child.geometry.dispose()
 
-                    // Test if there is a dispose function
-                    if(value && typeof value.dispose === 'function')
+                    // Loop through the material properties
+                    for(const key in child.material)
                     {
-                        value.dispose()
+                        const value = child.material[key]
+
+                        // Test if there is a dispose function
+                        if(value && typeof value.dispose === 'function')
+                        {
+                            value.dispose()
+                        }
                     }
                 }
-            }
-        })
-
-        this.camera.controls.dispose()
+            })
+            scene.userData.camera.controls.dispose()
+        }
         this.renderer.instance.dispose()
 
         if(this.debug.active)

@@ -1,15 +1,15 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
-// import Floor from './Floor.js'
-// import Fox from './Fox.js'
+import Floor from './Floor.js'
+import Fox from './Fox.js'
 import Cube from './Cube.js'
 
 class World
 {
-    constructor()
+    constructor(scene)
     {
         this.experience = new Experience()
-        this.scene = this.experience.scene
+        this.scene = scene
         this.resources = this.experience.resources
 
         // Wait for resources
@@ -21,7 +21,9 @@ class World
 
             // Setup
             this.cube = new Cube();
-            this.environment = new Environment()
+            this.scene.add(this.cube.mesh)
+            this.environment = new Environment(this.scene)
+
         })
     }
 
