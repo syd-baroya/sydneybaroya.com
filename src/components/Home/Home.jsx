@@ -1,4 +1,4 @@
-import {Typography, Stack} from "@mui/joy";
+import {Typography, Stack} from "@mui/material";
 
 import '../../style.css';
 import './Home.css';
@@ -15,9 +15,9 @@ export default function Home() {
             <div className="sections">
                 <div className='section' id="home" style={{display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
                     <Stack direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center"}}>                    
-                        <Typography textAlign="center" fontSize="32px" sx={{ color: 'var(--primary-text)'}}>Sydney Baroya</Typography>
-                        <Typography textAlign="center" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Portfolio</Typography>
-
+                        {/* <Typography textAlign="center" level='h2' sx={{ color: 'var(--primary-text)'}}>{"Sydney Baroya"}</Typography>
+                        <Typography textAlign="center" level='h1' sx={{ color: 'var(--primary-text)'}}>{"Portfolio"}</Typography> */}
+                        <Typography level="h1">h1: Lorem ipsum</Typography>
                     </Stack>
                     <div className='view' style={{height: '75vh', width: '100%'}}></div>
                 </div>

@@ -1,4 +1,4 @@
-import {Typography, Box, IconButton, Stack, Modal, ModalDialog, ModalClose, DialogTitle, FormControl, FormHelperText, Input, Button} from "@mui/joy";
+import {Typography, Box, IconButton, Stack, Dialog, DialogActions, DialogContent, InputAdornment, DialogTitle, FormHelperText, TextField, Button} from "@mui/material";
 import buttonProps from './contactButtons.jsx';
 import { useState } from 'react';
 
@@ -58,37 +58,58 @@ export default function Contact() {
                     </IconButton>
                 )}
             </Stack>
-            <Modal open={openEmailModal} onClose={() => {setOpenEmailModal(false); setCopiedStatus('initial');}}>
-                <ModalDialog>
-                    <ModalClose variant="plain" sx={{ m: 1 }} />
-                    <DialogTitle>Email</DialogTitle>
-                    <form>
-                        <Stack spacing={2}>
-                            <FormControl>
-                                <Input
-                                    value={myEmail}
-                                    startDecorator={<FontAwesomeIcon icon="fa-solid fa-envelope" size="2x"/>}
-                                    endDecorator={<Button sx={{bgcolor: "var(--tertiary-text)", ":hover": { bgcolor: "var(--tertiary-text)"}}}
-                                    onClick={handleCopy}>Copy</Button>}
-                                    />
-                                {copiedStatus==='success' && (
-                                    <FormHelperText sx={(theme) => ({ color: theme.vars.palette.primary[400] })}>
-                                        Copied to clipboard!
-                                    </FormHelperText>
-                                )}
-                                {copiedStatus==='failure' && (
-                                    <FormHelperText sx={(theme) => ({ color: theme.vars.palette.primary[400] })}>
-                                         Something went wrong, please try again later.
-                                    </FormHelperText>
-                                )}
-                            </FormControl>
-                            <Button 
-                            sx={{bgcolor: "var(--tertiary-text)", ":hover": { bgcolor: "var(--tertiary-text)"}}} 
-                            onClick={(event)=> { onButtonClick(event, {link: activeModalProps.link, openModal: false});}}>Open in default mail app</Button>
+            <Dialog open={openEmailModal} onClose={() => {setOpenEmailModal(false); setCopiedStatus('initial');}}>
+                <DialogTitle>Email Me!</DialogTitle>
+                 <IconButton
+                    aria-label="close"
+                    onClick={() => {setOpenEmailModal(false); setCopiedStatus('initial');}}
+                    sx={(theme) => ({
+                        position: 'absolute',
+                        right: 8,
+                        top: 8,
+                        color: theme.palette.grey[500],
+                    })}
+                    >
+                    <FontAwesomeIcon icon="fa-solid fa-xmark"/>
+                </IconButton>
+                <DialogContent>
+                        <Stack spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}} onClick={handleCopy}>
+                            <TextField
+                                value={myEmail}
+                                sx={{ '& .MuiInputBase-root': { cursor: 'pointer' }, 
+                                    '& input': {
+                                        cursor: 'pointer', // override the input's cursor too
+                                    },
+                                }}
+                                slotProps={{
+                                input: {
+                                    startAdornment: (
+                                    <InputAdornment position="start">
+                                        <FontAwesomeIcon icon="fa-solid fa-envelope" size="2x"/>
+                                    </InputAdornment>
+                                    ),
+                                    readOnly: true
+                                },
+                                }}
+                                variant="standard"
+                            />
+                            {copiedStatus==='success' && (
+                                <FormHelperText sx={{color: 'green'}}>
+                                    Copied to clipboard!
+                                </FormHelperText>
+                            )}
+                            {copiedStatus==='failure' && (
+                                <FormHelperText sx={{ color: 'red'}}>
+                                        Something went wrong, please try again later.
+                                </FormHelperText>
+                            )} 
                         </Stack>
-                    </form>
-                </ModalDialog>
-            </Modal>
+                </DialogContent>
+                <DialogActions sx={{ justifyContent: "center", alignItems: "center"}}>
+                    <Button sx={{bgcolor: "var(--primary-text)", color: "var(--secondary-text)", borderRadius: "10px"}} 
+                        onClick={(event)=> { onButtonClick(event, {link: activeModalProps.link, openModal: false});}}>Open in default mail app</Button>
+                </DialogActions>
+        </Dialog>
         </Stack>
     );
 }

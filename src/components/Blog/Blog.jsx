@@ -1,11 +1,11 @@
-import { Sheet } from "@mui/joy";
+import { Paper } from "@mui/material";
 
 export default function Blog() {
 
     return (
         <section className="section" id="blog">
             <h1>Blog</h1>
-            <Sheet sx={{ borderRadius: '4px', width: '100%', height: '50vh'}}>Blog Sheet</Sheet>
+            <Paper square={false}>Blog </Paper>
         </section>
     );
 }

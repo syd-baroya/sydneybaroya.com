@@ -1,9 +1,7 @@
-import { Link, Button } from '@mui/joy';
+import { Link, Button } from '@mui/material';
 
 import './NavBar.css';
 import { useEffect, useState } from 'react';
-
-let didInit = false;
 
 export default function NavBar({items}) {
 
@@ -51,22 +49,6 @@ export default function NavBar({items}) {
                      >{ item.name }</Link>
                  })}
             </div>
-
-            <Button sx={{
-                p:1, 
-                m:1, 
-                height: 1/2,
-                color: "var(--secondary-text)",
-                backgroundColor: "var(--primary-text)",
-                border: "solid 3px",
-                borderColor: "var(--secondary-text)",
-                borderRadius: "15px",
-                ":hover": {
-                    bgcolor: "var(--secondary-text)",
-                    color: "var(--primary-text)"
-                  }
-            }}>Resume</Button>
-
         </div>
     );
 }
