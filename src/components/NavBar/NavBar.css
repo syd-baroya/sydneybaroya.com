@@ -7,7 +7,7 @@
     position: sticky;
     justify-content: space-between;
     align-items: center;
-    height: 25%;
+    height: 6vh;
     font-family: 'Inter', sans-serif;
 
     -webkit-transition: all 200ms ease-in-out;
