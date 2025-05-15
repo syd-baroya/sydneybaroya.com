@@ -39,10 +39,7 @@ export default function Contact() {
 
     return (
         <Stack className="section" id="contact" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center"}}>                    
-             <Box sx={{justifyContent: "center", alignItems: "center", width: "100%"}}>
-                <Typography textAlign="center" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Contact</Typography>
-                <Typography textAlign="center" fontSize="18px" sx={{ color: 'var(--primary-text)'}}>Send me an email or check out these links below!</Typography>
-            </Box>
+            <Typography textAlign="center" fontSize="48px" sx={{ color: 'var(--primary-text)'}}>Contact</Typography>
             <Stack direction="row" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
                 { buttonProps.map( (btn) => 
                     <IconButton key={btn.name} 
