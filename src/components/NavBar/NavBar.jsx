@@ -21,7 +21,7 @@ export default function NavBar({items}) {
 
     return (
         <div className={hasBackground ? "header scroll" : "header"}>
-            <Link href="#home" underline='none' sx={{
+            <Link href="/" underline='none' sx={{
                 p:1, m:1, height: 1/2, 
                 color: "var(--primary-text)"
             }}>Sydney Baroya</Link>

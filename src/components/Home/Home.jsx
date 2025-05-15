@@ -4,13 +4,10 @@ import '../../style.css';
 import './Home.css';
 
 import Scene from "../Scene/Scene.jsx";
-import NavBar from '../NavBar/NavBar.jsx';
-import sections from './sections.jsx';
 
 export default function Home() {
     return ( 
         <div className="home">
-            <NavBar items={sections}></NavBar>
             <Scene></Scene>
             <div className="sections">
                 <Stack className="section" id="home" direction={{ xs: 'column', md: 'row' }} // 👈 Responsive direction
@@ -29,13 +26,7 @@ export default function Home() {
                     </Box>
                     <div className='view' style={{height: '63vh', width: '100%',  backgroundColor: 'transparent'}}></div>
                 </Stack>
-                {sections
-                    .filter(section => section.component)
-                    .map(section =>
-                        <section.component key={section.name} />
-                    )
-
-                }
+                
             </div>
         </div>
     );
