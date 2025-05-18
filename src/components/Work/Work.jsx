@@ -1,11 +1,14 @@
-import { Paper } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
+import Project from "./Projects";
+import Tools from "./Tools";
 
 export default function Work() {
 
     return (
-        <section className="section" id="work">
-            <h1>Work</h1>
-            <Paper square={false}>Work</Paper>
-        </section>
+        <Stack className="section" id="work">
+            <Typography variant="h1" style={{ color: 'var(--primary-text)'}}>Work</Typography>
+            <Project></Project>
+            <Tools></Tools>
+        </Stack>
     );
 }
