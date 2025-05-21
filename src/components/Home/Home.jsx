@@ -8,7 +8,6 @@ import Scene from "../Scene/Scene.jsx";
 export default function Home() {
     return ( 
         <div className="home">
-            <Scene></Scene>
             <div className="sections">
                 <Stack className="section" id="home" direction={{ xs: 'column', md: 'row' }} // 👈 Responsive direction
                     spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -24,7 +23,7 @@ export default function Home() {
                                 md: 'clamp(3rem, 9vh, 6rem)',
                             }}}>Portfolio</Typography>
                     </Box>
-                    <div className='view' style={{height: '63vh', width: '100%',  backgroundColor: 'transparent'}}></div>
+                    <Scene num='1'></Scene>
                 </Stack>
                 
             </div>

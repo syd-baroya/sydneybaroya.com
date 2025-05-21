@@ -2,8 +2,8 @@ import { Divider, Box, Grid, Stack, Typography, Card, CardContent } from "@mui/m
 
 export default function Project() {
     const colWidth = { xs: 12, sm: 6, md: 4, lg: 3 };
-    return (
-        <Stack id="projects">
+    return ( 
+        <Stack id="projects" className="workSection">
             <Stack spacing={1}>
                 <Divider />
                 <Divider />

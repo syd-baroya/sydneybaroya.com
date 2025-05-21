@@ -14,13 +14,20 @@ canvas {
     height: 70vh;
 }
 
-#threeJSCanvas
-{
+.view {
+    height: 63vh;
+    width: 100%;
+    background-color: 'transparent';
+}
+
+#threeJSCanvas {
     position: fixed;
     left: 0px; top: 0px;
     width: 100%;
     height: 100%;
+    background-color: transparent;
 }
+
 
 .sections {
     display: flex;
@@ -40,7 +47,3 @@ canvas {
     font-size: 7vmin;
     padding: 3% 1%;
 }
-
-.view
-{
-}   

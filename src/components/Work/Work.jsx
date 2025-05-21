@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import Project from "./Projects";
 import Tools from "./Tools";
+import './Work.css';
 
 export default function Work() {
 

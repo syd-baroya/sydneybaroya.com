@@ -1,8 +1,9 @@
 import { Paper, Grid, Stack, Divider, Typography, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
+import Scene from "../Scene/Scene";
 
 export default function Tools() {
     return (
-        <Stack id="tools" >
+        <Stack id="tools" className="workSection">
             {/* Header */}
             <Stack spacing={1}>
                 <Divider />
@@ -21,7 +22,7 @@ export default function Tools() {
                 
                 {/* Left column - visible md and up only */}
                 <Grid
-                item
+                container
                 direction="column" 
                 size={4}
                 sx={{display: { xs: 'none', md: 'block' }}}
@@ -29,8 +30,8 @@ export default function Tools() {
                 <Box sx={{ height: '100%', color: 'var(--primary-text)'}}>
                     <List disablePadding>
                     {['Item 1', 'Item 2', 'Item 3'].map((text, index) => (
-                        <Box>
-                            <ListItem key={index} disablePadding>
+                        <Box key={index}>
+                            <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary={text} />
                                 </ListItemButton>
@@ -43,17 +44,8 @@ export default function Tools() {
                 </Grid>
 
                 {/* Right column - always visible */}
-                <Grid item size="grow">
-                    <Box>
-                        <div
-                        style={{
-                            width: '100%',
-                            height: '400px',
-                            backgroundColor: '#eee',
-                        }}
-                        >
-                        </div>
-                    </Box>
+                <Grid size="grow">
+                    <Scene num='2'></Scene>
                 </Grid>
             </Grid>
             </Stack>
