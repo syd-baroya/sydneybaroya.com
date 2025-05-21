@@ -1,7 +1,19 @@
-import { Paper, Grid, Stack, Divider, Typography, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, Grid, Stack, Divider, Typography, ButtonGroup, Button, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
 import Scene from "../Scene/Scene";
+import { useState } from "react";
 
 export default function Tools() {
+    const toolOptions = ['Item 1', 'Item 2', 'Item 3'];
+    const [toolSelected, setToolSelected] = useState(0);
+
+    const handleChange = (event, index) => {
+        if(index!==null) {
+            setToolSelected(index);
+        } else {
+            setToolSelected(event.target.value);
+        }
+    };
+
     return (
         <Stack id="tools" className="workSection">
             {/* Header */}
@@ -27,12 +39,12 @@ export default function Tools() {
                 size={4}
                 sx={{display: { xs: 'none', md: 'block' }}}
                 >
-                <Box sx={{ height: '100%', color: 'var(--primary-text)'}}>
-                    <List disablePadding>
-                    {['Item 1', 'Item 2', 'Item 3'].map((text, index) => (
-                        <Box key={index}>
+                <Box sx={{ height: '100%', color: 'var(--primary-text)', display: 'flex', '& > *': { m: 1 },}}>
+                    <List disablePadding sx={{width: '100%'}}>
+                    {toolOptions.map((text, index) => (
+                        <Box key={'list'+text+index}>
                             <ListItem disablePadding>
-                                <ListItemButton>
+                                <ListItemButton selected={toolSelected===index} onClick={(e) => { handleChange(e, index); }}>
                                     <ListItemText primary={text} />
                                 </ListItemButton>
                             </ListItem>
@@ -40,11 +52,33 @@ export default function Tools() {
                         </Box>
                     ))}
                     </List>
+                    {/* <ButtonGroup orientation="vertical" aria-label="Vertical button group">
+                        {toolOptions.map((text, index) => (
+                            <Button key={index} 
+                                variant={toolSelected === index ? 'contained' : 'outlined'}
+                                color={toolSelected === index ? 'primary' : 'inherit'}
+                                onClick={handleChange}
+                            >{text}</Button>
+                        ))}
+                    </ButtonGroup> */}
                 </Box>
                 </Grid>
 
                 {/* Right column - always visible */}
-                <Grid size="grow">
+                <Grid size="grow" sx={{position: 'relative'}}>
+                     <FormControl sx={{ m: 5, minWidth: 120, display: { md: 'none' },
+                     position: 'absolute', top:0, left:0}} size="small">
+                        <InputLabel>Tool</InputLabel>
+                        <Select
+                            value={toolSelected}
+                            label="Tool"
+                            onChange={(e) => { handleChange(e, null); }}
+                        >
+                            {toolOptions.map((text, index) => (
+                                 <MenuItem key={'select'+text+index} value={index}>{text}</MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                     <Scene num='2'></Scene>
                 </Grid>
             </Grid>
