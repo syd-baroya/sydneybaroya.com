@@ -3,6 +3,10 @@ import Contact from '../Contact/Contact.jsx';
 
 export default function About() {
 
+    /**
+     * TODO
+     * add thesis link
+     */
     return (
         <Stack
             className="section"
@@ -38,7 +42,7 @@ export default function About() {
                 I studied at Cal Poly SLO finishing with a MSc in Computer Science, concentrating on 3D computer graphics. My thesis was about real-time AR in the interactive arts space. You can read about it here.
                 </Typography>
                 <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
-                Send me an email if you’d like a resume or get in touch!
+                Send me an email if you’d like a resume or to get in touch!
                 </Typography>
                 <Contact alignSelf="center"></Contact>
             </Stack>

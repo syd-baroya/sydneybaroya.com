@@ -1,5 +1,7 @@
-import { Divider, Box, Grid, Stack, Typography, Dialog, DialogContent, DialogContentText, DialogActions, DialogTitle, Button } from "@mui/material";
+import { Divider, Box, Grid, Stack, Typography, Dialog, DialogContent, DialogContentText, DialogActions, DialogTitle, Button, Card, CardContent, CardMedia } from "@mui/material";
 import { useState } from "react";
+import PROJECT_CARDS from "./projectCards.jsx";
+
 
 export default function Project() {
     const colWidth = { xs: 12, sm: 6, md: 4, lg: 3 };
@@ -48,9 +50,9 @@ export default function Project() {
                     },
                     })}
                 >
-                    {projectOptions.map((text, index) => (
+                    {PROJECT_CARDS.map((project, index) => (
                     <Grid item key={index} size={colWidth} minHeight={160} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <Box
+                        {/* <Box
                             onClick={() => handleOpen(index)}
                             sx={{
                             width: '100%',
@@ -65,21 +67,47 @@ export default function Project() {
                             alignItems: 'center',
                             justifyContent: 'center',
                             }}
-                        >
-                            <Typography sx={{ color: 'var(--primary-text)', fontSize: 14 }}>{text}</Typography>
-                        </Box>
-                         <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-                            <DialogTitle>More Information</DialogTitle>
+                        > */}
+                            {/* <Typography sx={{ color: 'var(--primary-text)', fontSize: 14 }}>{text}</Typography> */}
+                             <Card
+                                onClick={() => handleOpen(index)}
+                                sx={{
+                                width: '100%',
+                                height: '100%',
+                                cursor: 'pointer',
+                                transition: '0.3s',
+                                '&:hover': {
+                                    backgroundColor: 'grey.300',
+                                    boxShadow: 4,
+                                },
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                // position: 'relative'
+                                }}
+                            >
+                                <Box sx={{ position: 'relative' }}>
+                                    <CardMedia component="img"
+                                        width='100%'
+                                        height='100%'
+                                        image={project.media[0]}
+                                        alt="Paella dish">
+                                    </CardMedia>
+                                    <Box sx={{position: 'absolute', top:0, left:0, width: '100%', height: '100%', color: 'white'}}>
+                                        <Typography level="h3" sx={{ fontWeight: 'lg', mt: { xs: 24, sm: 30 }}}>{project.cardTitle}</Typography>
+                                    </Box>
+                                </Box>
+                            </Card>
+                        {/* </Box> */}
+                         <Dialog open={open && projectSelected===index} onClose={handleClose} maxWidth="sm" fullWidth>
+                            <DialogTitle>{project.title}</DialogTitle>
                             <DialogContent dividers>
-                            <DialogContentText>
-                                Here’s some detailed information about <strong>{projectOptions[projectSelected]}</strong>. You can include
-                                descriptions, images, buttons, or even a form here.
-                            </DialogContentText>
+                                <DialogContentText>{project.info}</DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                            <Button onClick={handleClose} color="primary">
-                                Close
-                            </Button>
+                                <Button onClick={handleClose} color="primary">
+                                    Close
+                                </Button>
                             </DialogActions>
                         </Dialog>
                     </Grid>
