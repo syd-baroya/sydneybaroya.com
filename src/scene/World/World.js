@@ -1,8 +1,5 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
-import Floor from './Floor.js'
-import Fox from './Fox.js'
-import Cube from './Cube.js'
 
 class World
 {
@@ -37,8 +34,9 @@ class World
 
     update()
     {
-        // if(this.fox)
-        //     this.fox.update()
+        for (let i = 0; i < this.objects.length; i++) {
+            this.objects[i].update();
+        }
     }
 }
 

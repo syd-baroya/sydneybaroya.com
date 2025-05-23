@@ -30,4 +30,6 @@ export default class Cube
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
     }
+
+    update() {}
 }
