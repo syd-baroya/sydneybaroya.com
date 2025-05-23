@@ -4,6 +4,7 @@ import '../../style.css';
 import './Home.css';
 
 import Scene from "../Scene/Scene.jsx";
+import {home} from "../sceneInfo.jsx";
 
 export default function Home() {
     return ( 
@@ -23,7 +24,7 @@ export default function Home() {
                                 md: 'clamp(3rem, 9vh, 6rem)',
                             }}}>Portfolio</Typography>
                     </Box>
-                    <Scene num='1'></Scene>
+                    <Scene num='1' sceneInfo={home}></Scene>
                 </Stack>
                 
             </div>

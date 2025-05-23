@@ -39,7 +39,7 @@ class Experience {
             scene.add(camera.instance)
             scene.userData.camera = camera;
 
-            const world = new World(scene)
+            const world = new World(scene, views[i].sceneInfo)
             scene.userData.world = world;
 
             this.scenes.push(scene);

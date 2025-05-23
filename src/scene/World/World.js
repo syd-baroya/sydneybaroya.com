@@ -6,23 +6,31 @@ import Cube from './Cube.js'
 
 class World
 {
-    constructor(scene)
+    constructor(scene, sceneInfo)
     {
         this.experience = new Experience()
         this.scene = scene
         this.resources = this.experience.resources
 
+        this.objects = [];
+
         // Wait for resources
         this.resources.on('ready', () =>
         {
-            //test code
-            // this.floor = new Floor()
-            // this.fox = new Fox()
+            for (let i = 0; i < sceneInfo.length; i++) {
+                const {objectRef, shader} = sceneInfo[i];
+                const object = new objectRef();
 
-            // Setup
-            this.cube = new Cube();
-            this.scene.add(this.cube.mesh)
+                this.objects.push(object);
+                if(object.mesh != null) {
+                    this.scene.add(object.mesh);
+                } else if (object.model != null) {
+                    this.scene.add(object.model);
+                }
+            }
+
             this.environment = new Environment(this.scene)
+
 
         })
     }

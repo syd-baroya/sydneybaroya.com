@@ -1,6 +1,7 @@
-import { FormControl, InputLabel, Select, MenuItem, Grid, Stack, Divider, Typography, ButtonGroup, Button, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, Grid, Stack, Divider, Typography, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
 import Scene from "../Scene/Scene";
 import { useState } from "react";
+import { tools } from "../sceneInfo";
 
 export default function Tools() {
     const toolOptions = ['Item 1', 'Item 2', 'Item 3'];
@@ -79,7 +80,7 @@ export default function Tools() {
                             ))}
                         </Select>
                     </FormControl>
-                    <Scene num='2'></Scene>
+                    <Scene num='2' sceneInfo={tools}></Scene>
                 </Grid>
             </Grid>
             </Stack>
