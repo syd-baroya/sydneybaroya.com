@@ -57,7 +57,8 @@ export default function Project() {
                 <Divider />
             </Stack>
             <Typography textAlign='center' sx={{color: 'var(--primary-text)'}}>Projects</Typography>
-            <Box sx={{ flexGrow: 1 }}>
+            <Divider />
+            <Box sx={{ flexGrow: 1, mt: 1 }}>
                 <Grid
                     container
                     sx={(theme) => ({

@@ -1,24 +1,24 @@
 const PROJECT_CARDS = [
     {
-        cardTitle: "Body Projection Mapping",
+        cardTitle: "Eye of Metamrophosis",
         title: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
         info: "My master's thesis project. I reasearched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
         gif: ["/images/thesisBurnAway.gif", "/images/thesisButterEye.gif", "/images/thesisChameleon.gif", "/images/thesisSkeleton.gif"],
-        img: ["/images/thesisBurnAway.jpg"]
+        img: ["/images/butterEye.png"]
     },
     {
-        cardTitle: "Project2",
+        cardTitle: "Delfines",
         title: "Project 2",
         info: "Project 2 info",
         gif: ["/images/dolphinButterEye.gif"],
-        img: ["/images/dolphinButterEye.jpg"]
+        img: ["/images/dolphin2.png"]
     },
     {
-        cardTitle: "Project3",
+        cardTitle: "2D Ray Tracer",
         title: "Project 3",
         info: "Project 3 info",
         gif: ["/images/2dRayTracer.gif"],
-        img: ["/images/2dRayTracer.jpg"]
+        img: ["/images/flames.png"]
     }
 ];
 
