@@ -10,12 +10,8 @@
     --secondary-text: #ffeded;
 }
 
-canvas {
-    height: 70vh;
-}
-
 .view {
-    height: 63vh;
+    height: 100%;
     width: 100%;
     background-color: 'transparent';
 }

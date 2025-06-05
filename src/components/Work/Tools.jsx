@@ -80,7 +80,9 @@ export default function Tools() {
                             ))}
                         </Select>
                     </FormControl>
-                    <Scene num='2' sceneInfo={tools}></Scene>
+                    <Box sx={{ width: '100%', height: {xs: '70vh', md: '50vh'}}}>
+                        <Scene num='2' sceneInfo={tools}></Scene>
+                    </Box>
                 </Grid>
             </Grid>
             </Stack>

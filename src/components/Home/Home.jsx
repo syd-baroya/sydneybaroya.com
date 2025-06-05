@@ -24,7 +24,9 @@ export default function Home() {
                                 md: 'clamp(3rem, 9vh, 6rem)',
                             }}}>Portfolio</Typography>
                     </Box>
-                    <Scene num='1' sceneInfo={home}></Scene>
+                    <Box sx={{ width: '100%', height: {xs: '45vh', md: '83vh'}}}>
+                        <Scene num='1' sceneInfo={home}></Scene>
+                    </Box>
                 </Stack>
                 
             </div>

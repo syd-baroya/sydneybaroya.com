@@ -6,12 +6,11 @@ import ThreeJSEntryPoint from "../scene/threeJSEntryPoint.js";
 import { useEffect, useRef } from "react";
 
 function Root() {
-    const threeRootRef = useRef();
     const threeJSEntryPoint = useRef();
     const canvasID = "threeJSCanvas";
 
     useEffect(() => {
-        threeJSEntryPoint.current = new ThreeJSEntryPoint(threeRootRef.current, canvasID);
+        threeJSEntryPoint.current = new ThreeJSEntryPoint(canvasID);
         const handleUnload = () => {
             console.log('Destroying');
             // Perform actions before the component unloads

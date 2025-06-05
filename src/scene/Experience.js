@@ -9,6 +9,8 @@ import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 
 import sources from './sources.js'
+import '../style.css';
+ 
 
 let instance = null;
 
@@ -30,9 +32,12 @@ class Experience {
 
         this.scenes = [];
 
+        const style = window.getComputedStyle(document.body);
+        const bgColor = style.getPropertyValue('--background-color');
+
         for (let i = 0; i < views.length; i++) {
             const scene = new THREE.Scene();
-            scene.background = new THREE.Color( 0xffffff );
+            scene.background = new THREE.Color( bgColor);
             scene.userData.view = views[ i ];
 
             const camera = new Camera(views[ i ])
@@ -73,7 +78,7 @@ class Experience {
 
     update()
     {
-        this.renderer.clearForUpdate();
+        // this.renderer.clearForUpdate();
         for(let i = 0; i < this.scenes.length; i++) {
             const scene = this.scenes[i];
             scene.userData.camera.update();

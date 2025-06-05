@@ -11,7 +11,7 @@ const PROJECT_CARDS = [
         title: "Project 2",
         info: "Project 2 info",
         gif: ["/images/dolphinButterEye.gif"],
-        img: ["/images/dolphin2.png"]
+        img: ["/images/dolphin.png"]
     },
     {
         cardTitle: "2D Ray Tracer",
