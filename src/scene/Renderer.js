@@ -1,15 +1,30 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import EventEmitter from './Utils/EventEmitter.js'
 
-class Renderer
+class Renderer extends EventEmitter
 {
     constructor(canvas)
     {
+        super();
+
         this.experience = new Experience()
         this.sizes = this.experience.sizes
         this.scenes = this.experience.scenes
 
         this.setInstance(canvas)
+
+        this.instance.domElement.addEventListener('webglcontextlost', function(event) {
+            console.log('WebGL context lost. Restoring...');
+            // Optionally display a message to the user
+            event.preventDefault();
+        }, false);
+
+        this.instance.domElement.addEventListener('webglcontextrestored', function(event) {
+            console.log('WebGL context restored. Rebuilding scene...');
+            // Rebuild your scene here
+            this.trigger('restore');
+        }, false);
     }
 
     setInstance(canvas)

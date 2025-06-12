@@ -1,9 +1,10 @@
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Home from "./Home/Home.jsx";
+import { BrowserRouter } from "react-router-dom";
 import sections from './sections.jsx';
 import NavBar from "./NavBar/NavBar.jsx";
 import ThreeJSEntryPoint from "../scene/threeJSEntryPoint.js";
 import { useEffect, useRef } from "react";
+
+import AppRoutes from "./AppRoutes.jsx";
 
 function Root() {
     const threeJSEntryPoint = useRef();
@@ -26,16 +27,7 @@ function Root() {
         <BrowserRouter>
             <canvas id={canvasID} />
             <NavBar items={sections}></NavBar>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                {sections
-                    .filter(section => section.component)
-                    .map(section =>
-                        <Route path={section.link}  key={section.name} element={<section.component />} />
-                    )
-
-                }
-            </Routes>
+            <AppRoutes></AppRoutes>
         </BrowserRouter>
     </>
 }

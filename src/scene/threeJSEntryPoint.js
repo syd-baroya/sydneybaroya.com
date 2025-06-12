@@ -1,7 +1,7 @@
 import Experience from './Experience.js';
 
 class ThreeJSEntryPoint {
-    constructor(canvasID) {   
+    constructor(canvasID) {
         const canvas = getOrCreateCanvas(document, document.body);
 
         this.experience = new Experience(canvas, document.querySelectorAll('.view'));
@@ -15,7 +15,7 @@ class ThreeJSEntryPoint {
                 container.appendChild(canvas);
             }
             return canvas;
-        }
+        }        
     }
     
     destroy() {
