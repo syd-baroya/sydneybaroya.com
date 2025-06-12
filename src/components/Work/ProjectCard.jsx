@@ -1,13 +1,16 @@
 import {Grid, Typography, Card, CardContent, CardMedia, Stack, Link  } from "@mui/material";
 import { motion } from 'framer-motion';
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectCard({project, index, colWidth }) {
+    const navigate = useNavigate();
 
     return (
         <Grid item key={index} size={colWidth} sx={{aspectRatio: '1'}}>
-           <Link href={project.link} underline='none'>
+           {/* <Link href={project.link} underline='none'> */}
                 <Card
                 component={motion.div}
+                onClick={() => navigate(project.link)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 sx={{
@@ -40,7 +43,7 @@ export default function ProjectCard({project, index, colWidth }) {
                         </CardContent>
                     </Stack>
                 </Card>
-            </Link>
+            {/* </Link> */}
         </Grid>
         
     );
