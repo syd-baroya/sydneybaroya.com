@@ -1,14 +1,13 @@
-import Experience from '../Experience.js'
 import Environment from './Environment.js'
+import resources from '../resourcesInstance'
 
 class World
 {
-    constructor(scene, sceneInfo)
+    constructor(scene, sceneInfo, debug)
     {
-        this.experience = new Experience()
         this.scene = scene
-        this.resources = this.experience.resources
-
+        this.resources = resources;
+        this.debug = debug;
         this.objects = [];
 
         // Wait for resources
@@ -16,7 +15,7 @@ class World
         {
             for (let i = 0; i < sceneInfo.length; i++) {
                 const {objectRef, shader} = sceneInfo[i];
-                const object = new objectRef();
+                const object = new objectRef(this.debug);
 
                 this.objects.push(object);
                 if(object.mesh != null) {
@@ -26,16 +25,16 @@ class World
                 }
             }
 
-            this.environment = new Environment(this.scene)
+            this.environment = new Environment(this.scene, this.debug)
 
 
         })
     }
 
-    update()
+    update(delta)
     {
         for (let i = 0; i < this.objects.length; i++) {
-            this.objects[i].update();
+            this.objects[i].update(delta);
         }
     }
 }

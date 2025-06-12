@@ -1,16 +1,13 @@
 import * as THREE from 'three'
-import Experience from './Experience.js'
 import EventEmitter from './Utils/EventEmitter.js'
 
 class Renderer extends EventEmitter
 {
-    constructor(canvas)
+    constructor(canvas, sizes)
     {
         super();
 
-        this.experience = new Experience()
-        this.sizes = this.experience.sizes
-        this.scenes = this.experience.scenes
+        this.sizes = sizes
 
         this.setInstance(canvas)
 

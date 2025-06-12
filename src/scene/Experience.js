@@ -6,9 +6,7 @@ import Time from './Utils/Time.js'
 import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
-import Resources from './Utils/Resources.js'
 
-import sources from './sources.js'
 import '../style.css';
  
 
@@ -28,7 +26,6 @@ class Experience {
         this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
-        this.resources = new Resources(sources)
 
         this.scenes = [];
 
@@ -44,13 +41,13 @@ class Experience {
             scene.add(camera.instance)
             scene.userData.camera = camera;
 
-            const world = new World(scene, views[i].sceneInfo)
+            const world = new World(scene, views[i].sceneInfo, this.debug);
             scene.userData.world = world;
 
             this.scenes.push(scene);
         }
 
-        this.renderer = new Renderer(canvas)
+        this.renderer = new Renderer(canvas, this.sizes);
 
         // this.camera.disableControls();
 
@@ -82,7 +79,7 @@ class Experience {
         for(let i = 0; i < this.scenes.length; i++) {
             const scene = this.scenes[i];
             scene.userData.camera.update();
-            scene.userData.world.update();
+            scene.userData.world.update(this.time.delta);
             this.renderer.update(scene)
         }
     }

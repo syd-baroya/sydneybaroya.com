@@ -1,12 +1,10 @@
 import * as THREE from 'three'
-import Experience from './Experience.js'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 class Camera
 {
     constructor(div)
     {
-        this.experience = new Experience()
         this.div = div
         this.initInstance()
         this.initControls()

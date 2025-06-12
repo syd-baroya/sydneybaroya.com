@@ -1,14 +1,12 @@
 import * as THREE from 'three'
-import Experience from '../Experience.js'
+import resources from '../resourcesInstance.js';
 
 class Environment
 {
-    constructor(scene)
+    constructor(scene, debug)
     {
-        this.experience = new Experience()
         this.scene = scene
-        this.resources = this.experience.resources
-        this.debug = this.experience.debug
+        this.debug = debug
         
         // Debug
         if(this.debug.active)
@@ -67,7 +65,7 @@ class Environment
     {
         this.environmentMap = {}
         this.environmentMap.intensity = 0.4
-        this.environmentMap.texture = this.resources.items.environmentMapTexture
+        this.environmentMap.texture = resources.items.environmentMapTexture
         this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace
         
         this.scene.environment = this.environmentMap.texture

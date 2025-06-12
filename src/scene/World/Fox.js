@@ -1,26 +1,20 @@
 import * as THREE from 'three'
-import Experience from '../Experience.js'
-
+import resources from '../resourcesInstance.js';
 export default class Fox
 {
-    constructor()
+    constructor(debug)
     {
-        this.experience = new Experience()
-        this.resources = this.experience.resources
-        this.time = this.experience.time
-        this.debug = this.experience.debug
-
         // Debug
-        if(this.debug.active)
+        if(debug.active)
         {
-            this.debugFolder = this.debug.ui.addFolder('fox')
+            this.debugFolder = debug.ui.addFolder('fox')
         }
 
         // Resource
-        this.resource = this.resources.items.foxModel
+        this.resource = resources.items.foxModel
 
         this.initModel()
-        this.initAnimation()
+        this.initAnimation(debug)
     }
 
     initModel()
@@ -37,7 +31,7 @@ export default class Fox
         })
     }
 
-    initAnimation()
+    initAnimation(debug)
     {
         this.animation = {}
         
@@ -68,7 +62,7 @@ export default class Fox
         }
 
         // Debug
-        if(this.debug.active)
+        if(debug.active)
         {
             const debugObject = {
                 playIdle: () => { this.animation.play('idle') },
@@ -81,8 +75,8 @@ export default class Fox
         }
     }
 
-    update()
+    update(delta)
     {
-        this.animation.mixer.update(this.time.delta * 0.001)
+        this.animation.mixer.update(delta * 0.001)
     }
 }
