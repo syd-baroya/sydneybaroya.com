@@ -12,7 +12,7 @@ class Time extends EventEmitter
         this.elapsed = 0
         this.delta = 16
 
-        window.requestAnimationFrame(() =>
+        this.frameID = window.requestAnimationFrame(() =>
         {
             this.tick()
         })
@@ -27,10 +27,15 @@ class Time extends EventEmitter
 
         this.trigger('tick')
 
-        window.requestAnimationFrame(() =>
+        this.frameID = window.requestAnimationFrame(() =>
         {
             this.tick()
         })
+    }
+
+    off(names) {
+        super.off(names);
+        window.cancelAnimationFrame(this.frameID);
     }
 }
 

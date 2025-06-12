@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import ThreeJSEntryPoint from "../../scene/threeJSEntryPoint.js";
 
 export default function Scene({num, sceneInfo}) {
 
@@ -9,14 +9,19 @@ export default function Scene({num, sceneInfo}) {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        const el = containerRef.current;
+        const threeJSEntryPoint = new ThreeJSEntryPoint(containerRef.current, sceneInfo);
 
-        //attach object to dom element
-        el.sceneInfo = sceneInfo;
 
+        const handleUnload = () => {
+            console.log('Destroying');
+            // Perform actions before the component unloads
+            threeJSEntryPoint.destroy();
+        };
+        window.addEventListener('beforeunload', handleUnload);
         return () => {
-            delete el.sceneInfo; //cleanup
-        }
+            // handleUnload();
+            window.removeEventListener('beforeunload', handleUnload);
+        };
     }, [sceneInfo]);
 
     /**

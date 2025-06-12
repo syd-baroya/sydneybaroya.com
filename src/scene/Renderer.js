@@ -1,21 +1,35 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import EventEmitter from './Utils/EventEmitter.js'
 
-class Renderer
+class Renderer extends EventEmitter
 {
-    constructor(canvas)
+    constructor(container)
     {
+        super();
+
         this.experience = new Experience()
         this.sizes = this.experience.sizes
         this.scenes = this.experience.scenes
 
-        this.setInstance(canvas)
+        this.setInstance(container)
+
+        this.instance.domElement.addEventListener('webglcontextlost', function(event) {
+            console.log('WebGL context lost. Restoring...');
+            // Optionally display a message to the user
+            event.preventDefault();
+        }, false);
+
+        this.instance.domElement.addEventListener('webglcontextrestored', function(event) {
+            console.log('WebGL context restored. Rebuilding scene...');
+            // Rebuild your scene here
+            this.trigger('restore');
+        }, false);
     }
 
-    setInstance(canvas)
+    setInstance(container)
     {
         this.instance = new THREE.WebGLRenderer({
-            canvas: canvas,
             antialias: true
         })
         this.instance.useLegacyLights = false
@@ -26,6 +40,7 @@ class Renderer
         this.instance.setClearColor(0xffffff, 0);
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
+        container.appendChild(this.instance.domElement);
     }
 
     resize()

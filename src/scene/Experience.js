@@ -12,17 +12,11 @@ import sources from './sources.js'
 import '../style.css';
  
 
-let instance = null;
 
 class Experience {
 
-    constructor(canvas, views) {
-        
-        if(instance) {
-            return instance;
-        }
+    constructor(container, view) {
 
-        instance = this;
 
         // Setup
         this.debug = new Debug()
@@ -30,27 +24,12 @@ class Experience {
         this.time = new Time()
         this.resources = new Resources(sources)
 
-        this.scenes = [];
+        // this.scenes = [];
 
-        const style = window.getComputedStyle(document.body);
-        const bgColor = style.getPropertyValue('--background-color');
+        this.init(view);
 
-        for (let i = 0; i < views.length; i++) {
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color( bgColor);
-            scene.userData.view = views[ i ];
 
-            const camera = new Camera(views[ i ])
-            scene.add(camera.instance)
-            scene.userData.camera = camera;
-
-            const world = new World(scene, views[i].sceneInfo)
-            scene.userData.world = world;
-
-            this.scenes.push(scene);
-        }
-
-        this.renderer = new Renderer(canvas)
+        this.renderer = new Renderer(container)
 
         // this.camera.disableControls();
 
@@ -65,26 +44,45 @@ class Experience {
         {
             this.update()
         })
+
+        //render restre event
+        this.renderer.on('restore', () =>
+        {
+            this.init();
+            this.update()
+        })
+    }
+
+    init(view) {
+        const style = window.getComputedStyle(document.body);
+        const bgColor = style.getPropertyValue('--background-color');
+
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color( bgColor);
+        this.scene.userData.view = view;
+
+        const camera = new Camera(view)
+        this.scene.add(camera.instance)
+        this.scene.userData.camera = camera;
+
+        const world = new World(this.scene, view.sceneInfo)
+        this.scene.userData.world = world;
+
     }
 
     resize()
     {
-        for(let i = 0; i < this.scenes.length; i++) {
-            const scene = this.scenes[i];
-            scene.userData.camera.resize();
-        }
+        this.scene.userData.camera.resize();
         this.renderer.resize()
     }
 
     update()
     {
-        // this.renderer.clearForUpdate();
-        for(let i = 0; i < this.scenes.length; i++) {
-            const scene = this.scenes[i];
-            scene.userData.camera.update();
-            scene.userData.world.update();
-            this.renderer.update(scene)
-        }
+        this.renderer.clearForUpdate();
+        this.scene.userData.camera.update();
+        this.scene.userData.world.update();
+        this.renderer.update(this.scene)
+
     }
 
     destroy()
@@ -93,30 +91,28 @@ class Experience {
         this.time.off('tick')
 
         // Traverse the whole scene
-        for(let i = 0; i < this.scenes.length; i++) {
-            const scene = this.scenes[i];
-            scene.traverse((child) =>
+        
+        this.scene.traverse((child) =>
+        {
+            // Test if it's a mesh
+            if(child instanceof THREE.Mesh)
             {
-                // Test if it's a mesh
-                if(child instanceof THREE.Mesh)
+                child.geometry.dispose()
+
+                // Loop through the material properties
+                for(const key in child.material)
                 {
-                    child.geometry.dispose()
+                    const value = child.material[key]
 
-                    // Loop through the material properties
-                    for(const key in child.material)
+                    // Test if there is a dispose function
+                    if(value && typeof value.dispose === 'function')
                     {
-                        const value = child.material[key]
-
-                        // Test if there is a dispose function
-                        if(value && typeof value.dispose === 'function')
-                        {
-                            value.dispose()
-                        }
+                        value.dispose()
                     }
                 }
-            })
-            scene.userData.camera.controls.dispose()
-        }
+            }
+        })
+        this.scene.userData.camera.controls.dispose()
         this.renderer.instance.dispose()
 
         if(this.debug.active)
