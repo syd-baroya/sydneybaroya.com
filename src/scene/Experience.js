@@ -47,7 +47,7 @@ class Experience {
             this.scenes.push(scene);
         }
 
-        this.renderer = new Renderer(canvas, this.sizes);
+        this.renderer = new Renderer(canvas, this.sizes, bgColor);
 
         // this.camera.disableControls();
 
@@ -75,7 +75,7 @@ class Experience {
 
     update()
     {
-        // this.renderer.clearForUpdate();
+        this.renderer.clearForUpdate();
         for(let i = 0; i < this.scenes.length; i++) {
             const scene = this.scenes[i];
             scene.userData.camera.update();

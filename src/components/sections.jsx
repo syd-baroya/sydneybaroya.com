@@ -7,7 +7,7 @@ const SECTIONS = [
     {
         name: "About",
         component: About,
-        link: "/about"
+        link: "#about"
     },
     // {
     //     name: "Background",
@@ -17,7 +17,7 @@ const SECTIONS = [
     {
         name: "Work",
         component: Work,
-        link: "/work"
+        link: "#work"
     },
     // {
     //     name: "Blog",

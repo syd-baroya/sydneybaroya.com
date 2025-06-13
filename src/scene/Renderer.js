@@ -3,12 +3,12 @@ import EventEmitter from './Utils/EventEmitter.js'
 
 class Renderer extends EventEmitter
 {
-    constructor(canvas, sizes)
+    constructor(canvas, sizes, clearColor)
     {
         super();
 
         this.sizes = sizes
-
+        this.clearColor = clearColor;
         this.setInstance(canvas)
 
         this.instance.domElement.addEventListener('webglcontextlost', function(event) {
@@ -35,7 +35,7 @@ class Renderer extends EventEmitter
         this.instance.toneMappingExposure = 1.75
         this.instance.shadowMap.enabled = true
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap
-        this.instance.setClearColor(0xffffff, 0);
+        this.instance.setClearColor(this.clearColor, 0);
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }
@@ -47,7 +47,7 @@ class Renderer extends EventEmitter
     }
 
     clearForUpdate() {
-        this.instance.setClearColor( 0xffffff );
+        this.instance.setClearColor( this.clearColor );
         this.instance.setScissorTest( false );
         this.instance.clear();
         this.instance.setClearColor( 0x000000 );

@@ -1,13 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
-import sections from './sections.jsx';
 import NavBar from "./NavBar/NavBar.jsx";
-import ThreeJSEntryPoint from "../scene/threeJSEntryPoint.js";
-import { useEffect, useRef } from "react";
-
+import SECTIONS from "./sections.jsx";
 import AppRoutes from "./AppRoutes.jsx";
 
+import ThreeJSEntryPoint from "../scene/threeJSEntryPoint.js";
+import { useEffect, useRef } from "react";
 function Root() {
-    const threeJSEntryPoint = useRef();
+ const threeJSEntryPoint = useRef();
     const canvasID = "threeJSCanvas";
 
     useEffect(() => {
@@ -22,12 +21,11 @@ function Root() {
             window.removeEventListener('beforeunload', handleUnload);
         };
     }, [])
-
     return <>
         <BrowserRouter>
             <canvas id={canvasID} />
-            <NavBar items={sections}></NavBar>
-            <AppRoutes></AppRoutes>
+            <NavBar items={SECTIONS}></NavBar>
+            <AppRoutes sections={SECTIONS}></AppRoutes>
         </BrowserRouter>
     </>
 }

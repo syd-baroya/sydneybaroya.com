@@ -21,14 +21,13 @@ export default function NavBar({items}) {
 
     return (
         <div className={hasBackground ? "header scroll" : "header"}>
-            <Typography onClick={() => navigate('/')} variant='h5' sx={{
+            <Link href='/#home' variant='h5' sx={{
                 p:1, m:1, height: 1/2, 
                 color: "var(--primary-text)"
-            }}>Sydney Baroya</Typography>
+            }}>Sydney Baroya</Link>
             <div className='navbar'>
                 { items.map( item => {
-                         return <Typography 
-                         onClick={() => navigate(item.link)}
+                         return <Link href={'/'+ item.link}
                          key={item.name}
                          sx={{
                              m: 1/2,
@@ -45,7 +44,7 @@ export default function NavBar({items}) {
                                  borderRadius: "10px",
                                  }
                          }}
-                     >{ item.name }</Typography>
+                     >{ item.name }</Link>
                  })}
             </div>
         </div>

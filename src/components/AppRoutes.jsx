@@ -1,20 +1,13 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Home from "./Home/Home.jsx";
-import sections from './sections.jsx';
 import PROJECT_CARDS from "./Work/projectCards.jsx";
+import RootTemplate from './template.jsx';
 
-export default function AppRoutes() {
+export default function AppRoutes({sections}) {
   const location = useLocation(); // ✅ this is now safe
 
   return (
     <Routes location={location}>
-            <Route path="/" element={<Home key={location.pathname}/>} />
-            {sections
-                .filter(section => section.component)
-                .map(section =>
-                    <Route path={section.link}  key={section.name} element={<section.component key={location.pathname}/>} />
-                )
-            }
+            <Route path="/" element={<RootTemplate key={location.pathname} sections={sections}/>} />
             {PROJECT_CARDS
                 .filter(project => project.component)
                 .map(project =>
