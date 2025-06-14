@@ -1,6 +1,6 @@
 import { Divider, Box, Grid, Stack, Typography} from "@mui/material";
 import { useState, useEffect } from "react";
-import ProjectCard from "./ProjectCard.jsx";
+import ExpandingCard from "../animations/expandingCard.jsx";
 import PROJECT_CARDS from "./projectCards.jsx";
 import { Routes, Route } from "react-router-dom";
 
@@ -23,12 +23,12 @@ export default function Project() {
                     sx={{ display: "flex", alignItems: "center"}}
                 >
                     {PROJECT_CARDS.map((project, index) => (
-                        <ProjectCard
+                        <ExpandingCard
                             key={index}
-                            project={project}
+                            content={project}
                             index={index}
                             colWidth={colWidth}
-                        ></ProjectCard>
+                        ></ExpandingCard>
                     ))}
                 </Grid>
             </Box>
