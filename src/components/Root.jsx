@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar/NavBar.jsx";
-import SECTIONS from "./sections.jsx";
+import SECTIONS from "../app/sections.jsx";
 import AppRoutes from "./AppRoutes.jsx";
 
 import ThreeJSEntryPoint from "../scene/threeJSEntryPoint.js";
