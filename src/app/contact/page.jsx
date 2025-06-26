@@ -1,3 +1,5 @@
+'use client';
+
 import {Typography, Box, IconButton, Stack, Dialog, DialogActions, DialogContent, InputAdornment, DialogTitle, FormHelperText, TextField, Button} from "@mui/material";
 import buttonProps from './contactButtons.jsx';
 import { useState } from 'react';
