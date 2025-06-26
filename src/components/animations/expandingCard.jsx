@@ -1,3 +1,5 @@
+'use client';
+
 import {Grid, Typography, Card, CardContent, CardMedia, Stack, Box, Dialog  } from "@mui/material";
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';

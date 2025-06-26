@@ -1,11 +1,22 @@
+'use client';
+
 import { FormControl, InputLabel, Select, MenuItem, Grid, Stack, Divider, Typography, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
-import Scene from "@/components/Scene/SceneViewport";
-import { useState } from "react";
+import SceneViewport from "@/components/Scene/SceneViewport";
+import { useState, useEffect, useRef } from "react";
 import { tools } from "@/components/Scene/sceneInfo";
+import { useThreeCanvasRefs } from "@/context/ThreeCanvasContext";
 
 export default function Tools() {
     const toolOptions = ['Item 1', 'Item 2', 'Item 3'];
     const [toolSelected, setToolSelected] = useState(0);
+    const ref = useRef();
+    const viewRefs = useThreeCanvasRefs();
+    
+    useEffect(() => {
+        if (ref.current && !viewRefs.current.includes(ref)) {
+            viewRefs.current.push(ref);
+        }
+    }, [ref, viewRefs]);
 
     const handleChange = (event, index) => {
         if(index!==null) {
@@ -81,7 +92,7 @@ export default function Tools() {
                         </Select>
                     </FormControl>
                     <Box sx={{ width: '100%', height: {xs: '70vh', md: '50vh'}}}>
-                        <Scene num='2' sceneInfo={tools}></Scene>
+                        <SceneViewport  className="view" ref={ref} sceneInfo={tools}></SceneViewport>
                     </Box>
                 </Grid>
             </Grid>

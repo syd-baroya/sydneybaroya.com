@@ -15,11 +15,7 @@ export default function Project() {
             <Typography textAlign='center' sx={{color: 'var(--primary-text)'}}>Projects</Typography>
             <Divider />
             <Box sx={{ flexGrow: 1, m: 1 }}>
-                <Grid
-                    container
-                    spacing={4}
-                    sx={{ display: "flex", alignItems: "center"}}
-                >
+                <Grid container spacing={4} sx={{ display: "flex", alignItems: "center"}} >
                     {PROJECT_CARDS.map((project, index) => (
                         <ExpandingCard
                             key={index}
