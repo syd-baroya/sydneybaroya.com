@@ -1,5 +1,3 @@
-import ProjectPage from "./projectPage";
-
 const PROJECT_CARDS = [
     {
         cardTitle: "Eye of Metamrophosis",
@@ -7,8 +5,7 @@ const PROJECT_CARDS = [
         info: "My master's thesis project. I reasearched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
         gif: ["/images/thesisBurnAway.gif", "/images/thesisButterEye.gif", "/images/thesisChameleon.gif", "/images/thesisSkeleton.gif"],
         img: ["/images/butterEye.png"],
-        link: "/projectPage",
-        component: ProjectPage
+        slug: "eye-of-metamrophosis",
     },
     {
         cardTitle: "Delfines",
@@ -16,8 +13,7 @@ const PROJECT_CARDS = [
         info: "Project 2 info",
         gif: ["/images/dolphinButterEye.gif"],
         img: ["/images/dolphin.png"],
-        link: "/projectPage",
-        component: ProjectPage
+        slug: "delfines",
     },
     {
         cardTitle: "2D Ray Tracer",
@@ -25,8 +21,7 @@ const PROJECT_CARDS = [
         info: "Project 3 info",
         gif: ["/images/2dRayTracer.gif"],
         img: ["/images/flames.png"],
-        link: "/projectPage",
-        component: ProjectPage
+        slug: "2d-ray-tracer",
     }
 ];
 
