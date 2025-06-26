@@ -7,8 +7,10 @@ import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
 
-import '../style.css';
- 
+import '@/styles/globals.css';
+import Resources from './Utils/Resources.js'
+import sources from './sources.js'
+
 
 let instance = null;
 
@@ -26,6 +28,7 @@ class Experience {
         this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
+        this.resources = new Resources(sources);
 
         this.scenes = [];
 
@@ -35,13 +38,14 @@ class Experience {
         for (let i = 0; i < views.length; i++) {
             const scene = new THREE.Scene();
             scene.background = new THREE.Color( bgColor);
-            scene.userData.view = views[ i ];
+            const view = views[ i ].current;
+            scene.userData.view = view;
 
-            const camera = new Camera(views[ i ])
+            const camera = new Camera(view)
             scene.add(camera.instance)
             scene.userData.camera = camera;
 
-            const world = new World(scene, views[i].sceneInfo, this.debug);
+            const world = new World(scene, view.sceneInfo, this.resources, this.debug);
             scene.userData.world = world;
 
             this.scenes.push(scene);

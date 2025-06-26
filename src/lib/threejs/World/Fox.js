@@ -1,8 +1,7 @@
 import * as THREE from 'three'
-import resources from '../resourcesInstance.js';
 export default class Fox
 {
-    constructor(debug)
+    constructor(debug, resources)
     {
         // Debug
         if(debug.active)

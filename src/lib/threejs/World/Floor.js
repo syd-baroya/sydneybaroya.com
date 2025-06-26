@@ -1,12 +1,11 @@
 import * as THREE from 'three'
-import resources from '../resourcesInstance.js';
 
 export default class Floor
 {
-    constructor()
+    constructor(debug, resources)
     {
         this.initGeometry()
-        this.initTextures()
+        this.initTextures(resources)
         this.initMaterial()
         this.initMesh()
     }
@@ -16,7 +15,7 @@ export default class Floor
         this.geometry = new THREE.CircleGeometry(5, 64)
     }
 
-    initTextures()
+    initTextures(resources)
     {
         this.textures = {}
 

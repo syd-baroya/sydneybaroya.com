@@ -9,7 +9,7 @@ export default function ThemeToggle() {
   const { mode, toggleColorMode } = useColorMode();
 
   return (
-    <IconButton onClick={toggleColorMode} color="inherit">
+    <IconButton onClick={toggleColorMode} color="default">
       {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
     </IconButton>
   );

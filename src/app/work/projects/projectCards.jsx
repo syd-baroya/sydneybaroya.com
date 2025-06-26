@@ -1,4 +1,4 @@
-import ProjectPage from "../projectPage";
+import ProjectPage from "./projectPage";
 
 const PROJECT_CARDS = [
     {

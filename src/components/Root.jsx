@@ -1,3 +1,4 @@
+'use client';
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar/NavBar.jsx";
 import SECTIONS from "../app/sections.jsx";
@@ -23,7 +24,7 @@ function Root() {
     }, [])
     return <>
         <BrowserRouter>
-            <canvas id={canvasID} />
+            {/* <canvas id={canvasID} /> */}
             <NavBar items={SECTIONS}></NavBar>
             <AppRoutes sections={SECTIONS}></AppRoutes>
         </BrowserRouter>

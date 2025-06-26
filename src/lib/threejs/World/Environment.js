@@ -1,9 +1,8 @@
 import * as THREE from 'three'
-import resources from '../resourcesInstance.js';
 
 class Environment
 {
-    constructor(scene, debug)
+    constructor(scene, debug, resources)
     {
         this.scene = scene
         this.debug = debug
@@ -15,7 +14,7 @@ class Environment
         }
 
         this.initSunLight()
-        this.initEnvironmentMap()
+        this.initEnvironmentMap(resources)
     }
 
     initSunLight()
@@ -61,7 +60,7 @@ class Environment
         }
     }
 
-    initEnvironmentMap()
+    initEnvironmentMap(resources)
     {
         this.environmentMap = {}
         this.environmentMap.intensity = 0.4

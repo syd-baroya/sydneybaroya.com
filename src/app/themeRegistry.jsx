@@ -5,13 +5,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { getDesignTokens } from '@/styles/theme';
-
+import NavBar from '@/components/NavBar/NavBar';
+import SECTIONS from './sections';
+import FontWrapper from '@/components/FontWrapper';
+import MultiSceneCanvas from '@/components/Scene/MultiSceneCanvas';
+import { ThreeCanvasProvider, useThreeCanvasRefs } from '@/context/ThreeCanvasContext';
 const ColorModeContext = createContext();
 
 export const useColorMode = () => useContext(ColorModeContext);
 
 export default function ThemeRegistry({ children }) {
   const [mode, setMode] = useState('light');
+  const [mounted, setMounted] = useState(false);
 
   // Load from localStorage or use system preference
   useEffect(() => {
@@ -22,6 +27,7 @@ export default function ThemeRegistry({ children }) {
       const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setMode(systemPrefersDark ? 'dark' : 'light');
     }
+    setMounted(true);
   }, []);
 
   const toggleColorMode = () => {
@@ -34,21 +40,34 @@ export default function ThemeRegistry({ children }) {
 
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
+  if(!mounted) return null;
+
   return (
     <ColorModeContext.Provider value={{ mode, toggleColorMode }}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AnimatePresence mode="wait">
-            <motion.main
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            >
-            {children}
-            </motion.main>
-        </AnimatePresence>
+        <FontWrapper>
+          <ThreeCanvasProvider>
+            <MultiCanvasWrapper />
+            <NavBar items={SECTIONS}></NavBar>
+            <AnimatePresence mode="wait">
+                <motion.main
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                >
+                {children}
+                </motion.main>
+            </AnimatePresence>
+          </ThreeCanvasProvider>
+        </FontWrapper>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
+}
+
+function MultiCanvasWrapper() {
+  const viewRefs = useThreeCanvasRefs();
+  return <MultiSceneCanvas viewRefs={viewRefs.current} />;
 }

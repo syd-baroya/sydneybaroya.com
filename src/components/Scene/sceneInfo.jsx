@@ -1,6 +1,6 @@
-import Cube from "../../scene/World/Cube";
-import Floor from "../../scene/World/Floor";
-import Fox from "../../scene/World/Fox";
+import Cube from '../../lib/threejs/World/Cube.js';
+import Floor from '../../lib/threejs/World/Floor.js';
+import Fox from '../../lib/threejs/World/Fox.js';
 
 export const SCENE_INFO = {
   home: [

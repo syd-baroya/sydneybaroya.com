@@ -1,5 +1,5 @@
 .home {
-    background-color: var(--background-color);
+    background: var(--background-color);
     height: 100%;
     width: 100%;
 }

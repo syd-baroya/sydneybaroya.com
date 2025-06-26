@@ -1,5 +1,5 @@
 import { Box, Typography, Stack } from "@mui/material";
-import Contact from "@app/contact/page";
+import Contact from "../contact/page";
 
 export default function About() {
 

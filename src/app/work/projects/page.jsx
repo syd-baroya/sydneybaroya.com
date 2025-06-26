@@ -1,8 +1,6 @@
 import { Divider, Box, Grid, Stack, Typography} from "@mui/material";
-import { useState, useEffect } from "react";
-import ExpandingCard from "../animations/expandingCard.js";
-import PROJECT_CARDS from "./projectCards.js";
-import { Routes, Route } from "react-router-dom";
+import ExpandingCard from "@/components/animations/expandingCard.jsx";
+import PROJECT_CARDS from "./projectCards.jsx";
 
 
 export default function Project() {

@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, Select, MenuItem, Grid, Stack, Divider, Typography, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
-import Scene from "../Scene/Scene";
+import Scene from "@/components/Scene/SceneViewport";
 import { useState } from "react";
-import { tools } from "../sceneInfo";
+import { tools } from "@/components/Scene/sceneInfo";
 
 export default function Tools() {
     const toolOptions = ['Item 1', 'Item 2', 'Item 3'];

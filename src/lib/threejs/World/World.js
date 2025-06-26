@@ -1,9 +1,8 @@
 import Environment from './Environment.js'
-import resources from '../resourcesInstance.js'
 
 class World
 {
-    constructor(scene, sceneInfo, debug)
+    constructor(scene, sceneInfo, resources, debug)
     {
         this.scene = scene
         this.resources = resources;
@@ -15,7 +14,7 @@ class World
         {
             for (let i = 0; i < sceneInfo.length; i++) {
                 const {objectRef, shader} = sceneInfo[i];
-                const object = new objectRef(this.debug);
+                const object = new objectRef(this.debug, resources);
 
                 this.objects.push(object);
                 if(object.mesh != null) {
@@ -25,7 +24,7 @@ class World
                 }
             }
 
-            this.environment = new Environment(this.scene, this.debug)
+            this.environment = new Environment(this.scene, this.debug, resources)
 
 
         })

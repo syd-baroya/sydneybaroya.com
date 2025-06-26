@@ -1,97 +1,39 @@
-import Image from "next/image";
-import styles from "@/styles/page.module.css";
-import ThemeToggle from "@/components/themeToggle";
+'use client';
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import {Typography, Stack, Box} from "@mui/material";
+import '@/styles/globals.css';
+import '@/styles/home.module.css';
+import SceneViewport from "@/components/Scene/SceneViewport";
+import { home } from "@/components/Scene/sceneInfo";
+import { useThreeCanvasRefs } from "@/context/ThreeCanvasContext";
+import { useEffect, useRef } from "react";
+export default function Home({}) {
+    const ref = useRef();
+    const viewRefs = useThreeCanvasRefs();
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-          <ThemeToggle />
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    useEffect(() => {
+        if (ref.current && !viewRefs.current.includes(ref)) {
+            viewRefs.current.push(ref);
+        }
+    }, [ref, viewRefs]);
+    return (
+       <Stack className="section" id="home" direction={{ xs: 'column', md: 'row' }} // 👈 Responsive direction
+            spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', height: {xs: '22vh', md: '83vh'}, display: 'flex', flexDirection: 'column', justifyContent: 'center',}}>
+                <Typography textAlign="center" variant='h2' sx={{ color: 'var(--primary-text)',
+                    fontSize: {
+                        xs: 'clamp(1.5rem, 5vh, 4rem)',
+                        md: 'clamp(2rem, 6vh, 4rem)',
+                }}}>Sydney Baroya</Typography>
+                <Typography textAlign="center" variant='h1' sx={{ color: 'var(--primary-text)',
+                    fontSize: {
+                        xs: 'clamp(2rem, 7vh, 5rem)',
+                        md: 'clamp(3rem, 9vh, 6rem)',
+                    }}}>Portfolio</Typography>
+            </Box>
+            <Box sx={{ width: '100%', height: {xs: '45vh', md: '83vh'}}}>
+                <SceneViewport className="view" ref={ref} sceneInfo={home}></SceneViewport>
+            </Box>
+        </Stack>
   );
 }

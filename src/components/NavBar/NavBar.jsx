@@ -1,12 +1,13 @@
-import { Link, Button, Typography } from '@mui/material';
+'use client';
 
-import './NavBar.css';
+import { Button, Typography } from '@mui/material';
+import ThemeToggle from '@/components/themeToggle.jsx';
+import navBarStyles from '@/styles/navBar.module.css';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 export default function NavBar({items}) {
 
     const [hasBackground, setHasBackground] = useState(false);
-    const navigate = useNavigate();
     useEffect(() => {
         function changeBackground() {
             if(window.scrollY  >= 66) {
@@ -20,33 +21,16 @@ export default function NavBar({items}) {
     }, []);
 
     return (
-        <div className={hasBackground ? "header scroll" : "header"}>
-            <Link href='/#home' underline='none' sx={{
-                p:1, m:1, height: 1/2, 
-                color: "var(--primary-text)"
-            }}>Sydney Baroya</Link>
-            <div className='navbar'>
+        <div className={`${navBarStyles.header} ${hasBackground ? navBarStyles.scroll : ''}`}>
+            <Link href='/#home' style={{paddingLeft: '10px'}}>Sydney Baroya</Link>
+            <div className={navBarStyles.navbar}>
                 { items.map( item => {
                          return <Link href={'/'+ item.link}
-                          underline='none'
                          key={item.name}
-                         sx={{
-                             m: 1/2,
-                             pr: 1,
-                             pl: 1,
-                             pt: 1/2,
-                             pb: 1/2,
-                             height: 1/2,
-                             borderRadius: 1,
-                             color: "var(--primary-text)",
-                             ":hover": {
-                                 bgcolor: "var(--primary-text)",
-                                 color: "var(--secondary-text)",
-                                 borderRadius: "10px",
-                                 }
-                         }}
+                         className={navBarStyles.link}
                      >{ item.name }</Link>
                  })}
+                <ThemeToggle />
             </div>
         </div>
     );
