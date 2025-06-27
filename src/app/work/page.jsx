@@ -11,8 +11,8 @@ export default function Work() {
     const router = useRouter();
 
     // Show only first 6 projects as preview on Work page
-    const previewProjects = PROJECT_CARDS.slice(0, 6);
-    const showMore = true;//PROJECT_CARDS.length > 6;
+    const previewProjects = PROJECT_CARDS.slice(0, 3);
+    const showMore = PROJECT_CARDS.length > 3;
 
     return (
         <Stack className="section" id="work">

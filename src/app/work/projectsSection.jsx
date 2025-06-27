@@ -1,21 +1,17 @@
 'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Box, Divider, Grid, Stack, Typography } from '@mui/material';
 import ExpandingCard from '@/components/animations/expandingCard';
 import { AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import { LayoutGroup } from 'framer-motion';
-import { useActiveCard } from '@/lib/hooks/useActiveCard';
 import styles from '@/styles/work.module.css';
 
 export default function ProjectSection({ projects, children }) {
     const colWidth = { xs: 12, sm: 6, md: 4, lg: 3 };
     const router = useRouter();
-    const { activeSlug, setActiveSlug } = useActiveCard();
 
     const handleCardClick = (slug) => {
-        setActiveSlug(slug);
         router.push(`/work/projects/${slug}`);
     };
     

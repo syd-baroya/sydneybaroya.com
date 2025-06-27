@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Dialog, IconButton, Box, Typography } from '@mui/material';
+import { Dialog, IconButton, Box, Typography, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
@@ -17,7 +17,6 @@ export default function ProjectModalPage(props) {
   const [isClosing, setIsClosing] = useState(false);
 
   const handleClose = () => {
-    // setActiveSlug(null);
     setIsClosing(true);
     router.back();
   };
@@ -29,6 +28,7 @@ export default function ProjectModalPage(props) {
     }
   }
   useEffect(() => {
+    setActiveSlug(project.slug);
     const onEsc = (e) => e.key === 'Escape' && handleClose();
     window.addEventListener('keydown', onEsc);
     return () => window.removeEventListener('keydown', onEsc);
@@ -60,7 +60,8 @@ export default function ProjectModalPage(props) {
        }
       }}
     >
-      <motion.div
+      <Stack
+        component={motion.div}
         layoutId={`card-container-${project.slug}`}
         style={{
           position: 'relative',
@@ -80,19 +81,22 @@ export default function ProjectModalPage(props) {
             <CloseIcon fontSize="large" />
           </IconButton>
         </Box>
-
-        <motion.img
-          src={project.img[0]}
-          alt={project.cardTitle}
-          layoutId={`card-image-${project.slug}`}
-          style={{ width: '50%', borderRadius: 8, marginBottom: 24 }}
-        />
-        <motion.h2 layoutId={`card-title-${project.slug}`}>{project.cardTitle}</motion.h2>
-        <Typography variant='body1'>
-          <strong>Technologies:</strong> {project.tech}
-        </Typography>
-        <Typography variant='body2'>{project.info}</Typography>
-      </motion.div>
+        <Stack spacing={2}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <motion.img
+              src={project.img[0]}
+              alt={project.cardTitle}
+              layoutId={`card-image-${project.slug}`}
+              style={{ width: '50%', borderRadius: 8, marginBottom: 24 }}
+            />
+          </Box>
+          <motion.h2 layoutId={`card-title-${project.slug}`}>{project.cardTitle}</motion.h2>
+          <Typography variant='body1'>
+            <strong>Technologies:</strong> {project.tech}
+          </Typography>
+          <Typography variant='body2'>{project.info}</Typography>
+        </Stack>
+      </Stack>
     </Dialog>
   );
 }
