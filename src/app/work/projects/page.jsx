@@ -6,7 +6,7 @@ import {Typography, Stack} from '@mui/material';
 
 export default function ProjectsPage() {
   return (
-    <Stack>
+    <Stack className='section' id="projects" style={{ minHeight: '94vh' }}>
       <Typography variant="h2" gutterBottom>All Projects</Typography>
       <ProjectSection projects={PROJECT_CARDS} />
     </Stack>
