@@ -9,8 +9,8 @@ export default function Main({}) {
     return (
         <Stack id="main" spacing={2}>
             <Home></Home>
-            <About></About>
-            <Work></Work>
+            {/* <About></About>
+            <Work></Work> */}
         </Stack>
   );
 }

@@ -1,4 +1,4 @@
-const PROJECT_CARDS = [
+const PROJECT_DATA = [
     {
         cardTitle: "Eye of Metamrophosis",
         title: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
@@ -6,6 +6,7 @@ const PROJECT_CARDS = [
         gif: ["/images/thesisBurnAway.gif", "/images/thesisButterEye.gif", "/images/thesisChameleon.gif", "/images/thesisSkeleton.gif"],
         img: ["/images/butterEye.png"],
         slug: "eye-of-metamrophosis",
+        tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
     },
     {
         cardTitle: "Delfines",
@@ -14,6 +15,7 @@ const PROJECT_CARDS = [
         gif: ["/images/dolphinButterEye.gif"],
         img: ["/images/dolphin.png"],
         slug: "delfines",
+        tech: "Unity, C#, HLSL, Azure Kinect DKs",
     },
     {
         cardTitle: "2D Ray Tracer",
@@ -22,9 +24,10 @@ const PROJECT_CARDS = [
         gif: ["/images/2dRayTracer.gif"],
         img: ["/images/flames.png"],
         slug: "2d-ray-tracer",
+        tech: "C++, OpenGL, GLSL"
     }
 ];
 
 //TODO clicking project link and then going back to the work page doesn't render the scene but the canvas is being drawn
 
-export default PROJECT_CARDS;
+export default PROJECT_DATA;

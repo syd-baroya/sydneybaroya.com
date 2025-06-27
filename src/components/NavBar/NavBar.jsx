@@ -22,7 +22,7 @@ export default function NavBar({items}) {
 
     return (
         <div className={`${navBarStyles.header} ${hasBackground ? navBarStyles.scroll : ''}`}>
-            <Link href='/#home' style={{paddingLeft: '10px'}}>Sydney Baroya</Link>
+            <Link href='/home' style={{paddingLeft: '10px'}}>Sydney Baroya</Link>
             <div className={navBarStyles.navbar}>
                 { items.map( item => {
                          return <Link href={'/'+ item.link}
