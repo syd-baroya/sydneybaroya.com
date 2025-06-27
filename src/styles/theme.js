@@ -4,17 +4,17 @@ export const getDesignTokens = (mode) => ({
     mode,
     ...(mode === 'light'
       ? {
-          primary: { main: '#0070f3' },
+          primary: { main: '#2B2D42' },
+          secondary: { main: '#ffeded' },
           background: {
-            default: '#f5f5f5',
-            paper: '#fff',
+            default: '#F3F3F3',
           },
         }
       : {
-          primary: { main: '#90caf9' },
+          primary: { main: '#F3F3F3' },
+          secondary: { main: '#0a0a0a' },
           background: {
-            default: '#121212',
-            paper: '#1e1e1e',
+            default: '#2B2D42',
           },
         }),
   },
