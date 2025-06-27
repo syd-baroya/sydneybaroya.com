@@ -12,16 +12,19 @@ export default function Work() {
 
     // Show only first 6 projects as preview on Work page
     const previewProjects = PROJECT_CARDS.slice(0, 6);
+    const showMore = true;//PROJECT_CARDS.length > 6;
 
     return (
         <Stack className="section" id="work">
             <Typography variant="h1" style={{ color: 'var(--primary-text)'}}>Work</Typography>
             <ProjectsSection projects={previewProjects}>
-                <Box sx={{ mt: 4, textAlign: 'center' }}>
-                    <Button variant="contained" onClick={() => router.push('/work/projects')}>
-                    See More Projects
-                    </Button>
-                </Box>
+                {showMore &&
+                    <Box sx={{ mt: '1rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Button size="small" variant="contained" onClick={() => router.push('/work/projects')}>
+                        See More Projects
+                        </Button>
+                    </Box>
+                }
             </ProjectsSection>
             <Tools></Tools>
         </Stack>

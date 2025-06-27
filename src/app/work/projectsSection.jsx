@@ -7,6 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { LayoutGroup } from 'framer-motion';
 import { useActiveCard } from '@/lib/hooks/useActiveCard';
+import styles from '@/styles/work.module.css';
 
 export default function ProjectSection({ projects, children }) {
     const colWidth = { xs: 12, sm: 6, md: 4, lg: 3 };
@@ -19,8 +20,8 @@ export default function ProjectSection({ projects, children }) {
     };
     
     return (
-        <Stack>
-            <Stack id="projects" className="workSection">
+        <Stack id="projects" className={styles.workSection}>
+            <Stack>
                 <Stack spacing={1}>
                     <Divider />
                     <Divider />
@@ -38,7 +39,7 @@ export default function ProjectSection({ projects, children }) {
                                                     onClick={() => handleCardClick(project.slug)}>
                                                 </ExpandingCard>
                                             </Grid>
-                                        </AnimatePresence>
+                                        </AnimatePresence>  
                                     );
                                 })}
                             </Grid>
