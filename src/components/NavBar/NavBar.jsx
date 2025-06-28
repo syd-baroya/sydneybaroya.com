@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import ThemeToggle from '@/components/themeToggle.jsx';
 import navBarStyles from '@/styles/navBar.module.css';
 import Link from 'next/link';
@@ -22,8 +22,8 @@ export default function NavBar({items}) {
 
     return (
         <div className={`${navBarStyles.header} ${hasBackground ? navBarStyles.scroll : ''}`}>
-            <Link href='/home' style={{paddingLeft: '10px'}}>Sydney Baroya</Link>
-            <div className={navBarStyles.navbar}>
+            <Link href='/' >Sydney Baroya</Link>
+            <Stack direction='row' spacing={2} className={navBarStyles.navbar}>
                 { items.map( item => {
                          return <Link href={'/'+ item.link}
                          key={item.name}
@@ -31,7 +31,7 @@ export default function NavBar({items}) {
                      >{ item.name }</Link>
                  })}
                 <ThemeToggle />
-            </div>
+            </Stack>
         </div>
     );
 }
