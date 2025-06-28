@@ -1,13 +1,7 @@
-import About from './about/page.jsx';
-// import Background from '../Background/Background.jsx';
-// import Blog from '../Blog/Blog.jsx';
-import Work from './work/page.jsx';
-
 const SECTIONS = [
     {
         name: "About",
-        component: About,
-        link: "about"
+        link: "#about"
     },
     // {
     //     name: "Background",
@@ -16,8 +10,7 @@ const SECTIONS = [
     // },
     {
         name: "Work",
-        component: Work,
-        link: "work"
+        link: "#work"
     },
     // {
     //     name: "Blog",

@@ -16,6 +16,10 @@ export default function ExpandingCard({ content, onClick }) {
             layoutId={`card-${content.slug}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95}}
+            initial={isActive ? { scale: 1.5, opacity: 0 } : { }}
+            animate={isActive ? { scale: 1, opacity: 1 } : {  }}
+            exit={isActive ? { scale: 1.5, opacity: 0 } : {  }}
+            transition={{ duration: 0.4 }}
             sx={{
                 aspectRatio: "1",
                 cursor: "pointer",
@@ -30,7 +34,7 @@ export default function ExpandingCard({ content, onClick }) {
             <Stack direction="column" spacing={1} sx={{ alignItems: "center", bottom: 0, position: "absolute", p: 1 }}>
             <CardMedia
                 component="img"
-                sx={{ width: "70%", aspectRatio: "1 / 1", objectFit: "contain" }}
+                sx={{ width: "70%", aspectRatio: "1", objectFit: "contain" }}
                 image={content.img[0]}
                 alt={content.cardTitle}
             />

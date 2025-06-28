@@ -44,7 +44,7 @@ export default function ProjectModalPage(props) {
       slotProps={{
         paper: { 
         component: motion.div,
-        layoutId: `card-${project.slug}`, // match layoutId
+        layoutId:`card-container-${project.slug}`,
         initial: { scale: 0.9, opacity: 0 },
         animate: { scale: 1, opacity: 1 },
         exit: { scale: 0.9, opacity: 0 },
@@ -62,7 +62,7 @@ export default function ProjectModalPage(props) {
     >
       <Stack
         component={motion.div}
-        layoutId={`card-container-${project.slug}`}
+        layoutId={`card-content-${project.slug}`}
         style={{
           position: 'relative',
           width: '100%',
