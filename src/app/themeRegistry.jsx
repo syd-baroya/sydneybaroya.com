@@ -9,7 +9,7 @@ import NavBar from '@/components/NavBar/NavBar';
 import SECTIONS from './sections';
 import FontWrapper from '@/components/FontWrapper';
 import MultiSceneCanvas from '@/components/Scene/MultiSceneCanvas';
-import { ThreeCanvasProvider, useThreeCanvasRefs } from '@/context/ThreeCanvasContext';
+import { ThreeCanvasProvider } from '@/context/ThreeCanvasContext';
 const ColorModeContext = createContext();
 import { ActiveCardProvider } from "@/lib/hooks/useActiveCard";
 
@@ -49,7 +49,7 @@ export default function ThemeRegistry({ children }) {
         <CssBaseline />
         <FontWrapper>
           <ThreeCanvasProvider>
-            <MultiCanvasWrapper />
+            <MultiSceneCanvas />
             <NavBar items={SECTIONS}></NavBar>
             <ActiveCardProvider>
               <AnimatePresence mode="wait">
@@ -68,9 +68,4 @@ export default function ThemeRegistry({ children }) {
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-}
-
-function MultiCanvasWrapper() {
-  const viewRefs = useThreeCanvasRefs();
-  return <MultiSceneCanvas viewRefs={viewRefs.current} />;
 }

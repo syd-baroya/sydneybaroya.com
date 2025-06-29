@@ -2,20 +2,29 @@
 
 import { useEffect, useRef } from 'react';
 import Experience from '@/lib/threejs/Experience';
-export default function MultiSceneCanvas({ viewRefs }) {
+import { useThreeCanvasRefs } from '@/context/ThreeCanvasContext';
+
+export default function MultiSceneCanvas({ }) {
   const canvasRef = useRef();
+  const experienceRef = useRef();
+  const { viewRefs, version } = useThreeCanvasRefs();
 
-  useEffect(() => {
-    if (!canvasRef.current || viewRefs.length===0) return;
-    const threeJSEntryPoint = new Experience(canvasRef.current, viewRefs);;
-    return () => {
-        if(threeJSEntryPoint) {
-            threeJSEntryPoint.destroy();
-        }
-    };
-  }, [viewRefs]);
+useEffect(() => {
+  if (!canvasRef.current) return;
+  const validRefs = viewRefs.current.filter(ref => ref?.current);
+  if (viewRefs.length === 0 || validRefs.length !== 2) return;
+  if (experienceRef.current) return;
 
-   return (
+  const threeJSEntryPoint = new Experience(canvasRef.current, validRefs);
+  experienceRef.current = threeJSEntryPoint;
+
+  return () => {
+    experienceRef.current?.destroy();
+    experienceRef.current = null;
+  };
+}, [version]);
+
+  return (
     <canvas
       ref={canvasRef}
       style={{

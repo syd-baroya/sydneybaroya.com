@@ -11,19 +11,9 @@ import '@/styles/globals.css';
 import Resources from './Utils/Resources.js'
 import sources from './sources.js'
 
-
-let instance = null;
-
 class Experience {
 
     constructor(canvas, views) {
-        
-        if(instance) {
-            return instance;
-        }
-
-        instance = this;
-
         // Setup
         this.debug = new Debug()
         this.sizes = new Sizes()

@@ -1,29 +1,31 @@
 'use client';
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { forwardRef } from "react";
+import { useThreeCanvasRefs } from '@/context/ThreeCanvasContext';
 
-const SceneViewport = forwardRef(function SceneViewport({className, children, sceneInfo}, ref) {
-
+const SceneViewport = forwardRef(function SceneViewport({index, className, children, sceneInfo}, ref) {
+    const localRef = useRef(null);
+    const {viewRefs, triggerUpdate} = useThreeCanvasRefs();
     useEffect(() => {
-        if (ref?.current) {
-            ref.current.sceneInfo = sceneInfo;
+        const domRef = ref || localRef;
+
+        if (domRef?.current) {
+            domRef.current.sceneInfo = sceneInfo;
+            viewRefs.current[index] = domRef;
+            triggerUpdate();
+        }
 
         return () => {
-            if (ref?.current) {
-                delete ref.current.sceneInfo;
+            if (domRef?.current) {
+                delete domRef.current.sceneInfo;
+                viewRefs.current[index] = null;
             }
         };
-        }
-    }, [ref, sceneInfo]);
-
-    /**
-     * TODO
-     * want to be able to control what is in the scene, maybe have it as arguments passed into here or in a .jsx file like sections.jsx or a .js file like sources.js
-     * 
-     */
+    }, []);
+    
     return (
-        <div ref={ref} className={className}>
+        <div ref={ref || localRef} className={className}>
             {children}
         </div>
     );

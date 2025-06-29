@@ -5,17 +5,8 @@ import '@/styles/globals.css';
 import '@/styles/home.module.css';
 import SceneViewport from "@/components/Scene/SceneViewport";
 import { home } from "@/components/Scene/sceneInfo";
-import { useThreeCanvasRefs } from "@/context/ThreeCanvasContext";
-import { useEffect, useRef } from "react";
-export default function Home({}) {
-    const ref = useRef();
-    const viewRefs = useThreeCanvasRefs();
 
-    useEffect(() => {
-        if (ref.current && !viewRefs.current.includes(ref)) {
-            viewRefs.current.push(ref);
-        }
-    }, [ref, viewRefs]);
+export default function Home({}) {
     return (
        <Stack className="section" id="home" direction={{ xs: 'column', md: 'row' }} // 👈 Responsive direction
             spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -32,7 +23,7 @@ export default function Home({}) {
                     }}}>Portfolio</Typography>
             </Box>
             <Box sx={{ width: '100%', height: {xs: '45vh', md: '83vh'}}}>
-                <SceneViewport className="view" ref={ref} sceneInfo={home}></SceneViewport>
+                <SceneViewport className="view" index={0} sceneInfo={home}></SceneViewport>
             </Box>
         </Stack>
   );
