@@ -21,9 +21,9 @@ class Resources extends EventEmitter
     setLoaders()
     {
         this.loaders = {}
-        this.loaders.gltfLoader = new GLTFLoader()
-        this.loaders.textureLoader = new THREE.TextureLoader()
-        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+        this.loaders.gltfLoader = new GLTFLoader().setPath('/models/')
+        this.loaders.textureLoader = new THREE.TextureLoader().setPath('/textures/')
+        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader().setPath('/textures/environmentMap/')
     }
 
     startLoading()

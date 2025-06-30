@@ -12,7 +12,7 @@ export default function MultiSceneCanvas({ }) {
 useEffect(() => {
   if (!canvasRef.current) return;
   const validRefs = viewRefs.current.filter(ref => ref?.current);
-  if (viewRefs.length === 0 || validRefs.length !== 2) return;
+  if (viewRefs.length === 0 || validRefs.length === 0) return;
   if (experienceRef.current) return;
 
   const threeJSEntryPoint = new Experience(canvasRef.current, validRefs);
