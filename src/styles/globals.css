@@ -1,15 +1,7 @@
 :root {
   --background-color: #F3F3F3;
-  --primary-text: #2B2D42;
-  --secondary-text: #ffeded;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-     --background-color: #2B2D42;
-    --primary-text: #F3F3F3;
-    --secondary-text: #0a0a0a;
-  }
+  --primary: #2B2D42;
+  --secondary: #ffeded;
 }
 
 html,
@@ -19,11 +11,12 @@ body {
 }
 
 body {
-  color: var(--foreground-color);
   background: var(--background-color);
+  color: var(--primary-text);
   font-family: Arial, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
@@ -37,30 +30,21 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 .view {
-    height: 100%;
-    width: 100%;
-    /* background-color: 'transparent'; */
+  height: 100%;
+  width: 100%;
 }
 
 .sections {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-
-.section
-{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    font-size: 7vmin;
-    padding: 3% 1%;
+.section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: 7vmin;
+  padding: 3% 1%;
 }

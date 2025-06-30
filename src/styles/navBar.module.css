@@ -16,7 +16,6 @@
 }
 
 .navbar {
-    color: var(--secondary-text);
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -32,6 +31,14 @@
     background-color: var(--primary-text);
     color: var(--secondary-text);
     border-radius: 10px,
+}
+
+.main {
+    color: var(--primary-text);
+}
+
+.main:hover{
+    text-decoration: underline;
 }
 
 .scroll {

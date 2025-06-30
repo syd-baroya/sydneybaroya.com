@@ -40,6 +40,10 @@ class Renderer extends EventEmitter
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }
 
+    setClearColor(color) {
+        this.clearColor = color;
+    }
+
     resize()
     {
         this.instance.setSize(this.sizes.width, this.sizes.height)

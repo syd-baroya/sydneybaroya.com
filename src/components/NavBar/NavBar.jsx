@@ -22,7 +22,7 @@ export default function NavBar({items}) {
 
     return (
         <div className={`${navBarStyles.header} ${hasBackground ? navBarStyles.scroll : ''}`}>
-            <Link href='/' >Sydney Baroya</Link>
+            <Link className={navBarStyles.main} href='/' >Sydney Baroya</Link>
             <Stack direction='row' spacing={2} className={navBarStyles.navbar}>
                 { items.map( item => {
                          return <Link href={'/'+ item.link}

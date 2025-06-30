@@ -13,7 +13,7 @@ import sources from './sources.js'
 
 class Experience {
 
-    constructor(canvas, views) {
+    constructor(canvas, views, bgColor) {
         // Setup
         this.debug = new Debug()
         this.sizes = new Sizes()
@@ -22,8 +22,8 @@ class Experience {
 
         this.scenes = [];
 
-        const style = window.getComputedStyle(document.body);
-        const bgColor = style.getPropertyValue('--background-color');
+        // const style = window.getComputedStyle(document.body);
+        // const bgColor = style.getPropertyValue('--background-color');
 
         for (let i = 0; i < views.length; i++) {
             const scene = new THREE.Scene();
@@ -56,6 +56,19 @@ class Experience {
         {
             this.update()
         })
+    }
+
+    setBackgroundColor(bgColor) {
+        for(let i = 0; i < this.scenes.length; i++) {
+            const scene = this.scenes[i];
+            if(scene.background !== null) {
+                scene.background.set(bgColor);
+            } else {
+                scene.background = new THREE.Color( bgColor);
+            }
+        }
+
+        this.renderer.setClearColor(bgColor);
     }
 
     resize()
