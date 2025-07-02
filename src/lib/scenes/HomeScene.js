@@ -3,9 +3,9 @@ import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
 import Fox from '@/lib/threejs/models/Fox';
 import Floor from '@/lib/threejs/models/Floor'
+import Summer from '@/lib/threejs/models/Summer';
 
-
-let scene, camera, fox, floor, environment;
+let scene, camera, summer, environment;
 let sceneLoaded = false;
 export function init(bgColor, view, resources) {
     scene = new THREE.Scene();
@@ -17,13 +17,16 @@ export function init(bgColor, view, resources) {
     scene.userData.camera = camera;
     resources.on('ready', () =>
     {
-        environment = new Environment(scene, resources);
+        // environment = new Environment(scene, resources);
 
-        fox = new Fox( resources);
-        scene.add(fox.model);
+        // fox = new Fox( resources);
+        // scene.add(fox.model);
 
-        floor = new Floor(resources);
-        scene.add(floor.mesh);
+        // floor = new Floor(resources);
+        // scene.add(floor.mesh);
+
+        summer = new Summer(resources);
+        scene.add(summer.model);
         sceneLoaded = true;
     })
 }
@@ -33,8 +36,8 @@ export function getScene() {
 }
 
 export function addToDebug(debug) {
-    environment.addToDebug(debug);
-    fox.addToDebug(debug);
+    // environment.addToDebug(debug);
+    // fox.addToDebug(debug);
 }
 
 export function setBackgroundColor(bgColor) {
@@ -44,9 +47,10 @@ export function setBackgroundColor(bgColor) {
 export function update(delta) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        environment.update(delta);
-        fox.update(delta);
-        floor.update(delta);
+        summer.update(delta);
+        // environment.update(delta);
+        // fox.update(delta);
+        // floor.update(delta);
     }
 }
 
@@ -79,7 +83,8 @@ export function destroy() {
     sceneLoaded = false;
     scene = null;
     camera = null;
-    fox = null;
-    floor = null;
-    environment = null;
+    summer = null;
+    // fox = null;
+    // floor = null;
+    // environment = null;
 }

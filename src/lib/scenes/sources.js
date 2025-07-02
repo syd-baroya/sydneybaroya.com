@@ -26,7 +26,17 @@ const sources = [
         name: 'foxModel',
         type: 'gltfModel',
         path: 'Fox/glTF/Fox.gltf'
-    }
+    },
+    {
+        name: 'summerModel',
+        type: 'gltfModel',
+        path: 'Summer/summer.glb'
+    },
+    {
+        name: 'summerBakedTexture',
+        type: 'texture',
+        path: '/Summer/baked.jpg'
+    },
 ]
 
 export default sources;
