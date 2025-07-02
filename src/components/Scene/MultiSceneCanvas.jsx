@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Experience from '@/lib/threejs/Experience';
 import { useThreeCanvasRefs } from '@/context/ThreeCanvasContext';
 import { useColorMode } from '@/app/themeRegistry';
 import { useResolvedCssVar } from '@/lib/hooks/useResolvedCssVar';
+import * as SceneManager from '@/lib/threejs/SceneManager';
+import Resources from '@/lib/threejs/utils/Resources';
+import sources from '@/lib/scenes/sources';
 
 export default function MultiSceneCanvas({ }) {
   const canvasRef = useRef();
@@ -12,6 +14,7 @@ export default function MultiSceneCanvas({ }) {
   const { viewRefs, version } = useThreeCanvasRefs();
   const { mode } = useColorMode();
   const backgroundColor = useResolvedCssVar('--background-color', [mode]);
+  const resources = new Resources(sources);
 
 useEffect(() => {
   if (!canvasRef.current) return;
@@ -19,20 +22,27 @@ useEffect(() => {
   if (viewRefs.length === 0 || validRefs.length === 0) return;
   if (experienceRef.current) return;
 
-  const threeJSEntryPoint = new Experience(canvasRef.current, validRefs, backgroundColor);
+  let bgColor = backgroundColor;
+  if (bgColor === undefined || bgColor === null || bgColor === '') {
+    bgColor = '#000000';
+  }
 
-  experienceRef.current = threeJSEntryPoint;
+  SceneManager.init(canvasRef.current, bgColor);
+
+  validRefs.forEach((ref, index) => {
+    ref.current.scene.init(bgColor, ref.current, resources);
+    SceneManager.registerScene(ref.current.scene);
+  });
 
   return () => {
-    experienceRef.current?.destroy();
-    experienceRef.current = null;
+    resources.off('ready');
+    SceneManager.unregisterAllScenes();
+    SceneManager.destroy();
   };
 }, [version]);
 
  useEffect(() => {
-  if (experienceRef.current && backgroundColor) {
-      experienceRef.current.setBackgroundColor(backgroundColor);
-    }
+    if(backgroundColor !== '') SceneManager.setBackgroundColor(backgroundColor);
   }, [backgroundColor]);
 
   return (

@@ -1,19 +1,13 @@
 import * as THREE from 'three'
 export default class Fox
 {
-    constructor(debug, resources)
+    constructor(resources)
     {
-        // Debug
-        if(debug.active)
-        {
-            this.debugFolder = debug.ui.addFolder('fox')
-        }
-
         // Resource
         this.resource = resources.items.foxModel
 
         this.initModel()
-        this.initAnimation(debug)
+        this.initAnimation()
     }
 
     initModel()
@@ -30,7 +24,7 @@ export default class Fox
         })
     }
 
-    initAnimation(debug)
+    initAnimation()
     {
         this.animation = {}
         
@@ -59,23 +53,22 @@ export default class Fox
 
             this.animation.actions.current = newAction
         }
-
-        // Debug
-        if(debug.active)
-        {
-            const debugObject = {
-                playIdle: () => { this.animation.play('idle') },
-                playWalking: () => { this.animation.play('walking') },
-                playRunning: () => { this.animation.play('running') }
-            }
-            this.debugFolder.add(debugObject, 'playIdle')
-            this.debugFolder.add(debugObject, 'playWalking')
-            this.debugFolder.add(debugObject, 'playRunning')
-        }
     }
 
     update(delta)
     {
         this.animation.mixer.update(delta * 0.001)
+    }
+
+    addToDebug(debug){
+        let debugFolder = debug.ui.addFolder('fox')
+        const debugObject = {
+            playIdle: () => { this.animation.play('idle') },
+            playWalking: () => { this.animation.play('walking') },
+            playRunning: () => { this.animation.play('running') }
+        }
+        debugFolder.add(debugObject, 'playIdle')
+        debugFolder.add(debugObject, 'playWalking')
+        debugFolder.add(debugObject, 'playRunning')
     }
 }

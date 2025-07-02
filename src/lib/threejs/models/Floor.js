@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 export default class Floor
 {
-    constructor(debug, resources)
+    constructor(resources)
     {
         this.initGeometry()
         this.initTextures(resources)

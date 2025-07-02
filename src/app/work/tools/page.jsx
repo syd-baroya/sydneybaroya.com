@@ -3,7 +3,7 @@
 import { FormControl, InputLabel, Select, MenuItem, Grid, Stack, Divider, Typography, List, ListItem, ListItemText, ListItemButton, Box } from "@mui/material";
 import SceneViewport from "@/components/Scene/SceneViewport";
 import { useState } from "react";
-import { tools } from "@/components/Scene/sceneInfo";
+import * as ToolsScene from "@/lib/scenes/ToolsScene.js";
 
 export default function Tools() {
     const toolOptions = ['Item 1', 'Item 2', 'Item 3'];
@@ -83,7 +83,7 @@ export default function Tools() {
                         </Select>
                     </FormControl>
                     <Box sx={{ width: '100%', height: {xs: '70vh', md: '50vh'}}}>
-                        <SceneViewport  className="view" index={1}sceneInfo={tools}></SceneViewport>
+                        <SceneViewport  className="view" index={1} scene={ToolsScene}></SceneViewport>
                     </Box>
                 </Grid>
             </Grid>

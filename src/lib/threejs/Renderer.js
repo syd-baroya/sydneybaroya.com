@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import EventEmitter from './Utils/EventEmitter.js'
+import EventEmitter from './utils/EventEmitter.js'
 
 class Renderer extends EventEmitter
 {
@@ -77,6 +77,11 @@ class Renderer extends EventEmitter
         this.instance.setScissor( rect.left, bottom, rect.width, rect.height );
 
         this.instance.render( scene, scene.userData.camera.instance );    
+    }
+
+    destroy()
+    {
+        this.instance.dispose();
     }
 }
 

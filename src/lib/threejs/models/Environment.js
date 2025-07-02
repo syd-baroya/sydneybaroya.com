@@ -2,19 +2,51 @@ import * as THREE from 'three'
 
 class Environment
 {
-    constructor(scene, debug, resources)
+    constructor(scene, resources)
     {
         this.scene = scene
-        this.debug = debug
         
-        // Debug
-        if(this.debug.active)
-        {
-            this.debugFolder = this.debug.ui.addFolder('environment')
-        }
-
         this.initSunLight()
         this.initEnvironmentMap(resources)
+    }
+
+    addToDebug(debug) {
+        let debugFolder =debug.ui.addFolder('environment')
+        debugFolder
+            .add(this.sunLight, 'intensity')
+            .name('sunLightIntensity')
+            .min(0)
+            .max(10)
+            .step(0.001)
+        
+        debugFolder
+            .add(this.sunLight.position, 'x')
+            .name('sunLightX')
+            .min(- 5)
+            .max(5)
+            .step(0.001)
+        
+        debugFolder
+            .add(this.sunLight.position, 'y')
+            .name('sunLightY')
+            .min(- 5)
+            .max(5)
+            .step(0.001)
+        
+        debugFolder
+            .add(this.sunLight.position, 'z')
+            .name('sunLightZ')
+            .min(- 5)
+            .max(5)
+            .step(0.001)
+
+        debugFolder
+            .add(this.environmentMap, 'intensity')
+            .name('envMapIntensity')
+            .min(0)
+            .max(4)
+            .step(0.001)
+            .onChange(this.environmentMap.updateMaterials)
     }
 
     initSunLight()
@@ -26,38 +58,6 @@ class Environment
         this.sunLight.shadow.normalBias = 0.05
         this.sunLight.position.set(3.5, 2, - 1.25)
         this.scene.add(this.sunLight)
-
-        // Debug
-        if(this.debug.active)
-        {
-            this.debugFolder
-                .add(this.sunLight, 'intensity')
-                .name('sunLightIntensity')
-                .min(0)
-                .max(10)
-                .step(0.001)
-            
-            this.debugFolder
-                .add(this.sunLight.position, 'x')
-                .name('sunLightX')
-                .min(- 5)
-                .max(5)
-                .step(0.001)
-            
-            this.debugFolder
-                .add(this.sunLight.position, 'y')
-                .name('sunLightY')
-                .min(- 5)
-                .max(5)
-                .step(0.001)
-            
-            this.debugFolder
-                .add(this.sunLight.position, 'z')
-                .name('sunLightZ')
-                .min(- 5)
-                .max(5)
-                .step(0.001)
-        }
     }
 
     initEnvironmentMap(resources)
@@ -83,18 +83,9 @@ class Environment
         }
         this.environmentMap.updateMaterials()
 
-        // Debug
-        if(this.debug.active)
-        {
-            this.debugFolder
-                .add(this.environmentMap, 'intensity')
-                .name('envMapIntensity')
-                .min(0)
-                .max(4)
-                .step(0.001)
-                .onChange(this.environmentMap.updateMaterials)
-        }
     }
+
+    update() {}
 }
 
 export default Environment;

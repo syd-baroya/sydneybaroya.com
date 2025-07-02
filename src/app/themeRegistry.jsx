@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { getDesignTokens } from '@/styles/muiTheme';
-import { setCSSVariables } from '@/styles/setCssVariables';
+import { setCSSVariables } from '@/styles/setCSSVariables.js';
 import { lightPalette, darkPalette } from '@/styles/themeColors';
 import NavBar from '@/components/NavBar/NavBar';
 import SECTIONS from './sections';

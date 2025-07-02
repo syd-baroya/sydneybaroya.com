@@ -4,7 +4,7 @@ import {Typography, Stack, Box} from "@mui/material";
 import '@/styles/globals.css';
 import '@/styles/home.module.css';
 import SceneViewport from "@/components/Scene/SceneViewport";
-import { home } from "@/components/Scene/sceneInfo";
+import * as HomeScene from "@/lib/scenes/HomeScene.js";
 
 export default function Home({}) {
     return (
@@ -23,7 +23,7 @@ export default function Home({}) {
                     }}}>Portfolio</Typography>
             </Box>
             <Box sx={{ width: '100%', height: {xs: '45vh', md: '83vh'}}}>
-                <SceneViewport className="view" index={0} sceneInfo={home}></SceneViewport>
+                <SceneViewport className="view" index={0} scene={HomeScene}></SceneViewport>
             </Box>
         </Stack>
   );
