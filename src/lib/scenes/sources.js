@@ -37,6 +37,11 @@ const sources = [
         type: 'texture',
         path: '/Summer/baked.jpg'
     },
+    {
+        name: 'otterModel',
+        type: 'gltfModel',
+        path: 'Otter/otterAnimated.glb'
+    }
 ]
 
 export default sources;

@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
-import Fox from '@/lib/threejs/models/Fox';
-import Floor from '@/lib/threejs/models/Floor'
-import Summer from '@/lib/threejs/models/Summer';
+// import Fox from '@/lib/threejs/models/Fox';
+// import Floor from '@/lib/threejs/models/Floor'
+// import Summer from '@/lib/threejs/models/Summer';
+import Otter from '@/lib/threejs/models/Otter';
 
-let scene, camera, summer, environment;
+let scene, camera, otter, environment;
+// let floor;
 let sceneLoaded = false;
 export function init(bgColor, view, resources) {
     scene = new THREE.Scene();
@@ -17,7 +19,7 @@ export function init(bgColor, view, resources) {
     scene.userData.camera = camera;
     resources.on('ready', () =>
     {
-        // environment = new Environment(scene, resources);
+        environment = new Environment(scene, resources);
 
         // fox = new Fox( resources);
         // scene.add(fox.model);
@@ -25,8 +27,11 @@ export function init(bgColor, view, resources) {
         // floor = new Floor(resources);
         // scene.add(floor.mesh);
 
-        summer = new Summer(resources);
-        scene.add(summer.model);
+        // summer = new Summer(resources);
+        // scene.add(summer.model);
+
+        otter = new Otter(resources);
+        scene.add(otter.model);
         sceneLoaded = true;
     })
 }
@@ -47,8 +52,9 @@ export function setBackgroundColor(bgColor) {
 export function update(delta) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        summer.update(delta);
-        // environment.update(delta);
+        otter.update(delta);
+        // summer.update(delta);
+        environment.update(delta);
         // fox.update(delta);
         // floor.update(delta);
     }
@@ -83,8 +89,9 @@ export function destroy() {
     sceneLoaded = false;
     scene = null;
     camera = null;
-    summer = null;
+    otter = null;
+    // summer = null;
     // fox = null;
     // floor = null;
-    // environment = null;
+    environment = null;
 }
