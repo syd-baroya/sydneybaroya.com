@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-const target = new THREE.Vector3(0,0,2);
+const target = new THREE.Vector3(0,0,1);
 
 const intersectionPoint = new THREE.Vector3();
 const planeNormal = new THREE.Vector3();
@@ -14,6 +14,6 @@ export function mousePositionTo3D(mousePosition, modelPosition, camera) {
     plane.setFromNormalAndCoplanarPoint(planeNormal, modelPosition);
     raycaster.setFromCamera(myMousePosition, camera);
     raycaster.ray.intersectPlane(plane, intersectionPoint);
-    target.set(intersectionPoint.x, intersectionPoint.y, 0.5);
+    target.set(intersectionPoint.x, intersectionPoint.y, 1);
     return target;
 }

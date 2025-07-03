@@ -31,6 +31,7 @@ export function init(bgColor, view, resources) {
         // scene.add(summer.model);
 
         otter = new Otter(resources);
+        otter.scale(1.35);
         scene.add(otter.model);
         sceneLoaded = true;
     })

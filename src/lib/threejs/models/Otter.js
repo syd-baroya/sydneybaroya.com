@@ -11,6 +11,7 @@ export default class Otter
         this.animation = {};
         this.model = null;
         this.head = null;
+        this.mouseTarget = new THREE.Vector3();
         
         this.initModel();
         this.initAnimation()
@@ -19,9 +20,10 @@ export default class Otter
     initModel()
     {
         this.model = this.resource.scene
-
         this.head = this.model.getObjectByName('head');
     }
+
+    scale(scale) { this.model.scale.set(scale, scale, scale) }
 
     initAnimation()
     { 
@@ -56,13 +58,9 @@ export default class Otter
 
     mouseMove(mousePosition, camera) {
         if(this.head) {
-            
-            //take div into account
-            mousePosition.x *= 0.5;
-            mousePosition.y *= 0.5;
-
-            let target = Raycast.mousePositionTo3D(mousePosition, this.head.position, camera)
-            this.head.lookAt(target);
+            this.mouseTarget.copy(Raycast.mousePositionTo3D(mousePosition, this.head.position, camera));
+            this.mouseTarget.y -= 3;
+            this.head.lookAt(this.mouseTarget);
         }
     }
     addToDebug(debug) {
