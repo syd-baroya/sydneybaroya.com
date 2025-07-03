@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import * as Raycast from '@/lib/threejs/utils/Raycast'
 
 export default class Otter
 {
@@ -9,6 +10,7 @@ export default class Otter
 
         this.animation = {};
         this.model = null;
+        this.head = null;
         
         this.initModel();
         this.initAnimation()
@@ -18,8 +20,7 @@ export default class Otter
     {
         this.model = this.resource.scene
 
-        this.model.rotation.z -= Math.PI / 4;
-        this.model.rotation.x -= Math.PI / 4;
+        this.head = this.model.getObjectByName('head');
     }
 
     initAnimation()
@@ -53,6 +54,17 @@ export default class Otter
         this.animation.mixer.update(delta * 0.001)
     }
 
+    mouseMove(mousePosition, camera) {
+        if(this.head) {
+            
+            //take div into account
+            mousePosition.x *= 0.5;
+            mousePosition.y *= 0.5;
+
+            let target = Raycast.mousePositionTo3D(mousePosition, this.head.position, camera)
+            this.head.lookAt(target);
+        }
+    }
     addToDebug(debug) {
         const debugFolder = debug.ui.addFolder('otter');
     }

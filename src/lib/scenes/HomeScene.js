@@ -49,6 +49,13 @@ export function setBackgroundColor(bgColor) {
     scene.background.set(bgColor);
 }
 
+export function mouseMove(position) {
+    if(sceneLoaded) {
+        otter.mouseMove(position, scene.userData.camera.instance);
+    }
+    
+}
+
 export function update(delta) {
     if(sceneLoaded) {
         scene.userData.camera.update();

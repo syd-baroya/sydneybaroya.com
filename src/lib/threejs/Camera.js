@@ -14,7 +14,7 @@ class Camera
     {
         const sizes = this.div.getBoundingClientRect()
         this.instance = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
-        this.instance.position.set(0, 0, 9)
+        this.instance.position.set(7, 7, 7)
     }
 
     initControls()
