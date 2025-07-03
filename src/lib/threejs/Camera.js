@@ -13,7 +13,9 @@ class Camera
     initInstance()
     {
         const sizes = this.div.getBoundingClientRect()
-        this.instance = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
+        this.fov = 35;
+        const aspect = sizes.width / sizes.height;
+        this.instance = new THREE.PerspectiveCamera(this.fov/aspect, aspect, 0.1, 100)
         this.instance.position.set(7, 7, 7)
     }
 
@@ -35,9 +37,10 @@ class Camera
 
     resize()
     {
-        const sizes = this.div.getBoundingClientRect()
-        this.instance.aspect = sizes.width / sizes.height
-        this.instance.updateProjectionMatrix()
+        const sizes = this.div.getBoundingClientRect();
+        this.instance.aspect = sizes.width / sizes.height;
+        this.instance.fov = this.fov / this.instance.aspect;
+        this.instance.updateProjectionMatrix();
     }
 
     update()
