@@ -31,7 +31,7 @@ class Renderer extends EventEmitter
             antialias: true
         })
         this.instance.useLegacyLights = false
-        this.instance.toneMapping = THREE.CineonToneMapping
+        this.instance.toneMapping = THREE.NeutralToneMapping
         this.instance.toneMappingExposure = 1.75
         this.instance.shadowMap.enabled = true
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap

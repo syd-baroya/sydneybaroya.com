@@ -5,11 +5,12 @@ import Environment from '@/lib/threejs/models/Environment';
 // import Floor from '@/lib/threejs/models/Floor'
 // import Summer from '@/lib/threejs/models/Summer';
 import Otter from '@/lib/threejs/models/Otter';
+import Debug from '@/lib/threejs/utils/Debug';
 
-let scene, camera, otter, environment;
+let scene, camera, otter, environment, debug;
 // let floor;
 let sceneLoaded = false;
-export function init(bgColor, view, resources) {
+export function init(bgColor, view) {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( bgColor);
 
@@ -18,33 +19,36 @@ export function init(bgColor, view, resources) {
     camera.setPosition(7, 10, 7);
     scene.add(camera.instance)
     scene.userData.camera = camera;
-    resources.on('ready', () =>
-    {
-        environment = new Environment(scene, resources);
 
-        // fox = new Fox( resources);
-        // scene.add(fox.model);
+    debug = new Debug(document.getElementById('homeSceneGUI'));
+}
 
-        // floor = new Floor(resources);
-        // scene.add(floor.mesh);
+export function loadScene(resources) {
+    environment = new Environment(scene, resources);
 
-        // summer = new Summer(resources);
-        // scene.add(summer.model);
+    // fox = new Fox( resources);
+    // scene.add(fox.model);
 
-        otter = new Otter(resources);
-        otter.setScale(1.4);
-        scene.add(otter.model);
-        sceneLoaded = true;
-    })
+    // floor = new Floor(resources);
+    // scene.add(floor.mesh);
+
+    // summer = new Summer(resources);
+    // scene.add(summer.model);
+
+    otter = new Otter(resources);
+    otter.setScale(1.4);
+    scene.add(otter.model);
+    
+    sceneLoaded = true;
 }
 
 export function getScene() {
     return scene;
 }
 
-export function addToDebug(debug) {
-    // environment.addToDebug(debug);
-    // fox.addToDebug(debug);
+export function addToDebug() {
+    environment.addToDebug(debug);
+    otter.addToDebug(debug);
 }
 
 export function setBackgroundColor(bgColor) {
@@ -58,12 +62,12 @@ export function mouseMove(position) {
     
 }
 
-export function update(delta) {
+export function update(time) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        otter.update(delta);
+        otter.update(time.delta);
         // summer.update(delta);
-        environment.update(delta);
+        environment.update(time.delta);
         // fox.update(delta);
         // floor.update(delta);
     }
@@ -95,6 +99,8 @@ export function destroy() {
     })
 
     scene.userData.camera.controls.dispose();
+    if(debug.active) debug.ui.destroy();
+    debug = null;
     sceneLoaded = false;
     scene = null;
     camera = null;

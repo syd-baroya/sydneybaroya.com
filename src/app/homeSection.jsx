@@ -23,6 +23,7 @@ export default function Home({}) {
                     }}}>Portfolio</Typography>
             </Box>
             <Box sx={{ width: '100%', height: {xs: '45vh', md: '70vh'}}}>
+                <div id="homeSceneGUI" style={{zIndex: 1000, position: 'absolute'}}></div>
                 <SceneViewport className="view" index={0} scene={HomeScene}></SceneViewport>
             </Box>
         </Stack>

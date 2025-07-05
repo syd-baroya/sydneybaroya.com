@@ -1,12 +1,13 @@
 import * as THREE from 'three';
 import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
-import Cube from '@/lib/threejs/models/Cube';
+import Water from '@/lib/threejs/models/Water';
+import Debug from '@/lib/threejs/utils/Debug';
 
-let scene, camera, cube, environment;
+let scene, camera, environment, debug, water;
 let sceneLoaded = false;
 
-export function init(bgColor, view, resources) {
+export function init(bgColor, view) {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( bgColor);
 
@@ -15,16 +16,18 @@ export function init(bgColor, view, resources) {
     camera.setPosition(7, 7, 15);
     scene.add(camera.instance)
     scene.userData.camera = camera;
-    resources.on('ready', () =>
-    {
-        environment = new Environment(scene, resources);
 
-        cube = new Cube();
-        scene.add(cube.mesh);
-        sceneLoaded = true;
-    })
+    debug = new Debug(document.getElementById('toolsSceneGUI'));
 }
 
+export function loadScene(resources) {
+    environment = new Environment(scene, resources);
+
+    water = new Water(resources, { resolution: 32 });
+    scene.add(water);
+
+    sceneLoaded = true;
+}
 export function getScene() {
     return scene;
 }
@@ -33,11 +36,15 @@ export function setBackgroundColor(bgColor) {
     scene.background.set(bgColor);
 }
 
-export function update(delta) {
+export function addToDebug() {
+    environment.addToDebug(debug);
+    water.addToDebug(debug);
+}
+
+export function update(time) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        environment.update(delta);
-        cube.update(delta);
+        environment.update(time.delta);
     }
 }
 
@@ -67,9 +74,11 @@ export function destroy() {
     })
     
     scene.userData.camera.controls.dispose();
+    if(debug.active) debug.ui.destroy();
+    debug = null;
     sceneLoaded = false;
     scene = null;
     camera = null;
-    cube = null;
+    water = null;
     environment = null;
 }

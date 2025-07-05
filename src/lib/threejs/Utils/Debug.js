@@ -2,13 +2,20 @@ import * as dat from 'lil-gui'
 
 class Debug
 {
-    constructor()
+    constructor(container)
     {
         this.active = window.location.hash === '#debug'
+        const options ={
+            closeFolders: true
+        }
+        if(container)
+        {
+            options.container = container
+        }
 
         if(this.active)
         {
-            this.ui = new dat.GUI()
+            this.ui = new dat.GUI(options)
         }
     }
 }
