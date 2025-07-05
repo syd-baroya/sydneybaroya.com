@@ -9,8 +9,8 @@ import * as HomeScene from "@/lib/scenes/HomeScene.js";
 export default function Home({}) {
     return (
        <Stack className="section" id="home" direction={{ xs: 'column', md: 'row' }} // 👈 Responsive direction
-            spacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Box sx={{ width: '100%', height: {xs: '22vh', md: '83vh'}, display: 'flex', flexDirection: 'column', justifyContent: 'center',}}>
+            sx={{ justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', height: {xs: '20vh', md: '70vh'}, display: 'flex', flexDirection: 'column', justifyContent: 'center',}}>
                 <Typography textAlign="center" variant='h2' sx={{ color: 'var(--primary-text)',
                     fontSize: {
                         xs: 'clamp(1.5rem, 5vh, 4rem)',
@@ -22,7 +22,7 @@ export default function Home({}) {
                         md: 'clamp(3rem, 9vh, 6rem)',
                     }}}>Portfolio</Typography>
             </Box>
-            <Box sx={{ width: '100%', height: {xs: '45vh', md: '83vh'}}}>
+            <Box sx={{ width: '100%', height: {xs: '45vh', md: '70vh'}}}>
                 <SceneViewport className="view" index={0} scene={HomeScene}></SceneViewport>
             </Box>
         </Stack>

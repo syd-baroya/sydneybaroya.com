@@ -12,6 +12,7 @@ export function init(bgColor, view, resources) {
 
     scene.userData.view = view;
     camera = new Camera(view)
+    camera.setPosition(7, 7, 15);
     scene.add(camera.instance)
     scene.userData.camera = camera;
     resources.on('ready', () =>

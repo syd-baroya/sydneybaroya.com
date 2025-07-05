@@ -16,7 +16,11 @@ class Camera
         this.fov = 35;
         const aspect = sizes.width / sizes.height;
         this.instance = new THREE.PerspectiveCamera(this.fov/aspect, aspect, 0.1, 100)
-        this.instance.position.set(7, 7, 7)
+    }
+
+    setPosition(x, y, z)
+    {
+        this.instance.position.set(x, y, z)
     }
 
     initControls()

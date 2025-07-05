@@ -23,7 +23,7 @@ export default class Otter
         this.head = this.model.getObjectByName('head');
     }
 
-    scale(scale) { this.model.scale.set(scale, scale, scale) }
+    setScale(scale) { this.model.scale.set(scale, scale, scale) }
 
     initAnimation()
     { 

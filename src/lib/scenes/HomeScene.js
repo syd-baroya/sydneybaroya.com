@@ -15,6 +15,7 @@ export function init(bgColor, view, resources) {
 
     scene.userData.view = view;
     camera = new Camera(view)
+    camera.setPosition(7, 10, 7);
     scene.add(camera.instance)
     scene.userData.camera = camera;
     resources.on('ready', () =>
@@ -31,7 +32,7 @@ export function init(bgColor, view, resources) {
         // scene.add(summer.model);
 
         otter = new Otter(resources);
-        otter.scale(1.35);
+        otter.setScale(1.4);
         scene.add(otter.model);
         sceneLoaded = true;
     })
