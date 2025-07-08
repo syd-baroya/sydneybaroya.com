@@ -12,15 +12,18 @@ attribute vec3 position;
 attribute vec3 normal;
 attribute vec2 uv;
 
-varying vec2 vUv;
+varying vec3 vWorldPosition;
+varying vec3 vNormal;
 
 uniform float uTime;
 uniform float uAmplitude;
 uniform float uFrequency;
 uniform float uPersistence;
 uniform float uLacunarity;
-uniform float uIterations;
+uniform int uIterations;
 uniform float uSpeed;
+
+const int MAX_ITERATIONS = 10;
 
 // Simplex 2D noise
 //
@@ -53,11 +56,34 @@ float snoise(vec2 v){
   return 130.0 * dot(m, g);
 }
 
+float calculateElevation(vec2 position) {
+  float total = 0.0;
+  float f = uFrequency;
+  float a = 1.0;
+
+  for (int i = 0; i < MAX_ITERATIONS; i++) {
+    if( i >= uIterations ) break;
+    total += a * snoise(f * position + uSpeed * uTime);
+    a *= uPersistence;
+    f *= uLacunarity;
+  }
+  return uAmplitude * total;
+}
+
 void main() {
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
 
-    float elevation = uAmplitude * snoise(modelPosition.xz);
+    float elevation = calculateElevation(modelPosition.xz);
     modelPosition.y += elevation;
     
+    float epsilon = 0.001;
+    vec3 p = modelPosition.xyz;
+    vec3 px = vec3(p.x + epsilon, calculateElevation(vec2(p.x + epsilon, p.z)), p.z);
+    vec3 pz = vec3(p.x, calculateElevation(vec2(p.x, p.z + epsilon)), p.z + epsilon);
+    vec3 tangent = normalize(px - p);
+    vec3 bitangent = normalize(pz - p);
+    vNormal = normalize(cross(tangent, bitangent));
+
+    vWorldPosition = modelPosition.xyz;
     gl_Position = projectionMatrix * viewMatrix * modelPosition;
 }

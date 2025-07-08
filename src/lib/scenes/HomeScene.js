@@ -47,8 +47,10 @@ export function getScene() {
 }
 
 export function addToDebug() {
-    environment.addToDebug(debug);
-    otter.addToDebug(debug);
+    if(debug.active) {
+        environment.addToDebug(debug);
+        otter.addToDebug(debug);
+    }
 }
 
 export function setBackgroundColor(bgColor) {

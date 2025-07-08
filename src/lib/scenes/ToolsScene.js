@@ -7,10 +7,10 @@ import Debug from '@/lib/threejs/utils/Debug';
 let scene, camera, environment, debug, water;
 let sceneLoaded = false;
 
-export function init(bgColor, view) {
+export function init(bgColor, view, environment) {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( bgColor);
-
+    scene.environment = environment;
     scene.userData.view = view;
     camera = new Camera(view)
     camera.setPosition(7, 7, 15);
@@ -22,10 +22,11 @@ export function init(bgColor, view) {
 
 export function loadScene(resources) {
     environment = new Environment(scene, resources);
-
-    water = new Water(resources, { resolution: 32 });
+ 
+    water = new Water(resources, { resolution: 256 });
     scene.add(water);
-
+    scene.background = resources.items.environmentMapTexture;
+    scene.environment = resources.items.environmentMapTexture;
     sceneLoaded = true;
 }
 export function getScene() {
@@ -34,17 +35,22 @@ export function getScene() {
 
 export function setBackgroundColor(bgColor) {
     scene.background.set(bgColor);
+    // scene.background = bgColor;
+    // scene.environment = bgColor;
 }
 
 export function addToDebug() {
-    environment.addToDebug(debug);
-    water.addToDebug(debug);
+    if(debug.active) {
+        environment.addToDebug(debug);
+        water.addToDebug(debug);
+    }
 }
 
 export function update(time) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        environment.update(time.delta);
+        environment.update(time);
+        water.update(time);
     }
 }
 
