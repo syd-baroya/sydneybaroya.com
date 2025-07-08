@@ -68,7 +68,7 @@ class Environment
     {
         this.environmentMap = {}
         this.environmentMap.intensity = 0.4
-        this.environmentMap.texture = resources.items.environmentMapTexture
+        this.environmentMap.texture = resources.items.sunsetCubeMap
         this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace
         
         this.scene.environment = this.environmentMap.texture

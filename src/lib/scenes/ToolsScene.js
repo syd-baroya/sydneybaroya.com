@@ -3,8 +3,10 @@ import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
 import Water from '@/lib/threejs/models/Water';
 import Debug from '@/lib/threejs/utils/Debug';
+import Fox from '@/lib/threejs/models/Fox';
 
 let scene, camera, environment, debug, water;
+// let fox;
 let sceneLoaded = false;
 
 export function init(bgColor, view, environment) {
@@ -13,7 +15,7 @@ export function init(bgColor, view, environment) {
     scene.environment = environment;
     scene.userData.view = view;
     camera = new Camera(view)
-    camera.setPosition(7, 7, 15);
+    camera.setPosition(4, 0.2, -0.5);
     scene.add(camera.instance)
     scene.userData.camera = camera;
 
@@ -25,8 +27,12 @@ export function loadScene(resources) {
  
     water = new Water(resources, { resolution: 256 });
     scene.add(water);
-    scene.background = resources.items.environmentMapTexture;
-    scene.environment = resources.items.environmentMapTexture;
+
+    // fox = new Fox( resources);
+    // scene.add(fox.model);
+
+    scene.background = resources.items.sunsetCubeMap;
+    scene.environment = resources.items.sunsetCubeMap;
     sceneLoaded = true;
 }
 export function getScene() {
@@ -43,6 +49,7 @@ export function addToDebug() {
     if(debug.active) {
         environment.addToDebug(debug);
         water.addToDebug(debug);
+        // fox.addToDebug(debug);
     }
 }
 
@@ -51,6 +58,7 @@ export function update(time) {
         scene.userData.camera.update();
         environment.update(time);
         water.update(time);
+        // fox.update(time);
     }
 }
 
@@ -87,4 +95,5 @@ export function destroy() {
     camera = null;
     water = null;
     environment = null;
+    // fox=null;
 }

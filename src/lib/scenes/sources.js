@@ -2,6 +2,7 @@ const sources = [
     {
         name: 'environmentMapTexture',
         type: 'cubeTexture',
+        folder: 'buildings/',
         path:
         [
             'px.jpg',
@@ -10,6 +11,20 @@ const sources = [
             'ny.jpg',
             'pz.jpg',
             'nz.jpg'
+        ]
+    },
+    {
+        name: 'sunsetCubeMap',
+        type: 'cubeTexture',
+        folder: 'sunset/',
+        path:
+        [
+            'px.png',
+            'nx.png',
+            'py.png',
+            'ny.png',
+            'pz.png',
+            'nz.png'
         ]
     },
     // {

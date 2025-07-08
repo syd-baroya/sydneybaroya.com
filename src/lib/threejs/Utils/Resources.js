@@ -23,7 +23,8 @@ class Resources extends EventEmitter
         this.loaders = {}
         this.loaders.gltfLoader = new GLTFLoader().setPath('/models/')
         this.loaders.textureLoader = new THREE.TextureLoader().setPath('/textures/')
-        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader().setPath('/textures/environmentMap/')
+        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader() //don't set path in case there are multiple cube maps
+        this.cubeMapMainPath = '/textures/cubeMaps/';
         this.loaders.shaderLoader = new THREE.FileLoader().setPath('/shaders/');
     }
 
@@ -54,6 +55,7 @@ class Resources extends EventEmitter
             }
             else if(source.type === 'cubeTexture')
             {
+                this.loaders.cubeTextureLoader.setPath(this.cubeMapMainPath + source.folder);
                 this.loaders.cubeTextureLoader.load(
                     source.path,
                     (file) =>
@@ -75,6 +77,7 @@ class Resources extends EventEmitter
                     source.fragPath,
                     (file) =>
                     {
+                        this.toLoad++;
                         this.sourceLoaded(file, source.name, 'frag')
                     }
                 )

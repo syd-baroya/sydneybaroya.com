@@ -9,8 +9,8 @@ export default class Water extends THREE.Mesh {
             uniforms: {
 
                 uTime: { value: 0.0 },
-                uEnvironmentMap: { value: resources.items.environmentMapTexture },
-                uOpacity: { value: 0.5 },
+                uEnvironmentMap: { value: resources.items.sunsetCubeMap },
+                uOpacity: { value: 0.8 },
 
                 uTroughColor: { value: new THREE.Color('#186691') },
                 uSurfaceColor: { value: new THREE.Color('#9bd8c0') },
@@ -29,8 +29,8 @@ export default class Water extends THREE.Mesh {
                 uPeakThreshold: { value: 0.05 },
                 uPeakTransition: { value: 0.1 },
 
-                uFresnelStrength: { value: 0.5 },
-                uFresnelPower: { value: 1.0 },
+                uFresnelStrength: { value: 0.67 },
+                uFresnelPower: { value: 1.2 },
             },
             vertexShader: resources.items.waterShader.vert,
             fragmentShader: resources.items.waterShader.frag, 
