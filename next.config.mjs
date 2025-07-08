@@ -3,8 +3,12 @@ const nextConfig = {
     reactStrictMode: true,
     webpack: (config, options) => {
         config.module.rules.push({
-        test: /\.glsl/,
-        type: 'asset/source',
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        exclude: /node_modules/,
+        use: [
+            'raw-loader',
+            'glslify-loader'
+        ]
         });
         return config;
     },
