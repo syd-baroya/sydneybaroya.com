@@ -66,6 +66,8 @@ class Resources extends EventEmitter
             }
             else if(source.type === 'shader')
             {
+                this.toLoad++;
+                
                 this.loaders.shaderLoader.load(
                     source.vertPath,
                     (file) =>
@@ -77,7 +79,6 @@ class Resources extends EventEmitter
                     source.fragPath,
                     (file) =>
                     {
-                        this.toLoad++;
                         this.sourceLoaded(file, source.name, 'frag')
                     }
                 )

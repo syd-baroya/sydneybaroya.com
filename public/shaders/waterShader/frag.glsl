@@ -25,7 +25,7 @@ void main() {
     vec3 reflectedLight = reflect(viewDirection, vNormal);
     reflectedLight.x *= -1.0;
     
-    vec4 reflectionColor = textureCube(uEnvironmentMap, reflectedLight);
+    vec4 reflectionColor = textureCube(uEnvironmentMap, reflectedLight); //vec4(1.0, 0.0, 1.0, 1.0) ;
 
     float fresnel = uFresnelStrength * pow(1.0 - clamp(dot(viewDirection, vNormal), 0.0, 1.0), uFresnelPower);
 

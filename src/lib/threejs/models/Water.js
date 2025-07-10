@@ -12,7 +12,7 @@ export default class Water extends THREE.Mesh {
                 uEnvironmentMap: { value: resources.items.sunsetCubeMap },
                 uOpacity: { value: 0.8 },
 
-                uTroughColor: { value: new THREE.Color('#186691') },
+                uTroughColor: { value: new THREE.Color('#54a5b0') }, //#186691
                 uSurfaceColor: { value: new THREE.Color('#9bd8c0') },
                 uPeakColor: { value: new THREE.Color('#bbd8e0') },
 

@@ -40,7 +40,7 @@ export function getScene() {
 }
 
 export function setBackgroundColor(bgColor) {
-    scene.background.set(bgColor);
+    // scene.background.set(bgColor);
     // scene.background = bgColor;
     // scene.environment = bgColor;
 }
