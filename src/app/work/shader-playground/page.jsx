@@ -43,17 +43,9 @@ export default function ShaderPlayground() {
     return (
         <Stack id="tools" className="workSection">
             {/* Header */}
-            <Stack spacing={1} style={{height: '5vh'}}>
-                <Stack spacing={1}>
-                    <Divider />
-                    <Divider />
-                </Stack>
-                <Typography textAlign="center" sx={{ color: 'var(--primary-text)' }}>
-                    Shader Playground
-                </Typography>
-            </Stack>
+            <Typography variant="h3" gutterBottom>Shader Playground</Typography>
             {/* Container for Scene and Custom Drawer */}
-            <Box sx={{ position: 'relative', height: '89vh', overflow: 'hidden' }}>
+            <Box sx={{ position: 'relative', height: '86vh', overflow: 'hidden' }}>
                 
                 {/* Scene Viewport */}
                 <Box

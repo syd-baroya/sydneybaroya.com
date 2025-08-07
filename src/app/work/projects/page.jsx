@@ -17,32 +17,22 @@ const router = useRouter();
     };
   return (
     <Stack className='section' id="projects" style={{ minHeight: '94vh' }}>
-      <Typography variant="h2" gutterBottom>All Projects</Typography>
+      <Typography variant="h2" gutterBottom>Projects</Typography>
         <LayoutGroup>
             <Stack id="projects" className={styles.workSection}>
-                <Stack>
-                    <Stack spacing={1}>
-                        <Divider />
-                        <Divider />
-                    </Stack>
-                    <Typography textAlign='center' sx={{color: 'var(--primary-text)'}}>Projects</Typography>
-                    <Divider />
-                            <Box sx={{ flexGrow: 1, m: 1 }}>
-                                <Grid container spacing={4} sx={{ display: "flex", alignItems: "center"}} >
-                                    {PROJECT_DATA.map((project) => {
-                                        return (
-                                            <AnimatePresence mode='wait'  key={project.slug}>
-                                                <Grid  size={colWidth}>
-                                                    <ExpandingCard content={project} 
-                                                        onClick={() => handleCardClick(project.slug)}>
-                                                    </ExpandingCard>
-                                                </Grid>
-                                            </AnimatePresence>  
-                                        );
-                                    })}
+                <Grid container spacing={4} sx={{ display: "flex", alignItems: "center"}} >
+                    {PROJECT_DATA.map((project) => {
+                        return (
+                            <AnimatePresence mode='wait'  key={project.slug}>
+                                <Grid  size={colWidth}>
+                                    <ExpandingCard content={project} 
+                                        onClick={() => handleCardClick(project.slug)}>
+                                    </ExpandingCard>
                                 </Grid>
-                            </Box>
-                </Stack>
+                            </AnimatePresence>  
+                        );
+                    })}
+                </Grid>
             </Stack>
         </LayoutGroup>
     </Stack>
