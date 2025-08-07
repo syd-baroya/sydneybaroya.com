@@ -17,6 +17,7 @@ export function init(bgColor, view) {
     scene.userData.view = view;
     camera = new Camera(view)
     camera.setPosition(7, 10, 7);
+    camera.controls.enableZoom = false;
     scene.add(camera.instance)
     scene.userData.camera = camera;
 

@@ -26,15 +26,7 @@ class Camera
     initControls()
     {
         this.controls = new OrbitControls(this.instance, this.div)
-        // this.controls.enableDamping = true
-        // this.controls.enablePan = false;
-        // this.controls.enableZoom = false;
-
-        // this.controls.maxAzimuthAngle = Math.PI / 4;
-        // this.controls.minAzimuthAngle = -Math.PI / 4;
-        // this.controls.maxPolarAngle = Math.PI / 2;
-        // this.controls.minPolarAngle = 0;
-
+        this.controls.enableDamping = true
     }
 
 
