@@ -1,52 +1,77 @@
 import * as THREE from 'three';
 import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
-import Fox from '@/lib/threejs/models/Fox';
-import Floor from '@/lib/threejs/models/Floor'
+// import Fox from '@/lib/threejs/models/Fox';
+// import Floor from '@/lib/threejs/models/Floor'
+// import Summer from '@/lib/threejs/models/Summer';
+import Otter from '@/lib/threejs/models/Otter';
+import Debug from '@/lib/threejs/utils/Debug';
 
-
-let scene, camera, fox, floor, environment;
+let scene, camera, otter, environment, debug;
+// let floor;
 let sceneLoaded = false;
-export function init(bgColor, view, resources) {
+export function init(bgColor, view) {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( bgColor);
 
     scene.userData.view = view;
     camera = new Camera(view)
+    camera.setPosition(7, 10, 7);
     scene.add(camera.instance)
     scene.userData.camera = camera;
-    resources.on('ready', () =>
-    {
-        environment = new Environment(scene, resources);
 
-        fox = new Fox( resources);
-        scene.add(fox.model);
+    debug = new Debug(document.getElementById('homeSceneGUI'));
+}
 
-        floor = new Floor(resources);
-        scene.add(floor.mesh);
-        sceneLoaded = true;
-    })
+export function loadScene(resources) {
+    environment = new Environment(scene, resources);
+
+    // fox = new Fox( resources);
+    // scene.add(fox.model);
+
+    // floor = new Floor(resources);
+    // scene.add(floor.mesh);
+
+    // summer = new Summer(resources);
+    // scene.add(summer.model);
+
+    otter = new Otter(resources);
+    otter.setScale(1.4);
+    scene.add(otter.model);
+    
+    sceneLoaded = true;
 }
 
 export function getScene() {
     return scene;
 }
 
-export function addToDebug(debug) {
-    environment.addToDebug(debug);
-    fox.addToDebug(debug);
+export function addToDebug() {
+    if(debug.active) {
+        environment.addToDebug(debug);
+        otter.addToDebug(debug);
+    }
 }
 
 export function setBackgroundColor(bgColor) {
     scene.background.set(bgColor);
 }
 
-export function update(delta) {
+export function mouseMove(position) {
+    if(sceneLoaded) {
+        otter.mouseMove(position, scene.userData.camera.instance);
+    }
+    
+}
+
+export function update(time) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        environment.update(delta);
-        fox.update(delta);
-        floor.update(delta);
+        otter.update(time.delta);
+        // summer.update(delta);
+        environment.update(time.delta);
+        // fox.update(delta);
+        // floor.update(delta);
     }
 }
 
@@ -76,10 +101,14 @@ export function destroy() {
     })
 
     scene.userData.camera.controls.dispose();
+    if(debug.active) debug.ui.destroy();
+    debug = null;
     sceneLoaded = false;
     scene = null;
     camera = null;
-    fox = null;
-    floor = null;
+    otter = null;
+    // summer = null;
+    // fox = null;
+    // floor = null;
     environment = null;
 }

@@ -13,21 +13,27 @@ class Camera
     initInstance()
     {
         const sizes = this.div.getBoundingClientRect()
-        this.instance = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
-        this.instance.position.set(3, 3, 9)
+        this.fov = 35;
+        const aspect = sizes.width / sizes.height;
+        this.instance = new THREE.PerspectiveCamera(this.fov/aspect, aspect, 0.1, 100)
+    }
+
+    setPosition(x, y, z)
+    {
+        this.instance.position.set(x, y, z)
     }
 
     initControls()
     {
         this.controls = new OrbitControls(this.instance, this.div)
-        this.controls.enableDamping = true
-        this.controls.enablePan = false;
-        this.controls.enableZoom = false;
+        // this.controls.enableDamping = true
+        // this.controls.enablePan = false;
+        // this.controls.enableZoom = false;
 
-        this.controls.maxAzimuthAngle = Math.PI / 4;
-        this.controls.minAzimuthAngle = -Math.PI / 4;
-        this.controls.maxPolarAngle = Math.PI / 2;
-        this.controls.minPolarAngle = 0;
+        // this.controls.maxAzimuthAngle = Math.PI / 4;
+        // this.controls.minAzimuthAngle = -Math.PI / 4;
+        // this.controls.maxPolarAngle = Math.PI / 2;
+        // this.controls.minPolarAngle = 0;
 
     }
 
@@ -35,9 +41,10 @@ class Camera
 
     resize()
     {
-        const sizes = this.div.getBoundingClientRect()
-        this.instance.aspect = sizes.width / sizes.height
-        this.instance.updateProjectionMatrix()
+        const sizes = this.div.getBoundingClientRect();
+        this.instance.aspect = sizes.width / sizes.height;
+        this.instance.fov = this.fov / this.instance.aspect;
+        this.instance.updateProjectionMatrix();
     }
 
     update()

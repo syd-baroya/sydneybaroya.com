@@ -12,8 +12,8 @@ export default function AboutSection() {
             className="section"
             id="about"
             direction={{ xs: 'column', md: 'row' }}
-            spacing={10}
-            sx={{ justifyContent: {xs:'space-around', md: 'center'}, alignItems: 'center', height: '83vh', margin: '0vh 5vh'}}
+            spacing={5}
+            sx={{ justifyContent: {xs:'space-around', md: 'space-around'}, alignItems: 'center'}}
         >
             <Box
                 xs={4} md={4}
@@ -34,7 +34,7 @@ export default function AboutSection() {
                     }}
                 />
             </Box>
-            <Stack direction= "column"  xs={6} md={6} spacing={5} sx={{ justifyContent: 'center', maxWidth: '600px'}}>
+            <Stack direction= "column"  xs={6} md={6} spacing={2} sx={{ justifyContent: 'center', maxWidth: '600px'}}>
                 <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
                 Hi my name is Sydney! I am currently working at CACI as a full-stack web developer, focused in 3D web dev.
                 </Typography>

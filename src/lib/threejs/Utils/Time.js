@@ -1,4 +1,5 @@
 import EventEmitter from './EventEmitter.js'
+import * as THREE from 'three'
 
 class Time extends EventEmitter
 {
@@ -7,6 +8,7 @@ class Time extends EventEmitter
         super()
 
         // Setup
+        this.clock = new THREE.Clock()
         this.start = Date.now()
         this.current = this.start
         this.elapsed = 0
@@ -20,10 +22,9 @@ class Time extends EventEmitter
 
     tick()
     {
-        const currentTime = Date.now()
-        this.delta = currentTime - this.current
-        this.current = currentTime
-        this.elapsed = this.current - this.start
+        this.current = Date.now();
+        this.delta = this.clock.getDelta();
+        this.elapsed = this.clock.getElapsedTime();
 
         this.trigger('tick')
 

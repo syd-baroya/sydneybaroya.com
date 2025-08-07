@@ -1,42 +1,64 @@
 import * as THREE from 'three';
 import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
-import Cube from '@/lib/threejs/models/Cube';
+import Water from '@/lib/threejs/models/Water';
+import Debug from '@/lib/threejs/utils/Debug';
+import Fox from '@/lib/threejs/models/Fox';
 
-let scene, camera, cube, environment;
+let scene, camera, environment, debug, water;
+// let fox;
 let sceneLoaded = false;
 
-export function init(bgColor, view, resources) {
+export function init(bgColor, view, environment) {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( bgColor);
-
+    scene.environment = environment;
     scene.userData.view = view;
     camera = new Camera(view)
+    camera.setPosition(4, 0.2, -0.5);
     scene.add(camera.instance)
     scene.userData.camera = camera;
-    resources.on('ready', () =>
-    {
-        environment = new Environment(scene, resources);
 
-        cube = new Cube();
-        scene.add(cube.mesh);
-        sceneLoaded = true;
-    })
+    debug = new Debug(document.getElementById('toolsSceneGUI'));
 }
 
+export function loadScene(resources) {
+    environment = new Environment(scene, resources);
+ 
+    water = new Water(resources, { resolution: 256 });
+    scene.add(water);
+
+    // fox = new Fox( resources);
+    // scene.add(fox.model);
+
+    scene.background = resources.items.sunsetCubeMap;
+    scene.environment = resources.items.sunsetCubeMap;
+    sceneLoaded = true;
+}
 export function getScene() {
     return scene;
 }
 
 export function setBackgroundColor(bgColor) {
-    scene.background.set(bgColor);
+    // scene.background.set(bgColor);
+    // scene.background = bgColor;
+    // scene.environment = bgColor;
 }
 
-export function update(delta) {
+export function addToDebug() {
+    if(debug.active) {
+        environment.addToDebug(debug);
+        water.addToDebug(debug);
+        // fox.addToDebug(debug);
+    }
+}
+
+export function update(time) {
     if(sceneLoaded) {
         scene.userData.camera.update();
-        environment.update(delta);
-        cube.update(delta);
+        environment.update(time);
+        water.update(time);
+        // fox.update(time);
     }
 }
 
@@ -66,9 +88,12 @@ export function destroy() {
     })
     
     scene.userData.camera.controls.dispose();
+    if(debug.active) debug.ui.destroy();
+    debug = null;
     sceneLoaded = false;
     scene = null;
     camera = null;
-    cube = null;
+    water = null;
     environment = null;
+    // fox=null;
 }

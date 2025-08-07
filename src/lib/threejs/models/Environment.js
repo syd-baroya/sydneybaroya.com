@@ -57,14 +57,18 @@ class Environment
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0.05
         this.sunLight.position.set(3.5, 2, - 1.25)
+
+        this.ambientLight = new THREE.AmbientLight('#ffffff', 0.4)
+
         this.scene.add(this.sunLight)
+        this.scene.add(this.ambientLight);
     }
 
     initEnvironmentMap(resources)
     {
         this.environmentMap = {}
         this.environmentMap.intensity = 0.4
-        this.environmentMap.texture = resources.items.environmentMapTexture
+        this.environmentMap.texture = resources.items.sunsetCubeMap
         this.environmentMap.texture.colorSpace = THREE.SRGBColorSpace
         
         this.scene.environment = this.environmentMap.texture

@@ -23,7 +23,9 @@ class Resources extends EventEmitter
         this.loaders = {}
         this.loaders.gltfLoader = new GLTFLoader().setPath('/models/')
         this.loaders.textureLoader = new THREE.TextureLoader().setPath('/textures/')
-        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader().setPath('/textures/environmentMap/')
+        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader() //don't set path in case there are multiple cube maps
+        this.cubeMapMainPath = '/textures/cubeMaps/';
+        this.loaders.shaderLoader = new THREE.FileLoader().setPath('/shaders/');
     }
 
     startLoading()
@@ -37,7 +39,7 @@ class Resources extends EventEmitter
                     source.path,
                     (file) =>
                     {
-                        this.sourceLoaded(source, file)
+                        this.sourceLoaded(file, source.name)
                     }
                 )
             }
@@ -47,26 +49,54 @@ class Resources extends EventEmitter
                     source.path,
                     (file) =>
                     {
-                        this.sourceLoaded(source, file)
+                        this.sourceLoaded(file, source.name)
                     }
                 )
             }
             else if(source.type === 'cubeTexture')
             {
+                this.loaders.cubeTextureLoader.setPath(this.cubeMapMainPath + source.folder);
                 this.loaders.cubeTextureLoader.load(
                     source.path,
                     (file) =>
                     {
-                        this.sourceLoaded(source, file)
+                        this.sourceLoaded(file, source.name)
+                    }
+                )
+            }
+            else if(source.type === 'shader')
+            {
+                this.toLoad++;
+                
+                this.loaders.shaderLoader.load(
+                    source.vertPath,
+                    (file) =>
+                    {
+                        this.sourceLoaded(file, source.name, 'vert')
+                    }
+                )
+                 this.loaders.shaderLoader.load(
+                    source.fragPath,
+                    (file) =>
+                    {
+                        this.sourceLoaded(file, source.name, 'frag')
                     }
                 )
             }
         }
     }
 
-    sourceLoaded(source, file)
+    sourceLoaded(file, name, extraName=null)
     {
-        this.items[source.name] = file
+        if(extraName) {
+            if(this.items[name] === undefined) {
+                this.items[name] = {}
+            }
+            this.items[name][extraName] = file
+        }
+        else {
+            this.items[name] = file
+        }
 
         this.loaded++
 

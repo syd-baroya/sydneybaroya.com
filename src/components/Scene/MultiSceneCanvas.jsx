@@ -27,10 +27,10 @@ useEffect(() => {
     bgColor = '#000000';
   }
 
-  SceneManager.init(canvasRef.current, bgColor);
+  SceneManager.init(canvasRef.current, bgColor, resources);
   
   validRefs.forEach((ref) => {
-    ref.current.scene.init(bgColor, ref.current, resources);
+    ref.current.scene.init(bgColor, ref.current);
     SceneManager.registerScene(ref.current.scene);
   });
 
@@ -38,8 +38,8 @@ useEffect(() => {
 
   return () => {
     resources.off('ready');
-    SceneManager.unregisterAllScenes();
     SceneManager.destroy();
+    SceneManager.unregisterAllScenes();
     sceneSetupRef.current = false;
   };
 }, [version]);

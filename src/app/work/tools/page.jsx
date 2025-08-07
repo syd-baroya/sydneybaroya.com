@@ -83,6 +83,7 @@ export default function Tools() {
                         </Select>
                     </FormControl>
                     <Box sx={{ width: '100%', height: {xs: '70vh', md: '50vh'}}}>
+                        <div id="toolsSceneGUI" style={{zIndex: 1000, position: 'absolute'}}></div>
                         <SceneViewport  className="view" index={1} scene={ToolsScene}></SceneViewport>
                     </Box>
                 </Grid>
