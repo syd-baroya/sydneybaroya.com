@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --hostname 0.0.0.0",
+    "dev": "open-cli http://localhost:3000 && next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -31,6 +31,7 @@
     "eslint-config-next": "15.3.3",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
+    "open-cli": "^8.0.0",
     "raw-loader": "^4.0.2",
     "vite": "^6.3.5"
   }
