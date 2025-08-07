@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
-export default function ProjectSection({ projects, children }) {
+export default function ShaderSection({ shaders, children }) {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -18,27 +18,22 @@ export default function ProjectSection({ projects, children }) {
     const itemMargin = 2; // vw
     const totalItemWidth = itemWidth + itemMargin;
 
-    let duplicatedProjects = [...projects];
-    while(duplicatedProjects.length < 4) {
-        duplicatedProjects = [...duplicatedProjects, ...projects];
-    }
-
     // Calculate the total width of the content inside the motion.div
     // This assumes the last item doesn't have a right margin that contributes to the scrollable width
-    const contentWidth = duplicatedProjects.length * totalItemWidth;
+    const contentWidth = shaders.length * totalItemWidth;
 
     // The x transform should move the content from 0 to -(contentWidth - viewportWidth)
     // viewportWidth is 100vw
-    const x = useTransform(scrollYProgress, [0, 1], [`-${contentWidth - 100}vw`,`0vw`]);
+    const x = useTransform(scrollYProgress, [0, 1], [`0vw`, `-${contentWidth - 100}vw`]);
 
     return (
-        <Stack id="projects" className={styles.workSection}>
+        <Stack id="shaders" className={styles.workSection}>
             {/* This outer container creates the scrollable space */}
             <Box ref={containerRef}>
                 {/* This sticky container holds the carousel and keeps it in view */}
                 <Box sx={{ position: 'sticky', overflow: 'hidden' }}>
                     <motion.div style={{ x, display: 'flex', width: `${contentWidth}vw` }}>
-                        {duplicatedProjects.map((project, index) => (
+                        {shaders.map((shader, index) => (
                             <Box key={index} sx={{ 
                                 width: `${itemWidth}vw`, 
                                 height: `${itemWidth}vh`, // Using itemWidth for height to maintain aspect ratio
@@ -47,8 +42,8 @@ export default function ProjectSection({ projects, children }) {
                                 marginRight: `${itemMargin}vw` // Spacing between images
                             }}>
                                 <Image
-                                    alt={project.source || "Project image"}
-                                    src={`/images/${project.img[0]}`}
+                                    alt={shader.source || "Shader image"}
+                                    src={`/images/${shader.img}`}
                                     fill
                                     style={{ objectFit: 'contain' }}
                                 />
@@ -58,9 +53,9 @@ export default function ProjectSection({ projects, children }) {
                 </Box>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 1 }}>
-                <Link href={'/work/projects'}>
+                <Link href={'/work/shader-playground'}>
                     <Button size="small" variant="contained">
-                        View Projects
+                        View Shader Playground
                     </Button>
                 </Link>
             </Box>

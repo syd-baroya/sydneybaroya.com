@@ -35,7 +35,7 @@ export default function ExpandingCard({ content, onClick }) {
             <CardMedia
                 component="img"
                 sx={{ width: "70%", aspectRatio: "1", objectFit: "contain" }}
-                image={content.img[0]}
+                image={`/images/${content.img[0]}`}
                 alt={content.cardTitle}
             />
             <CardContent sx={{ width: "100%" }}>

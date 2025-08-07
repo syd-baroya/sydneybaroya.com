@@ -84,7 +84,7 @@ export default function ProjectModalPage(props) {
         <Stack spacing={2}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <motion.img
-              src={project.img[0]}
+              src={`/images/${project.img[0]}`}
               alt={project.cardTitle}
               layoutId={`card-image-${project.slug}`}
               style={{ width: '50%', borderRadius: 8, marginBottom: 24 }}

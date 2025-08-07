@@ -60,14 +60,14 @@ const sources = [
     {
         name: 'waterShader',
         type: 'shader',
-        vertPath: '/waterShader/vert.glsl',
-        fragPath: '/waterShader/frag.glsl'
+        vertPath: 'water.vert',
+        fragPath: 'water.frag'
     },
     {
         name: 'snowShader',
         type: 'shader',
-        vertPath: '/snowShader/vert.glsl',
-        fragPath: '/snowShader/frag.glsl'
+        vertPath: 'snow.vert',
+        fragPath: 'snow.frag'
     }
 ]
 
