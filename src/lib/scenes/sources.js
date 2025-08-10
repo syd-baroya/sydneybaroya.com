@@ -55,7 +55,7 @@ const sources = [
     {
         name: 'otterModel',
         type: 'gltfModel',
-        path: 'Otter/otterAnimated.glb'
+        path: 'Otter/otterSurfandPaddle.glb'
     },
     {
         name: 'waterShader',

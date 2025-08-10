@@ -38,6 +38,7 @@ export function loadScene(resources) {
 
     otter = new Otter(resources);
     otter.setScale(1.4);
+    otter.play('paddle');
     scene.add(otter.model);
     
     sceneLoaded = true;

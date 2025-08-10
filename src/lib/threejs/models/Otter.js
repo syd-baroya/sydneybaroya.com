@@ -12,6 +12,7 @@ export default class Otter
         this.model = null;
         this.head = null;
         this.mouseTarget = new THREE.Vector3();
+        this.currentAction = 'idle';
         
         this.initModel();
         this.initAnimation()
@@ -32,10 +33,12 @@ export default class Otter
         
         // Actions
         this.animation.actions = {}
-        
-        this.animation.actions.paddle = this.animation.mixer.clipAction(this.resource.animations[0])
-        
-        this.animation.actions.current = this.animation.actions.paddle
+
+        this.resource.animations.forEach(element => {
+            this.animation.actions[element.name] = this.animation.mixer.clipAction(element)
+        });
+
+        this.animation.actions.current = this.animation.actions.idle
         this.animation.actions.current.play()
 
         // Play the action
@@ -49,15 +52,19 @@ export default class Otter
             newAction.crossFadeFrom(oldAction, 1)
 
             this.animation.actions.current = newAction
+            oldAction.stop();
+            this.currentAction = name;
         }
     }
 
+    play(name) { this.animation.play(name); }
+
     update(delta) {
-        this.animation.mixer.update(delta * 0.001)
+        this.animation.mixer.update(delta)
     }
 
     mouseMove(mousePosition, camera) {
-        if(this.head) {
+        if(this.head && (this.currentAction === 'idle' || this.currentAction === 'paddle')) {
             this.mouseTarget.copy(Raycast.mousePositionTo3D(mousePosition, this.head.position, camera));
             this.mouseTarget.y -= 3;
             this.head.lookAt(this.mouseTarget);
