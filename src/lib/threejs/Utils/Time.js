@@ -6,6 +6,10 @@ class Time extends EventEmitter
     constructor()
     {
         super()
+        if(Time.instance)
+        {
+            return Time.instance
+        }
 
         // Setup
         this.clock = new THREE.Clock()
@@ -14,30 +18,35 @@ class Time extends EventEmitter
         this.elapsed = 0
         this.delta = 16
 
-        this.frameID = window.requestAnimationFrame(() =>
-        {
-            this.tick()
-        })
+        Time.instance = this
+
+        // Wait for the next frame to avoid issues with SSR
+        if (typeof window !== 'undefined') {
+            window.requestAnimationFrame(() =>
+            {
+                this.tick()
+            })
+        }
     }
 
     tick()
     {
+        const elapsedTime = this.clock.getElapsedTime();
+        this.delta = elapsedTime - this.elapsed;
+        this.elapsed = elapsedTime;
         this.current = Date.now();
-        this.delta = this.clock.getDelta();
-        this.elapsed = this.clock.getElapsedTime();
 
-        this.trigger('tick')
+        this.trigger('tick');
 
-        this.frameID = window.requestAnimationFrame(() =>
-        {
-            this.tick()
-        })
-    }
-
-    off(names) {
-        super.off(names);
-        window.cancelAnimationFrame(this.frameID);
+        if (typeof window !== 'undefined') {
+            window.requestAnimationFrame(() =>
+            {
+                this.tick()
+            })
+        }
     }
 }
 
-export default Time;
+// Export a singleton instance
+const time = new Time()
+export default time

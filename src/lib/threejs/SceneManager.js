@@ -1,13 +1,13 @@
 import Renderer from './Renderer.js';
 import Sizes from './utils/Sizes.js'
-import Time from './utils/Time.js'
+import time from './utils/Time.js'
 import MouseEvent from './utils/MouseEvents.js'
 
-let sizes, time, mouseEvent, raycast, renderer;
+let sizes, mouseEvent, raycast, renderer;
 let scenes = [];
 export function init(canvas, bgColor, resources) {
     sizes = new Sizes()
-    time = new Time()
+    //time = new Time()
     mouseEvent = new MouseEvent();
 
     renderer = new Renderer(canvas, sizes, bgColor);
@@ -24,7 +24,7 @@ export function init(canvas, bgColor, resources) {
     })
 
     // Time tick event
-    time.on('tick', () =>
+    time.on('tick.scenemanager', () =>
     {
         update()
     })
@@ -72,14 +72,13 @@ export function setBackgroundColor(bgColor) {
 
 export function destroy() {
     sizes.off('resize');
-    time.off('tick');
+    time.off('tick.scenemanager');
     mouseEvent.off('mousemove');
 
     scenes.forEach((s) => s.destroy?.());
     renderer.destroy();
 
     sizes = null;
-    time = null;
     renderer = null;
 
 }

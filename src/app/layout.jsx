@@ -1,6 +1,6 @@
-// // src/app/layout.jsx
 import "@/styles/globals.css";
 import ThemeRegistry from "./themeRegistry";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +14,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <SmoothScroll />
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <main style={{ flex: 1 }}>{children}</main>
+          </div>
+        </ThemeRegistry>
       </body>
     </html>
   );
