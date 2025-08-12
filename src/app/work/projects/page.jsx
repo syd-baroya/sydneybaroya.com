@@ -16,7 +16,7 @@ export default function ProjectsPage() {
         router.push(`/work/projects/${slug}`);
     };
   return (
-    <Stack className='section' id="projects" style={{ minHeight: '94vh' }}>
+    <Stack className='section' id="projects" style={{ minHeight: '94vh', background: 'var(--background-color)', zIndex: 10, position: 'relative', boxShadow: '0px 70px 60px rgba(0, 0, 0, 0.5)' }}>
       <Typography variant="h2" gutterBottom>Projects</Typography>
         <LayoutGroup>
             <Stack id="projects" className={styles.workSection}>

@@ -48,22 +48,22 @@ export default function Footer() {
                     }}
                 />
                 <Stack col={12} direction={{xs: 'column', md: 'row'}} style={{width: '100%', justifyContent: 'space-around', alignItems: 'center'}}>
-                    <Stack md={4} direction="column" spacing={2}>
-                        <Typography variant="h5" sx={{ color: 'var(--background-color)' }}>
+                    <Stack md={4} direction="column" spacing={1}>
+                        <Typography variant="body1" sx={{ color: 'var(--background-color)' }}>
                             Version
                         </Typography>
-                        <Typography variant="body1" sx={{ color: 'var(--background-color)' }}>2025 © Edition</Typography>
+                        <Typography variant="body2" sx={{ color: 'var(--background-color)' }}>2025 © Edition</Typography>
                     </Stack>
-                    <Stack md={4} direction="column" spacing={2}>
-                        <Typography variant="h5" sx={{ color: 'var(--background-color)' }}>
+                    <Stack md={4} direction="column" spacing={1}>
+                        <Typography variant="body1" sx={{ color: 'var(--background-color)' }}>
                             Timezone
                         </Typography>
-                        <Typography variant="body1" sx={{ color: 'var(--background-color)' }}>                
+                        <Typography variant="body2" sx={{ color: 'var(--background-color)' }}>                
                             {timeNow} PST
                         </Typography>
                     </Stack>
-                    <Stack md={4} direction="column" spacing={2}>
-                        <Typography variant="h5" sx={{ color: 'var(--background-color)' }}>
+                    <Stack md={4} direction="column" spacing={1}>
+                        <Typography variant="body1" sx={{ color: 'var(--background-color)' }}>
                             Socials
                         </Typography>
                         <Contact size="small" primaryColor={"var(--secondary-text)"} secondaryColor={"var(--primary-text)"}/>
