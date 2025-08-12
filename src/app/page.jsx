@@ -9,8 +9,10 @@ export default function Main({}) {
     return (
         <Stack id="main" spacing={2}>
             <HomeSection></HomeSection>
-            <AboutSection></AboutSection>
-            <WorkSection></WorkSection>
+            <Stack sx={{background: 'var(--background-color)', zIndex: 10, position: 'relative', boxShadow: '0px 70px 60px rgba(0, 0, 0, 0.5)'}}>
+                <AboutSection></AboutSection>
+                <WorkSection></WorkSection>
+            </Stack>
         </Stack>
   );
 }

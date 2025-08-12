@@ -10,7 +10,7 @@ import styles from '@/styles/work.module.css';
 
 export default function ProjectsPage() {
       const colWidth = { xs: 12, sm: 6, md: 4, lg: 3 };
-const router = useRouter();
+      const router = useRouter();
 
     const handleCardClick = (slug) => {
         router.push(`/work/projects/${slug}`);

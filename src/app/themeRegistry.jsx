@@ -61,13 +61,14 @@ export default function ThemeRegistry({ children }) {
           <ThreeCanvasProvider>
             <MultiSceneCanvas />
             <NavBar items={SECTIONS} />
-            <ActiveCardProvider>
+            <ActiveCardProvider >
               <AnimatePresence mode="wait">
                 <motion.main
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  style={{zIndex: 10, position: 'relative'}}
                 >
                   {children}
                 </motion.main>

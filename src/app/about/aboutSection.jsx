@@ -44,7 +44,7 @@ export default function AboutSection() {
                 <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
                 Send me an email if you’d like a resume or to get in touch!
                 </Typography>
-                <Contact alignSelf="center"></Contact>
+                <Contact size="medium" primaryColor={'var(--primary-text)'} secondaryColor={'var(--secondary-text)'}></Contact>
             </Stack>
         </Stack>
     );

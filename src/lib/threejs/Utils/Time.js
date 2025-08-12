@@ -5,11 +5,12 @@ class Time extends EventEmitter
 {
     constructor()
     {
-        super()
         if(Time.instance)
         {
             return Time.instance
         }
+
+        super()
 
         // Setup
         this.clock = new THREE.Clock()
@@ -48,5 +49,5 @@ class Time extends EventEmitter
 }
 
 // Export a singleton instance
-const time = new Time()
-export default time
+const time = new Time();
+export default time;

@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import ThemeRegistry from "./themeRegistry";
-import SmoothScroll from "@/components/SmoothScroll";
+import AnimatedFooter from "@/components/animations/AnimatedFooter";
+import SmoothScroll from "@/components/animations/SmoothScroll";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
           <SmoothScroll />
           <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <main style={{ flex: 1 }}>{children}</main>
+            <AnimatedFooter />
           </div>
         </ThemeRegistry>
       </body>

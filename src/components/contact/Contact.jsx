@@ -2,7 +2,7 @@
 
 import {Typography, Box, IconButton, Stack, Dialog, DialogActions, DialogContent, InputAdornment, DialogTitle, FormHelperText, TextField, Button} from "@mui/material";
 import buttonProps from './contactButtons.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -12,12 +12,23 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fas, far, fab)
-export default function Contact() {
+export default function Contact({size, primaryColor, secondaryColor}) {
 
     const myEmail = "sydneybaroya@gmail";
     const [openEmailModal, setOpenEmailModal] = useState(false);
     const [copiedStatus, setCopiedStatus] = useState('initial');
     const [activeModalProps, setActiveModalProps] = useState({});
+    const [iconSize, setIconSize] = useState('2x');
+
+    useEffect(() => {
+        if(size === "small") {
+            setIconSize('1x');
+        } else if (size === "medium") {
+            setIconSize('2x');
+        } else if (size === "large") {
+            setIconSize('3x');
+        }
+    }, [size]);
     
   const handleCopy = async () => {
     try {
@@ -40,20 +51,20 @@ export default function Contact() {
     }
 
     return (
-        <Stack className="section" id="contact" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center"}}>                    
+        <Stack id="contact" direction="column" spacing={2} sx={{ justifyContent: "center", alignItems: "center"}}>                    
             {/* <Typography textAlign="center" fontSize="48px" sx={{ color: 'var(--primary-text)'}}>Contact</Typography> */}
             <Stack direction="row" spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
                 { buttonProps.map( (btn) => 
                     <IconButton key={btn.name} 
                     aria-label={btn.name} component="a" href={btn.link}
                     sx={{ 
-                        color: "var(--primary-text)",
+                        color: primaryColor,
                         ":hover": {
-                            bgcolor: "var(--primary-text)",
-                            color: "var(--secondary-text)",
+                            bgcolor: primaryColor,
+                            color: secondaryColor,
                             borderRadius: "10px",
                         }}} onClick={(event) => onButtonClick(event, btn)}>
-                        <FontAwesomeIcon icon={btn.icon} size="2x"/>
+                        <FontAwesomeIcon icon={btn.icon} size={iconSize}/>
                     </IconButton>
                 )}
             </Stack>
@@ -84,7 +95,7 @@ export default function Contact() {
                                 input: {
                                     startAdornment: (
                                     <InputAdornment position="start">
-                                        <FontAwesomeIcon icon="fa-solid fa-envelope" size="2x"/>
+                                        <FontAwesomeIcon icon="fa-solid fa-envelope" size={iconSize}/>
                                     </InputAdornment>
                                     ),
                                     readOnly: true
@@ -105,7 +116,7 @@ export default function Contact() {
                         </Stack>
                 </DialogContent>
                 <DialogActions sx={{ justifyContent: "center", alignItems: "center"}}>
-                    <Button sx={{bgcolor: "var(--primary-text)", color: "var(--secondary-text)", borderRadius: "10px"}} 
+                    <Button sx={{bgcolor: primaryColor, color: secondaryColor, borderRadius: "10px"}} 
                         onClick={(event)=> { onButtonClick(event, {link: activeModalProps.link, openModal: false});}}>Open in default mail app</Button>
                 </DialogActions>
         </Dialog>
