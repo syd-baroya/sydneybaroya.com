@@ -59,7 +59,15 @@ export default function ProjectSection({ projects, children }) {
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 1 }}>
                 <Link href={'/work/projects'}>
-                    <Button size="small" variant="contained">
+                    <Button size="small" variant="contained"
+                        sx={{
+                        bgcolor: "var(--primary-text)",
+                        color: "var(--secondary-text)",
+                        ":hover": {
+                            bgcolor: "var(--secondary-text)",
+                            color: "var(--primary-text)",
+                            borderRadius: "10px",
+                        }}}>
                         View Projects
                     </Button>
                 </Link>
