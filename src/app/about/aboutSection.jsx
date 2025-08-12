@@ -1,5 +1,6 @@
 import { Box, Typography, Stack } from "@mui/material";
 import Contact from "@/components/contact/Contact";
+import Image from "next/image";
 
 export default function AboutSection() {
 
@@ -18,21 +19,26 @@ export default function AboutSection() {
             <Box
                 xs={4} md={4}
                 sx={{
-                    // flexBasis: { xs: '20%', md: '35%' }, // ⬅️ controls size relative to the Stack
+                    flexBasis: { xs: '20%', md: '35%' }, // ⬅️ controls size relative to the Stack
                     maxWidth: {md: '400px', xs: '350px'},
                 }}
             >
                 <Box
-                    component="img"
-                    src="/images/headshot.JPG"
-                    alt="Profile"
                     sx={{
                         width: '100%',
                         aspectRatio: '1 / 1',
                         borderRadius: '50%',
-                        objectFit: 'cover',
+                        overflow: 'hidden', // Crucial for borderRadius to work with Image fill
+                        position: 'relative', // Crucial for Image fill
                     }}
-                />
+                >
+                    <Image
+                        src="/images/headshot.JPG"
+                        alt="Profile"
+                        layout="fill"
+                        objectFit="cover"
+                    />
+                </Box>
             </Box>
             <Stack direction= "column"  xs={6} md={6} spacing={2} sx={{ justifyContent: 'center', maxWidth: '600px'}}>
                 <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
