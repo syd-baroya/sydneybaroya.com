@@ -7,17 +7,25 @@ import Contact from "./contact/Contact";
 import Image from "next/image";
 
 export default function Footer() {
-    const [timeNow, setTimeNow] = useState(new Date().toLocaleString("en-US", {
-    timeZone: "America/Los_Angeles"
-}));
+    const [timeNow, setTimeNow] = useState('');
 
     useEffect(() => {
+        // Set initial time after component mounts on the client
+        setTimeNow(new Date().toLocaleString("en-US", {
+            timeZone: "America/Los_Angeles"
+        }));
+
         time.on('tick.footer', () => {
             setTimeNow(new Date(time.current).toLocaleString("en-US", {
-    timeZone: "America/Los_Angeles"
-}));
-        })
-    })
+                timeZone: "America/Los_Angeles"
+            }));
+        });
+
+        // Cleanup function for the event listener
+        return () => {
+            time.off('tick.footer');
+        };
+    }, []);
     
     return (
         <Stack

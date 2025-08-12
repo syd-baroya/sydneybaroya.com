@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import ThemeRegistry from "./themeRegistry";
-import AnimatedFooter from "@/components/animations/AnimatedFooter";
+import FooterWrapper from "@/components/FooterWrapper";
 import SmoothScroll from "@/components/animations/SmoothScroll";
 
 export const metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           <SmoothScroll />
           <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <main style={{ flex: 1 }}>{children}</main>
-            <AnimatedFooter />
+            <FooterWrapper />
           </div>
         </ThemeRegistry>
       </body>
