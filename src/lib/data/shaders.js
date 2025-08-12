@@ -2,22 +2,22 @@ const SHADER_DATA = [
     {
         name: 'water',
         source: 'waterShader',
-        img: 'dolphinButterEye.gif'
+        img: 'dolphinButterEye.jpg'
     },
     {
         name: 'temp2',
         source: 'defaultShader',
-        img: 'dolphinButterflyWave.gif'
+        img: 'dolphinChameleon.png'
     },
     {
         name: 'temp3',
         source: 'defaultShader',
-        img: 'dolphinRainbowSpin.gif'
+        img: 'thesisBurnAway.jpg'
     },
     {
         name: 'temp4',
         source: 'defaultShader',
-        img: 'dolphinSwim.gif'
+        img: '2dRayTracer.jpg'
     }
 ]
 export default SHADER_DATA;
