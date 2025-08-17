@@ -14,6 +14,8 @@ import FontWrapper from '@/components/FontWrapper';
 import MultiSceneCanvas from '@/components/Scene/MultiSceneCanvas';
 import { ThreeCanvasProvider } from '@/context/ThreeCanvasContext';
 import { ActiveCardProvider } from "@/lib/hooks/useActiveCard";
+import SmoothScroll from '@/components/animations/SmoothScroll';
+import { ScrollProvider } from '@/context/ScrollContext';
 
 const ColorModeContext = createContext();
 export const useColorMode = () => useContext(ColorModeContext);
@@ -62,17 +64,20 @@ export default function ThemeRegistry({ children }) {
             <MultiSceneCanvas />
             <NavBar items={SECTIONS} />
             <ActiveCardProvider >
-              <AnimatePresence mode="wait">
-                <motion.main
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{zIndex: 10, position: 'relative'}}
-                >
-                  {children}
-                </motion.main>
-              </AnimatePresence>
+              <ScrollProvider>
+                <SmoothScroll />
+                <AnimatePresence mode="wait">
+                  <motion.main
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    style={{zIndex: 10, position: 'relative'}}
+                  >
+                    {children}
+                  </motion.main>
+                </AnimatePresence>
+              </ScrollProvider>
             </ActiveCardProvider>
           </ThreeCanvasProvider>
         </FontWrapper>

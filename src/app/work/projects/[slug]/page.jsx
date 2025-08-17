@@ -1,78 +1,63 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Dialog, IconButton, Box, Typography, Stack } from '@mui/material';
+import { IconButton, Box, Typography, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
 import PROJECT_CARDS from '@/lib/data/projects';
-import { use, useEffect, useState } from 'react';
+import { use, useEffect, useState, useRef } from 'react';
 import { useActiveCard } from '@/lib/hooks/useActiveCard';
+import { useScroll } from '@/context/ScrollContext';
 
 export default function ProjectModalPage(props) {
   const params = use(props.params);
   const router = useRouter();
   const project = PROJECT_CARDS.find((p) => p.slug === params.slug);
   const { setActiveSlug } = useActiveCard();
-  const [isClosing, setIsClosing] = useState(false);
+  const { setWrapper } = useScroll();
+  const modalRef = useRef(null);
 
   const handleClose = () => {
-    setIsClosing(true);
     router.back();
   };
 
-  const handleAnimationEnd = () => {
-    if (isClosing) {
-      setActiveSlug(null);
-      setIsClosing(false);
-    }
-  }
   useEffect(() => {
     setActiveSlug(project.slug);
+    setWrapper(modalRef.current);
     const onEsc = (e) => e.key === 'Escape' && handleClose();
     window.addEventListener('keydown', onEsc);
-    return () => window.removeEventListener('keydown', onEsc);
+    return () => {
+        window.removeEventListener('keydown', onEsc);
+        setActiveSlug(null);
+        setWrapper(null);
+    }
   }, []);
 
   if (!project) return null;
 
   return (
-    <Dialog
-      open
-      fullScreen
-      onClose={handleClose}
-      slotProps={{
-        paper: { 
-        component: motion.div,
-        layoutId:`card-container-${project.slug}`,
-        initial: { scale: 0.9, opacity: 0 },
-        animate: { scale: 1, opacity: 1 },
-        exit: { scale: 0.9, opacity: 0 },
-        transition: { duration: 0.4 },
-        onAnimationComplete: handleAnimationEnd,
-        sx: {
-          background: 'var(--background-color)',
-          p: 4,
-          color: 'var(--primary-text)',
-          position: 'relative',
-          zIndex: 1300,
-        },
-       }
-      }}
-    >
-      <Stack
-        component={motion.div}
-        layoutId={`card-content-${project.slug}`}
+    <motion.div
+        ref={modalRef}
+        layoutId={`card-${project.slug}`}
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ duration: 0.4 }}
         style={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-          background: 'var(--background-color)',
-          padding: 40,
-          overflowY: 'auto',
-          color: 'var(--primary-text)'
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'var(--background-color)',
+            padding: 40,
+            overflowY: 'auto',
+            zIndex: 1300,
+            color: 'var(--primary-text)',
         }}
-      >
+    >
+      <Stack>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
           <IconButton onClick={handleClose} aria-label="back" sx={{ color: 'var(--primary-text)' }}>
             <ArrowBackIcon fontSize="large" />
@@ -97,6 +82,6 @@ export default function ProjectModalPage(props) {
           <Typography variant='body2'>{project.info}</Typography>
         </Stack>
       </Stack>
-    </Dialog>
+    </motion.div>
   );
 }

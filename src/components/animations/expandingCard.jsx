@@ -3,11 +3,13 @@
 import { Typography, Card, CardContent, CardMedia, Stack, Dialog, Box, IconButton } from "@mui/material";
 import { motion } from "framer-motion";
 import { useActiveCard } from "@/lib/hooks/useActiveCard";
+import { useState } from "react";
 
 export default function ExpandingCard({ content, onClick }) {
 
     const { activeSlug } = useActiveCard();
     const isActive = activeSlug === content.slug;
+    const [isAnimating, setIsAnimating] = useState(false);
 
   return (
         <Card
@@ -16,10 +18,12 @@ export default function ExpandingCard({ content, onClick }) {
             layoutId={`card-${content.slug}`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95}}
-            initial={isActive ? { scale: 1.5, opacity: 0 } : { }}
-            animate={isActive ? { scale: 1, opacity: 1 } : {  }}
+            initial={isActive ? { scale: 1.5, opacity: 0 } : { } }
+            animate={isActive ? { scale: 1, opacity: 1 } : { opacity: 1, scale: 1 } }
             exit={isActive ? { scale: 1.5, opacity: 0 } : {  }}
             transition={{ duration: 0.4 }}
+            onAnimationStart={() => setIsAnimating(true)}
+            onAnimationComplete={() => setIsAnimating(false)}
             sx={{
                 aspectRatio: "1",
                 cursor: "pointer",
@@ -28,7 +32,7 @@ export default function ExpandingCard({ content, onClick }) {
                 alignItems: "center",
                 justifyContent: "center",
                 position: "relative",
-                zIndex: isActive ? 1301 : 1, // Raise z-index if active
+                zIndex: isActive || isAnimating ? 1301 : 1,
             }}
         >
             <Stack direction="column" spacing={1} sx={{ alignItems: "center", bottom: 0, position: "absolute", p: 1 }}>
