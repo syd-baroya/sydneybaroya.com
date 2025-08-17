@@ -1,0 +1,11 @@
+
+.fractureContainer {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.fractureLetter {
+    display: inline-block;
+    transform-origin: center;
+}

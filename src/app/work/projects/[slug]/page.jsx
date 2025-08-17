@@ -84,13 +84,13 @@ export default function ProjectModalPage(props) {
         <Stack spacing={2}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <motion.img
-              src={`/images/${project.img[0]}`}
-              alt={project.cardTitle}
+              src={`/images/${project.img}`}
+              alt={project.name}
               layoutId={`card-image-${project.slug}`}
               style={{ width: '50%', borderRadius: 8, marginBottom: 24 }}
             />
           </Box>
-          <motion.h2 layoutId={`card-title-${project.slug}`}>{project.cardTitle}</motion.h2>
+          <motion.h2 layoutId={`card-title-${project.slug}`}>{project.name}</motion.h2>
           <Typography variant='body1'>
             <strong>Technologies:</strong> {project.tech}
           </Typography>

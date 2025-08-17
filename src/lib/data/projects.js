@@ -1,33 +1,33 @@
 const PROJECT_DATA = [
     {
-        cardTitle: "Eye of Metamrophosis",
+        name: "Eye of Metamrophosis",
         title: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
         info: "My master's thesis project. I reasearched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
         gif: ["thesisBurnAway.gif", "thesisButterEye.gif", "thesisChameleon.gif", "thesisSkeleton.gif"],
-        img: ["butterEye.png"],
+        img: "butterEye.png",
         slug: "eye-of-metamrophosis",
         tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
     },
     {
-        cardTitle: "Delfines",
+        name: "Delfines",
         title: "Project 2",
         info: "Project 2 info",
         gif: ["dolphinButterEye.gif"],
-        img: ["dolphin.png"],
+        img: "dolphin.png",
         slug: "delfines",
         tech: "Unity, C#, HLSL, Azure Kinect DKs",
     },
     {
-        cardTitle: "2D Ray Tracer",
+        name: "2D Ray Tracer",
         title: "Project 3",
         info: "Project 3 info",
         gif: ["2dRayTracer.gif"],
-        img: ["flames.png"],
+        img: "flames.png",
         slug: "2d-ray-tracer",
         tech: "C++, OpenGL, GLSL"
     },
     // {
-    //     cardTitle: "Eye of Metamrophosis",
+    //     name: "Eye of Metamrophosis",
     //     title: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
     //     info: "My master's thesis project. I reasearched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
     //     gif: ["thesisBurnAway.gif", "thesisButterEye.gif", "thesisChameleon.gif", "thesisSkeleton.gif"],
@@ -36,7 +36,7 @@ const PROJECT_DATA = [
     //     tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
     // },
     // {
-    //     cardTitle: "Delfines",
+    //     name: "Delfines",
     //     title: "Project 2",
     //     info: "Project 2 info",
     //     gif: ["dolphinButterEye.gif"],
@@ -45,7 +45,7 @@ const PROJECT_DATA = [
     //     tech: "Unity, C#, HLSL, Azure Kinect DKs",
     // },
     // {
-    //     cardTitle: "2D Ray Tracer",
+    //     name: "2D Ray Tracer",
     //     title: "Project 3",
     //     info: "Project 3 info",
     //     gif: ["2dRayTracer.gif"],
@@ -54,7 +54,7 @@ const PROJECT_DATA = [
     //     tech: "C++, OpenGL, GLSL"
     // },  
     // {
-    //     cardTitle: "Eye of Metamrophosis",
+    //     name: "Eye of Metamrophosis",
     //     title: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
     //     info: "My master's thesis project. I reasearched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
     //     gif: ["thesisBurnAway.gif", "thesisButterEye.gif", "thesisChameleon.gif", "thesisSkeleton.gif"],
@@ -63,7 +63,7 @@ const PROJECT_DATA = [
     //     tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
     // },
     // {
-    //     cardTitle: "Delfines",
+    //     name: "Delfines",
     //     title: "Project 2",
     //     info: "Project 2 info",
     //     gif: ["dolphinButterEye.gif"],
@@ -72,7 +72,7 @@ const PROJECT_DATA = [
     //     tech: "Unity, C#, HLSL, Azure Kinect DKs",
     // },
     // {
-    //     cardTitle: "2D Ray Tracer",
+    //     name: "2D Ray Tracer",
     //     title: "Project 3",
     //     info: "Project 3 info",
     //     gif: ["2dRayTracer.gif"],
@@ -81,7 +81,7 @@ const PROJECT_DATA = [
     //     tech: "C++, OpenGL, GLSL"
     // },
     // {
-    //     cardTitle: "Eye of Metamrophosis",
+    //     name: "Eye of Metamrophosis",
     //     title: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
     //     info: "My master's thesis project. I reasearched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
     //     gif: ["thesisBurnAway.gif", "thesisButterEye.gif", "thesisChameleon.gif", "thesisSkeleton.gif"],
@@ -90,7 +90,7 @@ const PROJECT_DATA = [
     //     tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
     // },
     // {
-    //     cardTitle: "Delfines",
+    //     name: "Delfines",
     //     title: "Project 2",
     //     info: "Project 2 info",
     //     gif: ["dolphinButterEye.gif"],
@@ -99,7 +99,7 @@ const PROJECT_DATA = [
     //     tech: "Unity, C#, HLSL, Azure Kinect DKs",
     // },
     // {
-    //     cardTitle: "2D Ray Tracer",
+    //     name: "2D Ray Tracer",
     //     title: "Project 3",
     //     info: "Project 3 info",
     //     gif: ["2dRayTracer.gif"],
