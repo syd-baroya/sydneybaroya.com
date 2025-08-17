@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeRegistry>
           <SmoothScroll />
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', minHeight: '94vh' }}>
             <main style={{ flex: 1 }}>{children}</main>
             <FooterWrapper />
           </div>
