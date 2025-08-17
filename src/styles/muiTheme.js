@@ -13,7 +13,7 @@ export const getDesignTokens = (mode) => {
       },
     },
     typography: {
-      fontFamily: 'Roboto, Arial, sans-serif',
+      fontFamily: `var(--font-quicksand), Roboto, Arial, sans-serif`,
     },
   };
 };
