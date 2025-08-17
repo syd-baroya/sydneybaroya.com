@@ -1,9 +1,6 @@
 import * as THREE from 'three';
 import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
-// import Fox from '@/lib/threejs/models/Fox';
-// import Floor from '@/lib/threejs/models/Floor'
-// import Summer from '@/lib/threejs/models/Summer';
 import Otter from '@/lib/threejs/models/Otter';
 import Debug from '@/lib/threejs/utils/Debug';
 
@@ -21,20 +18,11 @@ export function init(bgColor, view) {
     scene.add(camera.instance)
     scene.userData.camera = camera;
 
-    debug = new Debug(document.getElementById('homeSceneGUI'));
+    debug = new Debug(document.getElementById('homeSceneGUI'), false);
 }
 
 export function loadScene(resources) {
     environment = new Environment(scene, resources);
-
-    // fox = new Fox( resources);
-    // scene.add(fox.model);
-
-    // floor = new Floor(resources);
-    // scene.add(floor.mesh);
-
-    // summer = new Summer(resources);
-    // scene.add(summer.model);
 
     otter = new Otter(resources);
     otter.setScale(1.4);
@@ -70,10 +58,7 @@ export function update(time) {
     if(sceneLoaded) {
         scene.userData.camera.update();
         otter.update(time.delta);
-        // summer.update(delta);
         environment.update(time.delta);
-        // fox.update(delta);
-        // floor.update(delta);
     }
 }
 
@@ -109,8 +94,5 @@ export function destroy() {
     scene = null;
     camera = null;
     otter = null;
-    // summer = null;
-    // fox = null;
-    // floor = null;
     environment = null;
 }

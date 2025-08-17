@@ -49,14 +49,13 @@ export default class Otter
 
             newAction.reset()
             newAction.play()
-            newAction.crossFadeFrom(oldAction, 1)
+            // newAction.crossFadeFrom(oldAction, 1)
 
             this.animation.actions.current = newAction
             oldAction.stop();
             this.currentAction = name;
         }
     }
-
     play(name) { this.animation.play(name); }
 
     update(delta) {
