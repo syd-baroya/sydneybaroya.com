@@ -2,7 +2,7 @@
 
 import { Box, Divider, IconButton, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
-import * as ToolsScene from "@/lib/scenes/ToolsScene.js";
+import {SHADER_DATA, SHADER_SCENES} from '@/lib/data/shaders';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import dynamic from 'next/dynamic';
@@ -10,19 +10,18 @@ import dynamic from 'next/dynamic';
 const SceneViewport = dynamic(() => import('@/components/Scene/SceneViewport'), { ssr: false });
 
 export default function ShaderPlayground() {
-    const toolOptions = ['Item 1', 'Item 2', 'Item 3'];
-    const [toolSelected, setToolSelected] = useState(0);
+    const [shaderSelected, setShaderSelected] = useState(SHADER_DATA[0].sceneKey);
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleDrawerToggle = () => {
         setDrawerOpen(!drawerOpen);
     };
 
-    const handleChange = (event, index) => {
-        if (index !== null) {
-            setToolSelected(index);
+    const handleChange = (event, sceneKey) => {
+        if (sceneKey !== null && sceneKey !== undefined && sceneKey !== '') {
+            setShaderSelected(sceneKey);
         } else {
-            setToolSelected(event.target.value);
+            setShaderSelected(event.target.value);
         }
     };
 
@@ -52,8 +51,8 @@ export default function ShaderPlayground() {
                     component="main"
                     sx={{ width: '100%', height: '100%' }}
                 >
-                    <div id="toolsSceneGUI" style={{ zIndex: 1, position: 'absolute' }}></div>
-                    <SceneViewport className="view" index={1} scene={ToolsScene}></SceneViewport>
+                    <div id="shaderGUI" style={{ zIndex: 1, position: 'absolute', right: 0 }}></div>
+                    <SceneViewport className="view" index={1} scene={SHADER_SCENES[shaderSelected]}></SceneViewport>
                 </Box>
 
                 {/* Closed Drawer Button */}
@@ -113,10 +112,10 @@ export default function ShaderPlayground() {
                         <Box sx={{ height: 48 }} /> {/* Spacer for the button */}
                         <Divider />
                         <List>
-                            {toolOptions.map((text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton selected={toolSelected === index} onClick={(e) => { handleChange(e, index); }}>
-                                        <ListItemText primary={text} />
+                            {SHADER_DATA.map((shader, index) => (
+                                <ListItem key={shader.sceneKey} disablePadding>
+                                    <ListItemButton selected={shaderSelected === index} onClick={(e) => { handleChange(e, shader.sceneKey); }}>
+                                        <ListItemText primary={shader.sceneKey} />
                                     </ListItemButton>
                                 </ListItem>
                             ))}

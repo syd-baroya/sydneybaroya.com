@@ -18,9 +18,14 @@ export default function ShaderSection({ shaders, children }) {
     const itemMargin = 2; // vw
     const totalItemWidth = itemWidth + itemMargin;
 
+    let duplicatedShaders = [...shaders];
+    while(duplicatedShaders.length < 4) {
+        duplicatedShaders = [...duplicatedShaders, ...shaders];
+    }
+
     // Calculate the total width of the content inside the motion.div
     // This assumes the last item doesn't have a right margin that contributes to the scrollable width
-    const contentWidth = shaders.length * totalItemWidth;
+    const contentWidth = duplicatedShaders.length * totalItemWidth;
 
     // The x transform should move the content from 0 to -(contentWidth - viewportWidth)
     // viewportWidth is 100vw
@@ -33,7 +38,7 @@ export default function ShaderSection({ shaders, children }) {
                 {/* This sticky container holds the carousel and keeps it in view */}
                 <Box sx={{ position: 'sticky', overflow: 'hidden' }}>
                     <motion.div style={{ x, display: 'flex', width: `${contentWidth}vw` }}>
-                        {shaders.map((shader, index) => (
+                        {duplicatedShaders.map((shader, index) => (
                             <Box key={index} sx={{ 
                                 width: `${itemWidth}vw`, 
                                 height: `${itemWidth}vh`, // Using itemWidth for height to maintain aspect ratio
@@ -42,7 +47,7 @@ export default function ShaderSection({ shaders, children }) {
                                 marginRight: `${itemMargin}vw` // Spacing between images
                             }}>
                                 <Image
-                                    alt={shader.source || "Shader image"}
+                                    alt={shader.name || "Shader Image"}
                                     src={`/images/${shader.img}`}
                                     fill
                                     style={{ objectFit: 'contain' }}

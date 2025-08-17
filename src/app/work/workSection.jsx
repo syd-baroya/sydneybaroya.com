@@ -4,7 +4,7 @@ import '@/styles/work.module.css';
 import ProjectsSection from "./projectsSection";
 import ShaderSection from './shadersSection';
 import PROJECT_DATA from '@/lib/data/projects';
-import SHADER_DATA from '@/lib/data/shaders';
+import {SHADER_DATA} from '@/lib/data/shaders';
 
 export default function WorkSection({ }) {
 

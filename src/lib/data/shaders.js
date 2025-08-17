@@ -1,23 +1,13 @@
+import * as WaterShader from '@/lib/scenes/WaterShader.js';
 const SHADER_DATA = [
     {
-        name: 'water',
-        source: 'waterShader',
-        img: 'dolphinButterEye.jpg'
-    },
-    {
-        name: 'temp2',
-        source: 'defaultShader',
-        img: 'dolphinChameleon.png'
-    },
-    {
-        name: 'temp3',
-        source: 'defaultShader',
-        img: 'thesisBurnAway.jpg'
-    },
-    {
-        name: 'temp4',
-        source: 'defaultShader',
-        img: '2dRayTracer.jpg'
+        name: 'Water Shader',
+        sceneKey: 'waterShader',
+        img: 'waterShader.png'
     }
 ]
-export default SHADER_DATA;
+
+const SHADER_SCENES = {
+    'waterShader': WaterShader
+}
+export {SHADER_DATA, SHADER_SCENES};
