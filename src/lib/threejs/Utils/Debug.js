@@ -2,9 +2,9 @@ import * as dat from 'lil-gui'
 
 class Debug
 {
-    constructor(container)
+    constructor(container, autoActive = false)
     {
-        this.active = window.location.hash === '#debug'
+        this.active = autoActive || window.location.hash === '#debug';
         const options ={
             closeFolders: true
         }
