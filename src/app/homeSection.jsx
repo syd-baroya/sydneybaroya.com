@@ -15,8 +15,9 @@ export default function Home({}) {
                     fontSize: {
                         xs: 'clamp(1.5rem, 5vh, 4rem)',
                         md: 'clamp(2rem, 6vh, 4rem)',
-                }}}>Sydney Baroya</Typography>
+                }}}>Sydney's</Typography>
                 <Typography textAlign="center" variant='h1' sx={{ color: 'var(--primary-text)',
+                    textTransform: 'uppercase',
                     fontSize: {
                         xs: 'clamp(2rem, 7vh, 5rem)',
                         md: 'clamp(3rem, 9vh, 6rem)',
