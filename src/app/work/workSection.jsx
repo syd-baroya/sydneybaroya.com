@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Box, Stack, Button, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -12,6 +12,8 @@ import FractureText from '@/components/animations/FractureText';
 // import ShaderSection from './shadersSection';
 import PROJECT_DATA from '@/lib/data/projects';
 import {SHADER_DATA} from '@/lib/data/shaders';
+import Magnetic from '@/components/animations/Magnetic';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function WorkSection({ }) {
   const containerRef = useRef(null);
@@ -38,7 +40,7 @@ export default function WorkSection({ }) {
   const x = useTransform(scrollYProgress, [0, 1], [`0vw`, `-${contentWidth - 100}vw`]);
 
   return (
-    <Stack className="section" id="work" sx={{ margin: '5vh'}}>
+    <Stack className="section" id="work" spacing={5} sx={{ margin: '4vh'}}>
         {/* <ProjectsSection projects={PROJECT_DATA}></ProjectsSection>
         <ShaderSection shaders={SHADER_DATA}></ShaderSection> */}
         <Box ref={containerRef}>
@@ -64,14 +66,23 @@ export default function WorkSection({ }) {
                     </motion.div>
                 </Box>
             </Box>
-            <Stack direction='row' spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}}>
+            <Stack direction='row' spacing={2} sx={{ justifyContent: "space-around", alignItems: "center", width: "100%"}}>
                 <Link href={'/work/projects'}>
-                        <FractureText>Projects</FractureText>
+                  <Magnetic>
+                    <Box sx={{ fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
+                      <FractureText>Projects</FractureText>
+                      <FontAwesomeIcon icon="fa-solid fa-external-link" size="xs"/>
+                    </Box>
+                  </Magnetic>
                 </Link>
-                <Link href={'/work/shader-playground'}>
-                    
-                        <FractureText>Shader Playground</FractureText>
-                </Link>
+              <Link href={'/work/shader-playground'}>
+                <Magnetic>
+                  <Box sx={{ fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
+                    <FractureText>Shader Playground</FractureText>
+                    <FontAwesomeIcon icon="fa-solid fa-external-link" size="xs"/>
+                  </Box>
+                </Magnetic>
+              </Link>
             </Stack>
     </Stack>
   )
