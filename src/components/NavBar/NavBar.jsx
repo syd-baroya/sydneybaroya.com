@@ -70,8 +70,8 @@ export default function NavBar({items}) {
                     animate={isHovered ? "hovered" : "initial"}
                     style={{ position: 'relative', display: 'inline-block' }}
                 >
-                    <motion.span variants={sVariants} style={{ display: 'inline-block' }}>S</motion.span>
-                    <motion.span variants={bVariants} style={{ display: 'inline-block' }}>B</motion.span>
+                    <motion.span variants={sVariants} style={{ display: 'inline-block', fontWeight: '500' }}>S</motion.span>
+                    <motion.span variants={bVariants} style={{ display: 'inline-block', fontWeight: '500' }}>B</motion.span>
 
                     <motion.div
                         variants={sydneyBaroyaVariants}
