@@ -23,7 +23,7 @@ export default function NavBar({items}) {
 
     const bVariants = {
         initial: { opacity: 1, x: 0 },
-        hovered: { x: '3.3em', transition: { duration: 0.25 } }, // Move 'B' to its position
+        hovered: { x: '3.3em', transition: { duration: 0.22 } }, // Move 'B' to its position
     };
 
     const sydneyBaroyaVariants = {
@@ -32,8 +32,8 @@ export default function NavBar({items}) {
             width: 'auto', // Expand to full width
             opacity: 1,
             transition: {
-                delay: 0.25, // Delay appearance until 'B' moves
-                duration: 0.5,
+                delay: 0.22, // Delay appearance until 'B' moves
+                duration: 0.4,
                 ease: "easeOut",
             },
         },
