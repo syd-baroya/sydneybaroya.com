@@ -60,7 +60,8 @@ export default function Footer() {
             <Stack md={6} direction={{xs: 'column', lg: 'row'}} spacing={2} style={{width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
                 <Box
                     sx={{
-                        width: {lg:'80%', xs: '70%', md: '50%'},
+                        maxWidth: '250px',
+                        width: {lg:'80%', xs: '70%'},
                         aspectRatio: '1 / 1',
                         borderRadius: '50%',
                         overflow: 'hidden', // Crucial for borderRadius to work with Image fill
