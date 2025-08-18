@@ -109,12 +109,15 @@ export default function ShaderPlayground() {
                             color: 'var(--primary-text)',
                         }}
                     >
-                        <Box sx={{ height: 48 }} /> {/* Spacer for the button */}
-                        <Divider />
+                        {/* <Box sx={{ height: 48 }} /> Spacer for the button */}
                         <List>
+                            <ListItem >
+                                <ListItemText primary="Shaders" primaryTypographyProps={{ fontSize: 20, fontWeight: 'medium', letterSpacing: 0 }} />
+                            </ListItem>
+                            <Divider />
                             {SHADER_DATA.map((shader, index) => (
                                 <ListItem key={shader.sceneKey} disablePadding>
-                                    <ListItemButton selected={shaderSelected === index} onClick={(e) => { handleChange(e, shader.sceneKey); }}>
+                                    <ListItemButton selected={shaderSelected === shader.sceneKey} onClick={(e) => { handleChange(e, shader.sceneKey); }}>
                                         <ListItemText primary={shader.sceneKey} />
                                     </ListItemButton>
                                 </ListItem>
