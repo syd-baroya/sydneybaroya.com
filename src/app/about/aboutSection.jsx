@@ -1,7 +1,14 @@
-import { Box, Typography, Stack } from "@mui/material";
-import Contact from "@/components/contact/Contact";
-import Image from "next/image";
+import Magnetic from "@/components/animations/Magnetic";
+import { Typography, Stack, Button, Box } from "@mui/material";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, far, fab)
 export default function AboutSection() {
 
     /**
@@ -12,45 +19,50 @@ export default function AboutSection() {
         <Stack
             className="section"
             id="about"
-            direction={{ xs: 'column', md: 'row' }}
-            spacing={5}
-            sx={{ justifyContent: {xs:'space-around', md: 'space-around'}, alignItems: 'center'}}
+            direction='row'
+            spacing={10}
+            sx={{alignItems: 'center', justifyContent: 'space-evenly', width: '100%', minHeight: '40vh'}}
         >
-            <Box
-                xs={4} md={4}
-                sx={{
-                    flexBasis: { xs: '20%', md: '35%' }, // ⬅️ controls size relative to the Stack
-                    maxWidth: {md: '400px', xs: '350px'},
-                }}
-            >
-                <Box
-                    sx={{
-                        width: '100%',
-                        aspectRatio: '1 / 1',
-                        borderRadius: '50%',
-                        overflow: 'hidden', // Crucial for borderRadius to work with Image fill
-                        position: 'relative', // Crucial for Image fill
-                    }}
-                >
-                    <Image
-                        src="/images/headshot.JPG"
-                        alt="Profile"
-                        layout="fill"
-                        objectFit="cover"
-                    />
-                </Box>
-            </Box>
-            <Stack direction= "column"  xs={6} md={6} spacing={2} sx={{ justifyContent: 'center', maxWidth: '600px'}}>
-                <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
-                Hi my name is Sydney! I am currently working at CACI as a full-stack web developer, focused in 3D web dev.
+            <Stack direction="column" spacing={5} sx={{ justifyContent: 'center', width: '50%', padding: '0% 2%'}}>
+                <Typography textAlign="justify" fontSize="24px" sx={{ color: 'var(--primary-text)'}} >
+                Hi, my name is Sydney! I am a software engineer specializing in real-time 3D web graphics, immersive visualization, and interactive experiences.
                 </Typography>
-                <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
-                I studied at Cal Poly SLO finishing with a MSc in Computer Science, concentrating on 3D computer graphics. My thesis was about real-time AR in the interactive arts space. You can read about it here.
+                <Typography textAlign="justify" fontSize="24px" sx={{ color: 'var(--primary-text)'}} >
+                My work bridges art and technology, from large-scale projection-mapped art installations at Burning Man to cutting-edge aerospace visualization systems.
                 </Typography>
+            </Stack>
+
+            <Stack direction="column" spacing={2} sx={{ justifyContent: 'center', alignItems: 'center', width: '30%', padding: '0% 2%'}}>
                 <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
-                Send me an email if you’d like a resume or to get in touch!
+                    Currently working at CACI desigining IV&V 3D displays for aerospace applications.
                 </Typography>
-                <Contact size="medium" primaryColor={'var(--primary-text)'} secondaryColor={'var(--secondary-text)'}></Contact>
+                <Link href="/about">
+                    <Magnetic>
+                        <Button
+                        sx={{
+                            cursor: 'pointer',
+                            bgcolor: "rgba(0, 0, 0, 0)",
+                            ":hover": {
+                                bgcolor: "rgba(0, 0, 0, 0)",
+                            },
+                            color: 'var(--primary-text)',
+                            position: 'relative', // Make IconButton a positioning context
+                            display: 'flex', // Use flexbox for centering
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            width: '100px', // Give it a defined size
+                            height: '100px', // Give it a defined size
+                            textTransform: 'none',
+                        }} >
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
+                            <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon="fa fa-octagon" /> 
+                            <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--background-color)', position: 'relative', zIndex: 2 }}>
+                                About Me
+                            </Typography>
+                        </Box>
+                    </Button>
+                    </Magnetic>
+                </Link>
             </Stack>
         </Stack>
     );

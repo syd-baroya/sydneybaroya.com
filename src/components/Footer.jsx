@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
-import { Typography, Stack, Box, IconButton } from "@mui/material";
-import { motion, useTransform, useScroll } from 'framer-motion';
+import { Typography, Stack, Box, Button } from "@mui/material";
 import time from "@/lib/threejs/utils/Time.js";
 import Contact from "./contact/Contact";
 import Image from "next/image";
@@ -80,13 +79,14 @@ export default function Footer() {
                     Merging Art with Technology
                 </Typography>
                 <Magnetic>
-                    <IconButton
+                    <Button
                         sx={{
                             cursor: 'pointer',
-                            bgcolor: "var(--primary-text)",
+                            bgcolor: "rgba(0, 0, 0, 0)",
                             color: 'var(--background-color)',
                             ":hover": {
                                 color: "var(--secondary-text)",
+                                bgcolor: "rgba(0, 0, 0, 0)",
                             },
                             position: 'relative', // Make IconButton a positioning context
                             display: 'flex', // Use flexbox for centering
@@ -94,19 +94,19 @@ export default function Footer() {
                             alignItems: 'center',
                             width: '100px', // Give it a defined size
                             height: '100px', // Give it a defined size
+                            textTransform: 'none',
                         }} >
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
-                            <FontAwesomeIcon style={{ position: 'absolute', zIndex: 1}} icon="fa fa-cube" /> 
-                            <Typography textAlign={"end"} variant="body2" sx={{ fontWeight: 'bold', width: '50%', rotate: '20deg', color: 'var(--primary-text)', position: 'relative', left: '-2rem', top: '0.5rem', zIndex: 2 }}>
+                            <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon="fa fa-octagon" /> 
+                            <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--primary-text)', position: 'relative', zIndex: 2 }}>
                                 Contact Me
                             </Typography>
                         </Box>
-                    </IconButton>
+                    </Button>
                 </Magnetic>
             </Stack>
             
             <Stack md={6} col={12} direction="column" style={{width: '100%', justifyContent: 'space-around', alignItems: 'end'}}>
-                
                 <Typography variant="body2" sx={{ color: 'var(--background-color)' }}>2025 © Edition</Typography>
             
                 <Typography variant="body2" sx={{ color: 'var(--background-color)' }}>                

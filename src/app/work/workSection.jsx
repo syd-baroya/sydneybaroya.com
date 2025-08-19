@@ -69,7 +69,7 @@ export default function WorkSection({ }) {
             <Stack direction='row' spacing={2} sx={{ justifyContent: "space-around", alignItems: "center", width: "100%"}}>
                 <Link href={'/work/projects'}>
                   <Magnetic>
-                    <Box sx={{ fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
+                    <Box sx={{ color: "var(--primary-text)", fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
                       <FractureText>Projects</FractureText>
                       <FontAwesomeIcon icon="fa-solid fa-external-link" size="xs"/>
                     </Box>
@@ -77,7 +77,7 @@ export default function WorkSection({ }) {
                 </Link>
               <Link href={'/work/shader-playground'}>
                 <Magnetic>
-                  <Box sx={{ fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
+                  <Box sx={{ color: "var(--primary-text)", fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
                     <FractureText>Shader Playground</FractureText>
                     <FontAwesomeIcon icon="fa-solid fa-external-link" size="xs"/>
                   </Box>
