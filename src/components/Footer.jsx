@@ -57,23 +57,13 @@ export default function Footer() {
             }}
         >
             <Stack md={6} direction={{xs: 'column', lg: 'row'}} spacing={2} style={{width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
-                <Box
-                    sx={{
-                        maxWidth: '250px',
-                        width: {lg:'80%', xs: '70%'},
-                        aspectRatio: '1 / 1',
-                        borderRadius: '50%',
-                        overflow: 'hidden', // Crucial for borderRadius to work with Image fill
-                        position: 'relative', // Crucial for Image fill
-                    }}
-                >
-                    <Image
-                        src="/images/headshot.JPG"
-                        alt="Profile"
-                        layout="fill"
-                        objectFit="cover"
-                    />
-                </Box>
+                <Image
+                    src="/images/headshot.JPG"
+                    alt="Profile"
+                    width={100}
+                    height={100}
+                    style={{ borderRadius: '50%', aspectRatio: '1 / 1', objectFit: 'cover' }}
+                />
                 <Typography sx={{ textAlign:{lg: 'start', xs: 'center'}, color: 'var(--background-color)', typography: {lg: 'body1', xs: 'body2'}}}>
                     Real-time 3D Visualization | Front-end Developer |
                     Merging Art with Technology
