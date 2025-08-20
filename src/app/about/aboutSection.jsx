@@ -18,7 +18,7 @@ export default function AboutSection() {
     return (
         <Stack
             className="section"
-            id="about"
+            id="aboutSection"
             direction='row'
             spacing={10}
             sx={{alignItems: 'center', justifyContent: 'space-evenly', width: '100%', minHeight: '40vh'}}

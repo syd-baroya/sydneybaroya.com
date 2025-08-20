@@ -1,7 +1,7 @@
 const SECTIONS = [
     {
         name: "About",
-        link: "#about"
+        link: "about"
     },
     // {
     //     name: "Background",
