@@ -12,11 +12,13 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import EmailDialog from "@/components/EmailDialog";
 
 library.add(fas, far, fab)
 export default function Footer() {
     const [timeNow, setTimeNow] = useState('');
     const footerRef = useRef(null); // New ref for the footer
+    const [openEmailModal, setOpenEmailModal] = useState(false);
 
     useEffect(() => {
         // Set initial time after component mounts on the client
@@ -35,6 +37,10 @@ export default function Footer() {
             time.off('tick.footer');
         };
     }, []);
+
+    const onButtonClick = () => {
+        setOpenEmailModal(true);
+    }
     
     return (
         <Stack
@@ -69,30 +75,24 @@ export default function Footer() {
                     Merging Art with Technology
                 </Typography>
                 <Magnetic>
-                    <Button
-                        sx={{
-                            cursor: 'pointer',
-                            bgcolor: "rgba(0, 0, 0, 0)",
-                            color: 'var(--background-color)',
-                            ":hover": {
-                                color: "var(--secondary-text)",
-                                bgcolor: "rgba(0, 0, 0, 0)",
-                            },
-                            position: 'relative', // Make IconButton a positioning context
-                            display: 'flex', // Use flexbox for centering
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            width: '100px', // Give it a defined size
-                            height: '100px', // Give it a defined size
-                            textTransform: 'none',
-                        }} >
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
-                            <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon="fa fa-octagon" /> 
-                            <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--primary-text)', position: 'relative', zIndex: 2 }}>
-                                Contact Me
-                            </Typography>
-                        </Box>
-                    </Button>
+                    <Box 
+                        onClick={onButtonClick} 
+                        sx={{ position: 'relative',
+                        color: 'var(--background-color)',
+                        ":hover": {
+                            color: "var(--secondary-text)"}, // Make IconButton a positioning context
+                        display: 'flex', // Use flexbox for centering
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '100px', // Give it a defined size
+                        height: '100px', // Give it a defined size
+                        textTransform: 'none',
+                        cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
+                        <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon="fa fa-octagon" /> 
+                        <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--primary-text)', position: 'relative', zIndex: 2 }}>
+                            Contact Me
+                        </Typography>
+                    </Box>
                 </Magnetic>
             </Stack>
             
@@ -105,6 +105,14 @@ export default function Footer() {
             
                 <Contact size="small" primaryColor={"var(--secondary-text)"} secondaryColor={"var(--primary-text)"}/>
             </Stack>
+
+            <EmailDialog
+                open={openEmailModal}
+                onClose={() => setOpenEmailModal(false)}
+                primaryColor={"var(--secondary-text)"}
+                secondaryColor={"var(--primary-text)"}
+                activeModalProps={{link:"mailto: sydneybaroya@gmail.com"}}
+            />
         </Stack>
     );
 }
