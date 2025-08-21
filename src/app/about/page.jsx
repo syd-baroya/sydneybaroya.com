@@ -1,5 +1,4 @@
 import HobbiesBox from "@/components/hobbiesBox";
-import AboutSection from "./aboutSection";
 import { Stack, Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 export default function About({}) {

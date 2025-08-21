@@ -79,7 +79,7 @@ export default function WorkSection({ }) {
                 <Magnetic>
                   <Box sx={{ color: "var(--primary-text)", fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
                     <FractureText>Shader Playground</FractureText>
-                    <FontAwesomeIcon icon="fa-solid fa-external-link" size="xs"/>
+                    <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" size="xs"/>
                   </Box>
                 </Magnetic>
               </Link>
