@@ -39,12 +39,12 @@ export default function ExpandingCard({ content, onClick }) {
             <CardMedia
                 component="img"
                 sx={{ width: "70%", aspectRatio: "1", objectFit: "contain" }}
-                image={`/images/${content.img}`}
-                alt={content.name}
+                image={`/images/${content.thumbnail}`}
+                alt={content.title}
             />
             <CardContent sx={{ width: "100%" }}>
                 <Typography textAlign="center" sx={{ fontWeight: "lg", color: "var(--primary-text)" }}>
-                {content.name}
+                {content.title}
                 </Typography>
             </CardContent>
             </Stack>

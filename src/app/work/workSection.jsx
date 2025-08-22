@@ -57,7 +57,7 @@ export default function WorkSection({ }) {
                             }}>
                                 <Image
                                     alt={shader.name || "Shader Image"}
-                                    src={`/images/${shader.img}`}
+                                    src={`/images/${shader.thumbnail}`}
                                     fill
                                     style={{ objectFit: 'contain' }}
                                 />
@@ -71,7 +71,7 @@ export default function WorkSection({ }) {
                   <Magnetic>
                     <Box sx={{ color: "var(--primary-text)", fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
                       <FractureText>Projects</FractureText>
-                      <FontAwesomeIcon icon="fa-solid fa-external-link" size="xs"/>
+                      <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" size="xs"/>
                     </Box>
                   </Magnetic>
                 </Link>
