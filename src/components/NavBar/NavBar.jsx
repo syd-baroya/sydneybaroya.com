@@ -6,11 +6,13 @@ import navBarStyles from '@/styles/navBar.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useScroll } from '@/context/ScrollContext';
 
 export default function NavBar({items}) {
 
     const [hasBackground, setHasBackground] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
+    const { wrapper } = useScroll();
 
     const containerVariants = {
         initial: {},
@@ -45,16 +47,24 @@ export default function NavBar({items}) {
     };
 
     useEffect(() => {
+        const scrollable = wrapper || window;
+
         function changeBackground() {
-            if(window.scrollY  >= 66) {
+            const scrollY = wrapper ? wrapper.scrollTop : window.scrollY;
+            if (scrollY >= 66) {
                 setHasBackground(true);
             } else {
                 setHasBackground(false);
             }
         }
-        window.addEventListener("scroll", changeBackground);
-        return () => { window.removeEventListener('scroll', changeBackground); };
-    }, []);
+
+        scrollable.addEventListener("scroll", changeBackground);
+        changeBackground();
+
+        return () => {
+            scrollable.removeEventListener('scroll', changeBackground);
+        };
+    }, [wrapper]);
 
     return (
         <div className={`${navBarStyles.header} ${hasBackground ? navBarStyles.scroll : ''}`}>

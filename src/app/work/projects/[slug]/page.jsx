@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { IconButton, Box, Typography, Stack } from '@mui/material';
+import { IconButton, Box, Typography, Stack, Zoom, Fab } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import CloseIcon from '@mui/icons-material/Close';
@@ -10,6 +10,7 @@ import PROJECT_CARDS from '@/lib/data/projects';
 import { use, useEffect, useState, useRef, useCallback } from 'react';
 import { useActiveCard } from '@/lib/hooks/useActiveCard';
 import { useScroll } from '@/context/ScrollContext';
+import Magnetic from '@/components/animations/Magnetic';
 
 export default function ProjectModalPage(props) {
   const params = use(props.params);
@@ -19,13 +20,30 @@ export default function ProjectModalPage(props) {
   const { setWrapper } = useScroll();
   const modalRef = useRef(null);
   const timerRef = useRef(null);
-
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleClose = () => {
     router.back();
   };
+
+  useEffect(() => {
+    const scrollable = modalRef.current;
+    if (!scrollable) return;
+
+    const handleScroll = () => {
+      const scrollTop = scrollable.scrollTop;
+      setIsScrolled(scrollTop > 10);
+    };
+
+    scrollable.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      scrollable.removeEventListener('scroll', handleScroll);
+    };
+  }, [modalRef]);
 
   // Carousel controls
   const showPrevCarousel = () => {
@@ -91,6 +109,9 @@ export default function ProjectModalPage(props) {
     };
   }, [project, lightboxIndex]);
 
+  
+
+
   if (!project) return null;
 
   // Combine paragraphs with midImages inserted evenly
@@ -123,147 +144,171 @@ export default function ProjectModalPage(props) {
   };
 
   return (
-    <motion.div
-      ref={modalRef}
-      layoutId={`card-${project.slug}`}
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.9, opacity: 0 }}
-      transition={{ duration: 0.4 }}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        background: 'var(--background-color)',
-        padding: 40,
-        overflowY: 'auto',
-        zIndex: 1300,
-        color: 'var(--primary-text)',
-      }}
-    >
-      <Stack direction="column" sx={{ justifyContent: 'center', alignItems: 'center' }}>
-        {/* Header Buttons */}
-        <Box sx={{ display: 'flex', justifyContent: 'end', mb: 3, width: '100%' }}>
-          <IconButton onClick={handleClose} aria-label="close" sx={{ color: 'var(--primary-text)' }}>
-            <CloseIcon fontSize="large" />
-          </IconButton>
-        </Box>
-
-        {/* Image Carousel */}
-        {project.galleryImages?.length > 0 && (
-          <Box sx={{ position: 'relative', width: {xs: '100%', md: '70%', lg: '50%'}, height: '500px', mb: 3, overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
-            <AnimatePresence initial={false}>
-              <motion.img
-                key={carouselIndex}
-                src={project.galleryImages[carouselIndex].src}
-                alt={project.galleryImages[carouselIndex].alt}
-                custom={1}
-                variants={carouselVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: 'spring', stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.2 },
-                }}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: 8,
-                  cursor: 'pointer',
-                }}
-                onClick={() => setLightboxIndex(carouselIndex)}
-              />
-            </AnimatePresence>
-            {project.galleryImages.length > 1 && (
-              <>
-                <IconButton onClick={showPrevCarousel} sx={{ position: 'absolute', top: '50%', left: 16, color: 'white', transform: 'translateY(-50%)' }}>
-                  <ArrowBackIosIcon />
+      <motion.div
+        ref={modalRef}
+        layoutId={`card-${project.slug}`}
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ duration: 0.4 }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'var(--background-color)',
+          padding: '40px',
+          overflowY: 'auto',
+          zIndex: 1300,
+          color: 'var(--primary-text)',
+        }}
+      >
+        <Stack direction="column" sx={{ justifyContent: 'center', alignItems: 'center' }}>
+          {/* Header Buttons */}
+          <Box sx={{ display: 'flex', justifyContent: 'end', mb: 3, width: '100%', height: '48px' }}>
+            <Box sx={{
+              position: 'fixed',
+              top: 40,
+              right: 60,
+              zIndex: 1301,
+            }}>
+              <Magnetic>
+                <IconButton 
+                  onClick={handleClose} 
+                  aria-label="close" 
+                  sx={{
+                    color: isScrolled ? 'var(--background-color)' : 'var(--primary-text)',
+                    backgroundColor: isScrolled ? 'var(--primary-text)' : 'transparent',
+                    boxShadow: isScrolled ? '3' : 'none',
+                    backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+                    transition: 'all 0.2s ease-in-out',
+                    '&:hover': {
+                      backgroundColor: isScrolled ? 'var(--primary-text)' : 'transparent',
+                      color: isScrolled ? 'var(--secondary-text)' : 'var(--primary-text)',
+                      strokeWidth: '2'
+                    }
+                  }}
+                >
+                  <CloseIcon fontSize="large" />
                 </IconButton>
-                <IconButton onClick={showNextCarousel} sx={{ position: 'absolute', top: '50%', right: 16, color: 'white', transform: 'translateY(-50%)' }}>
-                  <ArrowForwardIosIcon />
-                </IconButton>
-              </>
-            )}
+              </Magnetic>
+            </Box>
           </Box>
-        )}
 
-        <motion.h2 layoutId={`card-title-${project.slug}`}>{project.title}</motion.h2>
-        <Typography variant="body1">
-          <strong>Technologies:</strong> {project.tech}
-        </Typography>
-
-        {/* Dynamic Content (Paragraphs + Mid Images) */}
-        <Stack spacing={2} sx={{ mt: 2 }}>
-          {combinedContent.map((item, i) =>
-            item.type === 'text' ? (
-              <Typography key={i} variant="body2">{item.content}</Typography>
-            ) : (
-              <motion.img
-                key={i}
-                src={item.src}
-                alt={item.alt || ''}
-                style={{ width: '100%', borderRadius: 12, margin: '24px 0' }}
-                whileHover={{ scale: 1.02 }}
-              />
-            )
-          )}
-        </Stack>
-
-        {/* Fullscreen Lightbox */}
-        <AnimatePresence>
-          {lightboxIndex !== null && (
-            <motion.div
-              className="lightbox"
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                background: 'rgba(0,0,0,0.9)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: 2000,
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={closeLightbox}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-            >
-              <img
-                src={project.galleryImages[lightboxIndex].src}
-                alt={project.galleryImages[lightboxIndex].alt}
-                style={{ maxHeight: '80%', maxWidth: '90%', objectFit: 'contain' }}
-              />
-              {project.galleryImages[lightboxIndex].caption && (
-                <Typography variant="body2" sx={{ color: '#fff', mt: 2 }}>
-                  {project.galleryImages[lightboxIndex].caption}
-                </Typography>
+          {/* Image Carousel */}
+          {project.galleryImages?.length > 0 && (
+            <Box sx={{ position: 'relative', width: {xs: '100%', md: '70%', lg: '50%'}, height: '500px', mb: 3, overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={carouselIndex}
+                  src={project.galleryImages[carouselIndex].src}
+                  alt={project.galleryImages[carouselIndex].alt}
+                  custom={1}
+                  variants={carouselVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: 'spring', stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 },
+                  }}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: 8,
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => setLightboxIndex(carouselIndex)}
+                />
+              </AnimatePresence>
+              {project.galleryImages.length > 1 && (
+                <>
+                  <IconButton onClick={showPrevCarousel} sx={{ position: 'absolute', top: '50%', left: 16, color: 'white', transform: 'translateY(-50%)' }}>
+                    <ArrowBackIosIcon />
+                  </IconButton>
+                  <IconButton onClick={showNextCarousel} sx={{ position: 'absolute', top: '50%', right: 16, color: 'white', transform: 'translateY(-50%)' }}>
+                    <ArrowForwardIosIcon />
+                  </IconButton>
+                </>
               )}
-              <IconButton
-                onClick={(e) => { e.stopPropagation(); showPrevLightbox(); }}
-                sx={{ position: 'absolute', left: 16, color: '#fff' }}
-              >‹</IconButton>
-              <IconButton
-                onClick={(e) => { e.stopPropagation(); showNextLightbox(); }}
-                sx={{ position: 'absolute', right: 16, color: '#fff' }}
-              >›</IconButton>
-              <IconButton
-                onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
-                sx={{ position: 'absolute', top: 16, right: 16, color: '#fff' }}
-              >×</IconButton>
-            </motion.div>
+            </Box>
           )}
-        </AnimatePresence>
-      </Stack>
-    </motion.div>
+
+          <motion.h2 layoutId={`card-title-${project.slug}`}>{project.title}</motion.h2>
+          <Typography variant="body1">
+            <strong>Technologies:</strong> {project.tech}
+          </Typography>
+
+          {/* Dynamic Content (Paragraphs + Mid Images) */}
+          <Stack spacing={2} sx={{ mt: 2 }}>
+            {combinedContent.map((item, i) =>
+              item.type === 'text' ? (
+                <Typography key={i} variant="body2">{item.content}</Typography>
+              ) : (
+                <motion.img
+                  key={i}
+                  src={item.src}
+                  alt={item.alt || ''}
+                  style={{ width: '100%', borderRadius: 12, margin: '24px 0' }}
+                  whileHover={{ scale: 1.02 }}
+                />
+              )
+            )}
+          </Stack>
+
+          {/* Fullscreen Lightbox */}
+          <AnimatePresence>
+            {lightboxIndex !== null && (
+              <motion.div
+                className="lightbox"
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  width: '100vw',
+                  height: '100vh',
+                  background: 'rgba(0,0,0,0.9)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  zIndex: 2000,
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeLightbox}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                <img
+                  src={project.galleryImages[lightboxIndex].src}
+                  alt={project.galleryImages[lightboxIndex].alt}
+                  style={{ maxHeight: '80%', maxWidth: '90%', objectFit: 'contain' }}
+                />
+                {project.galleryImages[lightboxIndex].caption && (
+                  <Typography variant="body2" sx={{ color: '#fff', mt: 2 }}>
+                    {project.galleryImages[lightboxIndex].caption}
+                  </Typography>
+                )}
+                <IconButton
+                  onClick={(e) => { e.stopPropagation(); showPrevLightbox(); }}
+                  sx={{ position: 'absolute', left: 16, color: '#fff' }}
+                >‹</IconButton>
+                <IconButton
+                  onClick={(e) => { e.stopPropagation(); showNextLightbox(); }}
+                  sx={{ position: 'absolute', right: 16, color: '#fff' }}
+                >›</IconButton>
+                <IconButton
+                  onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+                  sx={{ position: 'absolute', top: 16, right: 16, color: '#fff' }}
+                >×</IconButton>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </Stack>
+      </motion.div>
   );
 }

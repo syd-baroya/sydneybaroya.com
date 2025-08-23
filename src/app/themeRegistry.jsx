@@ -16,12 +16,16 @@ import { ActiveCardProvider } from "@/lib/hooks/useActiveCard";
 import SmoothScroll from '@/components/animations/SmoothScroll';
 import { ScrollProvider } from '@/context/ScrollContext';
 
+import { usePathname } from 'next/navigation';
+
 const ColorModeContext = createContext();
 export const useColorMode = () => useContext(ColorModeContext);
 
 export default function ThemeRegistry({ children }) {
     const [mode, setMode] = useState('light');
     const [mounted, setMounted] = useState(false);
+    const pathname = usePathname();
+    const isProjectPage = pathname.startsWith('/work/projects/');
 
     useEffect(() => {
         const storedMode = localStorage.getItem('theme');
@@ -60,9 +64,9 @@ export default function ThemeRegistry({ children }) {
                 <CssBaseline />
                 <ThreeCanvasProvider>
                     <MultiSceneCanvas />
-                    <NavBar items={SECTIONS} />
                     <ActiveCardProvider >
                         <ScrollProvider>
+                            {!isProjectPage && <NavBar items={SECTIONS} />}
                             <SmoothScroll />
                             <AnimatePresence mode="wait">
                                 <motion.main
