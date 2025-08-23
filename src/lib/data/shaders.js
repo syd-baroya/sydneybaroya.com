@@ -3,7 +3,7 @@ const SHADER_DATA = [
     {
         name: 'Water Shader',
         sceneKey: 'waterShader',
-        thumbnail: 'waterShader.png'
+        thumbnail: '/images/waterShader.png'
     }
 ]
 
