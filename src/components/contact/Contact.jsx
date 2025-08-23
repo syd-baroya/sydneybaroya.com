@@ -2,22 +2,39 @@
 
 import {Typography, Box, IconButton, Stack} from "@mui/material";
 import EmailDialog from '../EmailDialog';
-import buttonProps from './contactButtons.jsx';
+// import buttonProps from './contactButtons.jsx';
 import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-
-library.add(fas, far, fab)
 export default function Contact({size, primaryColor, secondaryColor}) {
 
     const [openEmailModal, setOpenEmailModal] = useState(false);
     const [activeModalProps, setActiveModalProps] = useState({});
     const [iconSize, setIconSize] = useState('2x');
+
+    const buttonProps = [
+        {
+            name: "GitHub",
+            icon: faGithub,
+            link: "https://github.com/syd-baroya",
+            openModal: false
+        },
+        {
+            name: "LinkedIn",
+            icon: faLinkedin,
+            link: "https://www.linkedin.com/in/sydney-baroya-420714111/",
+            openModal: false
+        },
+        {
+            name: "Email",
+            icon: faEnvelope,
+            link: "mailto: sydneybaroya@gmail.com",
+            openModal: true,
+        }
+    ];
 
     useEffect(() => {
         if(size === "small") {

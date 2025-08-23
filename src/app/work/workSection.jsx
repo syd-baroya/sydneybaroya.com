@@ -14,7 +14,7 @@ import PROJECT_DATA from '@/lib/data/projects';
 import {SHADER_DATA} from '@/lib/data/shaders';
 import Magnetic from '@/components/animations/Magnetic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 export default function WorkSection({ }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -71,7 +71,7 @@ export default function WorkSection({ }) {
                   <Magnetic>
                     <Box sx={{ color: "var(--primary-text)", fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
                       <FractureText>Projects</FractureText>
-                      <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" size="xs"/>
+                      <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="xs"/>
                     </Box>
                   </Magnetic>
                 </Link>
@@ -79,7 +79,7 @@ export default function WorkSection({ }) {
                 <Magnetic>
                   <Box sx={{ color: "var(--primary-text)", fontSize: "1.5rem", ":hover": { fontWeight: "bold"} }}>
                     <FractureText>Shader Playground</FractureText>
-                    <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" size="xs"/>
+                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="xs"/>
                   </Box>
                 </Magnetic>
               </Link>

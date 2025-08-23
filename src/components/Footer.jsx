@@ -6,15 +6,10 @@ import time from "@/lib/threejs/utils/Time.js";
 import Contact from "./contact/Contact";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faOctagon } from '@fortawesome/free-solid-svg-icons';
 import Magnetic from "@/components/animations/Magnetic.jsx";
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
 import EmailDialog from "@/components/EmailDialog";
 
-library.add(fas, far, fab)
 export default function Footer() {
     const [timeNow, setTimeNow] = useState('');
     const footerRef = useRef(null); // New ref for the footer
@@ -88,7 +83,7 @@ export default function Footer() {
                         height: '100px', // Give it a defined size
                         textTransform: 'none',
                         cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
-                        <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon="fa fa-octagon" /> 
+                        <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon={faOctagon} /> 
                         <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--primary-text)', position: 'relative', zIndex: 2 }}>
                             Contact Me
                         </Typography>

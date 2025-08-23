@@ -4,13 +4,7 @@ import {Typography, Box, IconButton, Stack, Dialog, DialogActions, DialogContent
 import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-
-library.add(fas, far, fab)
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function EmailDialog({ children, open, onClose, primaryColor, secondaryColor, activeModalProps }) {
     const myEmail = "sydneybaroya@gmail.com";
@@ -51,7 +45,7 @@ export default function EmailDialog({ children, open, onClose, primaryColor, sec
                     color: theme.palette.grey[500],
                 })}
             >
-                <FontAwesomeIcon icon="fa-solid fa-xmark"/>
+                <FontAwesomeIcon icon={faXmark}/>
             </IconButton>
             <DialogContent>
                 {children}

@@ -2,13 +2,7 @@ import Magnetic from "@/components/animations/Magnetic";
 import { Typography, Stack, Button, Box } from "@mui/material";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-
-library.add(fas, far, fab)
+import { faOctagon } from '@fortawesome/free-solid-svg-icons';
 export default function AboutSection() {
 
     /**
@@ -55,7 +49,7 @@ export default function AboutSection() {
                             textTransform: 'none',
                         }} >
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
-                            <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon="fa fa-octagon" /> 
+                            <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon={faOctagon} /> 
                             <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--background-color)', position: 'relative', zIndex: 2 }}>
                                 About Me
                             </Typography>
