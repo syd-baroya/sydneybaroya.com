@@ -3,12 +3,15 @@ const PROJECT_DATA = [
         title: "Eye of Metamrophosis",
         subtitle: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
         paragraphs: [
-            "My master's thesis project. I researched ways to make body mapping projection more accurate and efficient, in the interactive arts space. The project used Microsoft Azure Kinect DKs for body tracking, and was presented at Burning Man 2019.",
-            "This is the second paragraph.",
-            "This is the third paragraph.",
-            "This is the fourth paragraph."
+            "I built a real-time body projection-mapping system for interactive art using Microsoft’s Azure Kinect DK. The system tracks a performer’s skeleton, combines depth data to form a silhouette, and maps textures/animations back onto the moving body to create an immersive effect.",
+            "To reduce occlusion and improve precision, multiple Azure Kinects are synchronized. I average joint angles across devices and apply a 2D coordinate rotation through the skeleton hierarchy to stabilize motion.",
+            "To cut latency, I predict joint positions 10 ms into the future using recent velocities from each joint and its neighbors. Predicted joints drive billboards that approximate body segments for closer alignment to the silhouette.",
+            "A lightweight gesture layer lets participants switch effects: wave left/right or raise both hands to cycle between ‘skin’ textures (e.g., chameleon) and animation effects. A simple state machine updates the projection when gestures are detected.",
+            "The work was exhibited at Burning Man 2019 and an adaptation of the project was presented at ‘Delfines de San Carlos 2020: Un Proyecto de Esperanza’. More information about the latter project is in the project page '",
+            { type: 'link', text: 'Delfines', href: '/work/projects/delfines' },
+            "'. I compared one-, two-, and three-device setups and documented outline overlaps and joint-angle/variance plots."
         ],
-        thumbnail: "butterEye.png",
+        thumbnail: "/images/butterEye.png",
         galleryImages: [
             { src: "/images/thesisBurnAway.gif", alt: "Burn Away Effect" },
             { src: "/images/thesisButterEye.gif", alt: "Butterfly Eye Effect" },
@@ -16,7 +19,7 @@ const PROJECT_DATA = [
             { src: "/images/thesisSkeleton.gif", alt: "Skeleton Effect" }
         ],
         midImages: [
-            { src: "/images/butterEye.png", alt: "A close-up of the projection." }
+            // { src: "/images/butterEye.png", alt: "A close-up of the projection." }
         ],
         slug: "eye-of-metamorphosis",
         tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
@@ -25,16 +28,17 @@ const PROJECT_DATA = [
         title: "Delfines",
         subtitle: "Interactive Dolphin Simulation",
         paragraphs: [
-            "An interactive simulation where users can swim with dolphins.",
-            "The environment is procedurally generated.",
-            "Users can interact with the dolphins using hand gestures."
+            "Delfines 2020 expanded on the real-time tracking and projection mapping system to create a fully interactive installation where audience members became performers. Participants could step into a reactive space where their movements generated waves of light and fluid, abstract visuals, transforming physical motion into digital art.",
+            "For Delfines, the system was adapted to support multiple simultaneous users. This required optimizing skeletal tracking algorithms to handle overlapping bodies, implementing a smoothing filter to avoid jitter, and introducing adaptive projection mapping techniques to account for varied participant heights and positions within the installation.",
+            "A major technical challenge involved ensuring the installation worked reliably in a non-controlled, public environment. To address this, I developed robust calibration tools to adapt the projection to unconventional surfaces and changing ambient lighting conditions, ensuring the visuals remained vibrant and accurate.",
+            "Delfines 2020 was showcased as part of a larger art event and received positive audience feedback for its ability to merge technology and play, demonstrating how motion-tracking technologies can foster shared, embodied experiences beyond the stage."
         ],
-        thumbnail: "dolphin.png",
+        thumbnail: "/images/dolphin.png",
         galleryImages: [
             { src: "/images/dolphinButterEye.gif", alt: "Dolphin with butterfly eyes." }
         ],
         midImages: [
-            { src: "/images/dolphin.png", alt: "A dolphin swimming." }
+            // { src: "/images/dolphin.png", alt: "A dolphin swimming." }
         ],
         slug: "delfines",
         tech: "Unity, C#, HLSL, Azure Kinect DKs",
@@ -48,12 +52,12 @@ const PROJECT_DATA = [
             "The project was a learning exercise in computer graphics.",
             "It was a lot of fun to build."
         ],
-        thumbnail: "flames.png",
+        thumbnail: "/images/flames.png",
         galleryImages: [
             { src: "/images/2dRayTracer.gif", alt: "A ray-traced image of a flame." }
         ],
         midImages: [
-            { src: "/images/flames.png", alt: "A close-up of the flame." }
+            // { src: "/images/flames.png", alt: "A close-up of the flame." }
         ],
         slug: "2d-ray-tracer",
         tech: "C++, OpenGL, GLSL"

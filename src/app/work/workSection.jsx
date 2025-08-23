@@ -57,7 +57,7 @@ export default function WorkSection({ }) {
                             }}>
                                 <Image
                                     alt={shader.name || "Shader Image"}
-                                    src={`/images/${shader.thumbnail}`}
+                                    src={shader.thumbnail}
                                     fill
                                     style={{ objectFit: 'contain' }}
                                 />

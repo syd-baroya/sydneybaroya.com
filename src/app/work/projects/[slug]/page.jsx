@@ -8,9 +8,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PROJECT_CARDS from '@/lib/data/projects';
 import { use, useEffect, useState, useRef, useCallback } from 'react';
+import React from 'react';
 import { useActiveCard } from '@/lib/hooks/useActiveCard';
 import { useScroll } from '@/context/ScrollContext';
 import Magnetic from '@/components/animations/Magnetic';
+import Image from "next/image";
+import Link from 'next/link';
 
 export default function ProjectModalPage(props) {
   const params = use(props.params);
@@ -25,7 +28,7 @@ export default function ProjectModalPage(props) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const handleClose = () => {
-    router.back();
+    router.push('/work/projects/');
   };
 
   useEffect(() => {
@@ -119,12 +122,67 @@ export default function ProjectModalPage(props) {
   const paragraphs = project.paragraphs || [project.info];
   const midImages = project.midImages || [];
   const insertEvery = Math.floor(paragraphs.length / (midImages.length + 1)) || paragraphs.length;
-  paragraphs.forEach((p, i) => {
-    combinedContent.push({ type: 'text', content: p });
+  paragraphs.forEach((item, i) => {
+    if (typeof item === 'string') {
+      combinedContent.push({ type: 'text', content: item });
+    } else if (item.type === 'link') {
+      combinedContent.push({ type: 'link', ...item });
+    }
     if (midImages.length && (i + 1) % insertEvery === 0 && midImages[(i + 1) / insertEvery - 1]) {
       combinedContent.push({ type: 'image', ...midImages[(i + 1) / insertEvery - 1] });
     }
   });
+
+  const finalRenderedElements = [];
+  let i = 0;
+  while (i < combinedContent.length) {
+    const item = combinedContent[i];
+
+    if (item.type === 'text') {
+      const paragraphParts = [item.content];
+      let j = i + 1;
+
+      // Check for inline link pattern: text, link, text
+      if (j < combinedContent.length && combinedContent[j].type === 'link') {
+        const linkItem = combinedContent[j];
+        paragraphParts.push(
+          <Link key={`inline-link-${j}`} href={linkItem.href} style={{ color: 'var(--link-color)', textDecoration: 'underline' }}>
+            {linkItem.text}
+          </Link>
+        );
+        j++; // Move past the link
+
+        if (j < combinedContent.length && combinedContent[j].type === 'text') {
+          paragraphParts.push(combinedContent[j].content);
+          j++; // Move past the text after the link
+        }
+      }
+
+      finalRenderedElements.push(
+        <Typography key={`paragraph-${i}`} variant="body1" fontSize={'1.2rem'}>
+          {paragraphParts}
+        </Typography>
+      );
+      i = j; // Update outer loop index
+    } else if (item.type === 'image') {
+      finalRenderedElements.push(
+        <motion.img
+          key={`image-${i}`}
+          src={item.src}
+          alt={item.alt || ''}
+          style={{ width: '100%', borderRadius: 12, margin: '24px 0' }}
+          whileHover={{ scale: 1.02 }}
+        />
+      );
+      i++; // Move to next item
+    } else if (item.type === 'link') {
+      // This case should ideally be handled by the 'text' block looking ahead.
+      // If we reach a 'link' directly, it means it's not part of the expected pattern.
+      // For now, we'll just skip it or render it as a standalone link (which is not what we want).
+      // This indicates a problem with the combinedContent structure or the parsing logic.
+      i++;
+    }
+  }
 
   const carouselVariants = {
     enter: (direction) => ({
@@ -166,7 +224,14 @@ export default function ProjectModalPage(props) {
       >
         <Stack direction="column" sx={{ justifyContent: 'center', alignItems: 'center' }}>
           {/* Header Buttons */}
-          <Box sx={{ display: 'flex', justifyContent: 'end', mb: 3, width: '100%', height: '48px' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'start', mb: 3, width: '100%', height: '48px' }}>
+             <Image
+                  src={project.thumbnail}
+                  alt="Project Thumbnail"
+                  width={50}
+                  height={50}
+                  style={{ aspectRatio: '1 / 1', objectFit: 'fill' }}
+              />
             <Box sx={{
               position: 'fixed',
               top: 40,
@@ -200,35 +265,38 @@ export default function ProjectModalPage(props) {
           {project.galleryImages?.length > 0 && (
             <Box sx={{ position: 'relative', width: {xs: '100%', md: '70%', lg: '50%'}, height: '500px', mb: 3, overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
               <AnimatePresence initial={false}>
-                <motion.img
-                  key={carouselIndex}
-                  src={project.galleryImages[carouselIndex].src}
-                  alt={project.galleryImages[carouselIndex].alt}
-                  custom={1}
-                  variants={carouselVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: 'spring', stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 },
-                  }}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: 8,
-                    cursor: 'pointer',
-                  }}
-                  onClick={() => setLightboxIndex(carouselIndex)}
-                />
-              </AnimatePresence>
+              <motion.img
+                key={carouselIndex}
+                src={project.galleryImages[carouselIndex].src}
+                alt={project.galleryImages[carouselIndex].alt}
+                custom={1}
+                variants={carouselVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  x: { type: 'spring', stiffness: 100, damping: 30 },
+                  opacity: { duration: 0.2 },
+                }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: 8,
+                  cursor: 'pointer',
+                }}
+                onClick={() => setLightboxIndex(carouselIndex)}
+              />
+            </AnimatePresence>
               {project.galleryImages.length > 1 && (
                 <>
-                  <IconButton onClick={showPrevCarousel} sx={{ position: 'absolute', top: '50%', left: 16, color: 'white', transform: 'translateY(-50%)' }}>
+                  <IconButton onClick={showPrevCarousel} sx={{ position: 'absolute', top: '50%', left: 16, color: 'white', transform: 'translateY(-50%)', zIndex: 2 }}>
                     <ArrowBackIosIcon />
                   </IconButton>
-                  <IconButton onClick={showNextCarousel} sx={{ position: 'absolute', top: '50%', right: 16, color: 'white', transform: 'translateY(-50%)' }}>
+                  <IconButton onClick={showNextCarousel} sx={{ position: 'absolute', top: '50%', right: 16, color: 'white', transform: 'translateY(-50%)', zIndex: 2 }}>
                     <ArrowForwardIosIcon />
                   </IconButton>
                 </>
@@ -243,19 +311,7 @@ export default function ProjectModalPage(props) {
 
           {/* Dynamic Content (Paragraphs + Mid Images) */}
           <Stack spacing={2} sx={{ mt: 2 }}>
-            {combinedContent.map((item, i) =>
-              item.type === 'text' ? (
-                <Typography key={i} variant="body2">{item.content}</Typography>
-              ) : (
-                <motion.img
-                  key={i}
-                  src={item.src}
-                  alt={item.alt || ''}
-                  style={{ width: '100%', borderRadius: 12, margin: '24px 0' }}
-                  whileHover={{ scale: 1.02 }}
-                />
-              )
-            )}
+            {finalRenderedElements}
           </Stack>
 
           {/* Fullscreen Lightbox */}
