@@ -5,10 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faOctagon } from '@fortawesome/free-solid-svg-icons';
 export default function AboutSection() {
 
-    /**
-     * TODO
-     * add thesis link
-     */
     return (
         <Stack
             className="section"
@@ -28,7 +24,7 @@ export default function AboutSection() {
 
             <Stack direction="column" spacing={2} sx={{ justifyContent: 'center', alignItems: 'center', width: '30%', padding: '0% 2%'}}>
                 <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
-                    Currently working at CACI desigining IV&V 3D displays for aerospace applications.
+                    Currently working at CACI designing rocket launch information dissemination 3D displays.
                 </Typography>
                 <Link href="/about">
                     <Magnetic>

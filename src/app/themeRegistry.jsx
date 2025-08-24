@@ -8,7 +8,7 @@ import { createTheme } from '@mui/material/styles';
 import { getDesignTokens } from '@/styles/muiTheme';
 import { setCSSVariables } from '@/styles/setCSSVariables.js';
 import { lightPalette, darkPalette } from '@/styles/themeColors';
-import NavBar from '@/components/NavBar/NavBar';
+import NavBar from '@/components/NavBar';
 import SECTIONS from './sections';
 import MultiSceneCanvas from '@/components/Scene/MultiSceneCanvas';
 import { ThreeCanvasProvider } from '@/context/ThreeCanvasContext';

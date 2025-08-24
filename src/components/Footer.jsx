@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Typography, Stack, Box, Button } from "@mui/material";
 import time from "@/lib/threejs/utils/Time.js";
-import Contact from "./contact/Contact";
+import Contact from "./Contact";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faOctagon } from '@fortawesome/free-solid-svg-icons';

@@ -1,8 +1,7 @@
 'use client';
 
-import {Typography, Box, IconButton, Stack} from "@mui/material";
-import EmailDialog from '../EmailDialog';
-// import buttonProps from './contactButtons.jsx';
+import {IconButton, Stack} from "@mui/material";
+import EmailDialog from './EmailDialog';
 import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
