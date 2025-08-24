@@ -1,4 +1,5 @@
-const PROJECT_DATA = [
+import EyeOfMetamorphosis from "@/lib/content/projects/eye-of-metamorphosis.mdx";
+const projects = [
     {
         title: "Eye of Metamrophosis",
         subtitle: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
@@ -24,6 +25,7 @@ const PROJECT_DATA = [
         ],
         slug: "eye-of-metamorphosis",
         tech: "C++, OpenGL, GLSL, Azure Kinect DKs",
+        Content: EyeOfMetamorphosis,
     },
     {
         title: "Delfines",
@@ -43,6 +45,7 @@ const PROJECT_DATA = [
         ],
         slug: "delfines",
         tech: "Unity, C#, HLSL, Azure Kinect DKs",
+        Content: EyeOfMetamorphosis,
     },
     {
         title: "2D Ray Tracer",
@@ -61,7 +64,8 @@ const PROJECT_DATA = [
             // { src: "/images/flames.png", alt: "A close-up of the flame." }
         ],
         slug: "2d-ray-tracer",
-        tech: "C++, OpenGL, GLSL"
+        tech: "C++, OpenGL, GLSL",
+        Content: EyeOfMetamorphosis,
     },
     // {
     //     name: "Eye of Metamrophosis",
@@ -148,4 +152,4 @@ const PROJECT_DATA = [
 
 //TODO clicking project link and then going back to the work page doesn't render the scene but the canvas is being drawn
 
-export default PROJECT_DATA;
+export default projects;
