@@ -3,13 +3,14 @@ const PROJECT_DATA = [
         title: "Eye of Metamrophosis",
         subtitle: "Real-time Body Tracking and Projection Mapping in the Interactive Arts",
         paragraphs: [
-            "I built a real-time body projection-mapping system for interactive art using Microsoft’s Azure Kinect DK. The system tracks a performer’s skeleton, combines depth data to form a silhouette, and maps textures/animations back onto the moving body to create an immersive effect.",
-            "To reduce occlusion and improve precision, multiple Azure Kinects are synchronized. I average joint angles across devices and apply a 2D coordinate rotation through the skeleton hierarchy to stabilize motion.",
+            "I built a real-time body projection-mapping system using Microsoft’s Azure Kinect DK. The system tracks a performer’s skeleton, combines depth data to form a silhouette, and maps textures/animations back onto the moving body to create an immersive effect.",
+            "The application for this system was designed for the use in the interactive arts space. The spaces we tried included an interactive installation and a live visual performance. We were invited to audition for the California Polytechnic Dance Show in 2019, using the system for a live performance. We were fortunate to exhibit the system as an interactive art installation at Burning Man 2019 and an adaptation of it at ‘Delfines de San Carlos 2020: Un Proyecto de Esperanza’. More information about the latter project is in the project page '",
+            { type: 'link', text: 'Delfines', href: '/work/projects/delfines' },
+            "'. ",
+            "To reduce occlusion and improve precision, multiple Azure Kinects are synchronized. I average joint angles across devices and apply a 2D coordinate rotation through the skeleton hierarchy to stabilize motion. I compared one-, two-, and three-device setups and documented outline overlaps and joint-angle/variance plots.",
             "To cut latency, I predict joint positions 10 ms into the future using recent velocities from each joint and its neighbors. Predicted joints drive billboards that approximate body segments for closer alignment to the silhouette.",
             "A lightweight gesture layer lets participants switch effects: wave left/right or raise both hands to cycle between ‘skin’ textures (e.g., chameleon) and animation effects. A simple state machine updates the projection when gestures are detected.",
-            "The work was exhibited at Burning Man 2019 and an adaptation of the project was presented at ‘Delfines de San Carlos 2020: Un Proyecto de Esperanza’. More information about the latter project is in the project page '",
-            { type: 'link', text: 'Delfines', href: '/work/projects/delfines' },
-            "'. I compared one-, two-, and three-device setups and documented outline overlaps and joint-angle/variance plots."
+            "To read about the project in more detail, check out my master's thesis, 'Real-time Body Tracking and Projection Mapping in the Interactive Arts'.",
         ],
         thumbnail: "/images/butterEye.png",
         galleryImages: [
@@ -26,7 +27,7 @@ const PROJECT_DATA = [
     },
     {
         title: "Delfines",
-        subtitle: "Interactive Dolphin Simulation",
+        subtitle: "Interactive Art Installation",
         paragraphs: [
             "Delfines 2020 expanded on the real-time tracking and projection mapping system to create a fully interactive installation where audience members became performers. Participants could step into a reactive space where their movements generated waves of light and fluid, abstract visuals, transforming physical motion into digital art.",
             "For Delfines, the system was adapted to support multiple simultaneous users. This required optimizing skeletal tracking algorithms to handle overlapping bodies, implementing a smoothing filter to avoid jitter, and introducing adaptive projection mapping techniques to account for varied participant heights and positions within the installation.",
