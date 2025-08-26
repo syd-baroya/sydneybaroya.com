@@ -1,0 +1,89 @@
+# Real-time Body Tracking & Projection Mapping in the Interactive Arts
+
+## Overview
+This project was the centerpiece of my Master's thesis, exploring how **real-time body tracking** and **projection mapping** can transform interactive art experiences. The installation invited participants to step into a space where their movements generated dynamic, evolving visuals projected onto large-scale surfaces, blurring the line between audience and performer.  
+
+The work combined:
+- Real-time computer vision and body tracking  
+- Generative projection mapping  
+- An emphasis on immersive, participatory art  
+
+---
+
+## Exhibition History8
+
+### Eye of Metamorphosis — Burning Man 2019
+- **Location:** Black Rock City, Nevada  
+- **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time.  
+- **Impact:** Thousands of festival-goers engaged with the piece over the week, many returning multiple times for the evolving experience.  
+
+---
+
+### Delfines de San Carlos 2020: Un Proyecto de Esperanza
+- **Location:** San Carlos, Mexico  
+- **Description:** Adapted for a community art event centered on hope and resilience. The installation was redesigned for a smaller venue, incorporating local cultural motifs into the projected visuals.  
+- **Impact:** Brought immersive digital art to a new cultural context, connecting themes of transformation with the local audience.  
+
+---
+
+## Technologies Used
+- **Computer Vision:** Real-time body tracking using [your tool/tech here, e.g., OpenPose, Kinect, or custom pipeline]  
+- **Projection Mapping:** Interactive generative visuals mapped onto sculptural surfaces  
+- **Languages & Tools:** [List of programming languages/frameworks]  
+
+---
+
+## Reflection
+This project taught me how interactive media can transcend technology to create **shared, transformative experiences**. From the expansive desert of Burning Man to a local cultural festival in Mexico, the core idea of blending movement, technology, and art adapted to vastly different contexts while preserving its essence of connection and wonder.  
+
+---
+
+*Note: Include photos or a short demo video where possible — visuals will amplify the impact of this piece in your portfolio.*
+
+---
+
+## Customizing Layout in MDX
+
+Here are examples of how you can customize the position of components and text within your MDX files using plain CSS, MUI Stack, and MUI Grid.
+
+### 1. Using Plain CSS
+
+You can use a simple `div` with inline styles or a class name for basic positioning. For more complex layouts, consider defining CSS classes in your global stylesheets (`src/styles/globals.css` or a module CSS file).
+
+<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', border: '1px solid #ccc', padding: '10px', marginBottom: '20px' }}>
+  <p style={{ margin: 0 }}>Left Aligned Text</p>
+  <p style={{ margin: 0 }}>Center Aligned Text</p>
+  <p style={{ margin: 0 }}>Right Aligned Text</p>
+</div>
+
+### 2. Using MUI Stack
+
+`Stack` is ideal for one-dimensional layouts (either row or column). It provides spacing and alignment utilities.
+
+<Stack direction="row" spacing={2} sx={{ border: '1px solid #ccc', padding: '10px', marginBottom: '20px' }}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Stack>
+
+<Stack spacing={1} sx={{ border: '1px solid #ccc', padding: '10px', marginBottom: '20px' }}>
+  <div>Vertical Item A</div>
+  <div>Vertical Item B</div>
+  <div>Vertical Item C</div>
+</Stack>
+
+### 3. Using MUI Grid
+
+`Grid` is a powerful 2D layout system based on CSS Grid. It's excellent for creating responsive, complex layouts.
+
+<Grid container spacing={2} sx={{ border: '1px solid #ccc', padding: '10px' }}>
+  <Grid item xs={12} sm={6} md={4}>
+    <div style={{ background: '#e0e0e0', padding: '10px', textAlign: 'center' }}>Column 1 (xs=12, sm=6, md=4)</div>
+  </Grid>
+  <Grid item xs={12} sm={6} md={4}>
+    <div style={{ background: '#e0e0e0', padding: '10px', textAlign: 'center' }}>Column 2 (xs=12, sm=6, md=4)</div>
+  </Grid>
+  <Grid item xs={12} sm={12} md={4}>
+    <div style={{ background: '#e0e0e0', padding: '10px', textAlign: 'center' }}>Column 3 (xs=12, sm=12, md=4)</div>
+  </Grid>
+</Grid>
