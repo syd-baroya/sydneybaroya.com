@@ -1,39 +1,68 @@
-<MdxImage src="/images/burningManEye.png" alt="Thesis Eye" caption="The projector holder with a epoxy and resin eye encasing it." />
-
+<div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <ImageGallery 
+        galleryImages={[
+            {src: "/images/thesisBurnAway.gif", alt: "Burn Away Projection"},
+            {src: "/images/thesisButterEye.gif", alt: "Butterfly to Eye Projection"},
+            {src: "/images/thesisChameleon.gif", alt: "Chameleon Projection"},
+            {src: "/images/thesisSkeleton.gif", alt: "Skeleton Projection"}
+        ]}
+    />
+</div>
 # Real-time Body Tracking & Projection Mapping in the Interactive Arts
 ## Overview
-This project was the centerpiece of my Master's thesis, exploring how **real-time body tracking** and **projection mapping** can transform interactive art experiences. Using depth-sensing cameras and custom software, the installation invited participants to step into a space where their movements generated dynamic, evolving visuals projected onto large-scale surfaces, blurring the line between audience and performer.  
-
-The work combined:
-- Real-time computer vision and body tracking  
-- Generative projection mapping  
-- An emphasis on immersive, participatory art
+This project was the centerpiece of my Master's thesis, exploring how to improve **real-time body tracking** and **projection mapping** to be more accurate and precise, to transform interactive art experiences. Using depth-sensing cameras and custom software, the installation invited participants to step into a space where their movements generated dynamic, evolving visuals projected onto large-scale surfaces, blurring the line between audience and performer.  
 
 The work culminated in my master’s thesis and was exhibited in two major interactive art installations: Eye of Metamorphosis at Burning Man 2019, and Delfines de San Carlos: Un Proyecto de Esperanza in 2020.
+
+Thesis Download: <Link href='https://digitalcommons.calpoly.edu/theses/2250/'>Real-time Body Tracking and Projection Mapping in the Interactive Arts</Link>
+
+Github repository: <Link href='https://github.com/syd-baroya/Body-Projection'>Body-Projection</Link>
 
 ---
 
 ## Technologies Used
+<div style={{paddingLeft: '2rem'}}>
 - **Computer Vision:** Real-time body tracking using Microsoft Azure Kinect DKs
 - **Projection Mapping:** Interactive generative visuals mapped onto bodies and sculptural surfaces  
-- **Languages & Tools:** C++, OpenGL, GLSL, C#, HLSL, Microsoft Azure Kinect DKs
-
+- **Languages & Tools:** C++, OpenGL, GLSL, C#, HLSL
+</div>
 ---
 
 ## Exhibition History
-
-### Eye of Metamorphosis — Burning Man 2019
-- **Location:** Black Rock City, Nevada  
-- **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time.  
-- **Impact:** Thousands of festival-goers engaged with the piece over the week, many returning multiple times for the evolving experience.  
-
+<div style={{margin: '1rem'}}>
+    ### Eye of Metamorphosis — Burning Man 2019
+    <Grid container direction={{xs: "column", lg: "row"}} spacing={2}>
+        <Grid item xs={12} lg={5}>
+            <div style={{paddingLeft: '2rem'}}>
+                - **Location:** Black Rock City, Nevada  
+                - **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time. For the art installation, my team and I created giant eyeball made out epoxy and resin for the projector, laptop, and Kinect to be held inside of. This was to enhance its appeasibility as an art installation and to help protect it from the elements. This used the main project, developed in C++ and OpenGL, with one Microsoft Kinect.
+            </div>
+        </Grid>
+        <Grid item xs={12} lg={7}>
+            <MdxImage boxProps={{width: {xs:'300px', md: '600px'}, height: {xs: '200px', md: '300px'}}} 
+                src="/images/burningManEye.png" alt="Thesis Eye" caption="The projector holder with a epoxy and resin eye encasing it." />
+        </Grid>
+    </Grid>
+</div>
+<div style={{margin: '1rem'}}>
+    ### Delfines de San Carlos 2020: Un Proyecto de Esperanza
+    <Grid container spacing={2}>
+    <Grid item xs={12} lg={4}>
+        <div style={{paddingLeft: '2rem'}}>
+            - **Location:** San Carlos, Mexico  
+            - **Description:** A community art event created by Lucia Apodaca and attended by the Mayor of Guaymas Comisario of San Carlos. The event included art installations of various dolphin statues designed by local artists. Apodaca wanted projections mapped to a dolphin statue that could be changed by the audience. In order to use certain assets, I decided to adapt the code to use Unity and C#, keeping the logic of the code the same. The body tracking and gesture recognition software stayed similar from the original project while the projection mapping and shaders were updated.
+        </div>
+    </Grid>
+    <Grid container item xs={12} lg={8} sx={{alignItems: 'baseline'}}>
+        <Grid item xs={12} md={6}>
+            <MdxImage boxProps={{width: {xs:'200px', md:'300px'}, height: {xs:'300px', md: '400px'}}}
+                src="/images/DelfinesGroup.jpg" alt="Delfines Group" caption="From left to right: Noah Paige, Sydney Baroya, Irene Humer, Christian Eckhardt, Lucia Apodaca, Sara Valle Dessens (former Mayor of Guaymas)." />
+        </Grid>
+        <Grid item xs={12} md={6}>
+            <MdxImage boxProps={{width: {xs:'200px', md:'300px'}, height: {xs:'200px', md:'300px'}}}
+                src="/images/dolphinChameleon.png" alt="Dolphin Chameleon" caption="One of the projection mapping adaptation textures." />
+        </Grid>
+    </Grid>
+    </Grid>
+</div>
 ---
-
-### Delfines de San Carlos 2020: Un Proyecto de Esperanza
-- **Location:** San Carlos, Mexico  
-- **Description:** Adapted for a community art event centered on hope and resilience. The installation was redesigned using C# and Unity.  
-- **Impact:** Brought immersive digital art to a new cultural context, connecting themes of transformation with the local audience.  
-
----
-
-*Note: Include photos or a short demo video where possible — visuals will amplify the impact of this piece in your portfolio.*

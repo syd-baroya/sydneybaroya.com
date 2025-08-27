@@ -5,13 +5,14 @@ import Link from "next/link";
 import { motion } from 'framer-motion';
 import MdxImage from './MdxImage';
 import { Stack, Grid } from '@mui/material';
+import ImageGallery from "./ImageGallery";
 
 const components = {
-  a: ({ href, children }) =>
+  Link: ({ href, children }) =>
     href?.startsWith("/") ? (
       <Link href={href} className="text-blue-500 underline">{children}</Link>
     ) : (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">{children}</a>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="underline">{children}</a>
     ),
   MdxImage: (props) => <MdxImage {...props} />,
   CustomButton: ({ href, children }) => (
@@ -22,6 +23,7 @@ const components = {
   motion: motion,
   Stack: Stack,
   Grid: Grid,
+  ImageGallery: ImageGallery
 };
 
 export default function MDXWrapper({ children }) {

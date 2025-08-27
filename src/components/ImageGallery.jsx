@@ -7,7 +7,7 @@ import { IconButton, Box } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-export default function ImageGallery({ galleryImages, onImageClick }) {
+export default function ImageGallery({ galleryImages }) {
   const timerRef = useRef(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -25,7 +25,7 @@ export default function ImageGallery({ galleryImages, onImageClick }) {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       showNextCarousel();
-    }, 5000);
+    }, 8000);
   };
 
   useEffect(() => {
@@ -82,7 +82,6 @@ export default function ImageGallery({ galleryImages, onImageClick }) {
                 borderRadius: 8,
                 cursor: 'pointer',
               }}
-              onClick={() => onImageClick(carouselIndex)}
             />
           </AnimatePresence>
           {galleryImages.length > 1 && (

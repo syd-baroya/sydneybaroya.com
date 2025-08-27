@@ -1,15 +1,18 @@
 import Image from 'next/image';
 import { Typography, Box, Stack } from '@mui/material';
 
-export default function MdxImage({ src, alt, caption, ...props }) {
+export default function MdxImage({ src, alt, caption, boxProps,...props }) {
 
+  /**
+   * {{width: {xs: '100%', sm: '500px', lg: '800px'}, height: {xs: '300px', lg: '400px'}}} 
+   */
   return (
-    <Stack direction="column" sx={{ justifyContent: "center", alignItems: "center"}}>
+    <Stack direction="column" sx={{ justifyContent: "center", alignItems: "center", marginBottom: 1}}>
         <Box sx={{
-            width: {xs: '100%', sm: '500px', lg: '800px'}, // Always 100% width
-            height: {xs: '300px', lg: '400px'},
             position: 'relative', // Required for fill
-        }}>
+          }}
+          {...boxProps}
+        >
             <Image
                 src={src}
                 alt={alt}
@@ -19,7 +22,7 @@ export default function MdxImage({ src, alt, caption, ...props }) {
             />
         </Box>
         {caption && (
-        <Typography variant="caption" display="block" sx={{ textAlign: 'center', mt: 1 }}>
+        <Typography variant="caption" display="block" sx={{ textAlign: 'center', mt: 1, maxWidth: '50vw' }}>
           {caption}
         </Typography>
       )}
