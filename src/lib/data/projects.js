@@ -1,6 +1,18 @@
 
 const projects = [
     {
+        title: "Shader Playground",
+        thumbnail: "/images/waterShader.png",
+        slug: "shader-playground",
+        mdxFile: "shader-playground.mdx"
+    },
+    {
+        title: "OpenGL Template",
+        thumbnail: "/images/dolphin.png",
+        slug: "opengl-template",
+        mdxFile: "opengl-template.mdx"
+    },
+    {
         title: "Projection Mapping in the Interactive Arts",
         thumbnail: "/images/butterEye.png",
         slug: "eye-of-metamorphosis",
