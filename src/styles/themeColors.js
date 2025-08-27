@@ -1,14 +1,13 @@
 export const lightPalette = {
   primary: '#2B2D42',
-  secondary: '#ffeded',
+  secondary: '#7d82b8',
+  tertiary: '#558564',
   background: '#F3F3F3',
-  text: '#2B2D42',
 };
 
 export const darkPalette = {
   primary: '#F3F3F3',
-  secondary: '#0a0a0a',
+  tertiary: '#7d82b8',
+  secondary: '#558564',
   background: '#2B2D42',
-  text: '#F3F3F3',
 };
-
