@@ -1,15 +1,53 @@
-# OpenGL Template
+# OpenGL Project Template
 ## Overview
 
-This project...
+During my bachelor’s degree, I found that computer graphics lab starter code was often bloated or tangled in a single file, making them hard to follow and reuse. So, I created this **OpenGL project template** to streamline future work—clean, modular, and easy to build.
 
-Github repository: <Link href='https://github.com/syd-baroya/opengl-project-template'>opengl-project-template</Link>
+The repository's README.md has clear build instructions if you'd like try it for yourself! I've attached the link below. Once run, the window will show a simple scene with texutred plane, a spinning textured pyramid, an otter loaded in from a .dae file, and a cube as the light source. The user can also use the W, A, S, D, E, C, and Z keys to interact with the scene and ESC key to close the window.
+
+<Link href='https://github.com/syd-baroya/opengl-project-template'>View the Github repository.</Link>
 
 ---
 
-## Technologies Used
+## Key Features
 <div style={{paddingLeft: '2rem'}}>
-- **tech 1:** 
-- **tech 2:** 
-- **Languages & Tools:** 
+- **Modular project structure**—clear folder separation for source files, shaders, and external dependencies
+- **Cross-platform builds with CMake**—works on Windows, macOS, and Linux with minimal setup
+- **Dependency management via vcpkg**—automates inclusion of libraries like GLFW, GLAD, GLM, and stb_image
+- **Shader organization**—keeps `.vert` and `.frag` files neatly in a `resources/` directory
+- **Easy project instantiation**—use it as a GitHub template or copy it locally to kickstart new OpenGL apps
 </div>
+
+---
+
+## Technical Breakdown
+<div style={{paddingLeft: '2rem'}}>
+
+- **Project Structure**
+<div style={{paddingLeft: '2rem'}}>
+  - `src/`: Core application code  
+  - `ext/`: Bundled header-only libraries (e.g., `stb_image.h`)  
+  - `resources/`: Shaders and assets  
+  - `CMakeLists.txt` and `CMakePresets.json`: Build config for native and preset-based builds  
+  - `vcpkg.json`: Defines and manages external dependencies
+</div>
+- **Build System with CMake**  
+  Uses CMake presets to simplify configuration:
+<div style={{paddingLeft: '2rem'}}>
+  - `windows-vcpkg`: Generates `.sln` for Visual Studio  
+  - `macos-vcpkg` (and others): Builds on other platforms  
+  - Supports cross-platform development with unified tooling
+</div>
+- **Vcpkg Integration**  
+  Automatically fetches and installs essential graphics libraries using vcpkg. Just clone, configure, and build.
+- **Clean Shader Workflow**  
+  Organizes shaders and assets for easier editing and cleaner renders.
+</div>
+
+---
+
+## Reflection
+
+This template reflects my commitment to **developer ergonomics and scalability**. Now, I can instantly bootstrap new OpenGL projects without manually configuring windowing, loading libraries, or organizing code. I would have enjoyed using this as a student and definitely appreciate it now as a professional developer.
+
+Just let me know how else I can expand on it!

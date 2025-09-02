@@ -11,23 +11,55 @@
 # 2D Ray Tracer
 ## Overview
 
-This project created for my senior project during my Bachelor's program. I wanted to develop a **real-time 2D Ray Tracer**. Using **cone tracing** I was able to acheive this efficiently, since ray tracing is so intensive.
+In 2019, as my senior project for my bachelor's degree in Software Engineering, I built a **real-time 2D ray tracer**. The goal was to explore rendering techniques typically applied in 3D graphics and adapt them to a 2D environment for learning and experimentation.
 
-Github repository: <Link href='https://github.com/syd-baroya/2D-Raytracer'>2D-Raytracer</Link>
+<Link href='https://github.com/syd-baroya/2D-Raytracer'>View the repository on Github</Link>
+
+---
+## Key Features
+<div style={{paddingLeft: '2rem'}}>
+- Ray tracing with optimizations using **Cone Tracing** for performance
+- Deferred Shader Pipeline
+- Compute shaders for parallel light calculations
+- Framebuffer Rendering
+- Interactivity
+</div>
 
 ---
 
-## Technologies Used
+## Technical Breakdown
 <div style={{paddingLeft: '2rem'}}>
-- **tech 1:** 
-- **tech 2:** 
-- **Languages & Tools:** 
+- **Languages & Tools**: C++, OpenGL, GLSL
+
+- **Cone Tracing**:
+  Instead of tracing infinitely thin rays, I implemented cone tracing to approximate light spread and soft shadows. 
+  This significantly reduced the number of rays needed and improved performance.
+
+- **Deferred Shader**:
+  Used a deferred shading pipeline to separate geometry rendering from lighting calculations,  
+  making it easier to handle multiple light interactions.
+
+- **Compute Shader**:
+  Parallelized the ray/cone calculations using compute shaders, taking advantage of the GPU for real-time performance.
+
+- **Frame Buffer**:
+  Implemented a frame buffer for post-processing effects and to efficiently combine render passes.
+
+- **Interactive Light Source**:
+  The mouse cursor was used as the main light emitter, allowing interactivity and dynamic illumination.
 </div>
-{/* todo:
-  - deferred shader
-  - cone tracing
-  - mouse as light source
-  - render to frame buffer
- */}
+
+---
+
+## Reflection
+
+This project was a major milestone in my journey into graphics programming. While 2D may seem simple compared to 3D, implementing a ray tracer with real-time performance taught me critical lessons:
+<div style={{paddingLeft: '2rem'}}>
+
+- The importance of optimization (cone tracing vs brute-force rays)  
+- GPU programming fundamentals with compute shaders  
+- Designing a modular rendering pipeline (deferred shading, frame buffers)  
+- How small changes in algorithms can drastically affect both performance and visual quality  
+</div>
 
 ---

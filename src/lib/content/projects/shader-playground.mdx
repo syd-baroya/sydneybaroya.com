@@ -1,15 +1,48 @@
-# Shader Playground
+# Shader Playground — Still in work
 ## Overview
 
-This project...
+This project aims to bridge desktop OpenGL shader work with web-based experiences. I created **Shader Playground** to allow writing, visualizing, and testing shaders in both native C++ environments and directly in the browser via WebGL.
 
-Github repository: <Link href='https://github.com/syd-baroya/shader-playground'>shader-playground</Link>
+<Link href='https://github.com/syd-baroya/shader-playground'>View the Github repository.</Link>
 
 ---
 
-## Technologies Used
+## Motivation
+
+During shader development, switching between native development setups and web previews felt disconnected. Shader Playground solves that by offering a unified codebase where you can:
 <div style={{paddingLeft: '2rem'}}>
-- **tech 1:** 
-- **tech 2:** 
-- **Languages & Tools:** 
+- Develop shader code in a native OpenGL context for deep debugging  
+- Preview the same shaders instantly online via WebGL  
+- Streamline creative experimentation and accessibility  
 </div>
+---
+
+## Project Structure & Features
+
+<div style={{paddingLeft: '2rem'}}>
+- **`cpp-viewer`:** A desktop OpenGL application that runs GLSL shaders locally, helping with iteration and debugging.
+- **`web-viewer`:** A browser-based, WebGL-powered viewer that renders the same shaders live on your site.
+- **Shared folders:** 
+<div style={{paddingLeft: '2rem'}}>
+  - `shaders/` for core GLSL files  
+  - `assets/` for textures or models  
+  - Utility scripts (e.g., asset syncing) kept in `scripts/`
+</div>
+- **Developer workflow:** Modify shaders once and see them render both locally and in your browser with minimal setup.
+</div>
+---
+
+## Technical Highlights
+
+<div style={{paddingLeft: '2rem'}}>
+- Dual rendering pipelines: leveraging both OpenGL and WebGL seamlessly  
+- Structured codebase to prevent duplication and enable reuse  
+- Simple utility scripts to sync assets/shaders between project components  
+- Ideal for easing shader development while maintaining accessibility for web audiences
+</div>
+---
+
+## Reflection
+
+Shader Playground reflects a desire for fluid shader development across platforms. It balances the fidelity and speed of native OpenGL with the broader reach of WebGL and the web platform. Whether you're a solo developer or building interactive demos, this framework simplifies testing and sharing shader work.
+
