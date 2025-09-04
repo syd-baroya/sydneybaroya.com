@@ -6,26 +6,31 @@
             {src: "/images/thesisChameleon.gif", alt: "Chameleon Projection"},
             {src: "/images/thesisSkeleton.gif", alt: "Skeleton Projection"}
         ]}
+        switchImageTime="5"
     />
 </div>
 # Real-time Body Tracking & Projection Mapping in the Interactive Arts
+
 ## Overview
-This project was the centerpiece of my Master's thesis, exploring how to improve **real-time body tracking** and **projection mapping** to be more accurate and precise, to transform interactive art experiences. Using depth-sensing cameras and custom software, the installation invited participants to step into a space where their movements generated dynamic, evolving visuals projected onto large-scale surfaces, blurring the line between audience and performer.  
+This project, the centerpiece of my Master's thesis, explored enhancing real-time body tracking and projection mapping for interactive art. Using depth-sensing cameras and custom software, the installation allowed participants' movements to generate dynamic visuals on large-scale surfaces, blurring the line between audience and performer. The work was featured in two major interactive art installations.
 
-The work culminated in my master’s thesis and was exhibited in two major interactive art installations: Eye of Metamorphosis at Burning Man 2019, and Delfines de San Carlos: Un Proyecto de Esperanza in 2020.
-
-Thesis Download: <Link href='https://digitalcommons.calpoly.edu/theses/2250/'>Real-time Body Tracking and Projection Mapping in the Interactive Arts</Link>
-
-Github repository: <Link href='https://github.com/syd-baroya/Body-Projection'>Body-Projection</Link>
-
----
+As the primary developer, I was responsible for the entire software pipeline, from sensor integration to the final projection mapping. This included developing the body tracking algorithms, designing the generative visuals, and managing the on-site installation and calibration.
 
 ## Technologies Used
+C++, OpenGL, GLSL, C#, HLSL, Azure Kinect DK
+
+## Features & Technologies
 <div style={{paddingLeft: '2rem'}}>
-- **Computer Vision:** Real-time body tracking using Microsoft Azure Kinect DKs
-- **Projection Mapping:** Interactive generative visuals mapped onto bodies and sculptural surfaces  
-- **Languages & Tools:** C++, OpenGL, GLSL, C#, HLSL
+- **Advanced Body Tracking:** Overcame the challenge of noisy sensor data by implementing a real-time body tracking system using multiple Microsoft Azure Kinect DKs, merging their depth data into a unified point cloud.
+- **Low-Latency Interactivity:** Solved the issue of hardware and projection lag by implementing predictive filtering on joint positions, delivering a smooth and responsive user experience.
+- **Precise Gesture Recognition:** Developed a gesture detection system to trigger visual effects, enabling participants to interact with the projections through their movements.
+- **Generative Visuals:** Created a series of interactive, generative visuals that were projection-mapped onto both participants and sculptural elements.
 </div>
+
+## Links
+<Link href='https://digitalcommons.calpoly.edu/theses/2250/'>Read my master's thesis, *Real-time Body Tracking and Projection Mapping in the Interactive Arts*</Link>
+<Link href='https://github.com/syd-baroya/Body-Projection'>View the repository on Github.</Link>
+
 ---
 
 ## Exhibition History
@@ -35,7 +40,7 @@ Github repository: <Link href='https://github.com/syd-baroya/Body-Projection'>Bo
         <Grid item xs={12} lg={5}>
             <div style={{paddingLeft: '2rem'}}>
                 - **Location:** Black Rock City, Nevada  
-                - **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time. For the art installation, my team and I created giant eyeball made out epoxy and resin for the projector, laptop, and Kinect to be held inside of. This was to enhance its appeasibility as an art installation and to help protect it from the elements. This used the main project, developed in C++ and OpenGL, with one Microsoft Kinect.
+                - **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time. For the art installation, we created giant eyeball made from epoxy and resin for the projector, laptop, and Kinect to be held inside of. This was to enhance its appeasibility as an art installation and to help protect it from the elements. This used the main project, developed in C++ and OpenGL, with one Microsoft Kinect.
             </div>
         </Grid>
         <Grid item xs={12} lg={7}>
@@ -50,7 +55,7 @@ Github repository: <Link href='https://github.com/syd-baroya/Body-Projection'>Bo
     <Grid item xs={12} lg={4}>
         <div style={{paddingLeft: '2rem'}}>
             - **Location:** San Carlos, Mexico  
-            - **Description:** A community art event created by Lucia Apodaca and attended by the Mayor of Guaymas Comisario of San Carlos. The event included art installations of various dolphin statues designed by local artists. Apodaca wanted projections mapped to a dolphin statue that could be changed by the audience. In order to use certain assets, I decided to adapt the code to use Unity and C#, keeping the logic of the code the same. The body tracking and gesture recognition software stayed similar from the original project while the projection mapping and shaders were updated.
+            - **Description:** A community art event created by Lucia Apodaca and attended by the Mayor of Guaymas Comisario of San Carlos. The event included art installations of various dolphin statues designed by local artists. Apodaca wanted projections mapped onto a dolphin statue that could be changed by the audience. In order to use certain assets, I decided to adapt the code to use Unity and C#, keeping the logic of the code the same. The body tracking and gesture recognition software stayed similar from the original project while the projection mapping and shaders were changed.
         </div>
     </Grid>
     <Grid container item xs={12} lg={8} sx={{alignItems: 'baseline'}}>
@@ -65,4 +70,11 @@ Github repository: <Link href='https://github.com/syd-baroya/Body-Projection'>Bo
     </Grid>
     </Grid>
 </div>
+
+---
+
+## Reflection
+
+This project was a defining experience, bridging the gap between rigorous academic research and the dynamic, unpredictable world of public art. Adapting the technology for diverse settings—from the harsh environment of Burning Man to a community event in Mexico—taught me invaluable lessons in tenacity, flexibility, and on-the-fly problem-solving. More than just a technical challenge, it was a surprising realization of how technology can foster human connection and create shared moments of wonder.
+
 ---

@@ -1,48 +1,26 @@
-# Shader Playground — Still in work
+# Shader Playground
+
 ## Overview
 
-This project aims to bridge desktop OpenGL shader work with web-based experiences. I created **Shader Playground** to allow writing, visualizing, and testing shaders in both native C++ environments and directly in the browser via WebGL.
+Shader Playground is a tool designed to bridge the gap between native OpenGL and web-based Three.js shader development. It provides a unified environment for writing, visualizing, and testing shaders, enabling developers to seamlessly transition between the two platforms.
 
-<Link href='https://github.com/syd-baroya/shader-playground'>View the Github repository.</Link>
-
----
+## Technologies Used
+C++, OpenGL, GLSL, JavaScript, ThreeJS, React, NextJS
 
 ## Motivation
 
-During shader development, switching between native development setups and web previews felt disconnected. Shader Playground solves that by offering a unified codebase where you can:
+This project was born from my experience working with both OpenGL in academia and Three.js in a professional setting. I wanted a way to easily translate my OpenGL shaders to the web to showcase them in my portfolio, and to refresh my OpenGL skills by re-implementing Three.js shaders in a native environment.
+
+## Current Status & Future Goals
+
+This project is currently under active development. The foundational elements are in place, allowing for basic shader translation and visualization. 
+
+My future goals for this project include:
 <div style={{paddingLeft: '2rem'}}>
-- Develop shader code in a native OpenGL context for deep debugging  
-- Preview the same shaders instantly online via WebGL  
-- Streamline creative experimentation and accessibility  
+- Implementing a more robust live-reloading system for a faster development workflow.
+- Building a more comprehensive UI for tweaking shader parameters in real-time.
+- Expanding the library of included shaders and effects.
 </div>
----
 
-## Project Structure & Features
-
-<div style={{paddingLeft: '2rem'}}>
-- **`cpp-viewer`:** A desktop OpenGL application that runs GLSL shaders locally, helping with iteration and debugging.
-- **`web-viewer`:** A browser-based, WebGL-powered viewer that renders the same shaders live on your site.
-- **Shared folders:** 
-<div style={{paddingLeft: '2rem'}}>
-  - `shaders/` for core GLSL files  
-  - `assets/` for textures or models  
-  - Utility scripts (e.g., asset syncing) kept in `scripts/`
-</div>
-- **Developer workflow:** Modify shaders once and see them render both locally and in your browser with minimal setup.
-</div>
----
-
-## Technical Highlights
-
-<div style={{paddingLeft: '2rem'}}>
-- Dual rendering pipelines: leveraging both OpenGL and WebGL seamlessly  
-- Structured codebase to prevent duplication and enable reuse  
-- Simple utility scripts to sync assets/shaders between project components  
-- Ideal for easing shader development while maintaining accessibility for web audiences
-</div>
----
-
-## Reflection
-
-Shader Playground reflects a desire for fluid shader development across platforms. It balances the fidelity and speed of native OpenGL with the broader reach of WebGL and the web platform. Whether you're a solo developer or building interactive demos, this framework simplifies testing and sharing shader work.
-
+## Links
+<Link href='https://github.com/syd-baroya/shader-playground'>View the Github repository.</Link>

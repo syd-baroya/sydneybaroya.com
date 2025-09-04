@@ -1,65 +1,32 @@
 <div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-    {/* <ImageGallery 
-        galleryImages={[
-            {src: "/images/2dRayTracer.gif", alt: "2D Ray Tracer"},
-        ]}
-    /> */}
     <MdxImage boxProps={{width: {xs:'400px', sm: '500px', md: '700px'}, height: {xs: '228px', sm: '285px', md: '400px'}}} 
                 src="/images/2dRayTracer.gif" alt="2D Ray Tracer" />
 </div>
 
 # 2D Ray Tracer
+
 ## Overview
 
-In 2019, as my senior project for my bachelor's degree in Software Engineering, I built a **real-time 2D ray tracer**. The goal was to explore rendering techniques typically applied in 3D graphics and adapt them to a 2D environment for learning and experimentation.
+As my senior project for my Software Engineering degree, I developed a real-time 2D ray tracer to explore and adapt advanced 3D rendering techniques to a 2D environment. The primary goal was to deepen my understanding of GPU programming and rendering pipelines.
 
+## Technologies Used
+C++, OpenGL, GLSL
+
+## Features & Technologies
+<div style={{paddingLeft: '2rem'}}>
+- **Achieved Real-Time Performance:** Implemented cone tracing as an optimization to approximate light spread and soft shadows, drastically reducing the number of rays required for real-time rendering.
+- **Efficient Lighting with Deferred Shading:** Developed a deferred shading pipeline to decouple geometry and lighting calculations, enabling the efficient handling of multiple dynamic light sources.
+- **GPU-Accelerated Calculations:** Leveraged compute shaders to parallelize ray and cone calculations on the GPU, which was critical for achieving real-time performance.
+- **Interactive Lighting:** The mouse cursor acts as a dynamic light source, allowing for real-time interaction with the scene.
+</div>
+
+## Links
 <Link href='https://github.com/syd-baroya/2D-Raytracer'>View the repository on Github</Link>
-
----
-## Key Features
-<div style={{paddingLeft: '2rem'}}>
-- Ray tracing with optimizations using **Cone Tracing** for performance
-- Deferred Shader Pipeline
-- Compute shaders for parallel light calculations
-- Framebuffer Rendering
-- Interactivity
-</div>
-
----
-
-## Technical Breakdown
-<div style={{paddingLeft: '2rem'}}>
-- **Languages & Tools**: C++, OpenGL, GLSL
-
-- **Cone Tracing**:
-  Instead of tracing infinitely thin rays, I implemented cone tracing to approximate light spread and soft shadows. 
-  This significantly reduced the number of rays needed and improved performance.
-
-- **Deferred Shader**:
-  Used a deferred shading pipeline to separate geometry rendering from lighting calculations,  
-  making it easier to handle multiple light interactions.
-
-- **Compute Shader**:
-  Parallelized the ray/cone calculations using compute shaders, taking advantage of the GPU for real-time performance.
-
-- **Frame Buffer**:
-  Implemented a frame buffer for post-processing effects and to efficiently combine render passes.
-
-- **Interactive Light Source**:
-  The mouse cursor was used as the main light emitter, allowing interactivity and dynamic illumination.
-</div>
 
 ---
 
 ## Reflection
 
-This project was a major milestone in my journey into graphics programming. While 2D may seem simple compared to 3D, implementing a ray tracer with real-time performance taught me critical lessons:
-<div style={{paddingLeft: '2rem'}}>
+This project was a foundational experience in my graphics programming journey. It taught me the importance of optimization, the fundamentals of GPU programming, and the design of modular rendering pipelines. 
 
-- The importance of optimization (cone tracing vs brute-force rays)  
-- GPU programming fundamentals with compute shaders  
-- Designing a modular rendering pipeline (deferred shading, frame buffers)  
-- How small changes in algorithms can drastically affect both performance and visual quality  
-</div>
-
----
+If I were to revisit this project, I would explore more advanced topics such as global illumination and refractions to further enhance the realism of the 2D rendering.
