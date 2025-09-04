@@ -1,9 +1,9 @@
-
 'use client';
 
 import { Box, Stack } from '@mui/material';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
+import getSizes from '@/lib/threejs/utils/Sizes';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import '@/styles/work.module.css';
@@ -15,29 +15,48 @@ import {SHADER_DATA} from '@/lib/data/shaders';
 import Magnetic from '@/components/animations/Magnetic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+
 export default function WorkSection({ }) {
   const containerRef = useRef(null);
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const sizes = getSizes();
+    if (!sizes) return;
+
+    const handleResize = () => {
+      if (containerRef.current) {
+        setViewportWidth(containerRef.current.offsetWidth);
+      }
+    };
+
+    sizes.on('resize', handleResize);
+    handleResize();
+
+    return () => {
+      sizes.off('resize', handleResize);
+    };
+  }, []);
+
   const { scrollYProgress } = useScroll({
       target: containerRef,
       offset: ['start end', 'end start']
   });
 
   const itemWidth = 25; // vw
-  const itemMargin = 1; // vw
-  const totalItemWidth = itemWidth + itemMargin;
+  const itemMargin = 50; // px
+  const maxItemWidthInPx = 350;
+  const itemWidthInPx = Math.min((itemWidth / 100) * viewportWidth, maxItemWidthInPx);
+  const totalItemWidth = itemWidthInPx + itemMargin;
 
-  let duplicatedWork = [...PROJECT_DATA, ...SHADER_DATA];
+  let duplicatedWork = [...PROJECT_DATA];
   while(duplicatedWork.length < 8) {
-      duplicatedWork = [...duplicatedWork, ...PROJECT_DATA, ...SHADER_DATA];
+      duplicatedWork = [...duplicatedWork, ...PROJECT_DATA];
   }
 
-  // Calculate the total width of the content inside the motion.div
-  // This assumes the last item doesn't have a right margin that contributes to the scrollable width
   const contentWidth = duplicatedWork.length * totalItemWidth;
 
-  // The x transform should move the content from 0 to -(contentWidth - viewportWidth)
-  // viewportWidth is 100vw
-  const x = useTransform(scrollYProgress, [0, 1], [`0vw`, `-${contentWidth - 100}vw`]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -(contentWidth - viewportWidth)]);
 
   return (
     <Stack className="section" id="work" spacing={5} sx={{ margin: '4vh'}}>
@@ -46,14 +65,16 @@ export default function WorkSection({ }) {
         <Box ref={containerRef}>
                 {/* This sticky container holds the carousel and keeps it in view */}
                 <Box sx={{ position: 'sticky', overflow: 'hidden' }}>
-                    <motion.div style={{ x, display: 'flex', width: `${contentWidth}vw` }}>
+                    <motion.div style={{ x, display: 'flex', width: `${contentWidth}px` }}>
                         {duplicatedWork.map((shader, index) => (
                             <Box key={index} sx={{ 
                                 width: `${itemWidth}vw`, 
-                                height: `${itemWidth}vh`, // Using itemWidth for height to maintain aspect ratio
+                                height: `${itemWidth}vw`,
+                                maxWidth: `${maxItemWidthInPx}px`,
+                                maxHeight: `${maxItemWidthInPx}px`,
                                 position: 'relative', 
                                 p: 2, // Padding inside the box
-                                marginRight: `${itemMargin}vw` // Spacing between images
+                                marginRight: `${itemMargin}px` // Spacing between images
                             }}>
                                 <Image
                                     alt={shader.name || "Shader Image"}

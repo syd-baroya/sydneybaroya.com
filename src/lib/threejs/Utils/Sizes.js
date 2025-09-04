@@ -1,5 +1,7 @@
 import EventEmitter from './EventEmitter.js'
 
+let instance = null;
+
 class Sizes extends EventEmitter
 {
     constructor()
@@ -23,4 +25,9 @@ class Sizes extends EventEmitter
     }
 }
 
-export default Sizes;
+export default function getSizes() {
+    if (typeof window !== 'undefined' && !instance) {
+        instance = new Sizes();
+    }
+    return instance;
+}

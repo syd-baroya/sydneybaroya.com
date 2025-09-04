@@ -1,12 +1,12 @@
 import Renderer from './Renderer.js';
-import Sizes from './utils/Sizes.js'
+import getSizes from './utils/Sizes.js'
 import time from './utils/Time.js'
 import MouseEvent from './utils/MouseEvents.js'
 
 let sizes, mouseEvent, raycast, renderer;
 let scenes = [];
 export function init(canvas, bgColor, resources) {
-    sizes = new Sizes()
+    sizes = getSizes();
     //time = new Time()
     mouseEvent = new MouseEvent();
 
