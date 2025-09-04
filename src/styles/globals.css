@@ -26,8 +26,12 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--secondary-text);
   text-decoration: none;
+}
+
+a:hover {
+  font-weight: 500;
 }
 
 .view {

@@ -1,0 +1,32 @@
+<div style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <MdxImage boxProps={{width: {xs:'400px', sm: '500px', md: '700px'}, height: {xs: '228px', sm: '285px', md: '400px'}}} 
+                src="/images/2dRayTracer.gif" alt="2D Ray Tracer" />
+</div>
+
+# 2D Ray Tracer
+
+## Overview
+
+As my senior project for my Software Engineering degree, I developed a real-time 2D ray tracer to explore and adapt advanced 3D rendering techniques to a 2D environment. The primary goal was to deepen my understanding of GPU programming and rendering pipelines.
+
+## Technologies Used
+C++, OpenGL, GLSL
+
+## Features & Technologies
+<div style={{paddingLeft: '2rem'}}>
+- **Achieved Real-Time Performance:** Implemented cone tracing as an optimization to approximate light spread and soft shadows, drastically reducing the number of rays required for real-time rendering.
+- **Efficient Lighting with Deferred Shading:** Developed a deferred shading pipeline to decouple geometry and lighting calculations, enabling the efficient handling of multiple dynamic light sources.
+- **GPU-Accelerated Calculations:** Leveraged compute shaders to parallelize ray and cone calculations on the GPU, which was critical for achieving real-time performance.
+- **Interactive Lighting:** The mouse cursor acts as a dynamic light source, allowing for real-time interaction with the scene.
+</div>
+
+## Links
+<Link href='https://github.com/syd-baroya/2D-Raytracer'>View the repository on Github</Link>
+
+---
+
+## Reflection
+
+This project was a foundational experience in my graphics programming journey. It taught me the importance of optimization, the fundamentals of GPU programming, and the design of modular rendering pipelines. 
+
+If I were to revisit this project, I would explore more advanced topics such as global illumination and refractions to further enhance the realism of the 2D rendering.

@@ -20,7 +20,7 @@ export default function About({}) {
                                         alt="Profile"
                                         width={300}
                                         height={300}
-                                        style={{ borderRadius: '50%', width: '100%', height: '100%', objectFit: 'cover' }}
+                                        style={{ borderRadius: '50%', objectFit: 'cover' }}
                                     />
                                 </Box>
                             </Box>
