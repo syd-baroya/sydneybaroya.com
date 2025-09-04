@@ -10,7 +10,7 @@ import ImageGallery from "./ImageGallery";
 const components = {
   Link: ({ href, children }) =>
     href?.startsWith("/") ? (
-      <Link href={href} sx={{ textDecoration: "underline", width: 'fit-content'}}>{children}</Link>
+      <Link href={href} style={{ textDecoration: "underline", width: 'fit-content'}}>{children}</Link>
     ) : (
       <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", width: 'fit-content'}}>{children}</a>
     ),
