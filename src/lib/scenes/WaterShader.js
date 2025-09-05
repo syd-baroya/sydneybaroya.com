@@ -3,10 +3,8 @@ import Camera from '@/lib/threejs/Camera';
 import Environment from '@/lib/threejs/models/Environment';
 import Water from '@/lib/threejs/models/Water';
 import Debug from '@/lib/threejs/utils/Debug';
-import Otter from '@/lib/threejs/models/Otter';
 
-let scene, camera, environment, debug, water, otter;
-// let fox;
+let scene, camera, environment, debug, water;
 let sceneLoaded = false;
 
 export function init(bgColor, view, environment) {
@@ -27,11 +25,6 @@ export function loadScene(resources) {
  
     water = new Water(resources, { resolution: 256 });
     scene.add(water);
-
-    // otter = new Otter(resources);
-    // otter.setScale(0.2);
-    // otter.play('surf');
-    // scene.add(otter.model);
 
     scene.background = resources.items.sunsetCubeMap;
     scene.environment = resources.items.sunsetCubeMap;
@@ -59,7 +52,6 @@ export function update(time) {
         scene.userData.camera.update();
         environment.update(time);
         water.update(time);
-        // otter.update(time.delta);
     }
 }
 
@@ -96,5 +88,4 @@ export function destroy() {
     camera = null;
     water = null;
     environment = null;
-    // otter = null;
 }

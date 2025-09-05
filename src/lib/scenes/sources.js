@@ -27,31 +27,6 @@ const sources = [
             'nz.png'
         ]
     },
-    // {
-    //     name: 'grassColorTexture',
-    //     type: 'texture',
-    //     path: 'dirt/color.jpg'
-    // },
-    // {
-    //     name: 'grassNormalTexture',
-    //     type: 'texture',
-    //     path: 'dirt/normal.jpg'
-    // },
-    // {
-    //     name: 'foxModel',
-    //     type: 'gltfModel',
-    //     path: 'Fox/glTF/Fox.gltf'
-    // },
-    // {
-    //     name: 'summerModel',
-    //     type: 'gltfModel',
-    //     path: 'Summer/summer.glb'
-    // },
-    // {
-    //     name: 'summerBakedTexture',
-    //     type: 'texture',
-    //     path: '/Summer/baked.jpg'
-    // },
     {
         name: 'otterModel',
         type: 'gltfModel',
@@ -69,6 +44,18 @@ const sources = [
         vertPath: 'snow.vert',
         fragPath: 'snow.frag'
     }
+    //keeping belowo in case I want to add the summer model back in
+    
+    // {
+    //     name: 'summerModel',
+    //     type: 'gltfModel',
+    //     path: 'Summer/summer.glb'
+    // },
+    // {
+    //     name: 'summerBakedTexture',
+    //     type: 'texture',
+    //     path: '/Summer/baked.jpg'
+    // },
 ]
 
 export default sources;
