@@ -75,7 +75,8 @@ export default function Footer() {
                         sx={{ position: 'relative',
                         color: 'var(--background-color)',
                         ":hover": {
-                            color: "var(--secondary-text)"}, // Make IconButton a positioning context
+                            color: "var(--secondary-text)"
+                        },
                         display: 'flex', // Use flexbox for centering
                         justifyContent: 'center',
                         alignItems: 'center',

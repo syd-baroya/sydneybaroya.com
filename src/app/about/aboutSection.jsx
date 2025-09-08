@@ -28,12 +28,11 @@ export default function AboutSection() {
                 </Typography>
                 <Link href="/about">
                     <Magnetic>
-                        <Button
-                        sx={{
-                            cursor: 'pointer',
+                        <Box sx={{ cursor: 'pointer',
                             bgcolor: "rgba(0, 0, 0, 0)",
                             ":hover": {
                                 bgcolor: "rgba(0, 0, 0, 0)",
+                                color: "var(--secondary-text)"
                             },
                             color: 'var(--primary-text)',
                             position: 'relative', // Make IconButton a positioning context
@@ -42,15 +41,13 @@ export default function AboutSection() {
                             alignItems: 'center',
                             width: '100px', // Give it a defined size
                             height: '100px', // Give it a defined size
-                            textTransform: 'none',
-                        }} >
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
+                            textTransform: 'none', 
+                            display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '7rem' }}>
                             <FontAwesomeIcon style={{ rotate: '20deg', position: 'absolute', zIndex: 1}} icon={faOctagon} /> 
                             <Typography textAlign={"center"} variant="body2" sx={{ fontWeight: 'bold', color: 'var(--background-color)', position: 'relative', zIndex: 2 }}>
                                 About Me
                             </Typography>
                         </Box>
-                    </Button>
                     </Magnetic>
                 </Link>
             </Stack>
