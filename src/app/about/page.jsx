@@ -5,32 +5,31 @@ import Link from "next/link";
 export default function About({}) {
     
     return (
-        <Stack id="about" sx={{ width: "100%", minHeight: "94vh", paddingTop: "15vh", paddingBottom: "5%", background: "var(--background-color)", zIndex: 10, position: "relative", boxShadow: "0px 70px 60px rgba(0, 0, 0, 0.5)", justifyContent: "space-evenly", alignItems: "center"}}>
+        <Stack id="about" sx={{ width: "100%", minHeight: "94vh", padding: "7vh 3vw", background: "var(--background-color)", zIndex: 10, position: "relative", boxShadow: "0px 70px 60px rgba(0, 0, 0, 0.5)", justifyContent: "space-evenly", alignItems: "center"}}>
             <Typography textAlign="center" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
-            <Grid container spacing={8} sx={{ width: "100%", height: "100%", alignItems: "center", px: 6 }}>
-                <Grid item xs={12} lg={4}>
-                    <Stack spacing={5} direction={{xs: "column", md: "row", lg: "column"}} sx={{ justifyContent: "space-evenly", alignItems: "center"}}>
-                        <Box sx={{ display: "flex", justifyContent: "center"}}>
-                            <Box sx={{ display: "flex", justifyContent: "center"}}>
-                                <Box sx={{
-                                    width: { xs: 200, lg: 300 },
-                                    height: { xs: 200, lg: 300 },
-                                }}>
-                                    <Image
-                                        src="/images/headshot.JPG"
-                                        alt="Profile"
-                                        width={300}
-                                        height={300}
-                                        style={{ borderRadius: '50%', objectFit: 'cover' }}
-                                    />
-                                </Box>
+            <Grid container spacing={4} sx={{ width: "100%", height: "100%", alignItems: "center", justifyContent: "center"}}>
+                <Grid size={{xs: 12, lg: 4}} sx={{ padding: "20px"}}>
+                    <Stack spacing={5} direction={{xs: "column", md: "row", lg: "column"}} sx={{width: "100%",alignItems: "center", justifyContent: "center"}}>
+                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <Box sx={{
+                                width: { xs: 200, md: 300 },
+                                height: { xs: 200, md: 300 },
+                                position: "relative",
+                            }}>
+                                <Image
+                                    src="/images/headshot.JPG"
+                                    alt="Profile"
+                                    fill
+                                    sizes="(max-width: 600px) 200px, 300px"
+                                    style={{ borderRadius: '50%', objectFit: 'cover' }}
+                                />
                             </Box>
                         </Box>
                         <HobbiesBox />
                     </Stack>
                 </Grid>
                 
-                <Grid item xs={12} lg={8}>
+                <Grid size={{ xs: 12, lg: 8 }} sx={{ padding: "20px", maxWidth: "800px"}}>
                     <Stack spacing={5} direction="column" sx={{ justifyContent: "space-evenly", alignItems: "center"}}>
                             <Typography textAlign="justify" fontSize="20px" sx={{ color: 'var(--primary-text)'}}>
                                 A software engineer with a passion for computer graphics, real-time visualization, and interactive 3D experiences.

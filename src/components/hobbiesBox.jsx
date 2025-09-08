@@ -6,8 +6,8 @@ export default function HobbiesBox() {
   return (
     <Box
       sx={{
-        width: 400,
-        height: 350,
+        width: {xs: 300, md: 400},
+        height: {xs: 280, md: 350},
         borderRadius: '15px',
         backgroundColor: 'var(--primary-text)',
         padding: 2,
@@ -18,12 +18,12 @@ export default function HobbiesBox() {
       }}
     >
       <Grid container spacing={2} sx={{ height: '100%', color: 'var(--background-color)', alignItems: 'start', justifyContent: 'center' }}>
-        <Grid item xs={6}>
+        <Grid item size={6}>
           <Stack sx={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}>
             <Typography variant="h4">{'\u{1F3C4}\u{1F3FD}\u{200D}\u{2640}\u{FE0F}'}</Typography>
               <Box sx={{
-                width: 150,
-                height: 150,
+                width: {xs: 100, md: 150},
+                height: {xs: 100, md: 150},
                 borderRadius: '15px',
                 overflow: 'hidden',
               }}>
@@ -31,12 +31,12 @@ export default function HobbiesBox() {
               </Box>
           </Stack>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item size={6}>
           <Stack sx={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}>
             <Typography variant="h4">{'\u{1F3C2}\u{1F3FE}'}</Typography>
             <Box sx={{
-                width: 150,
-                height: 150,
+                width: {xs: 100, md: 150},
+                height: {xs: 100, md: 150},
                 borderRadius: '15px',
                 overflow: 'hidden'
               }}>
@@ -44,7 +44,7 @@ export default function HobbiesBox() {
               </Box>
           </Stack>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item size={6}>
           <Stack sx={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}>
             <Typography variant="h4">{'\u{1F372}'}</Typography>
             <a href="https://butternutbakeryblog.com/chocolate-chip-banana-bread/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -59,7 +59,7 @@ export default function HobbiesBox() {
             </a>
           </Stack>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item size={6}>
           <Stack sx={{ textAlign: 'center', justifyContent: 'center', alignItems: 'center' }}>
             <Typography variant="h4">{'\u{1F4D6}'}</Typography>
             <a href="https://www.goodreads.com/syd_bar" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
