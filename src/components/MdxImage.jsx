@@ -13,13 +13,25 @@ export default function MdxImage({ src, alt, caption, boxProps,...props }) {
           }}
           {...boxProps}
         >
-            <Image
+            {src.endsWith('.mp4') ? (
+              <video
                 src={src}
                 alt={alt}
-                fill // Image fills the Box
-                style={{ borderRadius: '15px', objectFit: 'cover' }} // Use 'cover' to fill the space, 'contain' to show full image
-                {...props}
-            />
+                style={{ borderRadius: '15px', objectFit: 'cover', width: '100%', height: '100%' }}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <Image
+                  src={src}
+                  alt={alt}
+                  fill // Image fills the Box
+                  style={{ borderRadius: '15px', objectFit: 'cover' }} // Use 'cover' to fill the space, 'contain' to show full image
+                  {...props}
+              />
+            )}
         </Box>
         {caption && (
         <Typography variant="caption" display="block" sx={{ textAlign: 'center', mt: 1, maxWidth: '50vw' }}>

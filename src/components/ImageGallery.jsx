@@ -59,30 +59,63 @@ export default function ImageGallery({ galleryImages, switchImageTime }) {
       {galleryImages?.length > 0 && (
         <Box sx={{ position: 'relative', width: {xs: '100%', md: '70%', lg: '50%'}, height: '500px', mb: 3, overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }}>
           <AnimatePresence initial={false}>
-            <motion.img
-              key={carouselIndex}
-              src={galleryImages[carouselIndex].src}
-              alt={galleryImages[carouselIndex].alt}
-              custom={1}
-              variants={carouselVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: 'spring', stiffness: 100, damping: 30 },
-                opacity: { duration: 0.2 },
-              }}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                borderRadius: 8,
-                cursor: 'pointer',
-              }}
-            />
+            <AnimatePresence initial={false}>
+              {galleryImages[carouselIndex].src.endsWith('.mp4') ? (
+                <motion.video
+                  key={carouselIndex}
+                  src={galleryImages[carouselIndex].src}
+                  alt={galleryImages[carouselIndex].alt}
+                  custom={1}
+                  variants={carouselVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: 'spring', stiffness: 100, damping: 30 },
+                    opacity: { duration: 0.2 },
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: 8,
+                    cursor: 'pointer',
+                  }}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <motion.img
+                  key={carouselIndex}
+                  src={galleryImages[carouselIndex].src}
+                  alt={galleryImages[carouselIndex].alt}
+                  custom={1}
+                  variants={carouselVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: 'spring', stiffness: 100, damping: 30 },
+                    opacity: { duration: 0.2 },
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: 8,
+                    cursor: 'pointer',
+                  }}
+                />
+              )}
+            </AnimatePresence>
           </AnimatePresence>
           {galleryImages.length > 1 && (
             <>
