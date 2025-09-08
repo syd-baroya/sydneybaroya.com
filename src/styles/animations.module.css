@@ -3,7 +3,7 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
-    font-size: 2rem;
+    white-space: normal;
 }
 
 .fractureLetter {

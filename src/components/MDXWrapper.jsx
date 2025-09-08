@@ -17,7 +17,7 @@ const components = {
   MdxImage: (props) => <MdxImage {...props} />,
   motion: motion,
   Stack: Stack,
-  Grid: Grid,
+  Grid: (props) => <Grid {...props} />,
   ImageGallery: ImageGallery
 };
 

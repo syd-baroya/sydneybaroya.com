@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { Typography, Stack, Box, Button } from "@mui/material";
+import { useState, useEffect, useRef } from "react"
+import { Typography, Stack, Box } from "@mui/material";
 import time from "@/lib/threejs/utils/Time.js";
 import Contact from "./Contact";
 import Image from "next/image";
@@ -9,10 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faOctagon } from '@fortawesome/free-solid-svg-icons';
 import Magnetic from "@/components/animations/Magnetic.jsx";
 import EmailDialog from "@/components/EmailDialog";
-
 export default function Footer() {
     const [timeNow, setTimeNow] = useState('');
-    const footerRef = useRef(null); // New ref for the footer
     const [openEmailModal, setOpenEmailModal] = useState(false);
 
     useEffect(() => {
@@ -39,13 +37,10 @@ export default function Footer() {
     
     return (
         <Stack
-            ref={footerRef} // Attach footerRef here
-            component="footer"
             className="section"
             id="footer"
             spacing={3}
             direction="row"
-            col={12}
             sx={{ 
                 justifyContent: 'center', 
                 alignItems: 'center', 
@@ -92,10 +87,11 @@ export default function Footer() {
                 </Magnetic>
             </Stack>
             
-            <Stack md={6} col={12} direction="column" style={{width: '100%', justifyContent: 'space-around', alignItems: 'end'}}>
+            <Stack md={6} direction="column" style={{width: '100%', justifyContent: 'space-around', alignItems: 'end'}}>
                 <Typography variant="body2" sx={{ color: 'var(--background-color)' }}>2025 © Edition</Typography>
             
                 <Typography variant="body2" sx={{ color: 'var(--background-color)' }}>                
+  
                     {timeNow} PST
                 </Typography>
             
@@ -105,8 +101,6 @@ export default function Footer() {
             <EmailDialog
                 open={openEmailModal}
                 onClose={() => setOpenEmailModal(false)}
-                primaryColor={"var(--secondary-text)"}
-                secondaryColor={"var(--primary-text)"}
                 activeModalProps={{link:"mailto: sydneybaroya@gmail.com"}}
             />
         </Stack>

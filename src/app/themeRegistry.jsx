@@ -66,7 +66,6 @@ export default function ThemeRegistry({ children }) {
                     <MultiSceneCanvas />
                     <ActiveCardProvider >
                         <ScrollProvider>
-                            {!isProjectPage && <NavBar items={SECTIONS} />}
                             <SmoothScroll />
                             <AnimatePresence mode="wait">
                                 <motion.main
@@ -76,6 +75,7 @@ export default function ThemeRegistry({ children }) {
                                     transition={{ duration: 0.3 }}
                                     style={{ zIndex: 10, position: 'relative' }}
                                 >
+                                    {!isProjectPage && <NavBar items={SECTIONS} />}
                                     {children}
                                 </motion.main>
                             </AnimatePresence>

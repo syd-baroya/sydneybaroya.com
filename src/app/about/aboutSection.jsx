@@ -9,21 +9,18 @@ export default function AboutSection() {
         <Stack
             className="section"
             id="aboutSection"
-            direction='row'
-            spacing={10}
+            direction={{ xs: 'column', md: 'row' }}
+            spacing={4}
             sx={{alignItems: 'center', justifyContent: 'space-evenly', width: '100%', minHeight: '40vh'}}
         >
-            <Stack direction="column" spacing={5} sx={{ justifyContent: 'center', width: '50%', padding: '0% 2%'}}>
+            <Stack direction="column" spacing={3} sx={{ justifyContent: 'center', width: {xs: '100%', md: '60%'}, padding: '0% 2%'}}>
                 <Typography textAlign="justify" fontSize="24px" sx={{ color: 'var(--primary-text)'}} >
-                Hi, my name is Sydney! I am a software engineer specializing in real-time 3D web graphics, immersive visualization, and interactive experiences.
-                </Typography>
-                <Typography textAlign="justify" fontSize="24px" sx={{ color: 'var(--primary-text)'}} >
-                My work bridges art and technology, from large-scale projection-mapped art installations at Burning Man to cutting-edge aerospace visualization systems.
+                Hi, my name is Sydney! I am a software engineer specializing in real-time 3D web graphics, bridging between art and technology, from large-scale projection-mapped art installations at <b>Burning Man</b> to cutting-edge <b>aerospace visualization systems</b>.
                 </Typography>
             </Stack>
 
-            <Stack direction="column" spacing={2} sx={{ justifyContent: 'center', alignItems: 'center', width: '30%', padding: '0% 2%'}}>
-                <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)'}} >
+            <Stack direction={{xs: 'row', md: 'column'}} spacing={2} sx={{ justifyContent: { xs: 'space-evenly', md: 'center'}, alignItems: 'center', width: {xs: '100%', md: '35%'}, padding: '0% 2%'}}>
+                <Typography textAlign="justify" fontSize="18px" sx={{ color: 'var(--primary-text)', width: {xs: '50%', md: '75%'}}} >
                     Currently working at CACI designing rocket launch information dissemination 3D displays.
                 </Typography>
                 <Link href="/about">

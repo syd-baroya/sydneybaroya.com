@@ -51,7 +51,7 @@ export default function NavBar({items}) {
 
         function changeBackground() {
             const scrollY = wrapper ? wrapper.scrollTop : window.scrollY;
-            if (scrollY >= 66) {
+            if (scrollY >= 40) {
                 setHasBackground(true);
             } else {
                 setHasBackground(false);

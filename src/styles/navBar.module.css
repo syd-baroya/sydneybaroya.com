@@ -1,10 +1,10 @@
 .header {
-    padding: 1% 2%;
+    padding: 10px 30px;
     display: flex;
     flex-direction: row;
     z-index: 10000;
     top: 0;
-    position: sticky;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     height: 6vh;
@@ -13,6 +13,7 @@
     -ms-transition: all 200ms ease-in-out;
     -moz-transition: all 200ms ease-in-out;
     transition: all 200ms ease-in-out;
+    font-size: 1.25rem;
 }
 
 .navbar {

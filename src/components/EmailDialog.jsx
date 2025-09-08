@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-export default function EmailDialog({ children, open, onClose, primaryColor, secondaryColor, activeModalProps }) {
+export default function EmailDialog({ children, open, onClose, activeModalProps }) {
     const myEmail = "sydneybaroya@gmail.com";
     const [copiedStatus, setCopiedStatus] = useState('initial');
 
@@ -34,7 +34,7 @@ export default function EmailDialog({ children, open, onClose, primaryColor, sec
 
     return (
         <Dialog open={open} onClose={onClose}>
-            <DialogTitle>Email Me!</DialogTitle>
+            <DialogTitle sx={{color: 'var(--primary-text)', backgroundColor: 'var(--background-color)'}}>Email Me!</DialogTitle>
             <IconButton
                 aria-label="close"
                 onClick={onClose}
@@ -42,12 +42,17 @@ export default function EmailDialog({ children, open, onClose, primaryColor, sec
                     position: 'absolute',
                     right: 8,
                     top: 8,
-                    color: theme.palette.grey[500],
+                    color: 'var(--primary-text)',
+                    backgroundColor: 'transparent',
+                    '&:hover': {
+                      backgroundColor: 'transparent',
+                      color: 'var(--secondary-text)'
+                    }
                 })}
             >
                 <FontAwesomeIcon icon={faXmark}/>
             </IconButton>
-            <DialogContent>
+            <DialogContent sx={{color: 'var(--primary-text)', backgroundColor: 'var(--background-color)'}}>
                 {children}
                 <Stack spacing={2} sx={{ justifyContent: "center", alignItems: "center", width: "100%"}} onClick={handleCopy}>
                     <TextField
@@ -74,8 +79,14 @@ export default function EmailDialog({ children, open, onClose, primaryColor, sec
                     )}
                 </Stack>
             </DialogContent>
-            <DialogActions sx={{ justifyContent: "center", alignItems: "center"}}>
-                <Button sx={{bgcolor: primaryColor, color: secondaryColor, borderRadius: "10px"}}
+            <DialogActions sx={{ justifyContent: "center", alignItems: "center", backgroundColor: 'var(--background-color)'}}>
+                <Button sx={{
+                    bgcolor: 'var(--primary-text)', color: 'var(--background-color)', borderRadius: "10px",
+                    '&:hover': {
+                        bgcolor: 'var(--secondary-text)',
+                        color: 'var(--background-color)'
+                    }
+                }}
                     onClick={(event)=> { onButtonClick(event, {link: activeModalProps.link, openModal: false});}}>Open in default mail app</Button>
             </DialogActions>
         </Dialog>

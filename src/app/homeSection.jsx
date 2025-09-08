@@ -2,13 +2,14 @@
 
 import {Typography, Stack, Box} from "@mui/material";
 import '@/styles/globals.css';
-import '@/styles/home.module.css';
+import homeStyles from '@/styles/home.module.css';
 import SceneViewport from "@/components/Scene/SceneViewport";
 import * as HomeScene from "@/lib/scenes/HomeScene.js";
 
 export default function Home({}) {
     return (
-       <Stack className="section" id="home" direction={{ xs: 'column', md: 'row' }} // 👈 Responsive direction
+       <Stack id="home" direction={{ xs: 'column', md: 'row' }} 
+            className={homeStyles.homeSectionStack}
             sx={{ justifyContent: 'center', alignItems: 'center' }}>
             <Box sx={{ width: '100%', height: {xs: '20vh', md: '60vh'}, display: 'flex', flexDirection: 'column', justifyContent: 'center',}}>
                 <Typography textAlign="center" variant='h2' sx={{ color: 'var(--primary-text)',

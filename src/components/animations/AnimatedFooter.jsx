@@ -20,12 +20,12 @@ export default function AnimatedFooter() {
   });
 
   // Calculate y based on dynamic footerHeight
-  const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 0]);
 
   return (
     <div ref={container}>
         <motion.div
-          style={{ y }} // Add position: fixed and bottom: 0
+          style={{ y, bottom:0, position: 'sticky' }} // Add position: fixed and bottom: 0
         >
           <Footer />
         </motion.div>
