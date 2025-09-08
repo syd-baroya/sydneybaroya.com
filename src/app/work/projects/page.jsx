@@ -8,7 +8,6 @@ import { LayoutGroup } from 'framer-motion';
 import styles from '@/styles/work.module.css';
 
 export default function ProjectsPage() {
-      const colWidth = { xs: 12, sm: 6, md: 4, lg: 3 };
       const router = useRouter();
 
     const handleCardClick = (slug) => {
@@ -22,7 +21,7 @@ export default function ProjectsPage() {
                 <Grid container spacing={4} sx={{ display: "flex", alignItems: "center"}} >
                     {PROJECT_DATA.map((project) => {
                         return (
-                            <Grid item {...colWidth} key={project.slug}>
+                            <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={project.slug}>
                                 <ExpandingCard content={project} 
                                     onClick={() => handleCardClick(project.slug)}>
                                 </ExpandingCard>
