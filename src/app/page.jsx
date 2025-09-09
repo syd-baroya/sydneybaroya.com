@@ -4,6 +4,11 @@ import LandingSection from "@/components/page-sections/LandingSection";
 import { Stack } from "@mui/material";
 import WorkSection from "@/components/page-sections/WorkSection";
 
+export const metadata = {
+  title: 'Sydney Baroya - Portfolio & Creative Developer',
+  description: 'Explore the portfolio of Sydney Baroya, a creative developer showcasing projects in web development, graphics, and interactive experiences.',
+};
+
 export default function Main({}) {
     
     return (

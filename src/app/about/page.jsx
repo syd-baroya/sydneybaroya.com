@@ -2,6 +2,11 @@ import HobbiesBox from "@/components/HobbiesBox";
 import { Stack, Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata = {
+  title: "About Sydney Baroya - Creative Developer",
+  description: "Learn more about Sydney Baroya, a creative developer's background, skills, and passion for innovative digital experiences."
+};
 export default function About({}) {
     
     return (

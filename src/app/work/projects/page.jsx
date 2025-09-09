@@ -7,6 +7,11 @@ import ExpandingCard from '@/components/animations/ExpandingCard';
 import { LayoutGroup } from 'framer-motion';
 import styles from '@/styles/work.module.css';
 
+export const metadata = {
+  title: 'Projects - Sydney Baroya',
+  description: 'Browse through a collection of creative and technical projects by Sydney Baroya, including web development, graphics, and interactive experiences.',
+};
+
 export default function ProjectsPage() {
       const router = useRouter();
 

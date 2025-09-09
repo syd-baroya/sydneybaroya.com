@@ -7,6 +7,11 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import dynamic from 'next/dynamic';
 
+export const metadata = {
+  title: 'Shader Playground - Sydney Baroya',
+  description: 'Explore interactive shaders and real-time graphics experiments in the Shader Playground by Sydney Baroya.',
+};
+
 const SceneViewport = dynamic(() => import('@/components/Scene/SceneViewport'), { ssr: false });
 
 export default function ShaderPlayground() {
