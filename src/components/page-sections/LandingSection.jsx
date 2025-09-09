@@ -24,7 +24,7 @@ export default function LandingSection({}) {
                         md: 'clamp(3rem, 9vh, 6rem)',
                     }}}>Portfolio</Typography>
             </Box>
-            <Box sx={{ width: '100%', height: {xs: '45vh', md: '60vh'}}}>
+            <Box sx={{ width: '100%', height: {xs: '45vh', md: '60vh'}, cursor: { sm: 'grab'}, '&:active': {cursor: {sm: 'grabbing'}}}}>
                 <div id="homeSceneGUI" style={{zIndex: 1000, position: 'absolute'}}></div>
                 <Box id="scrollOverScene" sx={{zIndex: 1000, position: 'absolute', width: '100%', height: 'inherit', display: {xs: 'block', sm: 'none'}}}></Box>
                 <SceneViewport className="view" index={0} scene={HomeScene}></SceneViewport>
