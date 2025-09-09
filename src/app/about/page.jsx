@@ -1,4 +1,4 @@
-import HobbiesBox from "@/components/hobbiesBox";
+import HobbiesBox from "@/components/HobbiesBox";
 import { Stack, Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";

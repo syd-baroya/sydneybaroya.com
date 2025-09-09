@@ -1,4 +1,4 @@
-import * as WaterShader from '@/lib/scenes/WaterShader.js';
+import * as WaterShader from '@/lib/scenes/waterShader.js';
 const SHADER_DATA = [
     {
         name: 'Water Shader',

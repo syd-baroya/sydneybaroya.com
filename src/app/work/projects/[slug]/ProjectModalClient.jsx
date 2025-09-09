@@ -4,14 +4,13 @@ import { useRouter } from 'next/navigation';
 import { IconButton, Box, Stack} from '@mui/material';
 import { motion } from 'framer-motion';
 import CloseIcon from '@mui/icons-material/Close';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import React from 'react';
 import { useActiveCard } from '@/lib/hooks/useActiveCard';
 import { useScroll } from '@/context/ScrollContext';
 import Magnetic from '@/components/animations/Magnetic';
 import Image from "next/image";
-import Link from 'next/link';
-import MDXWrapper from "@/components/MDXWrapper";
+import MdxWrapper from "@/components/MdxWrapper";
 
 export default function ProjectModalClient({ project }) {
   const router = useRouter();
@@ -140,9 +139,9 @@ export default function ProjectModalClient({ project }) {
           {/* Dynamic Content (Paragraphs + Mid Images) */}
           <Stack spacing={2} sx={{ mt: 2 }}>
             {MdxComponent && (
-              <MDXWrapper>
-                <MdxComponent />
-              </MDXWrapper>
+              <MdxWrapper>
+                  <MdxComponent />
+              </MdxWrapper>
             )}
           </Stack>
         </Stack>

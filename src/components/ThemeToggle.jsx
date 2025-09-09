@@ -1,7 +1,7 @@
 'use client';
 
 import { IconButton } from '@mui/material';
-import { useColorMode } from '@/app/themeRegistry';
+import { useColorMode } from '@/app/ThemeRegistry';
 import LightModeIcon from '@mui/icons-material/LightModeRounded';
 import DarkModeIcon from '@mui/icons-material/DarkModeRounded';
 import { useTheme } from '@mui/material/styles';

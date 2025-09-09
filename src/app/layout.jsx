@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import ThemeRegistry from "./themeRegistry";
+import ThemeRegistry from "./ThemeRegistry";
 import FooterWrapper from "@/components/FooterWrapper";
 import { Quicksand } from 'next/font/google';
 

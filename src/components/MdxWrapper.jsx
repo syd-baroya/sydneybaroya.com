@@ -21,7 +21,7 @@ const components = {
   ImageGallery: ImageGallery
 };
 
-export default function MDXWrapper({ children }) {
+export default function MdxWrapper({ children }) {
   return <MDXProvider components={components}>{children}</MDXProvider>;
 }
 

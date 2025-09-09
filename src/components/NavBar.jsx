@@ -1,8 +1,8 @@
 'use client';
 
 import { Box, Stack } from '@mui/material';
-import ThemeToggle from '@/components/themeToggle.jsx';
-import navBarStyles from '@/styles/navBar.module.css';
+import ThemeToggle from '@/components/ThemeToggle.jsx';
+import navBarStyles from '@/styles/nav-bar.module.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';

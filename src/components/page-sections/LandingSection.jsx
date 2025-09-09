@@ -4,9 +4,9 @@ import {Typography, Stack, Box} from "@mui/material";
 import '@/styles/globals.css';
 import homeStyles from '@/styles/home.module.css';
 import SceneViewport from "@/components/Scene/SceneViewport";
-import * as HomeScene from "@/lib/scenes/HomeScene.js";
+import * as HomeScene from "@/lib/scenes/homeScene.js";
 
-export default function Home({}) {
+export default function LandingSection({}) {
     return (
        <Stack id="home" direction={{ xs: 'column', md: 'row' }} 
             className={homeStyles.homeSectionStack}

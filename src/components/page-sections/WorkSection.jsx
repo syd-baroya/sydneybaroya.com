@@ -3,7 +3,7 @@
 import { Box, Stack, Grid } from '@mui/material';
 import Link from 'next/link';
 import { useRef, useState, useLayoutEffect } from 'react';
-import getSizes from '@/lib/threejs/utils/Sizes';
+import getSizes from '@/lib/threejs/utils/Sizes.js';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import '@/styles/work.module.css';

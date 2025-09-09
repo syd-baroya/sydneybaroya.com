@@ -3,7 +3,7 @@
 import PROJECT_DATA from '@/lib/data/projects';
 import { useRouter } from 'next/navigation';
 import { Box, Divider, Grid, Stack, Typography } from '@mui/material';
-import ExpandingCard from '@/components/animations/expandingCard';
+import ExpandingCard from '@/components/animations/ExpandingCard';
 import { LayoutGroup } from 'framer-motion';
 import styles from '@/styles/work.module.css';
 

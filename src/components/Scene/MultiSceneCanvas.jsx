@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import { useThreeCanvasRefs } from '@/context/ThreeCanvasContext';
-import { useColorMode } from '@/app/themeRegistry';
+import { useColorMode } from '@/app/ThemeRegistry';
 import { useResolvedCssVar } from '@/lib/hooks/useResolvedCssVar';
-import * as SceneManager from '@/lib/threejs/SceneManager';
-import Resources from '@/lib/threejs/utils/Resources';
+import * as SceneManager from '@/lib/threejs/SceneManager.js';
+import Resources from '@/lib/threejs/utils/Resources.js';
 import sources from '@/lib/scenes/sources';
 
 export default function MultiSceneCanvas({ }) {

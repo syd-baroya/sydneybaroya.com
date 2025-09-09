@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
-export default function ProjectSection({ projects, children }) {
+export default function ProjectsSection({ projects, children }) {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,

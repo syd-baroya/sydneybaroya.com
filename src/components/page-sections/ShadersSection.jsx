@@ -7,7 +7,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
-export default function ShaderSection({ shaders, children }) {
+export default function ShadersSection({ shaders, children }) {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,

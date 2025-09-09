@@ -1,4 +1,3 @@
-// app/themeRegistry.jsx
 'use client';
 
 import { useEffect, useMemo, useState, createContext, useContext } from 'react';
@@ -6,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { getDesignTokens } from '@/styles/muiTheme';
-import { setCSSVariables } from '@/styles/setCSSVariables.js';
+import { setCSSVariables } from '@/styles/setCssVariables.js';
 import { lightPalette, darkPalette } from '@/styles/themeColors';
 import NavBar from '@/components/NavBar';
 import SECTIONS from './sections';
