@@ -7,13 +7,12 @@ export default function AboutSection() {
 
     return (
         <Stack
-            className="section"
             id="aboutSection"
             direction={{ xs: 'column', md: 'row' }}
             spacing={4}
-            sx={{alignItems: 'center', justifyContent: 'space-evenly', width: '100%', minHeight: '40vh'}}
+            sx={{alignItems: 'baseline', justifyContent: 'space-evenly', width: '100%'}}
         >
-            <Stack direction="column" spacing={3} sx={{ justifyContent: 'center', width: {xs: '100%', md: '60%'}, padding: '0% 2%'}}>
+            <Stack direction="column" spacing={3} sx={{ justifyContent: 'center', width: {xs: '100%', md: '60%', lg: '50%'}, padding: '0% 2%'}}>
                 <Typography textAlign="justify" fontSize="24px" sx={{ color: 'var(--primary-text)'}} >
                 Hi, my name is Sydney! I am a software engineer specializing in real-time 3D web graphics, bridging between art and technology, from large-scale projection-mapped art installations at <b>Burning Man</b> to cutting-edge <b>aerospace visualization systems</b>.
                 </Typography>

@@ -40,9 +40,10 @@ export default function ShaderPlayground() {
     }, []);
 
     return (
-        <Stack id="tools" className="workSection">
+        <Stack id="tools" sx={{ position: 'relative', marginTop: '6vh' // for navbar
+        }}>
             {/* Header */}
-            <Typography variant="h3" gutterBottom>Shader Playground</Typography>
+            <Typography variant="h3" gutterBottom sx={{ margin: '8px 20px'}}>Shader Playground</Typography>
             {/* Container for Scene and Custom Drawer */}
             <Box sx={{ position: 'relative', height: '86vh', overflow: 'hidden' }}>
                 

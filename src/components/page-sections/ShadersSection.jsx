@@ -32,7 +32,7 @@ export default function ShadersSection({ shaders, children }) {
     const x = useTransform(scrollYProgress, [0, 1], [`0vw`, `-${contentWidth - 100}vw`]);
 
     return (
-        <Stack id="shaders" className={styles.workSection}>
+        <Stack id="shaders">
             {/* This outer container creates the scrollable space */}
             <Box ref={containerRef}>
                 {/* This sticky container holds the carousel and keeps it in view */}

@@ -59,7 +59,7 @@ export default function WorkSection({ }) {
   const x = useTransform(scrollYProgress, [0, 1], [0, -(contentWidth - viewportWidth)]);
 
   return (
-    <Stack className="section" id="work" spacing={5} sx={{ margin: '4vh 0'}}>
+    <Stack id="work" spacing={5} sx={{ margin: '4vh 0'}}>
         {/* <ProjectsSection projects={PROJECT_DATA}></ProjectsSection>
         <ShaderSection shaders={SHADER_DATA}></ShaderSection> */}
         <Box ref={containerRef}>

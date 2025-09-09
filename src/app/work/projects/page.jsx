@@ -14,10 +14,12 @@ export default function ProjectsPage() {
         router.push(`/work/projects/${slug}`);
     };
   return (
-    <Stack className='section' id="projects" style={{ minHeight: '94vh', background: 'var(--background-color)', zIndex: 10, position: 'relative', boxShadow: '0px 70px 60px rgba(0, 0, 0, 0.5)' }}>
-      <Typography variant="h2" gutterBottom>Projects</Typography>
+    <Stack id="projects" style={{ 
+        minHeight: '94vh', background: 'var(--background-color)', marginTop: '6vh', // for navbar
+     zIndex: 10, position: 'relative', boxShadow: '0px 70px 60px rgba(0, 0, 0, 0.5)', padding: '0px 20px' }}>
+      <Typography variant="h2" gutterBottom sx={{ margin: '8px 0px'}}>Projects</Typography>
         <LayoutGroup>
-            <Stack id="projects" className={styles.workSection}>
+            <Stack id="projects">
                 <Grid container spacing={4} sx={{ display: "flex", alignItems: "center"}} >
                     {PROJECT_DATA.map((project) => {
                         return (

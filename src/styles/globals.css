@@ -37,17 +37,3 @@ a:hover {
   height: 100%;
   width: 100%;
 }
-
-.sections {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  font-size: 7vmin;
-  padding: 1% 1%;
-}

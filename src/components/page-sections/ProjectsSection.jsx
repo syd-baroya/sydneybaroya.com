@@ -32,7 +32,7 @@ export default function ProjectsSection({ projects, children }) {
     const x = useTransform(scrollYProgress, [0, 1], [`-${contentWidth - 100}vw`,`0vw`]);
 
     return (
-        <Stack id="projects" className={styles.workSection}>
+        <Stack id="projects">
             {/* This outer container creates the scrollable space */}
             <Box ref={containerRef}>
                 {/* This sticky container holds the carousel and keeps it in view */}

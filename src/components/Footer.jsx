@@ -37,7 +37,6 @@ export default function Footer() {
     
     return (
         <Stack
-            className="section"
             id="footer"
             spacing={3}
             direction="row"
