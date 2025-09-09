@@ -6,7 +6,7 @@ export default function About({}) {
     
     return (
         <Stack id="about" sx={{ width: "100%", minHeight: "94vh", padding: "7vh 3vw", background: "var(--background-color)", zIndex: 10, position: "relative", boxShadow: "0px 70px 60px rgba(0, 0, 0, 0.5)", justifyContent: "space-evenly", alignItems: "center"}}>
-            <Typography textAlign="center" fontSize="64px" sx={{ color: 'var(--primary-text)'}}>Hi! I'm Sydney.</Typography>
+            <Typography textAlign="center" fontSize="64px" sx={{ color: 'var(--primary-text)'}} variant="h1">Hi! I'm Sydney.</Typography>
             <Grid container spacing={4} sx={{ width: "100%", height: "100%", alignItems: "center", justifyContent: "center"}}>
                 <Grid size={{xs: 12, lg: 4}} sx={{ padding: "20px"}}>
                     <Stack spacing={5} direction={{xs: "column", md: "row", lg: "column"}} sx={{width: "100%",alignItems: "center", justifyContent: "center"}}>

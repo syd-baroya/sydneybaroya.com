@@ -17,7 +17,7 @@ export default function ProjectsPage() {
     <Stack id="projects" style={{ 
         minHeight: '94vh', background: 'var(--background-color)', marginTop: '6vh', // for navbar
      zIndex: 10, position: 'relative', boxShadow: '0px 70px 60px rgba(0, 0, 0, 0.5)', padding: '0px 20px' }}>
-      <Typography variant="h2" gutterBottom sx={{ margin: '8px 0px'}}>Projects</Typography>
+      <Typography variant="h3" gutterBottom sx={{ margin: '8px 0px', color: 'var(--primary-text)'}}>Projects</Typography>
         <LayoutGroup>
             <Stack id="projects">
                 <Grid container spacing={4} sx={{ display: "flex", alignItems: "center"}} >
