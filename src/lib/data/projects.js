@@ -1,10 +1,10 @@
 
 const projects = [
     {
-        title: "Projection Mapping in the Interactive Arts",
-        thumbnail: "/images/butterEye.png",
-        slug: "eye-of-metamorphosis",
-        mdxFile: "eye-of-metamorphosis.mdx"
+        title: "Building My Portfolio",
+        thumbnail: "/images/website.png",
+        slug: "this-website",
+        mdxFile: "this-website.mdx"
     },
     {
         title: "Shader Playground",
@@ -17,6 +17,12 @@ const projects = [
         thumbnail: "/images/dolphin.png",
         slug: "opengl-template",
         mdxFile: "opengl-template.mdx"
+    },
+    {
+        title: "Projection Mapping in the Interactive Arts",
+        thumbnail: "/images/butterEye.png",
+        slug: "eye-of-metamorphosis",
+        mdxFile: "eye-of-metamorphosis.mdx"
     },
     {
         title: "2D Ray Tracer",
