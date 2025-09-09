@@ -26,6 +26,7 @@ export default function Home({}) {
             </Box>
             <Box sx={{ width: '100%', height: {xs: '45vh', md: '60vh'}}}>
                 <div id="homeSceneGUI" style={{zIndex: 1000, position: 'absolute'}}></div>
+                <Box id="scrollOverScene" sx={{zIndex: 1000, position: 'absolute', width: '100%', height: 'inherit', display: {xs: 'block', sm: 'none'}}}></Box>
                 <SceneViewport className="view" index={0} scene={HomeScene}></SceneViewport>
             </Box>
         </Stack>

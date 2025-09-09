@@ -27,9 +27,25 @@ class Camera
     {
         this.controls = new OrbitControls(this.instance, this.div)
         this.controls.enableDamping = true
+        this.controls.autoRotate = true;
+        this.controls.autoRotateSpeed = 0.5;
+        if(this.windowIsMobile())
+        {
+            this.disableUserInteractions();
+        }
     }
 
+    enableUserInteractions() {
+        this.controls.enablePan = true;
+        this.controls.enableZoom = true;
+        this.controls.enableRotate = true;
+    }
 
+    disableUserInteractions() {
+        this.controls.enablePan = false;
+        this.controls.enableZoom = false;
+        this.controls.enableRotate = false;
+    }
 
     resize()
     {
@@ -37,11 +53,23 @@ class Camera
         this.instance.aspect = sizes.width / sizes.height;
         this.instance.fov = this.fov / this.instance.aspect;
         this.instance.updateProjectionMatrix();
+
+        if(this.windowIsMobile())
+        {
+            this.disableUserInteractions();
+        } else {
+            this.enableUserInteractions();
+        }
     }
 
     update()
     {
         this.controls.update()
+    }
+
+    windowIsMobile()
+    {
+        return window.innerWidth < 640;
     }
 }
 
