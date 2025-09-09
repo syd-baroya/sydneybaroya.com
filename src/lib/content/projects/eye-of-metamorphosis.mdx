@@ -20,12 +20,10 @@ As the primary developer, I was responsible for the entire software pipeline, fr
 C++, OpenGL, GLSL, C#, HLSL, Azure Kinect DK
 
 ## Features & Technologies
-<div style={{paddingLeft: '2rem'}}>
 - **Advanced Body Tracking:** Overcame the challenge of noisy sensor data by implementing a real-time body tracking system using multiple Microsoft Azure Kinect DKs, merging their depth data into a unified point cloud.
 - **Low-Latency Interactivity:** Solved the issue of hardware and projection lag by implementing predictive filtering on joint positions, delivering a smooth and responsive user experience.
 - **Precise Gesture Recognition:** Developed a gesture detection system to trigger visual effects, enabling participants to interact with the projections through their movements.
 - **Generative Visuals:** Created a series of interactive, generative visuals that were projection-mapped onto both participants and sculptural elements.
-</div>
 
 ## Links
 <Link href='https://digitalcommons.calpoly.edu/theses/2250/'>Read my master's thesis, *Real-time Body Tracking and Projection Mapping in the Interactive Arts*</Link>
@@ -34,42 +32,34 @@ C++, OpenGL, GLSL, C#, HLSL, Azure Kinect DK
 ---
 
 ## Exhibition History
-<div style={{margin: '1rem'}}>
-    ### Eye of Metamorphosis — Burning Man 2019
-    <Grid container direction={{xs: "column", lg: "row"}} spacing={2}>
-        <Grid item size={{xs: 12, lg: 5}}>
-            <div style={{paddingLeft: '2rem'}}>
-                - **Location:** Black Rock City, Nevada  
-                - **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time. For the art installation, we created giant eyeball made from epoxy and resin for the projector, laptop, and Kinect to be held inside of. This was to enhance its appeasibility as an art installation and to help protect it from the elements. This used the main project, developed in C++ and OpenGL, with one Microsoft Kinect.
-            </div>
-        </Grid>
-        <Grid item size={{xs: 12, lg: 7}}>
-            <MdxImage boxProps={{width: {xs:'300px', md: '600px'}, height: {xs: '200px', md: '300px'}}} 
-                src="/images/burningManEye.png" alt="Thesis Eye" caption="The projector holder with a epoxy and resin eye encasing it." />
-        </Grid>
+### Eye of Metamorphosis — Burning Man 2019
+<Grid container direction={{xs: "column", lg: "row"}} spacing={2}>
+    <Grid item size={{xs: 12, lg: 5}}>
+        - **Location:** Black Rock City, Nevada  
+        - **Description:** Premiered as a large-scale art installation on the playa. Participants became part of a surreal visual ecosystem where their movements caused projected imagery to shift, transform, and react in real time. For the art installation, we created giant eyeball made from epoxy and resin for the projector, laptop, and Kinect to be held inside of. This was to enhance its appeasibility as an art installation and to help protect it from the elements. This used the main project, developed in C++ and OpenGL, with one Microsoft Kinect.
     </Grid>
-</div>
-<div style={{margin: '1rem'}}>
-    ### Delfines de San Carlos 2020: Un Proyecto de Esperanza
-    <Grid container spacing={2}>
-    <Grid item size={{xs: 12, lg: 4}}>
-        <div style={{paddingLeft: '2rem'}}>
-            - **Location:** San Carlos, Mexico  
-            - **Description:** A community art event created by Lucia Apodaca and attended by the Mayor of Guaymas Comisario of San Carlos. The event included art installations of various dolphin statues designed by local artists. Apodaca wanted projections mapped onto a dolphin statue that could be changed by the audience. In order to use certain assets, I decided to adapt the code to use Unity and C#, keeping the logic of the code the same. The body tracking and gesture recognition software stayed similar from the original project while the projection mapping and shaders were changed.
-        </div>
+    <Grid item size={{xs: 12, lg: 7}}>
+        <MdxImage boxProps={{width: {xs:'300px', md: '600px'}, height: {xs: '200px', md: '300px'}}} 
+            src="/images/burningManEye.png" alt="Thesis Eye" caption="The projector holder with a epoxy and resin eye encasing it." />
     </Grid>
-    <Grid container item size={{xs: 12, lg: 8}} sx={{alignItems: 'baseline', justifyContent: 'center'}}>
-        <Grid item size={{xs: 12, md: 6}}>
-            <MdxImage boxProps={{width: {xs:'200px', md:'300px'}, height: {xs:'300px', md: '400px'}}}
-                src="/images/DelfinesGroup.jpg" alt="Delfines Group" caption="From left to right: Noah Paige, Sydney Baroya, Irene Humer, Christian Eckhardt, Lucia Apodaca, Sara Valle Dessens (former Mayor of Guaymas)." />
-        </Grid>
-        <Grid item size={{xs: 12, md: 6}}>
-            <MdxImage boxProps={{width: {xs:'200px', md:'300px'}, height: {xs:'200px', md:'300px'}}}
-                src="/images/dolphinChameleon.png" alt="Dolphin Chameleon" caption="One of the projection mapping adaptation textures." />
-        </Grid>
+</Grid>
+### Delfines de San Carlos 2020: Un Proyecto de Esperanza
+<Grid container spacing={2}>
+<Grid item size={{xs: 12, lg: 4}}>
+    - **Location:** San Carlos, Mexico  
+    - **Description:** A community art event created by Lucia Apodaca and attended by the Mayor of Guaymas Comisario of San Carlos. The event included art installations of various dolphin statues designed by local artists. Apodaca wanted projections mapped onto a dolphin statue that could be changed by the audience. In order to use certain assets, I decided to adapt the code to use Unity and C#, keeping the logic of the code the same. The body tracking and gesture recognition software stayed similar from the original project while the projection mapping and shaders were changed.
+</Grid>
+<Grid container item size={{xs: 12, lg: 8}} sx={{alignItems: 'baseline', justifyContent: 'center'}}>
+    <Grid item size={{xs: 12, md: 6}}>
+        <MdxImage boxProps={{width: {xs:'200px', md:'300px'}, height: {xs:'300px', md: '400px'}}}
+            src="/images/DelfinesGroup.jpg" alt="Delfines Group" caption="From left to right: Noah Paige, Sydney Baroya, Irene Humer, Christian Eckhardt, Lucia Apodaca, Sara Valle Dessens (former Mayor of Guaymas)." />
     </Grid>
+    <Grid item size={{xs: 12, md: 6}}>
+        <MdxImage boxProps={{width: {xs:'200px', md:'300px'}, height: {xs:'200px', md:'300px'}}}
+            src="/images/dolphinChameleon.png" alt="Dolphin Chameleon" caption="One of the projection mapping adaptation textures." />
     </Grid>
-</div>
+</Grid>
+</Grid>
 
 ---
 
