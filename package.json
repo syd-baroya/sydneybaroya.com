@@ -6,7 +6,7 @@
     "dev": "open-cli http://localhost:3000 && next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "clean": "rm -rf .next"
   },
   "dependencies": {
