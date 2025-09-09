@@ -1,0 +1,39 @@
+:root {
+  --background-color: #F3F3F3;
+  --primary: #2B2D42;
+  --secondary: #ffeded;
+}
+
+html,
+body {
+  max-width: 100vw;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--primary-text);
+  font-family: Arial, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--secondary-text);
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: 500;
+}
+
+.view {
+  height: 100%;
+  width: 100%;
+}
