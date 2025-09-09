@@ -73,6 +73,7 @@ export default function NavBar({items}) {
                 href='/'
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                onClick={() => setIsHovered(false)}
             >
                 <motion.div
                     variants={containerVariants}
