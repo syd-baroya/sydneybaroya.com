@@ -12,7 +12,7 @@ export function useResolvedCssVar(variableName, deps = []) {
     }, 0);
 
     return () => clearTimeout(timeout);
-  }, deps);
+  }, [variableName, ...deps]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return value;
 }

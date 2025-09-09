@@ -7,8 +7,35 @@ const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  recommendedConfig: {},
 });
 
-const eslintConfig = [...compat.extends("next/core-web-vitals")];
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends("eslint:recommended"),
+  ...compat.extends("plugin:react/recommended"),
+  ...compat.extends("plugin:react-hooks/recommended"),
+  ...compat.extends("plugin:import/recommended"), // Added import plugin
+  ...compat.extends("plugin:jsx-a11y/recommended"), // Added jsx-a11y plugin
+  {
+    settings: {
+      react: {
+        version: "detect", // Automatically detect the React version
+      },
+      "import/resolver": {
+        alias: {
+          map: [
+            ["@", "./src"], // This maps '@' to your 'src' directory
+          ],
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+      },
+    },
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+    },
+  },
+];
 
 export default eslintConfig;
