@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import * as Raycast from '@/lib/threejs/utils/Raycast'
+import * as Raycast from '../utils/Raycast'
 
 export default class Otter
 {

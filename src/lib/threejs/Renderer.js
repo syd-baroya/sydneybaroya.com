@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import EventEmitter from './utils/EventEmitter.js'
+import EventEmitter from './utils/EventEmitter'
 
 class Renderer extends EventEmitter
 {

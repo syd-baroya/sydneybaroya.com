@@ -1,7 +1,7 @@
 import Renderer from './Renderer.js';
-import getSizes from './utils/Sizes.js'
-import time from './utils/Time.js'
-import MouseEvent from './utils/MouseEvents.js'
+import getSizes from './utils/Sizes'
+import time from './utils/Time'
+import MouseEvent from './utils/MouseEvents'
 
 let sizes, mouseEvent, raycast, renderer;
 let scenes = [];
