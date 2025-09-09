@@ -12,7 +12,7 @@ export function init(bgColor, view) {
     scene.background = new THREE.Color( bgColor);
 
     scene.userData.view = view;
-    camera = new Camera(view)
+    camera = new Camera(view, false)
     camera.setPosition(7, 10, 7);
     camera.controls.enableZoom = false;
     scene.add(camera.instance)

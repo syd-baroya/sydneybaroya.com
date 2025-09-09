@@ -3,9 +3,10 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 class Camera
 {
-    constructor(div)
+    constructor(div, userInteractionEnabled = true)
     {
         this.div = div
+        this.userInteractionEnabled = userInteractionEnabled;
         this.initInstance()
         this.initControls()
     }
@@ -27,24 +28,24 @@ class Camera
     {
         this.controls = new OrbitControls(this.instance, this.div)
         this.controls.enableDamping = true
-        this.controls.autoRotate = true;
-        this.controls.autoRotateSpeed = 0.5;
-        if(this.windowIsMobile())
+
+        if(this.windowIsMobile() && !this.userInteractionEnabled)
         {
             this.disableUserInteractions();
         }
     }
 
-    enableUserInteractions() {
+    enableUserInteractions() { //everything but zoom (controlled by scene)
         this.controls.enablePan = true;
-        this.controls.enableZoom = true;
         this.controls.enableRotate = true;
+        this.controls.autoRotate = false;
     }
 
     disableUserInteractions() {
         this.controls.enablePan = false;
-        this.controls.enableZoom = false;
         this.controls.enableRotate = false;
+        this.controls.autoRotate = true;
+        this.controls.autoRotateSpeed = 0.5;
     }
 
     resize()
@@ -54,7 +55,7 @@ class Camera
         this.instance.fov = this.fov / this.instance.aspect;
         this.instance.updateProjectionMatrix();
 
-        if(this.windowIsMobile())
+        if(this.windowIsMobile() && !this.userInteractionEnabled)
         {
             this.disableUserInteractions();
         } else {
@@ -69,7 +70,7 @@ class Camera
 
     windowIsMobile()
     {
-        return window.innerWidth < 640;
+        return window.innerWidth < 600;
     }
 }
 
