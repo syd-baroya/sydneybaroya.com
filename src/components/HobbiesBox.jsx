@@ -27,7 +27,7 @@ export default function HobbiesBox() {
                 borderRadius: '15px',
                 overflow: 'hidden',
               }}>
-                <Image src="/images/surf.jpg" alt="hobby 1" width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Image src="/images/surf.JPG" alt="hobby 1" width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </Box>
           </Stack>
         </Grid>
@@ -40,7 +40,7 @@ export default function HobbiesBox() {
                 borderRadius: '15px',
                 overflow: 'hidden'
               }}>
-                <Image src="/images/snow.jpg" alt="hobby 2" width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Image src="/images/snow.JPG" alt="hobby 2" width={300} height={300} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </Box>
           </Stack>
         </Grid>
