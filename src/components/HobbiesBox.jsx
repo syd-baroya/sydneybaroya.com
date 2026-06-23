@@ -1,4 +1,5 @@
 import { Box, Grid, Typography, Stack } from '@mui/material';
+import Contact from "./Contact";
 import Image from 'next/image';
 
 
@@ -7,7 +8,7 @@ export default function HobbiesBox() {
     <Box
       sx={{
         width: {xs: 300, md: 400},
-        height: {xs: 280, md: 350},
+        height: {xs: 360, md: 410},
         borderRadius: '15px',
         backgroundColor: 'var(--primary-text)',
         padding: 2,
@@ -74,6 +75,9 @@ export default function HobbiesBox() {
                 </Typography>
             </a>
           </Stack>
+        </Grid>
+        <Grid item size={12}> 
+          <Contact size="medium" primaryColor={"var(--secondary-text)"} secondaryColor={"var(--primary-text)"}/>
         </Grid>
       </Grid>
     </Box>
