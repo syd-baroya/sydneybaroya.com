@@ -40,7 +40,7 @@ export default function About({}) {
                                 A software engineer with a passion for computer graphics, real-time visualization, and interactive 3D experiences.
                             </Typography>
                             <Typography textAlign="justify" fontSize="20px" sx={{ color: 'var(--primary-text)'}}>
-                                For the past 5 years, I’ve worked at <a href="https://caci.com/" target="_blank" rel="noopener noreferrer">CACI</a>, where I specialize in 3D web graphics, real-time simulations, and mission-critical visualization tools, using ThreeJS and Vue.
+                                For the past 6 years, I’ve worked at <a href="https://caci.com/" target="_blank" rel="noopener noreferrer">CACI</a>, where I specialize in 3D web graphics, real-time simulations, and mission-critical visualization tools, using ThreeJS and Vue.
                                 In this role, I've led a team dedicated to enhancing our 3D software and provided technical support during critical space launches for both SpaceX and ULA.
                             </Typography>
                             <Typography textAlign="justify" fontSize="20px" sx={{ color: 'var(--primary-text)'}}>
